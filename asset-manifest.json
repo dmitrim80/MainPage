@@ -1,16 +1,22 @@
 {
   "files": {
-    "main.css": "/DigitalBC/static/css/main.f855e6bc.css",
-    "main.js": "/DigitalBC/static/js/main.db20fad4.js",
+    "main.css": "/DigitalBC/static/css/main.5ea0e489.css",
+    "main.js": "/DigitalBC/static/js/main.740e66a5.js",
     "static/js/787.9785ca69.chunk.js": "/DigitalBC/static/js/787.9785ca69.chunk.js",
-    "static/media/logo.svg": "/DigitalBC/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/dm-profile.png": "/DigitalBC/static/media/dm-profile.cb13d161253430e15489.png",
+    "static/media/GitHubIcon.svg": "/DigitalBC/static/media/GitHubIcon.5669ad894c9411d96300be54d5d036f4.svg",
+    "static/media/TwitterIcon.svg": "/DigitalBC/static/media/TwitterIcon.3a72c10735b2334e59c92482fc53351f.svg",
+    "static/media/linkedin.svg": "/DigitalBC/static/media/linkedin.8372758bbdece489bbfbd44452d742b2.svg",
+    "static/media/LinkedinIcon.svg": "/DigitalBC/static/media/LinkedinIcon.0913e3f759524a72473aea2d8bcc311e.svg",
+    "static/media/FacebookIcon.svg": "/DigitalBC/static/media/FacebookIcon.6b8ec48b3eda3999c4716d0ef3123c18.svg",
     "index.html": "/DigitalBC/index.html",
-    "main.f855e6bc.css.map": "/DigitalBC/static/css/main.f855e6bc.css.map",
-    "main.db20fad4.js.map": "/DigitalBC/static/js/main.db20fad4.js.map",
+    "static/media/Mail.svg": "/DigitalBC/static/media/Mail.ea7ae42f204e516c74e6bd56ec28b0a5.svg",
+    "main.5ea0e489.css.map": "/DigitalBC/static/css/main.5ea0e489.css.map",
+    "main.740e66a5.js.map": "/DigitalBC/static/js/main.740e66a5.js.map",
     "787.9785ca69.chunk.js.map": "/DigitalBC/static/js/787.9785ca69.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.db20fad4.js"
+    "static/css/main.5ea0e489.css",
+    "static/js/main.740e66a5.js"
   ]
 }
