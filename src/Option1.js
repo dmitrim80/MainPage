@@ -26,11 +26,14 @@ export default function Option1() {
                 <div className="buttons-box">
                     <button className="button-email">
                         <div className="mail-icon"><img src={imagepath}></img></div>
-                        <div className="button-text">Email</div>
+                        <a href="mailto:dmitri.m80@gmail.com" target="_blank" className="email-button">
+                        <div className="button-text">Email</div></a>
                     </button>
                     <button className="button-linkedin">
                         <div className="linkedin-icon"><img src={imagepath2}></img></div>
+                        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/">
                         <div className="button-linkedin-text">LinkedIn</div>
+                        </a>
                     </button>
                 </div>
 
@@ -40,14 +43,14 @@ export default function Option1() {
 
                 <div className="midbox-interests-title">Interests</div>
 
-                <div className="midbox-interests-text">Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.</div>
+                <div className="midbox-interests-text">Marine & aquatic-life Enthusiast. Coral restoration. Intermediate level rowers. Internet fanatic. Entrepreneur. Travel geek. Coffee fanatic.</div>
             </div>
             <div className="child-bottom-box">
                 <div className="bottom-icons">
-                    <img src={imagepath3}/>
-                    <img src={imagepath4}/>
-                    <img src={imagepath5}/>
-                    <img src={imagepath6}/>
+                    <a href="http://www.twitter.com/DmitriM80"><img src={imagepath3}/></a>
+                    <a href="http://www.facebook.com/dmitrim80"><img src={imagepath4}/></a>
+                    <a href="http://www.instagram.com/dmitrim80"><img src={imagepath5}/></a>
+                    <a href="https://github.com/dmitrim80"><img src={imagepath6}/></a>
                 </div>
             </div>
         </div>
