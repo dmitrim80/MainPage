@@ -6,7 +6,7 @@ body {
   background-color: #000000;
   color: #FFFFFF;
   font-family: Inter, sans-serif;
-  padding: 53px;
+  padding-left: 53px;
   display: flex;
   justify-content: center;
   position: relative;
