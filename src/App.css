@@ -6,20 +6,23 @@ body {
   background-color: #000000;
   color: #FFFFFF;
   font-family: Inter, sans-serif;
-  padding: 53px 73px 53px;
+  padding: 53px;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 .container{
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2 , 550px);
-  gap:41px;
-  
+  gap:41px; */
 }
 .box {
   background-color: #374151;
-  width: 550px;
+  width: 390px;
   height: 868px;
   border-radius: 5px;
   position: relative;
+  height: 100vh;
 }
 .child-top-box {
   background-image: url('./images/dm-profile.png');
@@ -29,8 +32,9 @@ body {
   width: 317px;
   height: 317px;
   position: absolute;
-  left: 107px;
+  left: 50%;
   top: 44px;
+  transform: translateX(-50%);
 }
 .child-top-box2 {
   background-image: url('./images/dm-profile.png');
@@ -40,21 +44,23 @@ body {
   width: 317px;
   height: 317px;
   position: absolute;
-  left: 107px;
+  left: 50%;
   top: 44px;
+  transform: translateX(-50%);
 }
 
 .child-mid-box {
   background-color: #1A1B21;
   width: 317px;
   height: 399px;
-  position: relative; 
-  left: 107px;
-  top: 361px;
+  position: absolute; /* Change from relative to absolute */
+  left: 50%; /* Center horizontally relative to .box */
+  transform: translateX(-50%); /* Shift to the left by half its own width */
+  top: 361px; /* Adjust the top position as needed */
   padding-top: 21px;
   align-items: center;
   display: flex;
-  flex-direction: column; /* Align children in a column */
+  flex-direction: column;
 }
 .child-mid-box2 {
   background-color: #F5F5F5;
@@ -520,11 +526,12 @@ body {
   background-color: #161619;
   width: 317px;
   height: 64px;
-  position: absolute;
-  left: 107px;
-  top: 760px;
+  position: absolute; /* Ensure it's positioned absolutely within .box */
+  left: 50%; /* Center horizontally relative to .box */
+  transform: translateX(-50%); /* Shift left by half its own width */
+  top: 760px; /* Adjust top as needed */
   display: flex;
-  justify-content: center;
+  justify-content: center; /* This centers the children of .child-bottom-box horizontally */
 }
 .child-bottom-box2 {
   background-color: #D5D4D8;
