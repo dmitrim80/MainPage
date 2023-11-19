@@ -22,7 +22,6 @@ body {
   height: 868px;
   border-radius: 5px;
   position: relative;
-  height: 100vh;
 }
 .child-top-box {
   background-image: url('./images/dm-profile.png');
