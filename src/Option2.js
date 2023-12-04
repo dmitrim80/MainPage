@@ -6,31 +6,40 @@ import imagepath4 from "./images/FacebookIcon.svg"
 import imagepath5 from "./images/InstagramIcon.png"
 import imagepath6 from "./images/GitHubIcon.svg"
 
-export default function Option2() {
+export default function Option2(props) {
     return(
-        <div className="box">
-            <div className="child-top-box2"/>
+            <div className="box">
+        
+                <div className="toggler--slider-white" onClick={props.toggleDarkMode}>
+                    <div className="toggler--slider--circle-black"></div>
+                </div>
+            
+            
+            <div className="child-top-box"/>
 
             <div className="child-mid-box2">
                 <div className="label-box1-option2">
                     <div className="midbox-header-title2">Dmitri Morozov</div>
                 </div>
 
-                <div className="label-box1-option2">
-                    <div className="frontend-developer2">Frontend Developer</div>
+                <div className="label-box2-option2">
+                    <div className="frontend-developer2">Frontend developer</div>
                 </div>
 
                 <div className="email-link-box2"><a href="mailto:dmitri.m80@gmail.com" 
-                target="_blank" className="email2">mailto:dmitri.m80@gmail.com</a></div>
+                target="_blank" className="email2">dmitri.m80@gmail.com</a></div>
                 
                 <div className="buttons-box2">
                     <button className="button-email2">
-                        <div className="mail-icon2"><img src={imagepath}></img></div>
-                        <div className="button-text2">Email</div>
+                        <div className="mail-icon"><img src={imagepath}></img></div>
+                        <a href="mailto:dmitri.m80@gmail.com" target="_blank" className="email-button">
+                        <div className="button-text2">Email</div></a>
                     </button>
-                    <button className="button-linkedin2">
-                        <div className="linkedin-icon2"><img src={imagepath2}></img></div>
-                        <div className="button-linkedin-text2">LinkedIn</div>
+                    <button className="button-linkedin">
+                        <div className="linkedin-icon"><img src={imagepath2}></img></div>
+                        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/">
+                        <div className="button-linkedin-text">LinkedIn</div>
+                        </a>
                     </button>
                 </div>
 
@@ -40,14 +49,14 @@ export default function Option2() {
 
                 <div className="midbox-interests-title2">Interests</div>
 
-                <div className="midbox-interests-text2">Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.</div>
+                <div className="midbox-interests-text2">Marine & aquatic-life Enthusiast. Coral restoration. Intermediate level rowers. Love sports. Entrepreneur. Travel geek. Coffee fanatic.</div>
             </div>
             <div className="child-bottom-box2">
-                <div className="bottom-icons2">
-                    <img src={imagepath3}/>
-                    <img src={imagepath4}/>
-                    <img src={imagepath5}/>
-                    <img src={imagepath6}/>
+                <div className="bottom-icons">
+                    <a href="http://www.twitter.com/DmitriM80"><img src={imagepath3}/></a>
+                    <a href="http://www.facebook.com/dmitrim80"><img src={imagepath4}/></a>
+                    <a href="http://www.instagram.com/dmitrim80"><img src={imagepath5}/></a>
+                    <a href="https://github.com/dmitrim80"><img src={imagepath6}/></a>
                 </div>
             </div>
         </div>

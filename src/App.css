@@ -1,20 +1,23 @@
+:root {
+  --background-light: #F1F1F1; /* Light mode background */
+  --background-dark: #23252C; /* Dark mode background */
+  --text-light: #23252C; /* Light mode text */
+  --text-dark: #FFFFFF; /* Dark mode text */
+}
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
-  background-color: #000000;
-  color: #FFFFFF;
+  background-color: var(--background-light);
+  color: var(--text-light);
   font-family: Inter, sans-serif;
   padding-left: 1px;
   display: flex;
   justify-content: center;
   position: relative;
-}
-.container{
-  /* display: grid;
-  grid-template-columns: repeat(2 , 550px);
-  gap:41px; */
 }
 .box {
   background-color: #374151;
@@ -22,7 +25,47 @@ body {
   height: 868px;
   border-radius: 5px;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
+.toggler--slider-white{
+  width: 25px;
+  height: 13px;
+  background-color: #2B283A;
+  border-radius: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+.toggler--slider-black{
+  width: 25px;
+  height: 13px;
+  background-color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid black;
+  box-sizing: content-box;
+}
+.toggler--slider--circle-black{
+  height: 13px;
+  width: 13px;
+  background-color: white;
+  border-radius: 50%;
+}
+.toggler--slider--circle-white{
+  height: 13px;
+  width: 13px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+
 .child-top-box {
   background-image: url('./images/dm-profile.png');
   background-position: top,left;
@@ -48,26 +91,14 @@ body {
   transform: translateX(-50%);
 }
 
-.child-mid-box {
-  background-color: #1A1B21;
-  width: 317px;
-  height: 399px;
-  position: absolute; /* Change from relative to absolute */
-  left: 50%; /* Center horizontally relative to .box */
-  transform: translateX(-50%); /* Shift to the left by half its own width */
-  top: 361px; /* Adjust the top position as needed */
-  padding-top: 21px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
+
 .child-mid-box2 {
   background-color: #F5F5F5;
   width: 317px;
   height: 399px;
-  position: relative; 
-  justify-content: center;
-  left: 107px;
+  position: absolute; 
+  left: 50%;
+  transform: translateX(-50%);
   top: 361px;
   padding-top: 21px;
   align-items: center;
@@ -92,7 +123,7 @@ body {
   align-self: center;
   height: 26px;
   width: 178px;
-  background-color: #1A1B21;
+  background-color: #23252C;
 }
 .label-box1-option2{
   align-self: center;
@@ -135,7 +166,7 @@ body {
 .label-box2{
   height: 14px;
   width: 178px;
-  background-color: #1A1B21;
+  background-color: #23252C;
   margin-top: 5px;
 } 
 .label-box2-option2{
@@ -163,6 +194,7 @@ body {
 	font-size: 13px;
 	text-align: center;
 	color:#F3BE99;
+  font-weight: bold;
 
 }
 .frontend-developer2{
@@ -171,8 +203,7 @@ body {
 	font-size: 13px;
 	text-align: center;
 	color:#F47D27;
-  margin-top: 9px;
-  margin-bottom: 8.81px;
+  font-weight: bold;
 }
 .frontend-developer3{
 	color: #F47D27;
@@ -202,7 +233,7 @@ body {
 	font-size: 10.24px;
 	text-align: center;
 	line-height: 15.36px;
-  background-color:#1A1B21;
+  background-color:#23252C;
   width: 178px;
   margin-top: 8.81px;
 }
@@ -276,7 +307,7 @@ body {
 .buttons-box{
     display: flex;
     position: relative;
-    background-color: #1A1B21;
+    background-color: #23252C;
 }
 .buttons-box2{
   display: flex;
@@ -521,6 +552,19 @@ body {
 .HeaderTitle{
   color: #FFFFFF;
 }
+.child-mid-box {
+  background-color: #23252C;
+  width: 317px;
+  height: 399px;
+  position: absolute; /* Change from relative to absolute */
+  left: 50%; /* Center horizontally relative to .box */
+  transform: translateX(-50%); /* Shift to the left by half its own width */
+  top: 361px; /* Adjust the top position as needed */
+  padding-top: 21px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .child-bottom-box {
   background-color: #161619;
   width: 317px;
@@ -532,12 +576,14 @@ body {
   display: flex;
   justify-content: center; /* This centers the children of .child-bottom-box horizontally */
 }
+
 .child-bottom-box2 {
   background-color: #D5D4D8;
   width: 317px;
   height: 64px;
   position: absolute;
-  left: 107px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 760px;
   display: flex;
   justify-content: center;
@@ -546,7 +592,7 @@ body {
   display: flex;
   gap: 24px;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: center;
 }
 .bottom-icons2{
   display: flex;

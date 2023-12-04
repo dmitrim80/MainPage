@@ -6,9 +6,15 @@ import imagepath4 from "./images/FacebookIcon.svg"
 import imagepath5 from "./images/InstagramIcon.png"
 import imagepath6 from "./images/GitHubIcon.svg"
 
-export default function Option1() {
+export default function Option1(props) {
     return(
-        <div className="box">
+            <div className="box">
+        
+                <div className="toggler--slider-white" onClick={props.toggleDarkMode}>
+                    <div className="toggler--slider--circle-black"></div>
+                </div>
+            
+            
             <div className="child-top-box"/>
 
             <div className="child-mid-box">
@@ -43,7 +49,7 @@ export default function Option1() {
 
                 <div className="midbox-interests-title">Interests</div>
 
-                <div className="midbox-interests-text">Marine & aquatic-life Enthusiast. Coral restoration. Intermediate level rowers. Internet fanatic. Entrepreneur. Travel geek. Coffee fanatic.</div>
+                <div className="midbox-interests-text">Marine & aquatic-life Enthusiast. Coral restoration. Intermediate level rowers. Love sports. Entrepreneur. Travel geek. Coffee fanatic.</div>
             </div>
             <div className="child-bottom-box">
                 <div className="bottom-icons">
