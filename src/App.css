@@ -1,12 +1,30 @@
-:root {
-  --background-light: #F1F1F1; /* Light mode background */
-  --background-dark: #23252C; /* Dark mode background */
-  --text-light: #23252C; /* Light mode text */
-  --text-dark: #FFFFFF; /* Dark mode text */
-}
-
 * {
   box-sizing: border-box;
+}
+.header{
+  background-color: #4f93e2;
+  width:100%;
+  height: 50px;
+  display: flex;
+  justify-content: end;
+}
+.header-login-box{
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  align-items:center;
+}
+.header-email-input,
+.header-password-input,
+.header-login-button{
+  margin-right: 5px;
+  padding: 5px;
+}
+.footer{
+  background-color: #4f93e2;
+  width:100%;
+  min-width: 752px;
+  height: 150px;
 }
 
 body {
@@ -19,6 +37,82 @@ body {
   justify-content: center;
   position: relative;
 }
+
+/* Style for the description input box */
+.description-input {
+  display: block; /* Makes the input take the full width of its container */
+  margin: 10px 0; /* Adds some space around the input */
+  padding: 8px; /* Adds some padding inside the input box */
+  border: 1px solid #ccc; /* Adds a border to the input */
+  border-radius: 4px; /* Rounds the corners of the input box */
+  width: calc(100% - 20px); /* Sets the width to full container width minus padding */
+  max-width: 500px; /* Optional: Sets a maximum width for larger screens */
+}
+.coral-name-input{
+  display: block; /* Makes the input take the full width of its container */
+  margin: 10px 0; /* Adds some space around the input */
+  padding: 8px; /* Adds some padding inside the input box */
+  border: 1px solid #ccc; /* Adds a border to the input */
+  border-radius: 4px; /* Rounds the corners of the input box */
+  width: calc(100% - 20px); /* Sets the width to full container width minus padding */
+  max-width: 150px; 
+}
+
+/* Style for the upload button to align it with the input box */
+.upload-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-image-container img {
+  max-height: 80vh; /* Adjust the max-height as needed */
+  max-width: 60%; /* Adjust the max-width as needed */
+}
+
+.modal-description {
+  flex: 1;
+  padding: 20px;
+  max-width: 300px;
+  max-height: 200px; /* Adjust the max-width as needed */
+  text-align: left;
+  word-wrap: break-word;
+}
+.modal-coralName {
+  flex: 1;
+  padding: 5px;
+  max-width: 250px; /* Adjust the max-width as needed */
+  text-align: center;
+  font-size: large;
+}
+.last-edited-info{
+  flex: 1;
+  padding: 20px;
+  max-width: 450px; /* Adjust the max-width as needed */
+  text-align: center;
+  word-wrap: break-word;
+  background-color: rgb(230, 227, 227);
+}
+
 .box {
   background-color: #374151;
   width: 390px;
@@ -28,6 +122,7 @@ body {
   display: flex;
   justify-content: flex-end;
 }
+
 .toggler--slider-white{
   width: 25px;
   height: 13px;
@@ -40,6 +135,7 @@ body {
   border: 1px solid black;
   box-sizing: content-box;
 }
+
 .toggler--slider-black{
   width: 25px;
   height: 13px;
@@ -52,19 +148,20 @@ body {
   border: 1px solid black;
   box-sizing: content-box;
 }
+
 .toggler--slider--circle-black{
   height: 13px;
   width: 13px;
   background-color: white;
   border-radius: 50%;
 }
+
 .toggler--slider--circle-white{
   height: 13px;
   width: 13px;
   background-color: black;
   border-radius: 50%;
 }
-
 
 .child-top-box {
   background-image: url('./images/dm-profile.png');
@@ -78,6 +175,7 @@ body {
   top: 44px;
   transform: translateX(-50%);
 }
+
 .child-top-box2 {
   background-image: url('./images/dm-profile.png');
   background-position: top,left;
@@ -90,7 +188,6 @@ body {
   top: 44px;
   transform: translateX(-50%);
 }
-
 
 .child-mid-box2 {
   background-color: #F5F5F5;
@@ -105,6 +202,7 @@ body {
   display: flex;
   flex-direction: column; /* Align children in a column */
 }
+
 .child-mid-box3 {
   background-color: #F5F5F5;
   width: 317px;
@@ -115,22 +213,24 @@ body {
   top: 361px;
   padding-top: 21px;
   align-items: center;
-  
   display: flex;
   flex-direction: column; /* Align children in a column */
 }
+
 .label-box1{
   align-self: center;
   height: 26px;
   width: 178px;
   background-color: #23252C;
 }
+
 .label-box1-option2{
   align-self: center;
   height: 26px;
   width: 178px;
   background-color: #F5F5F5;
 }
+
 .label-box1-option3{
   align-self: center;
   height: 26px;
@@ -154,6 +254,7 @@ body {
   line-height: normal;
   text-align: center;
 }
+
 .midbox-header-title3{
   color: #ffffff;
   font-family: "Inter-Bold", Helvetica;
@@ -163,31 +264,93 @@ body {
   text-align: center;
 }
 
+.img-firebase{
+  width: 150px;
+  margin: 10px;
+}
+
+.img-grid{
+  width: 150px;
+  margin: 10px;
+  border-radius: 2cap;
+}
+
+.experiment{
+  background-color: white;
+  color: black;
+  display: grid;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.modal-content img {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.images-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+  grid-gap: 10px; /* Spacing between items */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the image and label */
+  cursor: pointer;  
+}
+
+.test-h1{
+  color: black;
+  font-size: 18px;
+}
+
 .label-box2{
   height: 14px;
   width: 178px;
   background-color: #23252C;
   margin-top: 5px;
-} 
+}
+
 .label-box2-option2{
   height: 14px;
   width: 178px;
   background-color: #F5F5F5;
   margin-top: 6.19px;
-} 
+}
+
 .label-box2-option3{
   height: 14px;
   width: 178px;
   background-color: #1A1B21;
   margin-top: 6.19px;
-} 
+}
+
 .label-box2-option4{
   height: 14px;
   width: 178px;
   background-color: #F5F5F5;
   margin-top: 6.19px;
   margin-bottom: 6.19px;
-} 
+}
+
 .frontend-developer{
 	height: 18.5px;
 	font-family: Inter;
@@ -195,8 +358,8 @@ body {
 	text-align: center;
 	color:#F3BE99;
   font-weight: bold;
-
 }
+
 .frontend-developer2{
 	height: 18.5px;
 	font-family: Inter;
@@ -205,6 +368,7 @@ body {
 	color:#F47D27;
   font-weight: bold;
 }
+
 .frontend-developer3{
 	color: #F47D27;
   text-align: center;
@@ -216,6 +380,7 @@ body {
   margin-top: 6.19px;
   margin-bottom: 8.81px;
 }
+
 .frontend-developer4{
 	color: #F47D27;
   text-align: center;
@@ -227,6 +392,7 @@ body {
   margin-top: 6.19px;
   margin-bottom: 1px;
 }
+
 .email-link-box{
 	height: 19px;
 	font-family: Inter;

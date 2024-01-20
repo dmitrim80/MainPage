@@ -1,59 +1,76 @@
-import React from "react";
-import './App.css';
-import Option1 from "./Option1";
-import Option2 from "./Option2";
+import React,{ useState, useEffect } from "react"
+import './App.css'
+import { auth } from './firebase-config';
+import { onAuthStateChanged } from 'firebase/auth';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ProtectedRoute from './ProtectedRoute'
+import Header from "./Header"
+import Footer from "./Footer"
+import Login from "./Login"
+
+import Homepage from "./Homepage"
+import Acro from "./Acro"
+import Aquascape from "./Aquascape"
+import Chalice  from "./Chalice"
+import Favia from "./Favia"
+import FishTankFurn from "./FishTankFurn"
+import Monti from "./Monti"
+import Mushrooms from "./Mushrooms"
+import NPSCorals from "./NPSCorals"
+import Scoly from "./Scoly"
+import Zoas from "./Zoas"
+
+// import {db} from './firebase-config';
+// import Option1 from "./Option1";
+// import Option2 from "./Option2";
 // import Option3 from "./Option3";
 // import Option4 from "./Option4";
+// import Experiment from './Experiment'
+// import Authentication from "./Authentication";
 
 export default function App() {
-  const [darkMode, setDarkMode] = React.useState(true)
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(user);
+        });
+
+        return () => unsubscribe(); // Cleanup subscription
+    }, []);
+
+  const routes = [
+    { path: "/Login", component: Login, protected: false },
+    { path: "/Homepage", component: Homepage, protected: true },
+    { path: "/Acro", component: Acro, protected: true },
+    { path: "/Aquascape", component: Aquascape, protected: true },
+    { path: "/Chalice", component: Chalice, protected: true },
+    { path: "/Favia", component: Favia, protected: true },
+    { path: "/FishTankFurn", component: FishTankFurn, protected: true },
+    { path: "/Monti", component: Monti, protected: true },
+    { path: "/Mushrooms", component: Mushrooms, protected: true },
+    { path: "/NPSCorals", component: NPSCorals, protected: true },
+    { path: "/Scoly", component: Scoly, protected: true },
+    { path: "/Zoas", component: Zoas, protected: true }
+  ]
   
-  function toggleDarkMode() {
-      setDarkMode(prevMode => !prevMode)
-  }
-
-  const date = new Date()
-  const hours = date.getHours()
-
-  React.useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#23252C' : '#F5F5F5';
-    document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
-  },[darkMode])
-
-  let timeOfDay
-  if (hours > 3 && hours < 5) {
-    timeOfDay = "VERY Early Morning";
-  } else if (hours < 11) {
-      timeOfDay = "morning";
-  } else if (hours <= 17) {
-      timeOfDay = "day";
-  } else if (hours < 23) {
-      timeOfDay = "evening";
-  } else if (hours > 23 || hours < 3) {
-      timeOfDay = "night";
-  }
-
-
     return (
-      <div lassName={darkMode ? "dark" : ""}>
-          
-          {darkMode ?
-            <Option1 
-            darkMode={darkMode} 
-            toggleDarkMode={toggleDarkMode}
-            /> :
-            <Option2 
-            darkMode={darkMode} 
-            toggleDarkMode={toggleDarkMode}
+      <>
+        <Router>
+          <Header currentUser={currentUser} />
+          <Routes>
+          <Route path="/" element={currentUser ? <Homepage /> : <Login />} />
+          {routes.map(({ path, component: Component,  protected: isProtected }) => (
+            <Route 
+              key={path} 
+              path={path} 
+              element={isProtected ? <ProtectedRoute><Component /></ProtectedRoute>: <Component />} 
             />
-          }
-          
-          {/* <Option1 /> <Option3 /> */}
-          {/* <Option2 /> <Option4 /> */}
-          <div align="center">
-            <p>{date.toLocaleDateString()} and {date.toLocaleTimeString()} </p>
-            <p>Good {timeOfDay}!</p>
-          </div>
-      </div>  
+          ))}
+          </Routes>
+        </Router>
+        <Footer />
+      </> 
     )
 }

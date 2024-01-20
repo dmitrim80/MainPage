@@ -10,8 +10,8 @@ export default function Option2(props) {
     return(
             <div className="box">
         
-                <div className="toggler--slider-white" onClick={props.toggleDarkMode}>
-                    <div className="toggler--slider--circle-black"></div>
+                <div className="toggler--slider-black" onClick={props.toggleDarkMode}>
+                    <div className="toggler--slider--circle-white"></div>
                 </div>
             
             
