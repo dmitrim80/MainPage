@@ -157,15 +157,15 @@ const Acro = () => {
         }
     };
     
-    const onSaveEdit = async (imageId, newDescription, newCoralName) => {
-        console.log("onSaveEdit params:", { imageId, newDescription, newCoralName });
+    const onSaveEdit = async (imageId, description, coralName) => {
+        console.log("onSaveEdit params:", { imageId, description, coralName });
 
 
-        if (!imageId || newDescription === undefined || newCoralName === undefined) {
+        if (!imageId || description === undefined || coralName === undefined) {
             let missingData = '';
             if (!imageId) missingData += 'Image ID ';
-            if (newDescription === undefined) missingData += 'Description ';
-            if (newCoralName === undefined) missingData += 'Coral Name ';
+            if (description === undefined) missingData += 'Description ';
+            if (coralName === undefined) missingData += 'Coral Name ';
             alert(`Cannot save changes: Missing information (${missingData.trim()})`);
             return;
         }
@@ -174,8 +174,8 @@ const Acro = () => {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
             const docRef = doc(db, "corals", imageId);
             await updateDoc(docRef, {
-                description: newDescription,
-                coralName: newCoralName,
+                description: description,
+                coralName: coralName,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             });
@@ -187,8 +187,8 @@ const Acro = () => {
                 if (image.id === imageId) {
                     return { 
                         ...image, 
-                        description: newDescription, 
-                        coralName: newCoralName,
+                        description: description, 
+                        coralName: coralName,
                         lastEditedBy: userEmail, 
                         lastEdited: new Date()
                     };
@@ -267,11 +267,10 @@ const Acro = () => {
                 alert("Error: Image ID is missing.");
                 return;
             }
-            // Check the values before calling onSaveEdit
-            console.log("Saving data:", { currentImageId, editableDescription, editableCoralName });
             onSaveEdit(currentImageId, editableDescription, editableCoralName);
             onClose();
         };
+        
         
         
         return (
@@ -480,7 +479,7 @@ const Acro = () => {
                     description={selectedDescription} 
                     imageCoralName={selectedImageCoralName}
                     lastEdited={selectedLastEdited}
-                    onSaveEdit={(newDescription, newCoralName) => onSaveEdit(currentImageId, newDescription, newCoralName)}
+                    onSaveEdit={onSaveEdit}
                     onClose={() => setModalEdit(false)}
                 />
             )}
