@@ -3,7 +3,8 @@ import { storage, db, auth } from './firebase-config';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
-import { eventWrapper } from "@testing-library/user-event/dist/utils";
+
+
 
 
 const Acro = () => {
@@ -21,6 +22,13 @@ const Acro = () => {
     const [imageCoralName, setImageCoralName] = useState('');
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
+
+
+    
+    
+    
+    
+    
 
     const handleEdit = () => {
         setModalEdit(true); // Open ModalEdit
@@ -418,6 +426,7 @@ const Acro = () => {
     
     return (
         <>
+        
             <input 
             type="file" 
             id="imageUpload" 
