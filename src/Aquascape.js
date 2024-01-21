@@ -460,7 +460,7 @@ const Aquascape = () => {
                             onChange={(event) => handleDescriptionChange(image.id, event.target.value)}
                             maxLength="255"
                         />
-                        <button onClick={() => saveDescription(image.id)}>Save</button>
+                        <button onClick={() => saveDescription(image.id)}>SaveSave</button>
                         <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>
