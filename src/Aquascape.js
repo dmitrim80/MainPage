@@ -24,6 +24,7 @@ const Aquascape = () => {
 
     
 
+
     const handleEdit = () => {
         setModalEdit(true); // Open ModalEdit
         setIsModalOpen(false); // Close ImageModal
@@ -419,6 +420,7 @@ const Aquascape = () => {
     
     return (
         <>
+
       
             <input 
             type="file" 
@@ -447,7 +449,7 @@ const Aquascape = () => {
 
             <div className="images-list">
             {imageList.map((image, index) => (
-                    <div key={image.imageName} className="image-container">
+                    <div key={image.id} className="image-container">
                         <img src={image.url} className="img-firebase" onClick={() => handleImageClick(image)} />
                         <label htmlFor={`description-${index}`}>Description</label>
                         <input 
@@ -466,6 +468,7 @@ const Aquascape = () => {
             </div>
             {isModalOpen && (
                 <ImageModal
+                
                 url={selectedImage} 
                 description={selectedDescription} 
                 imageCoralName={selectedImageCoralName}
