@@ -36,14 +36,23 @@ const Aquascape = () => {
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
-                console.log("Fetched data for image click:", imageData); // Debugging log
+                console.log("Fetched data for image click:", imageData);
+    
                 setSelectedImage(image.url);
                 setSelectedDescription(imageData.description);
                 setSelectedImageCoralName(imageData.coralName);
+    
+                // Check if lastEdited is a Timestamp and convert it to Date
+                let lastEditedDate = '';
+                if (imageData.lastEdited && imageData.lastEdited.toDate) {
+                    lastEditedDate = imageData.lastEdited.toDate().toLocaleString();
+                }
+    
                 setSelectedLastEdited({
-                    editedBy: imageData.lastEditedBy,
-                    lastEdited: imageData.lastEdited.toDate().toLocaleString()
+                    editedBy: imageData.lastEditedBy || 'Unknown',
+                    lastEdited: lastEditedDate
                 });
+    
                 setCurrentImageId(image.id);
                 setIsModalOpen(true);
             } else {
@@ -53,6 +62,7 @@ const Aquascape = () => {
             console.error("Error getting document:", error);
         }
     };
+    
     
     
     
@@ -422,45 +432,52 @@ const Aquascape = () => {
         <>
 
       
-            <input 
-            type="file" 
-            id="imageUpload" 
-            value={fileInputValue}
-            onChange={handleFileInputChange}
-             />
+            
              <input 
                 type="text" 
+                id="coralNameInput"  // Adding an id attribute
+                name="coralName"     // Adding a name attribute
                 className="coral-name-input"
-                placeholder="Coral Name..."
+                placeholder="Aquascape Type..."
                 maxLength="30"
                 value={imageCoralName}
                 onChange={handleCoralNameInput}
             />
             <input 
                 type="text" 
+                id="descriptionInput"  // Adding an id attribute
+                name="description"     // Adding a name attribute
                 className="description-input"
                 placeholder="Enter image description (max 255 characters)" 
                 maxLength="255"
                 value={imageDescription}
                 onChange={handleDescriptionInput}
             />
+            <input 
+            type="file" 
+            id="imageUpload"       // Existing id attribute
+            name="imageUpload"     // Adding a name attribute 
+            value={fileInputValue}
+            onChange={handleFileInputChange}
+             />
             <button className="upload-btn" onClick={uploadImage}>Upload Image</button>
             
 
             <div className="images-list">
             {imageList.map((image, index) => (
                     <div key={image.id} className="image-container">
-                        <img src={image.url} className="img-firebase" onClick={() => handleImageClick(image)} />
+                        <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
                         <label htmlFor={`description-${index}`}>Description</label>
                         <input 
                             id={`description-${index}`}
                             name={`description-${index}`}
                             type="text"
+                            className="description-input"
                             value={descriptions[image.id] || image.description} 
                             onChange={(event) => handleDescriptionChange(image.id, event.target.value)}
                             maxLength="255"
                         />
-                        <button onClick={() => saveDescription(image.id)}>SaveSave</button>
+                        <button onClick={() => saveDescription(image.id)}>Save</button>
                         <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>

@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { signInWithEmailAndPassword} from 'firebase/auth'
+import { signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {auth} from './firebase-config'
 import { useNavigate } from 'react-router-dom';
 
@@ -27,17 +27,23 @@ const Header = () => {
             setLoginPassword('');
         }
     };
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            navigate('/');
+        } catch (error) {
+            console.error('Error signing out:', error);
+        }
+    };
     
   return (
     <div className='header'>
-        
-        
-        <div className='header-login-box'>
-        {error && <div className="error-message">{error}</div>}
+           {error && <div className="error-message">{error}</div>}
             <input 
             className='header-email-input'
             id="emailInput"
-            type="text"
+            type="email"
             placeholder="Email..." 
             autoComplete= 'off'
             value={loginEmail}
@@ -51,14 +57,17 @@ const Header = () => {
             type='password'
             autoComplete= 'off'
             value={loginPassword}
+            id="passwordInput"         // Unique ID for the element
+            name="password"            // Name for form submission
             onChange={(event)=>{
                 setLoginPassword(event.target.value)
                 }}
             />
-            <button className='header-login-button' onClick={login} disabled={isLoading}>
+            <button className='header-buttons' onClick={login} disabled={isLoading}>
                 {isLoading ? 'Logging in...' : 'Login'}
             </button> 
-        </div>
+            <button className='header-buttons' onClick={handleLogout}>Logout</button>
+        
     </div>
   )
 }

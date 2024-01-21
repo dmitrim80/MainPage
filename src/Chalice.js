@@ -60,7 +60,7 @@ const Chalice = () => {
     <div className="images-list">
     {imageList.map((url, index) => (
         <div key={index} className="image-container">
-            <img src={url} className="img-firebase" onClick={() => handleImageClick(url)} />
+            <img src={url} className="img-grid" onClick={() => handleImageClick(url)} />
             <input type="text" placeholder="Enter text" className="image-text-field" />
         </div>
     ))}

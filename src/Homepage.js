@@ -36,15 +36,6 @@ const Homepage = () => {
     const handleImageClick = (route) =>{
         navigate(route)
     }
-    const handleLogout = async () => {
-      try {
-        await signOut(auth);
-        navigate('/');
-        
-      } catch (error) {
-        console.error('Error signing out:', error);
-      }
-    }
    
   
     const [imageUpload, setImageUpload] = useState(null)
@@ -76,28 +67,18 @@ const Homepage = () => {
     }, [])
     
   return (
-    <div className="experiment">
+    <div className="main-page">
       <div>
-              <input type="file" 
-                onChange={(event) => 
-                  setImageUpload(event.target.files[0])
-                }/>
-                <button onClick={uploadImage}>
-                  Upload Image
-                </button>
-                
+        <div className="images-list">
 
-               
-                <div className="images-list">
-  {images.map((image, index) => (
-    <div key={index} className="image-container" onClick={() => handleImageClick(image.route)}>
-      <img src={image.src} className="img-grid" />
-      <label htmlFor={`imageInput${index}`}>{image.label}</label>
-    </div>
-  ))}
-</div>
-                <button onClick={handleLogout}>Logout</button>
-      </div>     
+          {images.map((image, index) => (
+          <div key={index} className="image-container" onClick={() => handleImageClick(image.route)}>
+            <img src={image.src} className="img-grid" />
+            <span>{image.label}</span>
+          </div>
+          ))}
+          </div> 
+      </div>  
     </div>
   )
 }
