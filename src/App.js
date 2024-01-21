@@ -54,11 +54,21 @@ export default function App() {
     { path: "/Scoly", component: Scoly, protected: true },
     { path: "/Zoas", component: Zoas, protected: true }
   ]
+  const [darkMode, setDarkMode] = useState(true);
+  
+  useEffect(() => {
+    document.body.style.backgroundColor = darkMode ? '#23252C' : '#F5F5F5';
+    document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
+  }, [darkMode]);
+
+  function toggleDarkMode() {
+    setDarkMode(!darkMode);
+  }
   
     return (
       <>
         <Router>
-          <Header currentUser={currentUser} />
+          <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
           <Routes>
           <Route path="/" element={currentUser ? <Homepage /> : <Login />} />
           {routes.map(({ path, component: Component,  protected: isProtected }) => (
@@ -70,7 +80,7 @@ export default function App() {
           ))}
           </Routes>
         </Router>
-        <Footer />
+        <Footer darkMode={darkMode} />
       </> 
     )
 }

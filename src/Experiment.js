@@ -29,17 +29,7 @@ export default function Test () {
   //   document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
   // },[darkMode])
 
-  // let timeOfDay
-  // if (hours > 3 && hours < 5) {
-  //   timeOfDay = "VERY Early Morning";
-  // } else if (hours < 11) {
-  //   timeOfDay = "morning";
-  // } else if (hours <= 17) {
-  //   timeOfDay = "day";
-  // } else if (hours < 23) {
-  //   timeOfDay = "evening";
-  // } else if (hours > 23 || hours < 3) {
-  //   timeOfDay = "night";}
+  
 
     
     const [imageUpload, setImageUpload] = useState(null)

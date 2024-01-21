@@ -74,7 +74,7 @@ const Homepage = () => {
           {images.map((image, index) => (
           <div key={index} className="image-container" onClick={() => handleImageClick(image.route)}>
             <img src={image.src} className="img-grid" />
-            <span>{image.label}</span>
+            <span className="img-label">{image.label}</span>
           </div>
           ))}
           </div> 

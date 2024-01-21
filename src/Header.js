@@ -1,10 +1,15 @@
-import React,{useState} from 'react'
+import {useState, useEffect} from 'react'
 import { signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import {auth} from './firebase-config'
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = () => {
+const Header = ({ darkMode, toggleDarkMode }) => {
+
+    useEffect(() => {
+        document.body.style.backgroundColor = darkMode ? '#374151' : '#F5F5F5';
+        document.body.style.color = darkMode ? '#F5F5F5' : '#374151';
+      }, [darkMode]);
 
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +41,9 @@ const Header = () => {
             console.error('Error signing out:', error);
         }
     };
-    
+
   return (
-    <div className='header'>
+    <div className={`header ${darkMode ? 'dark-mode' : ''}`}>
            {error && <div className="error-message">{error}</div>}
             <input 
             className='header-email-input'
@@ -67,7 +72,10 @@ const Header = () => {
                 {isLoading ? 'Logging in...' : 'Login'}
             </button> 
             <button className='header-buttons' onClick={handleLogout}>Logout</button>
-        
+            
+            <div className={darkMode ? "toggler--slider-black" : "toggler--slider-white"} onClick={toggleDarkMode}>
+                <div className={darkMode ? "toggler--slider--circle-white" : "toggler--slider--circle-black"}></div>
+            </div>
     </div>
   )
 }
