@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b0561899.css",
-    "main.js": "/static/js/main.f10d614c.js",
+    "main.css": "/static/css/main.67e89457.css",
+    "main.js": "/static/js/main.75193844.js",
     "static/js/787.9785ca69.chunk.js": "/static/js/787.9785ca69.chunk.js",
     "static/media/NPSCoral.jpeg": "/static/media/NPSCoral.85c767d15e47469ea7bf.jpeg",
     "static/media/Scoly.jpeg": "/static/media/Scoly.7237e4305c8379c8e07f.jpeg",
@@ -18,14 +18,14 @@
     "static/media/TwitterIcon.svg": "/static/media/TwitterIcon.3a72c10735b2334e59c92482fc53351f.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.8372758bbdece489bbfbd44452d742b2.svg",
     "static/media/FacebookIcon.svg": "/static/media/FacebookIcon.6b8ec48b3eda3999c4716d0ef3123c18.svg",
-    "static/media/Mail.svg": "/static/media/Mail.ea7ae42f204e516c74e6bd56ec28b0a5.svg",
     "index.html": "/index.html",
-    "main.b0561899.css.map": "/static/css/main.b0561899.css.map",
-    "main.f10d614c.js.map": "/static/js/main.f10d614c.js.map",
+    "static/media/Mail.svg": "/static/media/Mail.ea7ae42f204e516c74e6bd56ec28b0a5.svg",
+    "main.67e89457.css.map": "/static/css/main.67e89457.css.map",
+    "main.75193844.js.map": "/static/js/main.75193844.js.map",
     "787.9785ca69.chunk.js.map": "/static/js/787.9785ca69.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0561899.css",
-    "static/js/main.f10d614c.js"
+    "static/css/main.67e89457.css",
+    "static/js/main.75193844.js"
   ]
 }
