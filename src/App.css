@@ -23,10 +23,13 @@
 }
 .header-buttons{
  align-self: center; 
+ margin-right: 5px;
+ margin-left: 5px;
 }
 .header-email-input,
 .header-password-input{
   max-width: 100px;
+  margin-right: 5PX;
 }
 
 .footer{

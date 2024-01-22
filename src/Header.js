@@ -22,6 +22,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
         try {
             setIsLoading(true);
             const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            setUser(userCredential.user); // Set the user
             navigate('/Homepage');
         }
         catch (error) {
@@ -36,6 +37,7 @@ const Header = ({ darkMode, toggleDarkMode }) => {
     const handleLogout = async () => {
         try {
             await signOut(auth);
+            setUser(null); // Reset the user to null on logout
             navigate('/');
         } catch (error) {
             console.error('Error signing out:', error);
@@ -45,6 +47,13 @@ const Header = ({ darkMode, toggleDarkMode }) => {
   return (
     <div className={`header ${darkMode ? 'dark-mode' : ''}`}>
            {error && <div className="error-message">{error}</div>}
+           {user ? (
+            <>
+            <span>Welcome, {user.email}</span> {/* Displaying the user's email */}
+            <button className='header-buttons' onClick={handleLogout}>Logout</button>
+                </>
+            ) : (
+                <>
             <input 
             className='header-email-input'
             id="emailInput"
@@ -71,11 +80,15 @@ const Header = ({ darkMode, toggleDarkMode }) => {
             <button className='header-buttons' onClick={login} disabled={isLoading}>
                 {isLoading ? 'Logging in...' : 'Login'}
             </button> 
-            <button className='header-buttons' onClick={handleLogout}>Logout</button>
-            
+            </>
+            )}
+
+            <div><i class="fas fa-sun"></i></div>
             <div className={darkMode ? "toggler--slider-black" : "toggler--slider-white"} onClick={toggleDarkMode}>
                 <div className={darkMode ? "toggler--slider--circle-white" : "toggler--slider--circle-black"}></div>
             </div>
+            <div><i class="fas fa-moon"></i></div>
+            
     </div>
   )
 }
