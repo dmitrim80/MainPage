@@ -7,7 +7,6 @@ import ProtectedRoute from './ProtectedRoute'
 import Header from "./Header"
 import Footer from "./Footer"
 import Login from "./Login"
-
 import Homepage from "./Homepage"
 import Acro from "./Acro"
 import Aquascape from "./Aquascape"
@@ -19,14 +18,6 @@ import Mushrooms from "./Mushrooms"
 import NPSCorals from "./NPSCorals"
 import Scoly from "./Scoly"
 import Zoas from "./Zoas"
-
-// import {db} from './firebase-config';
-// import Option1 from "./Option1";
-// import Option2 from "./Option2";
-// import Option3 from "./Option3";
-// import Option4 from "./Option4";
-// import Experiment from './Experiment'
-// import Authentication from "./Authentication";
 
 export default function App() {
 
@@ -70,14 +61,14 @@ export default function App() {
         <Router>
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
           <Routes>
-          <Route path="/" element={currentUser ? <Homepage /> : <Login />} />
-          {routes.map(({ path, component: Component,  protected: isProtected }) => (
-            <Route 
-              key={path} 
-              path={path} 
-              element={isProtected ? <ProtectedRoute><Component /></ProtectedRoute>: <Component />} 
-            />
-          ))}
+            <Route path="/" element={currentUser ? <Login /> : <Homepage />} />
+            {routes.map(({ path, component: Component,  protected: isProtected }) => (
+              <Route 
+                key={path} 
+                path={path} 
+                element={isProtected ? <ProtectedRoute>{<Component />}</ProtectedRoute> : <Component />} 
+              />
+            ))}
           </Routes>
         </Router>
         <Footer darkMode={darkMode} />

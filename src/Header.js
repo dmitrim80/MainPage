@@ -37,8 +37,8 @@ const Header = ({ darkMode, toggleDarkMode }) => {
     const handleLogout = async () => {
         try {
             await signOut(auth);
+            navigate('/Login');
             setUser(null); // Reset the user to null on logout
-            navigate('/');
         } catch (error) {
             console.error('Error signing out:', error);
         }
