@@ -144,7 +144,7 @@ body {
 .last-edited-cell {
   text-align: center;
   justify-content: center;
-  font-size: small;
+  font-size: x-small;
   color: #D1D5DB;
 }
 .modal-description-cell {
