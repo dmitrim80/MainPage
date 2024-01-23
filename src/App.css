@@ -7,9 +7,14 @@
   min-width: 390px;
   height: 50px;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   padding: 5px;
+}
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust gap between items as needed */
 }
 .header.dark-mode {
   background-color: #23252C; /* Dark mode color */
@@ -85,46 +90,113 @@ body {
   background-color: #0056b3;
 }
 
-
 .modal-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-image-container {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.modal-image-container img {
-  max-height: 80vh; /* Adjust the max-height as needed */
-  max-width: 60%; /* Adjust the max-width as needed */
+    max-width: 600px; /* Adjust this value as needed */
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    max-height: 90vh; /* Maximum height */
+    text-align: center;
+    overflow-y: auto; /* Make it scrollable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
 }
 
-.modal-description {
-  flex: 1;
-  padding: 20px;
-  max-width: 300px;
-  max-height: 200px; /* Adjust the max-width as needed */
-  text-align: left;
-  word-wrap: break-word;
+.modal-image-container img {
+  width: 100%; /* Image takes full width of its container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Remove any default inline spacing */
 }
-.modal-coralName {
-  flex: 1;
-  padding: 5px;
-  max-width: 250px; /* Adjust the max-width as needed */
+.modal-info-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+}
+.coral-name-cell p {
+  white-space: nowrap; /* Prevent the label from wrapping */
+  width: 96px; /* Adjust the width of the label */
+  color: #D1D5DB;
+}
+
+.modal-edit-coral-name-input {
+  width: 100px; /* Set a specific width for the input */
+  padding: 2px; /* Smaller padding for a smaller input field */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in the width */
+  /* Add any additional styles to differentiate from the main page input */
+}
+.coral-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the space between label and input */
+}
+.coral-name-label, .coral-name-value {
+  padding-top: 20px;
+  color: #D1D5DB;
+}
+.coral-name-label{
+  width: 96px;
+}
+.last-edited-cell {
   text-align: center;
-  font-size: large;
+  justify-content: center;
+  font-size: small;
+  color: #D1D5DB;
 }
+.modal-description-cell {
+    background-color: rgb(190, 190, 190); /* Set the background to light gray */
+    color: rgb(32, 29, 29); /* Set the text color to dark gray */
+    padding: 10px;
+    border-top: 1px solid #ccc; /* You can keep or remove the border as per your design */
+    text-align: left;
+}
+.modal-image-container, .modal-edit-description-input {
+  max-width: 600px; /* Set this to match the maximum width of the image */
+  width: 100%; /* Use 100% width to be responsive */
+  margin: auto; /* Center align */
+}
+
+.modal-edit-description-input {
+  box-sizing: border-box; /* Include padding and border in the width and height */
+  min-height: 100px; /* Set a minimum height */
+  padding: 8px; /* Padding inside the textarea */
+  border: 1px solid #ccc; /* Border for the textarea */
+  border-radius: 4px; /* Rounded corners */
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+.modal-buttons-cell {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Space between buttons */
+}
+
 .last-edited-info{
   flex: 1;
   padding: 20px;
   max-width: 450px; /* Adjust the max-width as needed */
   text-align: center;
   word-wrap: break-word;
-  background-color: rgb(230, 227, 227);
+  background-color: #23252C;
 }
+.coral-name-input, .description-input {
+  width: 100%; /* Adjust width as needed */
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.description-input {
+  display: block;
+  margin-top: 10px;
+  /* Add more specific styles for textarea */
+}
+
 
 .box {
   background-color: #374151;
@@ -298,24 +370,35 @@ body {
 }
 
 .modal-backdrop {
+  background-color: #23252C;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
 }
-
+.modal-coralName {
+  background-color: #23252C;
+  flex: 1;
+  padding: 5px;
+  max-width: 250px; /* Adjust the max-width as needed */
+  text-align: center;
+  font-size: large;
+}
 .modal-content {
-  background-color: white;
+  background-color: #23252C;
   padding: 20px;
   border-radius: 5px;
+  max-width: 600px;
+  text-align: center;
 }
 
 .modal-content img {
+  background-color: #23252C;
   max-width: 90vw;
   max-height: 90vh;
 }

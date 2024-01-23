@@ -46,50 +46,49 @@ const Header = ({ darkMode, toggleDarkMode }) => {
 
   return (
     <div className={`header ${darkMode ? 'dark-mode' : ''}`}>
-           {error && <div className="error-message">{error}</div>}
-           {user ? (
-            <>
-            <span>Welcome, {user.email}</span> {/* Displaying the user's email */}
-            <button className='header-buttons' onClick={handleLogout}>Logout</button>
-                </>
-            ) : (
-                <>
-            <input 
-            className='header-email-input'
-            id="emailInput"
-            type="email"
-            placeholder="Email..." 
-            autoComplete= 'off'
-            value={loginEmail}
-            onChange={(event)=>{
-                setLoginEmail(event.target.value)
-                }}
-            />
-            <input 
-            className='header-password-input'
-            placeholder="Password..." 
-            type='password'
-            autoComplete= 'off'
-            value={loginPassword}
-            id="passwordInput"         // Unique ID for the element
-            name="password"            // Name for form submission
-            onChange={(event)=>{
-                setLoginPassword(event.target.value)
-                }}
-            />
-            <button className='header-buttons' onClick={login} disabled={isLoading}>
-                {isLoading ? 'Logging in...' : 'Login'}
-            </button> 
-            </>
-            )}
+    {error && <div className="error-message">{error}</div>}
 
-            <div><i class="fas fa-sun"></i></div>
-            <div className={darkMode ? "toggler--slider-black" : "toggler--slider-white"} onClick={toggleDarkMode}>
-                <div className={darkMode ? "toggler--slider--circle-white" : "toggler--slider--circle-black"}></div>
-            </div>
-            <div><i class="fas fa-moon"></i></div>
-            
+    <div className="header-left">
+        {user ? (
+            <>
+                <span>Welcome, {user.email}</span>
+                <button className='header-buttons' onClick={handleLogout}>Logout</button>
+            </>
+        ) : (
+            <>
+                <input 
+                    className='header-email-input'
+                    id="emailInput"
+                    type="email"
+                    placeholder="Email..."
+                    autoComplete='off'
+                    value={loginEmail}
+                    onChange={(event) => setLoginEmail(event.target.value)}
+                />
+                <input 
+                    className='header-password-input'
+                    placeholder="Password..."
+                    type='password'
+                    autoComplete='off'
+                    value={loginPassword}
+                    onChange={(event) => setLoginPassword(event.target.value)}
+                />
+                <button className='header-buttons' onClick={login} disabled={isLoading}>
+                    {isLoading ? 'Logging in...' : 'Login'}
+                </button>
+            </>
+        )}
     </div>
+
+    <div className="header-right">
+        <div><i className="fas fa-sun"></i></div>
+        <div className={darkMode ? "toggler--slider-black" : "toggler--slider-white"} onClick={toggleDarkMode}>
+            <div className={darkMode ? "toggler--slider--circle-white" : "toggler--slider--circle-black"}></div>
+        </div>
+        <div><i className="fas fa-moon"></i></div>
+    </div>
+</div>
+
   )
 }
 

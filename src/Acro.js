@@ -34,6 +34,10 @@ const Acro = () => {
         setModalEdit(true); // Open ModalEdit
         setIsModalOpen(false); // Close ImageModal
     };
+    const handleDismiss = () => {
+        setModalEdit(false); // Close ModalEdit
+        setIsModalOpen(true); // Reopen ImageModal
+    };
 
     const handleImageClick = async (image) => {
         try {
@@ -237,26 +241,34 @@ const Acro = () => {
                     <div className="modal-image-container">
                         <img src={url} alt="Full Size" />
                     </div>
-                    <div className="modal-description">
-                        <p>{description}</p>
-                    </div>
-                    <div className="modal-coralName">
-                        <p>{imageCoralName}</p>
-                    </div>
-                    <div className="last-edited-info">
-                        <p>Last edited by: {lastEdited.editedBy}</p>
-                        <p>Last edited on: {lastEdited.lastEdited}</p>
-                    </div>
-                    <button onClick={onClose}>Close</button>
-                    <button onClick={onEdit}>Edit</button>
+                    <table className="modal-info-table">
+                        <tbody>
+                            <tr>
+                                <td className="coral-name-cell">
+                                    <div className="coral-name-label"><b>Coral Name:</b></div>
+                                    <div className="coral-name-value">{imageCoralName}</div>
+                                </td>
+                                <td className="last-edited-cell">
+                                    Last Edited: {lastEdited.lastEdited}<br />
+                                    Edited by: {lastEdited.editedBy}
+                                </td>
+                                <td className="modal-buttons-cell">
+                                    <button onClick={onEdit}>Edit</button>
+                                    <button onClick={onClose}>Close</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="3" className="modal-description-cell">
+                                    <p>{description}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
     };
     
-    
-
-
     const ModalEdit = ({ url, description, imageCoralName, lastEdited, onClose, onSaveEdit, imageId }) => {
         const [editableDescription, setEditableDescription] = useState(description);
         const [editableCoralName, setEditableCoralName] = useState(imageCoralName);
@@ -278,42 +290,50 @@ const Acro = () => {
             onSaveEdit(currentImageId, editableDescription, editableCoralName);
             onClose();
         };
-        
-        
-        
+    
         return (
             <div className="modal-backdrop" onClick={onClose}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-image-container">
                         <img src={url} alt="Full Size" />
                     </div>
-                    <div className="modal-description">
-                        <p>Description</p>
-                        <input 
-                            type="text" 
-                            value={editableDescription} 
-                            onChange={(e) => setEditableDescription(e.target.value)} 
-                        />
-                        <p>Coral Name</p>
-                        <input 
-                            type="text" 
-                            value={editableCoralName} 
-                            onChange={(e) => setEditableCoralName(e.target.value)} 
-                        />
-                    </div>
-                    {/* <div className="modal-coralName">
-                        
-                    </div> */}
-                    <div className="last-edited-info">
-                        <p>Last edited by: {lastEdited.editedBy}</p>
-                        <p>Last edited on: {lastEdited.lastEdited}</p>
-                    </div>
-                    <button onClick={onClose}>Close</button>
-                    <button onClick={handleSave}>Save</button>
+                    <table className="modal-info-table">
+                        <tbody>
+                            <tr>
+                                <td className="coral-name-cell">
+                                    <p><b>Coral Name:</b></p>
+                                    <input 
+                                        type="text" 
+                                        value={editableCoralName} 
+                                        onChange={(e) => setEditableCoralName(e.target.value)} 
+                                        className="modal-edit-coral-name-input"
+                                    />
+                                </td>
+                                <td className="last-edited-cell">
+                                    Last Edited: {lastEdited.lastEdited}<br />
+                                    Edited by: {lastEdited.editedBy}
+                                </td>
+                                <td className="modal-buttons-cell">
+                                    <button onClick={handleSave}>Save</button>
+                                    <button onClick={onClose}>Dismiss</button> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="3" className="modal-description-cell">
+                                    <textarea 
+                                        value={editableDescription} 
+                                        onChange={(e) => setEditableDescription(e.target.value)}
+                                        className="modal-edit-description-input"
+                                    ></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
     };
+    
     
 
     const fetchImages = async () => {
@@ -461,17 +481,6 @@ const Acro = () => {
             {imageList.map((image, index) => (
                     <div key={image.imageName} className="image-container">
                         <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
-                        <label htmlFor={`description-${index}`}>Description</label>
-                        <input 
-                            id={`description-${index}`}
-                            className="description-input"
-                            name={`description-${index}`}
-                            type="text"
-                            value={descriptions[image.id] || image.description} 
-                            onChange={(event) => handleDescriptionChange(image.id, event.target.value)}
-                            maxLength="255"
-                        />
-                        <button onClick={() => saveDescription(image.id)}>Save</button>
                         <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>
@@ -495,7 +504,7 @@ const Acro = () => {
                     imageCoralName={selectedImageCoralName}
                     lastEdited={selectedLastEdited}
                     onSaveEdit={onSaveEdit}
-                    onClose={() => setModalEdit(false)}
+                    onClose={handleDismiss}
                 />
             )}
         </>
