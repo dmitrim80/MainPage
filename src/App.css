@@ -415,6 +415,10 @@ body {
   align-items: center; /* Center align the image and label */
   cursor: pointer;  
 }
+.pagination{
+  margin-top: 20px;
+  padding-left: 20px;
+}
 
 .test-h1{
   color: black;

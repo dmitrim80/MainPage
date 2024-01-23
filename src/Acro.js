@@ -22,8 +22,13 @@ const Acro = () => {
     const [imageCoralName, setImageCoralName] = useState('');
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
-
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const imagesPerPage = 20; // 20 images per page
+    const indexOfLastImage = currentPage * imagesPerPage;
+    const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+    const currentImages = imageList.slice(indexOfFirstImage, indexOfLastImage);
+    const totalImages = imageList.length;
+    const totalPages = Math.ceil(totalImages / imagesPerPage);
     
     
     
@@ -478,7 +483,7 @@ const Acro = () => {
             
 
             <div className="images-list">
-            {imageList.map((image, index) => (
+            {currentImages.map((image, index) =>  (
                     <div key={image.imageName} className="image-container">
                         <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
                         <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
@@ -486,6 +491,13 @@ const Acro = () => {
                     </div>
                 ))}
             </div>
+
+            <div className="pagination">
+                <button onClick={() => setCurrentPage(prev => prev > 1 ? prev - 1 : prev)}>Prev</button>
+                <span>Page {currentPage} of {totalPages}</span>
+                <button onClick={() => setCurrentPage(prev => prev < totalPages ? prev + 1 : prev)}>Next</button>
+            </div>
+
             {isModalOpen && (
                 <ImageModal
                 url={selectedImage} 
