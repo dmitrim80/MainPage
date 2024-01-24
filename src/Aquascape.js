@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { storage, db, auth } from './firebase-config';
-import { ref,listAll, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch,getFirestore } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
+
 
 
 
@@ -14,20 +15,28 @@ const Aquascape = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedDescription, setSelectedDescription] = useState('');
     const [selectedLastEdited, setSelectedLastEdited] = useState(null);
-    const [selectedImageCoralName, setSelectedImageCoralName] = useState('')
+    const [selectedImageAquascapeType, setSelectedImageAquascapeType] = useState('')
     const [descriptions, setDescriptions] = useState({});
     const [currentUser, setCurrentUser] = useState(null); 
     const [imageDescription, setImageDescription] = useState('');
-    const [imageCoralName, setImageCoralName] = useState('');
+    const [imageAquascapeType, setImageAquascapeType] = useState('');
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const imagesPerPage = 20; // 20 images per page
+    const indexOfLastImage = currentPage * imagesPerPage;
+    const indexOfFirstImage = indexOfLastImage - imagesPerPage;
+    const currentImages = imageList.slice(indexOfFirstImage, indexOfLastImage);
+    const totalImages = imageList.length;
+    const totalPages = Math.ceil(totalImages / imagesPerPage);
     
-
-
     const handleEdit = () => {
         setModalEdit(true); // Open ModalEdit
         setIsModalOpen(false); // Close ImageModal
+    };
+    const handleDismiss = () => {
+        setModalEdit(false); // Close ModalEdit
+        setIsModalOpen(true); // Reopen ImageModal
     };
 
     const handleImageClick = async (image) => {
@@ -40,16 +49,15 @@ const Aquascape = () => {
     
                 setSelectedImage(image.url);
                 setSelectedDescription(imageData.description);
-                setSelectedImageCoralName(imageData.coralName);
+                setSelectedImageAquascapeType(imageData.aquascapeType);
     
-                // Check if lastEdited is a Timestamp and convert it to Date
                 let lastEditedDate = '';
-                if (imageData.lastEdited && imageData.lastEdited.toDate) {
+                if (imageData.lastEdited && imageData.lastEdited.toDate instanceof Function) {
                     lastEditedDate = imageData.lastEdited.toDate().toLocaleString();
                 }
     
                 setSelectedLastEdited({
-                    editedBy: imageData.lastEditedBy || 'Unknown',
+                    editedBy: imageData.lastEditedBy,
                     lastEdited: lastEditedDate
                 });
     
@@ -64,14 +72,12 @@ const Aquascape = () => {
     };
     
     
-    
-    
 
     const handleDescriptionInput = (event) => {
         setImageDescription(event.target.value);
     };
-    const handleCoralNameInput = (event) => {
-        setImageCoralName(event.target.value)
+    const handleAquascapeTypeInput = (event) => {
+        setImageAquascapeType(event.target.value)
     }
     
     const uploadImage = async () => {
@@ -91,7 +97,7 @@ const Aquascape = () => {
                 url,
                 imageName,
                 description: imageDescription,
-                coralName: imageCoralName,
+                aquascapeType: imageAquascapeType,
                 lastEdited: new Date(), // Use current date
                 lastEditedBy: userEmail // Use current user or 'Unknown'
             });
@@ -102,14 +108,14 @@ const Aquascape = () => {
                 url,
                 imageName,
                 description: imageDescription,
-                coralName:imageCoralName,
+                aquascapeType:imageAquascapeType,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             }, ...prevList]);
     // Reset the description input after upload
    
             setImageDescription('');
-            setImageCoralName('');
+            setImageAquascapeType('');
             setFileInputValue(''); // Reset file input value
         } catch (error) {
             console.error("Error uploading image or creating Firestore document:", error);
@@ -143,6 +149,7 @@ const Aquascape = () => {
 
     const deleteImage = async (imageId, imageName, isOrphan) => {
         console.log("Attempting to delete image with Name:", imageName);
+        // Ensure the image name does not contain 'Aquascape Ideas/' prefix
         if (imageName.startsWith('Aquascape Ideas/')) {
             imageName = imageName.replace('Aquascape Ideas/', '');
         }
@@ -156,7 +163,7 @@ const Aquascape = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "corals", imageId);
+                    const docRef = doc(db, "aquascapes", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -169,25 +176,25 @@ const Aquascape = () => {
         }
     };
     
-    const onSaveEdit = async (imageId, description, coralName) => {
-        console.log("onSaveEdit params:", { imageId, description, coralName });
+    const onSaveEdit = async (imageId, description, aquascapeType) => {
+        console.log("onSaveEdit params:", { imageId, description, aquascapeType });
 
 
-        if (!imageId || description === undefined || coralName === undefined) {
+        if (!imageId || description === undefined || aquascapeType === undefined) {
             let missingData = '';
             if (!imageId) missingData += 'Image ID ';
             if (description === undefined) missingData += 'Description ';
-            if (coralName === undefined) missingData += 'Coral Name ';
+            if (aquascapeType === undefined) missingData += 'Aquascape Type ';
             alert(`Cannot save changes: Missing information (${missingData.trim()})`);
             return;
         }
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "corals", imageId);
+            const docRef = doc(db, "aquascapes", imageId);
             await updateDoc(docRef, {
                 description: description,
-                coralName: coralName,
+                aquascapeType: aquascapeType,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             });
@@ -200,7 +207,7 @@ const Aquascape = () => {
                     return { 
                         ...image, 
                         description: description, 
-                        coralName: coralName,
+                        aquascapeType: aquascapeType,
                         lastEditedBy: userEmail, 
                         lastEdited: new Date()
                     };
@@ -208,12 +215,12 @@ const Aquascape = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "corals", imageId);
+                const docRef = doc(db, "aquascapes", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
                     setSelectedDescription(imageData.description);
-                    setSelectedImageCoralName(imageData.coralName);
+                    setSelectedImageAquascapeType(imageData.aquascapeType);
                     // Update last edited info if needed
                 } else {
                     console.log("Document not found after update.");
@@ -232,7 +239,7 @@ const Aquascape = () => {
     };
     
     
-    const ImageModal = ({ url, description, imageCoralName, lastEdited, onClose, onEdit }) => {
+    const ImageModal = ({ url, description, imageAquascapeType, lastEdited, onClose, onEdit }) => {
         if (!url) return null;
     
         return (
@@ -241,37 +248,45 @@ const Aquascape = () => {
                     <div className="modal-image-container">
                         <img src={url} alt="Full Size" />
                     </div>
-                    <div className="modal-description">
-                        <p>{description}</p>
-                    </div>
-                    <div className="modal-coralName">
-                        <p>{imageCoralName}</p>
-                    </div>
-                    <div className="last-edited-info">
-                        <p>Last edited by: {lastEdited.editedBy}</p>
-                        <p>Last edited on: {lastEdited.lastEdited}</p>
-                    </div>
-                    <button onClick={onClose}>Close</button>
-                    <button onClick={onEdit}>Edit</button>
+                    <table className="modal-info-table">
+                        <tbody>
+                            <tr>
+                                <td className="coral-name-cell">
+                                    <div className="coral-name-label"><b>Aquascape Type:</b></div>
+                                    <div className="coral-name-value">{imageAquascapeType}</div>
+                                </td>
+                                <td className="last-edited-cell">
+                                    Last Edited: {lastEdited.lastEdited}<br />
+                                    Edited by: {lastEdited.editedBy}
+                                </td>
+                                <td className="modal-buttons-cell">
+                                    <button onClick={onEdit}>Edit</button>
+                                    <button onClick={onClose}>Close</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="3" className="modal-description-cell">
+                                    <p>{description}</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
     };
     
-    
-
-
-    const ModalEdit = ({ url, description, imageCoralName, lastEdited, onClose, onSaveEdit, imageId }) => {
+    const ModalEdit = ({ url, description, imageAquascapeType, lastEdited, onClose, onSaveEdit, imageId }) => {
         const [editableDescription, setEditableDescription] = useState(description);
-        const [editableCoralName, setEditableCoralName] = useState(imageCoralName);
+        const [editableAquascapeType, setEditableAquascapeType] = useState(imageAquascapeType);
     
         useEffect(() => {
             setEditableDescription(description);
-            setEditableCoralName(imageCoralName);
-        }, [description, imageCoralName]);
+            setEditableAquascapeType(imageAquascapeType);
+        }, [description, imageAquascapeType]);
     
         const handleSave = () => {
-            if (!editableDescription || !editableCoralName) {
+            if (!editableDescription || !editableAquascapeType) {
                 alert("Please fill out all fields before saving.");
                 return;
             }
@@ -279,45 +294,53 @@ const Aquascape = () => {
                 alert("Error: Image ID is missing.");
                 return;
             }
-            onSaveEdit(currentImageId, editableDescription, editableCoralName);
+            onSaveEdit(currentImageId, editableDescription, editableAquascapeType);
             onClose();
         };
-        
-        
-        
+    
         return (
             <div className="modal-backdrop" onClick={onClose}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                     <div className="modal-image-container">
                         <img src={url} alt="Full Size" />
                     </div>
-                    <div className="modal-description">
-                        <p>Description</p>
-                        <input 
-                            type="text" 
-                            value={editableDescription} 
-                            onChange={(e) => setEditableDescription(e.target.value)} 
-                        />
-                        <p>Coral Name</p>
-                        <input 
-                            type="text" 
-                            value={editableCoralName} 
-                            onChange={(e) => setEditableCoralName(e.target.value)} 
-                        />
-                    </div>
-                    {/* <div className="modal-coralName">
-                        
-                    </div> */}
-                    <div className="last-edited-info">
-                        <p>Last edited by: {lastEdited.editedBy}</p>
-                        <p>Last edited on: {lastEdited.lastEdited}</p>
-                    </div>
-                    <button onClick={onClose}>Close</button>
-                    <button onClick={handleSave}>Save</button>
+                    <table className="modal-info-table">
+                        <tbody>
+                            <tr>
+                                <td className="coral-name-cell">
+                                    <p><b>Aquascape Type:</b></p>
+                                    <input 
+                                        type="text" 
+                                        value={editableAquascapeType} 
+                                        onChange={(e) => setEditableAquascapeType(e.target.value)} 
+                                        className="modal-edit-coral-name-input"
+                                    />
+                                </td>
+                                <td className="last-edited-cell">
+                                    Last Edited: {lastEdited.lastEdited}<br />
+                                    Edited by: {lastEdited.editedBy}
+                                </td>
+                                <td className="modal-buttons-cell">
+                                    <button onClick={handleSave}>Save</button>
+                                    <button onClick={onClose}>Dismiss</button> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colSpan="3" className="modal-description-cell">
+                                    <textarea 
+                                        value={editableDescription} 
+                                        onChange={(e) => setEditableDescription(e.target.value)}
+                                        className="modal-edit-description-input"
+                                    ></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
     };
+    
     
 
     const fetchImages = async () => {
@@ -430,18 +453,16 @@ const Aquascape = () => {
     
     return (
         <>
-
-      
-            
-             <input 
+        
+        <input 
                 type="text" 
-                id="coralNameInput"  // Adding an id attribute
-                name="coralName"     // Adding a name attribute
+                id="AquascapeTypeInput"  // Adding an id attribute
+                name="aquascapeType"     // Adding a name attribute
                 className="coral-name-input"
                 placeholder="Aquascape Type..."
                 maxLength="30"
-                value={imageCoralName}
-                onChange={handleCoralNameInput}
+                value={imageAquascapeType}
+                onChange={handleAquascapeTypeInput}
             />
             <input 
                 type="text" 
@@ -464,31 +485,26 @@ const Aquascape = () => {
             
 
             <div className="images-list">
-            {imageList.map((image, index) => (
-                    <div key={image.id} className="image-container">
+            {currentImages.map((image, index) =>  (
+                    <div key={image.imageName} className="image-container">
                         <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
-                        <label htmlFor={`description-${index}`}>Description</label>
-                        <input 
-                            id={`description-${index}`}
-                            name={`description-${index}`}
-                            type="text"
-                            className="description-input"
-                            value={descriptions[image.id] || image.description} 
-                            onChange={(event) => handleDescriptionChange(image.id, event.target.value)}
-                            maxLength="255"
-                        />
-                        <button onClick={() => saveDescription(image.id)}>Save</button>
                         <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>
                 ))}
             </div>
+
+            <div className="pagination">
+                <button onClick={() => setCurrentPage(prev => prev > 1 ? prev - 1 : prev)}>Prev</button>
+                <span>Page {currentPage} of {totalPages}</span>
+                <button onClick={() => setCurrentPage(prev => prev < totalPages ? prev + 1 : prev)}>Next</button>
+            </div>
+
             {isModalOpen && (
                 <ImageModal
-                
                 url={selectedImage} 
                 description={selectedDescription} 
-                imageCoralName={selectedImageCoralName}
+                imageAquascapeType={selectedImageAquascapeType}
                 lastEdited={selectedLastEdited}
                 onClose={() => setIsModalOpen(false)}
                 onEdit={handleEdit}
@@ -499,10 +515,10 @@ const Aquascape = () => {
                 <ModalEdit 
                     url={selectedImage} 
                     description={selectedDescription} 
-                    imageCoralName={selectedImageCoralName}
+                    imageAquascapeType={selectedImageAquascapeType}
                     lastEdited={selectedLastEdited}
                     onSaveEdit={onSaveEdit}
-                    onClose={() => setModalEdit(false)}
+                    onClose={handleDismiss}
                 />
             )}
         </>
