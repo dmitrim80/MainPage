@@ -15,11 +15,11 @@ const Mushrooms = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedDescription, setSelectedDescription] = useState('');
     const [selectedLastEdited, setSelectedLastEdited] = useState(null);
-    const [selectedImageAquascapeType, setSelectedImageAquascapeType] = useState('')
+    const [selectedImageMushroomName, setselectedImageMushroomName] = useState('')
     const [descriptions, setDescriptions] = useState({});
     const [currentUser, setCurrentUser] = useState(null); 
     const [imageDescription, setImageDescription] = useState('');
-    const [imageAquascapeType, setImageAquascapeType] = useState('');
+    const [imageMushroomName, setimageMushroomName] = useState('');
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -54,7 +54,7 @@ const Mushrooms = () => {
     
                 setSelectedImage(image.url);
                 setSelectedDescription(imageData.description);
-                setSelectedImageAquascapeType(imageData.aquascapeType);
+                setselectedImageMushroomName(imageData.mushroomName);
     
                 let lastEditedDate = '';
                 if (imageData.lastEdited && imageData.lastEdited.toDate instanceof Function) {
@@ -81,15 +81,15 @@ const Mushrooms = () => {
     const handleDescriptionInput = (event) => {
         setImageDescription(event.target.value);
     };
-    const handleAquascapeTypeInput = (event) => {
-        setImageAquascapeType(event.target.value)
+    const handleMushroomNameInput = (event) => {
+        setimageMushroomName(event.target.value)
     }
     
     const uploadImage = async () => {
         if (!imageUpload) return;
     
         const imageName = v4(); // Random file name
-        const imageRef = ref(storage, `Aquascape Ideas/${imageName}`);
+        const imageRef = ref(storage, `Mushrooms/${imageName}`);
         const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
 
         try {
@@ -102,7 +102,7 @@ const Mushrooms = () => {
                 url,
                 imageName,
                 description: imageDescription,
-                aquascapeType: imageAquascapeType,
+                mushroomName: imageMushroomName,
                 lastEdited: new Date(), // Use current date
                 lastEditedBy: userEmail // Use current user or 'Unknown'
             });
@@ -113,14 +113,14 @@ const Mushrooms = () => {
                 url,
                 imageName,
                 description: imageDescription,
-                aquascapeType:imageAquascapeType,
+                mushroomName:imageMushroomName,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             }, ...prevList]);
     // Reset the description input after upload
    
             setImageDescription('');
-            setImageAquascapeType('');
+            setimageMushroomName('');
             setFileInputValue(''); // Reset file input value
         } catch (error) {
             console.error("Error uploading image or creating Firestore document:", error);
@@ -154,9 +154,9 @@ const Mushrooms = () => {
 
     const deleteImage = async (imageId, imageName, isOrphan) => {
         console.log("Attempting to delete image with Name:", imageName);
-        // Ensure the image name does not contain 'Aquascape Ideas/' prefix
-        if (imageName.startsWith('Aquascape Ideas/')) {
-            imageName = imageName.replace('Aquascape Ideas/', '');
+        // Ensure the image name does not contain 'Mushrooms/' prefix
+        if (imageName.startsWith('Mushrooms/')) {
+            imageName = imageName.replace('Mushrooms/', '');
         }
     
         
@@ -164,7 +164,7 @@ const Mushrooms = () => {
         const isConfirmed = window.confirm("Are you sure you want to delete this image?");
         if (isConfirmed) {
         try {
-            const imageRef = ref(storage, `Aquascape Ideas/${imageName}`);
+            const imageRef = ref(storage, `Mushrooms/${imageName}`);
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
@@ -181,15 +181,15 @@ const Mushrooms = () => {
         }
     };
     
-    const onSaveEdit = async (imageId, description, aquascapeType) => {
-        console.log("onSaveEdit params:", { imageId, description, aquascapeType });
+    const onSaveEdit = async (imageId, description, mushroomName) => {
+        console.log("onSaveEdit params:", { imageId, description, mushroomName });
 
 
-        if (!imageId || description === undefined || aquascapeType === undefined) {
+        if (!imageId || description === undefined || mushroomName === undefined) {
             let missingData = '';
             if (!imageId) missingData += 'Image ID ';
             if (description === undefined) missingData += 'Description ';
-            if (aquascapeType === undefined) missingData += 'Aquascape Type ';
+            if (mushroomName === undefined) missingData += 'Mushroom Name ';
             alert(`Cannot save changes: Missing information (${missingData.trim()})`);
             return;
         }
@@ -199,7 +199,7 @@ const Mushrooms = () => {
             const docRef = doc(db, "mushrooms", imageId);
             await updateDoc(docRef, {
                 description: description,
-                aquascapeType: aquascapeType,
+                mushroomName: mushroomName,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             });
@@ -212,7 +212,7 @@ const Mushrooms = () => {
                     return { 
                         ...image, 
                         description: description, 
-                        aquascapeType: aquascapeType,
+                        mushroomName: mushroomName,
                         lastEditedBy: userEmail, 
                         lastEdited: new Date()
                     };
@@ -225,7 +225,7 @@ const Mushrooms = () => {
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
                     setSelectedDescription(imageData.description);
-                    setSelectedImageAquascapeType(imageData.aquascapeType);
+                    setselectedImageMushroomName(imageData.mushroomName);
                     // Update last edited info if needed
                 } else {
                     console.log("Document not found after update.");
@@ -244,7 +244,7 @@ const Mushrooms = () => {
     };
     
     
-    const ImageModal = ({ url, description, imageAquascapeType, lastEdited, onClose, onEdit }) => {
+    const ImageModal = ({ url, description, imageMushroomName, lastEdited, onClose, onEdit }) => {
         if (!url) return null;
     
         return (
@@ -257,8 +257,8 @@ const Mushrooms = () => {
                         <tbody>
                             <tr>
                                 <td className="coral-name-cell">
-                                    <div className="coral-name-label"><b>Aquascape Type:</b></div>
-                                    <div className="coral-name-value">{imageAquascapeType}</div>
+                                    <div className="coral-name-label"><b>Mushroom Name:</b></div>
+                                    <div className="coral-name-value">{imageMushroomName}</div>
                                 </td>
                                 <td className="last-edited-cell">
                                     Last Edited: {lastEdited.lastEdited}<br />
@@ -281,17 +281,17 @@ const Mushrooms = () => {
         );
     };
     
-    const ModalEdit = ({ url, description, imageAquascapeType, lastEdited, onClose, onSaveEdit, imageId }) => {
+    const ModalEdit = ({ url, description, imageMushroomName, lastEdited, onClose, onSaveEdit, imageId }) => {
         const [editableDescription, setEditableDescription] = useState(description);
-        const [editableAquascapeType, setEditableAquascapeType] = useState(imageAquascapeType);
+        const [editableMushroomName, setEditableMushroomName] = useState(imageMushroomName);
     
         useEffect(() => {
             setEditableDescription(description);
-            setEditableAquascapeType(imageAquascapeType);
-        }, [description, imageAquascapeType]);
+            setEditableMushroomName(imageMushroomName);
+        }, [description, imageMushroomName]);
     
         const handleSave = () => {
-            if (!editableDescription || !editableAquascapeType) {
+            if (!editableDescription || !editableMushroomName) {
                 alert("Please fill out all fields before saving.");
                 return;
             }
@@ -299,7 +299,7 @@ const Mushrooms = () => {
                 alert("Error: Image ID is missing.");
                 return;
             }
-            onSaveEdit(currentImageId, editableDescription, editableAquascapeType);
+            onSaveEdit(currentImageId, editableDescription, editableMushroomName);
             onClose();
         };
     
@@ -313,11 +313,11 @@ const Mushrooms = () => {
                         <tbody>
                             <tr>
                                 <td className="coral-name-cell">
-                                    <p><b>Aquascape Type:</b></p>
+                                    <p><b>Mushroom Name:</b></p>
                                     <input 
                                         type="text" 
-                                        value={editableAquascapeType} 
-                                        onChange={(e) => setEditableAquascapeType(e.target.value)} 
+                                        value={editableMushroomName} 
+                                        onChange={(e) => setEditableMushroomName(e.target.value)} 
                                         className="modal-edit-coral-name-input"
                                     />
                                 </td>
@@ -462,13 +462,13 @@ const Mushrooms = () => {
         
         <input 
                 type="text" 
-                id="AquascapeTypeInput"  // Adding an id attribute
-                name="aquascapeType"     // Adding a name attribute
+                id="MushroomNameInput"  // Adding an id attribute
+                name="mushroomName"     // Adding a name attribute
                 className="coral-name-input"
-                placeholder="Aquascape Type..."
+                placeholder="Mushroom Name..."
                 maxLength="30"
-                value={imageAquascapeType}
-                onChange={handleAquascapeTypeInput}
+                value={imageMushroomName}
+                onChange={handleMushroomNameInput}
             />
             <input 
                 type="text" 
@@ -510,7 +510,7 @@ const Mushrooms = () => {
                 <ImageModal
                 url={selectedImage} 
                 description={selectedDescription} 
-                imageAquascapeType={selectedImageAquascapeType}
+                imageMushroomName={selectedImageMushroomName}
                 lastEdited={selectedLastEdited}
                 onClose={() => setIsModalOpen(false)}
                 onEdit={handleEdit}
@@ -521,7 +521,7 @@ const Mushrooms = () => {
                 <ModalEdit 
                     url={selectedImage} 
                     description={selectedDescription} 
-                    imageAquascapeType={selectedImageAquascapeType}
+                    imageMushroomName={selectedImageMushroomName}
                     lastEdited={selectedLastEdited}
                     onSaveEdit={onSaveEdit}
                     onClose={handleDismiss}
