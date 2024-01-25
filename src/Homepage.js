@@ -17,7 +17,7 @@ import imagepath10 from './images/AquascapeIdeas.jpeg'
 
 
 
-const Homepage = () => {
+const Homepage = ({darkMode}) => {
   const images = [
     { src: imagepath1, label: 'Acro', route: '/Acro' },
     { src: imagepath2, label: 'Chalice', route: '/Chalice' },
@@ -30,7 +30,9 @@ const Homepage = () => {
     { src: imagepath9, label: 'NPSCoral', route: '/NPSCorals' },
     { src: imagepath10, label: 'Aquascape Ideas', route: '/Aquascape' }
   ];
-
+    const pageClass = darkMode ? 'main-page dark-mode' : 'main-page';
+    const pageClass2 = darkMode ? 'images-list dark-mode' : 'images-list';
+    
     const navigate = useNavigate()
 
     const handleImageClick = (route) =>{
@@ -67,18 +69,15 @@ const Homepage = () => {
     }, [])
     
   return (
-    <div className="main-page">
-      <div>
-        <div className="images-list">
-
+    <div className={pageClass}>
+        <div className={pageClass2}>
           {images.map((image, index) => (
           <div key={index} className="image-container" onClick={() => handleImageClick(image.route)}>
             <img src={image.src} className="img-grid" />
             <span className="img-label">{image.label}</span>
           </div>
           ))}
-          </div> 
-      </div>  
+        </div> 
     </div>
   )
 }

@@ -366,6 +366,12 @@ body {
   color: black;
   display: grid;
 }
+.main-page.dark-mode{
+  background-color: #23252C;
+  color: #F5F5F5;
+  display: grid;
+}
+
 .img-label{
   max-width: 70px;
 }
@@ -405,6 +411,13 @@ body {
 }
 
 .images-list {
+  background-color: #effcfe;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
+  grid-gap: 10px; /* Spacing between items */
+}
+.images-list.dark-mode{
+  background-color: #4a4b4c;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
   grid-gap: 10px; /* Spacing between items */

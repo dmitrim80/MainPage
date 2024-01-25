@@ -22,7 +22,11 @@ import Zoas from "./Zoas"
 export default function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
 
+  function toggleDarkMode() {
+    setDarkMode(!darkMode);
+  }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
@@ -32,29 +36,27 @@ export default function App() {
     }, []);
 
   const routes = [
-    { path: "/Login", component: Login, protected: false },
-    { path: "/Homepage", component: Homepage, protected: true },
-    { path: "/Acro", component: Acro, protected: true },
-    { path: "/Aquascape", component: Aquascape, protected: true },
-    { path: "/Chalice", component: Chalice, protected: true },
-    { path: "/Favia", component: Favia, protected: true },
-    { path: "/FishTankFurn", component: FishTankFurn, protected: true },
-    { path: "/Monti", component: Monti, protected: true },
-    { path: "/Mushrooms", component: Mushrooms, protected: true },
-    { path: "/NPSCorals", component: NPSCorals, protected: true },
-    { path: "/Scoly", component: Scoly, protected: true },
-    { path: "/Zoas", component: Zoas, protected: true }
+    { path: "/Login", component: Login, protected: false, darkMode },
+    { path: "/Homepage", component: Homepage, protected: true, darkMode },
+    { path: "/Acro", component: Acro, protected: true, darkMode },
+    { path: "/Aquascape", component: Aquascape, protected: true, darkMode },
+    { path: "/Chalice", component: Chalice, protected: true, darkMode },
+    { path: "/Favia", component: Favia, protected: true, darkMode },
+    { path: "/FishTankFurn", component: FishTankFurn, protected: true, darkMode },
+    { path: "/Monti", component: Monti, protected: true, darkMode },
+    { path: "/Mushrooms", component: Mushrooms, protected: true, darkMode },
+    { path: "/NPSCorals", component: NPSCorals, protected: true, darkMode },
+    { path: "/Scoly", component: Scoly, protected: true, darkMode },
+    { path: "/Zoas", component: Zoas, protected: true, darkMode }
   ]
-  const [darkMode, setDarkMode] = useState(true);
+  
   
   useEffect(() => {
     document.body.style.backgroundColor = darkMode ? '#23252C' : '#F5F5F5';
     document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
   }, [darkMode]);
 
-  function toggleDarkMode() {
-    setDarkMode(!darkMode);
-  }
+ 
   
     return (
       <>
@@ -62,11 +64,13 @@ export default function App() {
           <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
           <Routes>
             <Route path="/" element={currentUser ? <Login /> : <Homepage />} />
-            {routes.map(({ path, component: Component,  protected: isProtected }) => (
+            {routes.map(({ path, component: Component,  protected: isProtected, darkMode }) => (
               <Route 
                 key={path} 
                 path={path} 
-                element={isProtected ? <ProtectedRoute>{<Component />}</ProtectedRoute> : <Component />} 
+                element={isProtected 
+                  ? <ProtectedRoute>{<Component darkMode={darkMode} />}</ProtectedRoute>
+                  : <Component darkMode={darkMode}/>} 
               />
             ))}
           </Routes>
