@@ -3,7 +3,7 @@
 }
 
 .header{
-  background-color: #F5F5F5;
+  background-color: #393368;
   width:100%;
   min-width: 390px;
   height: 50px;
@@ -12,19 +12,75 @@
   align-items: center;
   padding: 5px;
 }
+.footer{
+  background-color: #393368;
+  width:100%;
+  min-width: 390px;
+  min-height: 50px;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .header {
+    /* tablet-specific styles */
+    background-color: #393368;
+    width:100%;
+    min-width: 768px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+}
+@media (min-width: 768px) {
+  .footer {
+    /* tablet-specific styles */
+    background-color: #393368;
+    width:100%;
+    min-width: 768px;
+    min-height: 50px;
+  }
+}
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .header {
+    /* desktop-specific styles */
+    background-color: #393368;
+    width:100%;
+    min-width: 1024px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+}
+@media (min-width: 1024px) {
+  .footer {
+    /* desktop-specific styles */
+    background-color: #393368;
+    width:100%;
+    min-width: 1024px;
+    min-height: 50px;
+  }
+}
+
+
 .header-left, .header-right {
   display: flex;
   align-items: center;
   gap: 10px; /* Adjust gap between items as needed */
 }
+
 .header.dark-mode {
-  background-color: #23252C; /* Dark mode color */
-  color: #F5F5F5;
+  background-color: #131316; /* Dark mode color */
+  color: #8378ED;
 }
 
 .footer.dark-mode {
-  background-color: #23252C; /* Dark mode color */
-  color: #F5F5F5;
+  background-color: #131316; /* Dark mode color */
+  color: #8378ED;
 
 }
 .header-buttons{
@@ -38,12 +94,7 @@
   margin-right: 5PX;
 }
 
-.footer{
-  background-color: #F5F5F5;
-  width:100%;
-  min-width: 390px;
-  min-height: 50px;
-}
+
 
 body {
   margin: 0;
@@ -417,7 +468,7 @@ body {
   grid-gap: 10px; /* Spacing between items */
 }
 .images-list.dark-mode{
-  background-color: #4a4b4c;
+  background-color: #404142;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
   grid-gap: 10px; /* Spacing between items */

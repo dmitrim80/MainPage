@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router-dom';
 const Header = ({ darkMode, toggleDarkMode }) => {
 
     useEffect(() => {
-        document.body.style.backgroundColor = darkMode ? '#374151' : '#F5F5F5';
-        document.body.style.color = darkMode ? '#F5F5F5' : '#374151';
+        document.body.style.backgroundColor = darkMode ? '#374151' : '#8378ED';
+        document.body.style.color = darkMode ? '#8378ED' : '#374151';
       }, [darkMode]);
 
     const navigate = useNavigate();

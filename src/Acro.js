@@ -23,16 +23,12 @@ const Acro = () => {
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const imagesPerPage = 20; // 20 images per page
+    const imagesPerPage = 12; // 12 images per page
     const indexOfLastImage = currentPage * imagesPerPage;
     const indexOfFirstImage = indexOfLastImage - imagesPerPage;
     const currentImages = imageList.slice(indexOfFirstImage, indexOfLastImage);
     const totalImages = imageList.length;
     const totalPages = Math.ceil(totalImages / imagesPerPage);
-    
-    
-    
-    
     
 
     const handleEdit = () => {

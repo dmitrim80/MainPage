@@ -22,7 +22,7 @@ import Zoas from "./Zoas"
 export default function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   function toggleDarkMode() {
     setDarkMode(!darkMode);
@@ -52,10 +52,17 @@ export default function App() {
   
   
   useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#23252C' : '#F5F5F5';
-    document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
+    document.body.style.backgroundColor = darkMode ? '#23252C' : '#8378ED';
+    document.body.style.color = darkMode ? '#8378ED' : '#23252C';
   }, [darkMode]);
 
+  useEffect(() => {
+    if (darkMode) {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
+}, [darkMode]);
  
   
     return (
