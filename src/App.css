@@ -32,6 +32,17 @@ body {
   padding: 5px;
 }
 
+.img-grid{
+  width: 70px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+@media (min-width:768px){
+  .img-grid{
+    width: 150px;
+  }
+}
 /* Tablet styles */
 @media (min-width: 768px) {
   .header, .footer {
@@ -384,11 +395,6 @@ body {
   margin: 10px;
 }
 
-.img-grid{
-  width: 70px;
-  margin: 10px;
-  border-radius: 10px;
-}
 
 .main-page{
   background-color: #effcfe;
