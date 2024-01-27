@@ -43,6 +43,11 @@ body {
     width: 150px;
   }
 }
+@media (min-width:1024px){
+  .img-grid{
+    width: 230px;
+  }
+}
 /* Tablet styles */
 @media (min-width: 768px) {
   .header, .footer {
