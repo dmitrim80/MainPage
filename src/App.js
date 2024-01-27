@@ -22,14 +22,18 @@ import Zoas from "./Zoas"
 export default function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); 
   const [darkMode, setDarkMode] = useState(false);
+  
 
   function toggleDarkMode() {
     setDarkMode(!darkMode);
   }
+  
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
+            setIsLoading(false); 
         });
 
         return () => unsubscribe(); // Cleanup subscription
@@ -52,8 +56,8 @@ export default function App() {
   
   
   useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#23252C' : '#8378ED';
-    document.body.style.color = darkMode ? '#8378ED' : '#23252C';
+    document.body.style.backgroundColor = darkMode ? '#23252C' : '#ccc';
+    document.body.style.color = darkMode ? '#ccc' : '#23252C';
   }, [darkMode]);
 
   useEffect(() => {
@@ -63,26 +67,30 @@ export default function App() {
         document.body.classList.remove("dark-mode");
     }
 }, [darkMode]);
- 
+
+
+    if (isLoading) {
+      return <div>Loading...</div>; // Show loading or a spinner
+    }
   
     return (
       <>
         <Router>
-          <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
+          <Header isLoginPage={!currentUser} darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
           <Routes>
-            <Route path="/" element={currentUser ? <Login /> : <Homepage />} />
+            <Route path="/" element={!currentUser ? <Login /> : <Homepage />} />
             {routes.map(({ path, component: Component,  protected: isProtected, darkMode }) => (
               <Route 
                 key={path} 
                 path={path} 
                 element={isProtected 
-                  ? <ProtectedRoute>{<Component darkMode={darkMode} />}</ProtectedRoute>
+                  ? <ProtectedRoute currentUser={currentUser}>{<Component darkMode={darkMode} />}</ProtectedRoute>
                   : <Component darkMode={darkMode}/>} 
               />
             ))}
           </Routes>
         </Router>
-        <Footer darkMode={darkMode} />
+        <Footer isLoginPage={!currentUser} darkMode={darkMode} />
       </> 
     )
 }

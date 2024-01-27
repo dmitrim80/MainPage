@@ -13,8 +13,8 @@ const Login = () => {
       setDarkMode(!darkMode)
   }
   useEffect(() => {
-    document.body.style.backgroundColor = darkMode ? '#23252C' : '#F5F5F5';
-    document.body.style.color = darkMode ? '#F5F5F5' : '#23252C';
+    document.body.style.backgroundColor = darkMode ? '#393368' : '#ccc';
+    document.body.style.color = darkMode ? '#ccc' : '#393368';
   }, [darkMode]);
     
   return (
@@ -66,8 +66,6 @@ const Login = () => {
           </div>
       </div>
     </div>   
-        {/* <h4>User Logged In:</h4>
-        {user ? user.email: "No user logged in"}  */}
    </>
   )
 }

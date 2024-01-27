@@ -4,11 +4,12 @@ import {auth} from './firebase-config'
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = ({ darkMode, toggleDarkMode }) => {
+const Header = ({ isLoginPage, darkMode, toggleDarkMode }) => {
+    const headerClass = isLoginPage ? 'header-login' : 'header';
 
     useEffect(() => {
-        document.body.style.backgroundColor = darkMode ? '#374151' : '#8378ED';
-        document.body.style.color = darkMode ? '#8378ED' : '#374151';
+        document.body.style.backgroundColor = darkMode ? '#374151' : '#ccc';
+        document.body.style.color = darkMode ? '#ccc' : '#374151';
       }, [darkMode]);
 
     const navigate = useNavigate();
@@ -45,7 +46,8 @@ const Header = ({ darkMode, toggleDarkMode }) => {
     };
 
   return (
-    <div className={`header ${darkMode ? 'dark-mode' : ''}`}>
+
+    <div className={headerClass}>
     {error && <div className="error-message">{error}</div>}
 
     <div className="header-left">
