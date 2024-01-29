@@ -18,6 +18,7 @@ import Mushrooms from "./Mushrooms"
 import NPSCorals from "./NPSCorals"
 import Scoly from "./Scoly"
 import Zoas from "./Zoas"
+import ImageScroll from "./ImageScroll";
 
 export default function App() {
 
@@ -75,6 +76,7 @@ export default function App() {
   
     return (
       <>
+      
         <Router>
           <Header isLoginPage={!currentUser} darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
           <Routes>
@@ -90,7 +92,7 @@ export default function App() {
             ))}
           </Routes>
         </Router>
-        <Footer isLoginPage={!currentUser} darkMode={darkMode} />
+        <Footer isLoginPage={!currentUser} darkMode={darkMode} /> 
       </> 
     )
 }

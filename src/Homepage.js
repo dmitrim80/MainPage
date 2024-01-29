@@ -14,6 +14,7 @@ import imagepath7 from './images/Zoas.jpeg'
 import imagepath8 from './images/FishTank.jpeg'
 import imagepath9 from './images/NPSCoral.jpeg'
 import imagepath10 from './images/AquascapeIdeas.jpeg'
+import ImageScroll from "./ImageScroll";
 
 
 
@@ -39,6 +40,30 @@ const Homepage = ({darkMode}) => {
         navigate(route)
     }
    
+
+    const [visibleImages, setVisibleImages] = useState([]);
+    const [nextPageToken, setNextPageToken] = useState(null);
+    useEffect(() => {
+      loadMoreImages();
+    }, []);
+    const loadMoreImages = async () => {
+      const acroporaRef = ref(storage, 'Acropora'); // Adjust the path as per your Firebase Storage structure
+      try {
+        const result = await listAll(acroporaRef, { maxResults: 5, pageToken: nextPageToken });
+        const urlPromises = result.items.map((itemRef) => getDownloadURL(itemRef));
+        const urls = await Promise.all(urlPromises);
+        setVisibleImages((prevImages) => [...prevImages, ...urls]);
+        setNextPageToken(result.nextPageToken);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+    const handleScroll = (e) => {
+      const bottom = e.target.scrollWidth - e.target.scrollLeft === e.target.clientWidth;
+      if (bottom && nextPageToken) {
+        loadMoreImages();
+      }
+    };
   
     const [imageUpload, setImageUpload] = useState(null)
     const [imageList, setImageList] = useState([])
@@ -69,6 +94,11 @@ const Homepage = ({darkMode}) => {
     }, [])
     
   return (
+  <>
+    <div className="homepage-imagescroll-container">
+      <ImageScroll/>
+    </div>
+    
     <div className={pageClass}>
         <div className={pageClass2}>
           {images.map((image, index) => (
@@ -79,6 +109,7 @@ const Homepage = ({darkMode}) => {
           ))}
         </div> 
     </div>
+  </>
   )
 }
 
