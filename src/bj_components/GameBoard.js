@@ -40,31 +40,36 @@ const GameBoard = () => {
   
     // Update hands
     const initialPlayerHand = [playerFirstCard, playerSecondCard];
-    setPlayerHand(initialPlayerHand);
-    setDealerHand([dealerFirstCard, { ...dealerSecondCard, isFaceDown: true }]);
+    const initialDealerHand = [dealerFirstCard, { ...dealerSecondCard, isFaceDown: true }];
   
-    // Check for player Blackjack immediately after dealing cards
-    const playerInitialHandValue = calculateHandValue(initialPlayerHand);
-    if (playerInitialHandValue === 21) {
+    setPlayerHand(initialPlayerHand);
+    setDealerHand(initialDealerHand);
+  
+    // Calculate hand values
+    const playerHandValue = calculateHandValue(initialPlayerHand);
+    const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]); // Temporarily ignore isFaceDown for calculation
+  
+    // Check for Blackjack
+    const playerHasBlackjack = playerHandValue === 21;
+    const dealerHasBlackjack = dealerHandValue === 21;
+  
+    if (dealerHasBlackjack && playerHasBlackjack) {
+      // It's a tie if both have Blackjack
+      setGameStatus("It's a tie! Both have Blackjack!");
+      setIsGameOver(true);
+    } else if (dealerHasBlackjack) {
+      // Reveal dealer's hand if Blackjack
+      setDealerHand([dealerFirstCard, dealerSecondCard]);
+      setGameStatus("Blackjack! Dealer wins!");
+      setIsGameOver(true);
+    } else if (playerHasBlackjack) {
       setGameStatus("Blackjack! Player wins!");
-      setIsGameOver(true); // End game since player hits Blackjack
+      setIsGameOver(true);
     } else {
-      // Check for dealer blackjack if first card is 10, J, Q, K, or Ace
-      if (['10', 'jack', 'queen', 'king', 'ace'].includes(dealerFirstCard.rank)) {
-        const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]);
-        if (dealerHandValue === 21) {
-          // Dealer has blackjack, reveal second card and end game
-          setDealerHand([dealerFirstCard, dealerSecondCard]);
-          setGameStatus("Dealer has Blackjack! Game over.");
-          setIsGameOver(true);
-        } else {
-          setGameStatus("Game in progress...");
-        }
-      } else {
-        setGameStatus("Game in progress...");
-      }
+      setGameStatus("Game in progress...");
     }
   };
+  
   
   
 
@@ -215,7 +220,9 @@ const getCardValue = (rank) => {
         {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
         <div className="dealer-hand">
           <div className='h3-container'>
-          <h3 className='dealer'>Dealer:</h3>
+          <h3 className='dealer'>Dealer:
+          {isGameOver || gameStatus.startsWith("Dealer has Blackjack!") ? " " + calculateHandValue(dealerHand) : " ?"}
+          </h3>
           </div>
           <Player 
             hand={dealerHand}  
@@ -226,7 +233,9 @@ const getCardValue = (rank) => {
         {/* Assuming you want to keep rendering player's hand directly or using Player component similarly */}
         <div className="player-hand">
         <div className="h3-container">
-        <h3 className='player'>Player:</h3>
+        <h3 className='player'>Player:
+        {" "+calculateHandValue(playerHand)}
+        </h3>
         </div>
           <Player 
             hand={playerHand}
