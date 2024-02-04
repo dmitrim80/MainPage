@@ -213,27 +213,31 @@ const getCardValue = (rank) => {
         <h1>Blackjack Game</h1>
         {/* Render Dealer's Hand using Player Component */}
         {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
-        <Player 
+        <div className="dealer-hand">
+          <Player 
             hand={dealerHand} 
             name="Dealer" 
             isDealer={true}
-        />
-
+          />
+        </div>
         {/* Player's Hand */}
         {/* Assuming you want to keep rendering player's hand directly or using Player component similarly */}
         <div className="player-hand">
-            <h2>Player's Hand: {calculateHandValue(playerHand)}</h2>
-            <Player hand={playerHand} name="Player" />
+          <Player 
+            hand={playerHand}
+            name="Player"
+            isDealer={false}
+          />
         </div>
 
         {/* Actions */}
-        <div className="actions">
+        <div className="action-buttons">
             <button onClick={startNewGame}>Start Game</button>
             <button onClick={playerHit} disabled={isGameOver}>Hit</button>
             <button onClick={playerStand} disabled={isGameOver}>Stand</button>
         </div>
 
-    <p>{gameStatus}</p>
+        <p className='progress-text'>{gameStatus}</p>
   </div>
   );
 };

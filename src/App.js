@@ -94,7 +94,7 @@ export default function App() {
           </Routes>
         </Router> */}
         <BlackJack/>
-        <Footer isLoginPage={!currentUser} darkMode={darkMode} /> 
+        {/* <Footer isLoginPage={!currentUser} darkMode={darkMode} />  */}
       </> 
     )
 }

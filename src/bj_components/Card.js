@@ -120,7 +120,7 @@ const Card = ({ suit, rank, isFaceDown }) => {
     const cardImage = isFaceDown ? cardBack : cardImages[`${suit}-${rank}`];
 
     return (
-        <div className="card">
+        <div className="card-box">
             <img src={cardImage} alt={isFaceDown ? 'Card Back' : `${rank} of ${suit}`} />
         </div>
     );

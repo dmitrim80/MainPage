@@ -1,17 +1,30 @@
 * {
     box-sizing: border-box;
   }
-/* Ensure the container for the hands uses flexbox to lay out its children (cards) */
+.blackjack-main-page{
+  background-color: #0d4e08;
+  color: aliceblue;
+  padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 900px;
+    height: 800px;
+    margin: 20px auto; /* Center the game board */
+}
+  /* Ensure the container for the hands uses flexbox to lay out its children (cards) */
 .game-board {
     background: #0a6c03; /* Dark green background for the game board */
-    color: #ffffff; /* White text for better contrast */
+    color: #fffffff5; /* White text for better contrast */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    max-width: 1200px;
+    max-width: 800px;
+    height:95%;
     margin: 20px auto; /* Center the game board */
-  }
-  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .hand, .dealer-hand, .player-hand {
     display: flex;
@@ -21,15 +34,13 @@
   }
   
   /* Style for individual cards */
-  .card {
-    background: #FFF; /* Card background color */
+  .card-box img{
     border-radius: 4px; /* Rounded corners for the cards */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Card shadow for better visibility */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Card shadow for better visibility */
     display: inline-block; /* Allows for inline layout with wrapping */
     margin-right: 10px; /* Spacing between cards */
     /* Set dimensions for cards or use max-width as needed */
-    width: 120px; /* Adjust the width as needed */
-    height: 168px; /* Adjust the height based on the aspect ratio */
+    width: 100px; /* Adjust the width as needed */
   }
   
   /* Style for the image within the cards, if you're using images */
@@ -49,4 +60,9 @@
     margin-top: 20px; /* Space between player's hand and any elements above */
     gap: 50px;
   }
-  
+  .action-buttons{
+    
+  }
+  .progress-text{
+    
+  }
