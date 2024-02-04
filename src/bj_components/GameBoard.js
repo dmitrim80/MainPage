@@ -214,18 +214,22 @@ const getCardValue = (rank) => {
         {/* Render Dealer's Hand using Player Component */}
         {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
         <div className="dealer-hand">
+          <div className='h3-container'>
+          <h3 className='dealer'>Dealer:</h3>
+          </div>
           <Player 
-            hand={dealerHand} 
-            name="Dealer" 
+            hand={dealerHand}  
             isDealer={true}
           />
         </div>
         {/* Player's Hand */}
         {/* Assuming you want to keep rendering player's hand directly or using Player component similarly */}
         <div className="player-hand">
+        <div className="h3-container">
+        <h3 className='player'>Player:</h3>
+        </div>
           <Player 
             hand={playerHand}
-            name="Player"
             isDealer={false}
           />
         </div>

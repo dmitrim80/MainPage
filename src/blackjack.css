@@ -11,16 +11,17 @@
     height: 800px;
     margin: 20px auto; /* Center the game board */
 }
+
   /* Ensure the container for the hands uses flexbox to lay out its children (cards) */
 .game-board {
     background: #0a6c03; /* Dark green background for the game board */
     color: #fffffff5; /* White text for better contrast */
-    padding: 20px;
+    padding: 1px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     max-width: 800px;
     height:95%;
-    margin: 20px auto; /* Center the game board */
+    margin: 10px auto; /* Center the game board */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,13 +31,20 @@
     display: flex;
     flex-direction: row; /* Lay out children (cards) in a row */
     justify-content: center; /* Center the cards within the container */
-    gap: 10px; /* Spacing between cards */
   }
-  
+  .dealer-hand, .player-hand {
+    display: flex;
+    flex-direction: column; /* Lay out children (cards) in a row */
+    justify-content: center; /* Center the cards within the container */
+    align-items: center; 
+  }
+  .h3-container{
+    margin-left: -165px;
+  }
   /* Style for individual cards */
   .card-box img{
     border-radius: 4px; /* Rounded corners for the cards */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* Card shadow for better visibility */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.7); /* Card shadow for better visibility */
     display: inline-block; /* Allows for inline layout with wrapping */
     margin-right: 10px; /* Spacing between cards */
     /* Set dimensions for cards or use max-width as needed */
@@ -52,17 +60,16 @@
   
   .dealer-hand {
     margin-bottom: 20px; /* Space between dealer's hand and any elements below */
-    gap: 50px; /* Spacing between cards */
+    background-color: red;
+    max-width: 500px;
   }
   
   /* Styles for the section containing the player's hand(s) */
   .player-hand {
     margin-top: 20px; /* Space between player's hand and any elements above */
-    gap: 50px;
+    background-color: rgb(30, 149, 149);
   }
   .action-buttons{
-    
+    margin-top: 20px;
   }
-  .progress-text{
-    
-  }
+  

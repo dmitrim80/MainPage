@@ -2,10 +2,9 @@
     import PropTypes from 'prop-types';
     import Card from './Card';
 
-    const Player = ({ hand, name, isDealer }) => {
+    const Player = ({ hand, isDealer }) => {
     return (
         <section className={`player ${isDealer ? 'dealer' : ''}`}>
-        <h3>{name}</h3>
         {hand.length > 0 ? (
             <div className="hand">
             {hand.map((card, index) => (
