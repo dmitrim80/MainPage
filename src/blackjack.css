@@ -50,24 +50,15 @@
     /* Set dimensions for cards or use max-width as needed */
     width: 100px; /* Adjust the width as needed */
   }
-  
-  /* Style for the image within the cards, if you're using images */
-  .card img {
-    width: 100%; /* Ensures the image covers the card element */
-    height: auto; /* Maintains the aspect ratio of the image */
-    border-radius: 4px; /* Matches the card's border-radius */
-  }
-  
+   
   .dealer-hand {
     margin-bottom: 20px; /* Space between dealer's hand and any elements below */
-    background-color: red;
     max-width: 500px;
   }
   
   /* Styles for the section containing the player's hand(s) */
   .player-hand {
     margin-top: 20px; /* Space between player's hand and any elements above */
-    background-color: rgb(30, 149, 149);
   }
   .action-buttons{
     margin-top: 20px;
