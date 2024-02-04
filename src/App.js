@@ -19,6 +19,7 @@ import NPSCorals from "./NPSCorals"
 import Scoly from "./Scoly"
 import Zoas from "./Zoas"
 import ImageScroll from "./ImageScroll";
+import BlackJack from "./BlackJack";
 
 export default function App() {
 
@@ -77,9 +78,9 @@ export default function App() {
     return (
       <>
       
-        <Router>
+        {/* <Router>
           <Header isLoginPage={!currentUser} darkMode={darkMode} toggleDarkMode={toggleDarkMode} currentUser={currentUser} />
-          <Routes>
+          /* <Routes>
             <Route path="/" element={!currentUser ? <Login /> : <Homepage />} />
             {routes.map(({ path, component: Component,  protected: isProtected, darkMode }) => (
               <Route 
@@ -91,7 +92,8 @@ export default function App() {
               />
             ))}
           </Routes>
-        </Router>
+        </Router> */}
+        <BlackJack/>
         <Footer isLoginPage={!currentUser} darkMode={darkMode} /> 
       </> 
     )
