@@ -10,21 +10,60 @@ const GameBoard = () => {
   const [currentHandIndex, setCurrentHandIndex] = useState(0);
   const [dealerHand, setDealerHand] = useState([]);
   const [gameStatus, setGameStatus] = useState("Let's play!");
-  const [isGameOver, setIsGameOver] = useState(false); // Added to track if the game is over
-  
+  const [isGameOver, setIsGameOver] = useState(false);
+
   const dealInitialHands = () => {
-    // Deal initial cards as before, then check for split condition
-    const canSplit = playerHands[0][0].rank === playerHands[0][1].rank;
+    const newDeck = new Deck();
+    newDeck.shuffleDeck();
+    setDeck(newDeck);
+
+    // Draw two cards for the player and two for the dealer
+    const playerFirstCard = newDeck.drawCard();
+    const playerSecondCard = newDeck.drawCard();
+    const dealerFirstCard = newDeck.drawCard();
+    const dealerSecondCard = newDeck.drawCard();
+
+    // Update hands
+    const initialPlayerHand = [playerFirstCard, playerSecondCard];
+    const initialDealerHand = [dealerFirstCard, { ...dealerSecondCard, isFaceDown: true }];
+
+    setPlayerHand(initialPlayerHand);
+    setDealerHand(initialDealerHand);
+
+    // Calculate hand values
+    const playerHandValue = calculateHandValue(initialPlayerHand);
+
+    const canSplit = initialPlayerHand[0].rank === initialPlayerHand[1].rank;
     if (canSplit) {
-      // Offer split option to the player
+      setPlayerHands([initialPlayerHand]);
+    } else {
+      setPlayerHands([initialPlayerHand]);
+    }
+
+    // Check for Blackjack
+    const playerHasBlackjack = playerHandValue === 21;
+
+    if (playerHasBlackjack) {
+      setGameStatus("Blackjack! Player wins!");
+      setIsGameOver(true);
+    } else {
+      setGameStatus("Game in progress...");
     }
   };
+
   const handleSplit = () => {
-    const firstHand = [playerHands[0][0], deck.drawCard()];
-    const secondHand = [playerHands[0][1], deck.drawCard()];
-    setPlayerHands([firstHand, secondHand]);
-    // Adjust bets if necessary
+    const canSplit = playerHand[0].rank === playerHand[1].rank;
+    if (canSplit && playerHands.length === 1) {
+      // Create two new hands by splitting the player's current hand
+      const firstHand = [playerHand[0], deck.drawCard()];
+      const secondHand = [playerHand[1], deck.drawCard()];
+  
+      setPlayerHands([firstHand, secondHand]);
+      setCurrentHandIndex(0); // Reset to the first hand
+    }
   };
+  
+
   
   const startNewGame = () => {
     setIsGameOver(false); // Reset the game over flag
@@ -47,24 +86,13 @@ const GameBoard = () => {
   
     // Calculate hand values
     const playerHandValue = calculateHandValue(initialPlayerHand);
-    const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]); // Temporarily ignore isFaceDown for calculation
   
-    // Check for Blackjack
-    const playerHasBlackjack = playerHandValue === 21;
-    const dealerHasBlackjack = dealerHandValue === 21;
+    const canSplit = initialPlayerHand[0].rank === initialPlayerHand[1].rank;
   
-    if (dealerHasBlackjack && playerHasBlackjack) {
-      // It's a tie if both have Blackjack
-      setGameStatus("It's a tie! Both have Blackjack!");
-      setIsGameOver(true);
-    } else if (dealerHasBlackjack) {
-      // Reveal dealer's hand if Blackjack
-      setDealerHand([dealerFirstCard, dealerSecondCard]);
-      setGameStatus("Blackjack! Dealer wins!");
-      setIsGameOver(true);
-    } else if (playerHasBlackjack) {
-      setGameStatus("Blackjack! Player wins!");
-      setIsGameOver(true);
+    if (canSplit) {
+      setGameStatus("You can split!");
+      // Enable the split button in your UI
+      // You should add logic in your UI to enable/disable the button
     } else {
       setGameStatus("Game in progress...");
     }
@@ -215,42 +243,46 @@ const getCardValue = (rank) => {
   return (
 
     <div className="game-board">
-        <h1>Blackjack Game</h1>
-        {/* Render Dealer's Hand using Player Component */}
-        {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
-        <div className="dealer-hand">
-          <div className='h3-container'>
-          <h3 className='dealer'>Dealer:
-          {isGameOver || gameStatus.startsWith("Dealer has Blackjack!") ? " " + calculateHandValue(dealerHand) : " ?"}
-          </h3>
-          </div>
-          <Player 
-            hand={dealerHand}  
-            isDealer={true}
-          />
-        </div>
-        {/* Player's Hand */}
-        {/* Assuming you want to keep rendering player's hand directly or using Player component similarly */}
-        <div className="player-hand">
-        <div className="h3-container">
+    <h1>Blackjack Game</h1>
+    {/* Render Dealer's Hand using Player Component */}
+    {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
+    <div className="dealer-hand">
+      <div className='h3-container'>
+        <h3 className='dealer'>Dealer:
+        {isGameOver || gameStatus.startsWith("Dealer has Blackjack!") ? " " + calculateHandValue(dealerHand) : " ?"}
+        </h3>
+      </div>
+      <Player 
+        hand={dealerHand}  
+        isDealer={true}
+      />
+    </div>
+    
+    {/* Player's Hand */}
+    {/* Assuming you want to keep rendering the player's hand directly or using the Player component similarly */}
+    <div className="player-hand">
+      <div className="h3-container">
         <h3 className='player'>Player:
         {" "+calculateHandValue(playerHand)}
         </h3>
-        </div>
-          <Player 
-            hand={playerHand}
-            isDealer={false}
-          />
-        </div>
+      </div>
+      <Player 
+        hand={playerHand}
+        isDealer={false}
+      />
+    </div>
 
-        {/* Actions */}
-        <div className="action-buttons">
-            <button onClick={startNewGame}>Start Game</button>
-            <button onClick={playerHit} disabled={isGameOver}>Hit</button>
-            <button onClick={playerStand} disabled={isGameOver}>Stand</button>
-        </div>
+    {/* Actions */}
+    <div className="action-buttons">
+      <button onClick={startNewGame}>Start Game</button>
+      <button onClick={playerHit} disabled={isGameOver}>Hit</button>
+      <button onClick={playerStand} disabled={isGameOver}>Stand</button>
+      {gameStatus === "You can split!" && (
+        <button onClick={handleSplit} disabled={isGameOver || gameStatus !== "You can split!"}>Split</button>
 
-        <p className='progress-text'>{gameStatus}</p>
+      )}
+    </div>
+    <p className='progress-text'>{gameStatus}</p>
   </div>
   );
 };
