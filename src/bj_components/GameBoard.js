@@ -27,7 +27,7 @@ const GameBoard = () => {
   };
   
   const startNewGame = () => {
-    setIsGameOver(false);
+    setIsGameOver(false); // Reset the game over flag
     const newDeck = new Deck();
     newDeck.shuffleDeck();
     setDeck(newDeck);
@@ -39,23 +39,33 @@ const GameBoard = () => {
     const dealerSecondCard = newDeck.drawCard();
   
     // Update hands
-    setPlayerHand([playerFirstCard, playerSecondCard]);
+    const initialPlayerHand = [playerFirstCard, playerSecondCard];
+    setPlayerHand(initialPlayerHand);
     setDealerHand([dealerFirstCard, { ...dealerSecondCard, isFaceDown: true }]);
   
-    // Check for dealer blackjack if first card is 10 or ace
-    if (['10', 'jack', 'queen', 'king', 'ace'].includes(dealerFirstCard.rank)) {
-      const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]);
-      if (dealerHandValue === 21) {
-        // Dealer has blackjack, reveal second card and end game
-        setDealerHand([dealerFirstCard, dealerSecondCard]);
-        setGameStatus("Dealer has Blackjack! Game over.");
-        setIsGameOver(true);
-        return; // End game start function early
+    // Check for player Blackjack immediately after dealing cards
+    const playerInitialHandValue = calculateHandValue(initialPlayerHand);
+    if (playerInitialHandValue === 21) {
+      setGameStatus("Blackjack! Player wins!");
+      setIsGameOver(true); // End game since player hits Blackjack
+    } else {
+      // Check for dealer blackjack if first card is 10, J, Q, K, or Ace
+      if (['10', 'jack', 'queen', 'king', 'ace'].includes(dealerFirstCard.rank)) {
+        const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]);
+        if (dealerHandValue === 21) {
+          // Dealer has blackjack, reveal second card and end game
+          setDealerHand([dealerFirstCard, dealerSecondCard]);
+          setGameStatus("Dealer has Blackjack! Game over.");
+          setIsGameOver(true);
+        } else {
+          setGameStatus("Game in progress...");
+        }
+      } else {
+        setGameStatus("Game in progress...");
       }
     }
-  
-    setGameStatus("Game in progress...");
   };
+  
   
 
   const playerHit = () => {
