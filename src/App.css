@@ -76,12 +76,7 @@ body {
     padding: 5px;
   }
 }
-.blackjack-main-page{
-  background-color: #ccc;
-  display: flex;
-  height: 500px;
-  width: 600px;
-}
+
 .homepage-imagescroll-container{
   display: flex;
   justify-content: center;
@@ -110,99 +105,7 @@ body {
   max-width: 100px;
   margin-right: 5PX;
 }
-.blackjack-card img {
-  display: inline-block;
-  width: 100px;
-  height: auto;
-  border-radius: 10px;
-  margin-right: 10px;
-}
-.game-board {
-  background-color: #f3f3f3;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 600px;
-  margin: auto;
-  margin-top: 50px;
-}
 
-.game-board h1 {
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.game-board .actions button {
-  padding: 10px 15px;
-  margin: 5px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.game-board .actions button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.game-board .player-hand, .game-board .dealer-hand {
-  margin-top: 20px;
-}
-.player-hands {
-  display: flex;
-  flex-wrap: wrap; /* Allows multiple hands to wrap onto the next line if there's not enough space */
-  justify-content: center; /* Centers the hands horizontally */
-  gap: 20px; /* Adds some space between the hands */
-}
-.player-hand {
-  display: flex;
-  flex-direction: column; /* Aligns the hand content vertically */
-  align-items: center; /* Centers the items horizontally within each hand */
-  gap: 10px; /* Adds some space between items within a hand */
-}
-.dealer-cards{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.player {
-  margin-bottom: 20px;
-}
-.cards {
-  display: flex;
-  flex-direction: row; /* Align items in a horizontal row */
-  gap: 10px; /* Optional: adds space between cards */
-}
-.player .hand {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-.hand {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.player.dealer {
-  background-color: #f8f8f8;
-}
-
-.player h3 {
-  color: #444;
-  margin-bottom: 10px;
-}
-.card img {
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-}
 .box-scroll-images {
   display: flex;
   background-color: #0056b3;

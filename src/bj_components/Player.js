@@ -9,7 +9,7 @@
         {hand.length > 0 ? (
             <div className="hand">
             {hand.map((card, index) => (
-  <Card key={index} suit={card.suit} rank={card.rank} isFaceDown={false} />
+                <Card key={index} suit={card.suit} rank={card.rank} isFaceDown={card.isFaceDown} />
             ))}
             </div>
         ) : (
@@ -27,15 +27,3 @@
 
     export default Player;
 
-
-    // Add some CSS to style the player component
-    // .player {
-    //   margin-bottom: 20px;
-    // }
-    // .player.dealer {
-    //   background-color: #f8f8f8; // Style differently if it's a dealer
-    // }
-    // .hand {
-    //   display: flex;
-    //   gap: 10px;
-    // }

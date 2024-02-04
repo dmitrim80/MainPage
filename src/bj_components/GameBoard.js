@@ -208,30 +208,30 @@ const getCardValue = (rank) => {
 
 
   return (
+
     <div className="game-board">
-    <h1>Blackjack Game</h1>
+        <h1>Blackjack Game</h1>
+        {/* Render Dealer's Hand using Player Component */}
+        {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
+        <Player 
+            hand={dealerHand} 
+            name="Dealer" 
+            isDealer={true}
+        />
 
-    <div className="dealer-hand">
-      <h2>Dealer's Hand: {gameStatus !== 'Game in progress...' ? calculateHandValue(dealerHand) : '?'}</h2>
-      {/* Display dealer hand and score, hiding the score if the game is in progress */}
-      <div className="dealer-cards">
-        {dealerHand.map((card, index) => (
-          <Card key={index} suit={card.suit} rank={card.rank} isFaceDown={card.isFaceDown} />
-        ))}
-      </div>
-    </div>
+        {/* Player's Hand */}
+        {/* Assuming you want to keep rendering player's hand directly or using Player component similarly */}
+        <div className="player-hand">
+            <h2>Player's Hand: {calculateHandValue(playerHand)}</h2>
+            <Player hand={playerHand} name="Player" />
+        </div>
 
-    <div className="player-hand">
-      <h2>Player's Hand: {calculateHandValue(playerHand)}</h2>
-      {/* Display player hand and score */}
-      <Player hand={playerHand} name="Player" />
-    </div>
-
-    <div className="actions">
-    <button onClick={startNewGame}>Start Game</button>
-    <button onClick={playerHit} disabled={isGameOver}>Hit</button>
-      <button onClick={playerStand} disabled={isGameOver}>Stand</button> {/* Stand button also gets disabled on gameOver */}
-    </div>
+        {/* Actions */}
+        <div className="actions">
+            <button onClick={startNewGame}>Start Game</button>
+            <button onClick={playerHit} disabled={isGameOver}>Hit</button>
+            <button onClick={playerStand} disabled={isGameOver}>Stand</button>
+        </div>
 
     <p>{gameStatus}</p>
   </div>
