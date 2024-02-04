@@ -20,19 +20,14 @@ const GameBoard = () => {
     }
   };
   const handleSplit = () => {
-    if (playerHands.length === 1 && playerHands[0].length === 2 && playerHands[0][0].rank === playerHands[0][1].rank) {
-      const hands = [
-        [playerHands[0][0], deck.drawCard()],
-        [playerHands[0][1], deck.drawCard()],
-      ];
-      setPlayerHands(hands);
-      // Optionally, update game status or take additional actions
-    }
+    const firstHand = [playerHands[0][0], deck.drawCard()];
+    const secondHand = [playerHands[0][1], deck.drawCard()];
+    setPlayerHands([firstHand, secondHand]);
+    // Adjust bets if necessary
   };
   
-  
   const startNewGame = () => {
-    setIsGameOver(false);
+    setIsGameOver(false); // Reset the game over flag
     const newDeck = new Deck();
     newDeck.shuffleDeck();
     setDeck(newDeck);
@@ -44,75 +39,59 @@ const GameBoard = () => {
     const dealerSecondCard = newDeck.drawCard();
   
     // Update hands
-    setPlayerHand([playerFirstCard, playerSecondCard]);
+    const initialPlayerHand = [playerFirstCard, playerSecondCard];
+    setPlayerHand(initialPlayerHand);
     setDealerHand([dealerFirstCard, { ...dealerSecondCard, isFaceDown: true }]);
   
-    // Check for dealer blackjack if first card is 10 or ace
-    if (['10', 'jack', 'queen', 'king', 'ace'].includes(dealerFirstCard.rank)) {
-      const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]);
-      if (dealerHandValue === 21) {
-        // Dealer has blackjack, reveal second card and end game
-        setDealerHand([dealerFirstCard, dealerSecondCard]);
-        setGameStatus("Dealer has Blackjack! Game over.");
-        setIsGameOver(true);
-        return; // End game start function early
+    // Check for player Blackjack immediately after dealing cards
+    const playerInitialHandValue = calculateHandValue(initialPlayerHand);
+    if (playerInitialHandValue === 21) {
+      setGameStatus("Blackjack! Player wins!");
+      setIsGameOver(true); // End game since player hits Blackjack
+    } else {
+      // Check for dealer blackjack if first card is 10, J, Q, K, or Ace
+      if (['10', 'jack', 'queen', 'king', 'ace'].includes(dealerFirstCard.rank)) {
+        const dealerHandValue = calculateHandValue([dealerFirstCard, dealerSecondCard]);
+        if (dealerHandValue === 21) {
+          // Dealer has blackjack, reveal second card and end game
+          setDealerHand([dealerFirstCard, dealerSecondCard]);
+          setGameStatus("Dealer has Blackjack! Game over.");
+          setIsGameOver(true);
+        } else {
+          setGameStatus("Game in progress...");
+        }
+      } else {
+        setGameStatus("Game in progress...");
       }
     }
-  
-    setGameStatus("Game in progress...");
   };
-  // Assuming playerHand is an array of card objects with { rank, suit }
-const canSplit = playerHand.length === 2 && playerHand[0].rank === playerHand[1].rank;
-
+  
+  
 
   const playerHit = () => {
-    // Ensure deck is initialized correctly and has cards left
     if (deck && deck.cards.length > 0) {
-        // Draw a card from the deck
-        const newCard = deck.drawCard();
-
-        // Update only the current hand
-        const updatedHands = [...playerHands];
-        updatedHands[currentHandIndex] = [...updatedHands[currentHandIndex], newCard];
-        setPlayerHands(updatedHands);
-
-        // Calculate the value of the updated hand
-        const newHandValue = calculateHandValue(updatedHands[currentHandIndex]);
-
-        // Check for busts or hitting 21
-        if (newHandValue > 21) {
-            // Handle bust scenario for the current hand
-            handleBust(currentHandIndex);
-        } else if (newHandValue === 21) {
-            // Handle hitting 21 scenario
-            handleTwentyOne(currentHandIndex);
-        }
-
-        // If not bust or 21, the game continues normally
-    } else {
-        console.log("No more cards in the deck.");
-    }
-};
-// Example bust handler
-const handleBust = (handIndex) => {
-    console.log(`Hand ${handIndex + 1} busts.`);
-    // Reveal dealer's second card if this was the last hand
-    if (handIndex === playerHands.length - 1) {
+      const newCard = deck.drawCard(); // Draw a card from the deck
+      const updatedHand = [...playerHand, newCard]; // Add the new card to player's hand
+      setPlayerHand(updatedHand); // Update player's hand
+  
+      const newHandValue = calculateHandValue(updatedHand);
+      if (newHandValue > 21) {
+        // Player busts, reveal dealer's second card
         const revealedHand = dealerHand.map(card => ({ ...card, isFaceDown: false }));
         setDealerHand(revealedHand);
         setGameStatus("Bust! Dealer wins.");
-        setIsGameOver(true);
+        setIsGameOver(true); // Mark the game as over
+      } else if (newHandValue === 21) {
+        // Player hits 21, proceed to dealer's turn
+        setGameStatus("21! Player's turn ends, dealer's turn.");
+        // Optionally, you can automatically trigger dealer's actions here or wait for player to press a 'Continue' or 'Dealer's Turn' button
+        dealerTurn(); // You'll need to implement this function
+      }
+      // No need to explicitly check for less than 21 as the game continues normally
     } else {
-        // Move to the next hand if there are more hands to play
-        setCurrentHandIndex(currentHandIndex + 1);
+      console.log("No more cards in the deck or deck is not properly initialized");
     }
-};
-
-// Example 21 handler
-const handleTwentyOne = (handIndex) => {
-    console.log(`Hand ${handIndex + 1} hits 21.`);
-    // Implement logic similar to the bust handler, depending on your game rules
-};
+  };
   const dealerTurn = () => {
     let dealerHandValue = calculateHandValue(dealerHand);
     while (dealerHandValue < 17 && deck.cards.length > 0) {
@@ -252,7 +231,6 @@ const getCardValue = (rank) => {
     <button onClick={startNewGame}>Start Game</button>
     <button onClick={playerHit} disabled={isGameOver}>Hit</button>
       <button onClick={playerStand} disabled={isGameOver}>Stand</button> {/* Stand button also gets disabled on gameOver */}
-      <button onClick={handleSplit} disabled={!canSplit}>Split</button>
     </div>
 
     <p>{gameStatus}</p>
