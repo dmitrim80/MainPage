@@ -55,14 +55,17 @@ const GameBoard = () => {
   
     if (dealerHasBlackjack && playerHasBlackjack) {
       // It's a tie if both have Blackjack
+      setDealerHand([dealerFirstCard, dealerSecondCard]);
       setGameStatus("It's a tie! Both have Blackjack!");
       setIsGameOver(true);
     } else if (dealerHasBlackjack) {
       // Reveal dealer's hand if Blackjack
+      revealDealerHand();
       setDealerHand([dealerFirstCard, dealerSecondCard]);
       setGameStatus("Blackjack! Dealer wins!");
       setIsGameOver(true);
     } else if (playerHasBlackjack) {
+      setDealerHand([dealerFirstCard, dealerSecondCard]);
       setGameStatus("Blackjack! Player wins!");
       setIsGameOver(true);
     } else {
@@ -98,6 +101,7 @@ const GameBoard = () => {
     }
   };
   const dealerTurn = () => {
+    revealDealerHand();
     let dealerHandValue = calculateHandValue(dealerHand);
     while (dealerHandValue < 17 && deck.cards.length > 0) {
       const newCard = deck.drawCard();
