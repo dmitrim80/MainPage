@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from './firebase-config';
-import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
+import { storage, db, auth } from '../firebase-config';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 
 
 
 
-const Scoly = () => {
+const Aquascape = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,12 +29,6 @@ const Scoly = () => {
     const currentImages = imageList.slice(indexOfFirstImage, indexOfLastImage);
     const totalImages = imageList.length;
     const totalPages = Math.ceil(totalImages / imagesPerPage);
-
-
-  // create new collection
-  
-
-
     
     const handleEdit = () => {
         setModalEdit(true); // Open ModalEdit
@@ -47,7 +41,7 @@ const Scoly = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "scolymia", image.id);
+            const docRef = doc(db, "aquascapes", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
@@ -99,7 +93,7 @@ const Scoly = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "scolymia"), {
+            const newDocRef = await addDoc(collection(db, "aquascapes"), {
                 url,
                 imageName,
                 description: imageDescription,
@@ -135,7 +129,7 @@ const Scoly = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "scolymia"), where("imageName", "==", imageName));
+            const q = query(collection(db, "aquascapes"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -169,7 +163,7 @@ const Scoly = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "scolymia", imageId);
+                    const docRef = doc(db, "aquascapes", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -197,7 +191,7 @@ const Scoly = () => {
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "scolymia", imageId);
+            const docRef = doc(db, "aquascapes", imageId);
             await updateDoc(docRef, {
                 description: description,
                 aquascapeType: aquascapeType,
@@ -221,7 +215,7 @@ const Scoly = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "scolymia", imageId);
+                const docRef = doc(db, "aquascapes", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
@@ -351,8 +345,8 @@ const Scoly = () => {
 
     const fetchImages = async () => {
         try {
-            const scolymiaCollection = collection(db, "scolymia");
-            const descriptionDocs = await getDocs(scolymiaCollection);
+            const aquascapesCollection = collection(db, "aquascapes");
+            const descriptionDocs = await getDocs(aquascapesCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -437,7 +431,7 @@ const Scoly = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "scolymia", id);
+            const docRef = doc(db, "aquascapes", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -459,7 +453,6 @@ const Scoly = () => {
     
     return (
         <>
-        
         
         <input 
                 type="text" 
@@ -532,4 +525,4 @@ const Scoly = () => {
     );
 };
 
-export default Scoly;
+export default Aquascape;

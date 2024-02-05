@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from './firebase-config';
-import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
+import { storage, db, auth } from '../firebase-config';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc } from 'firebase/firestore';
 import { v4 } from 'uuid';
 
 
 
 
-const Chalice = () => {
+const Acro = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,11 +15,11 @@ const Chalice = () => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedDescription, setSelectedDescription] = useState('');
     const [selectedLastEdited, setSelectedLastEdited] = useState(null);
-    const [selectedImageAquascapeType, setSelectedImageAquascapeType] = useState('')
+    const [selectedImageCoralName, setSelectedImageCoralName] = useState('')
     const [descriptions, setDescriptions] = useState({});
     const [currentUser, setCurrentUser] = useState(null); 
     const [imageDescription, setImageDescription] = useState('');
-    const [imageAquascapeType, setImageAquascapeType] = useState('');
+    const [imageCoralName, setImageCoralName] = useState('');
     const [fileInputValue, setFileInputValue] = useState("");
     const [currentImageId, setCurrentImageId] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
@@ -29,13 +29,8 @@ const Chalice = () => {
     const currentImages = imageList.slice(indexOfFirstImage, indexOfLastImage);
     const totalImages = imageList.length;
     const totalPages = Math.ceil(totalImages / imagesPerPage);
-
-
-  // create new collection
-  
-
-
     
+
     const handleEdit = () => {
         setModalEdit(true); // Open ModalEdit
         setIsModalOpen(false); // Close ImageModal
@@ -47,26 +42,18 @@ const Chalice = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "chalice", image.id);
+            const docRef = doc(db, "corals", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
-                console.log("Fetched data for image click:", imageData);
-    
+                console.log("Fetched data for image click:", imageData); // Debugging log
                 setSelectedImage(image.url);
                 setSelectedDescription(imageData.description);
-                setSelectedImageAquascapeType(imageData.aquascapeType);
-    
-                let lastEditedDate = '';
-                if (imageData.lastEdited && imageData.lastEdited.toDate instanceof Function) {
-                    lastEditedDate = imageData.lastEdited.toDate().toLocaleString();
-                }
-    
+                setSelectedImageCoralName(imageData.coralName);
                 setSelectedLastEdited({
                     editedBy: imageData.lastEditedBy,
-                    lastEdited: lastEditedDate
+                    lastEdited: imageData.lastEdited.toDate().toLocaleString()
                 });
-    
                 setCurrentImageId(image.id);
                 setIsModalOpen(true);
             } else {
@@ -78,19 +65,20 @@ const Chalice = () => {
     };
     
     
+    
 
     const handleDescriptionInput = (event) => {
         setImageDescription(event.target.value);
     };
-    const handleAquascapeTypeInput = (event) => {
-        setImageAquascapeType(event.target.value)
+    const handleCoralNameInput = (event) => {
+        setImageCoralName(event.target.value)
     }
     
     const uploadImage = async () => {
         if (!imageUpload) return;
     
         const imageName = v4(); // Random file name
-        const imageRef = ref(storage, `Aquascape Ideas/${imageName}`);
+        const imageRef = ref(storage, `Acropora/${imageName}`);
         const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
 
         try {
@@ -99,11 +87,11 @@ const Chalice = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "chalice"), {
+            const newDocRef = await addDoc(collection(db, "corals"), {
                 url,
                 imageName,
                 description: imageDescription,
-                aquascapeType: imageAquascapeType,
+                coralName: imageCoralName,
                 lastEdited: new Date(), // Use current date
                 lastEditedBy: userEmail // Use current user or 'Unknown'
             });
@@ -114,14 +102,14 @@ const Chalice = () => {
                 url,
                 imageName,
                 description: imageDescription,
-                aquascapeType:imageAquascapeType,
+                coralName:imageCoralName,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             }, ...prevList]);
     // Reset the description input after upload
    
             setImageDescription('');
-            setImageAquascapeType('');
+            setImageCoralName('');
             setFileInputValue(''); // Reset file input value
         } catch (error) {
             console.error("Error uploading image or creating Firestore document:", error);
@@ -135,7 +123,7 @@ const Chalice = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "chalice"), where("imageName", "==", imageName));
+            const q = query(collection(db, "corals"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -155,9 +143,9 @@ const Chalice = () => {
 
     const deleteImage = async (imageId, imageName, isOrphan) => {
         console.log("Attempting to delete image with Name:", imageName);
-        // Ensure the image name does not contain 'Aquascape Ideas/' prefix
-        if (imageName.startsWith('Aquascape Ideas/')) {
-            imageName = imageName.replace('Aquascape Ideas/', '');
+        // Ensure the image name does not contain 'Acropora/' prefix
+        if (imageName.startsWith('Acropora/')) {
+            imageName = imageName.replace('Acropora/', '');
         }
     
         
@@ -165,11 +153,11 @@ const Chalice = () => {
         const isConfirmed = window.confirm("Are you sure you want to delete this image?");
         if (isConfirmed) {
         try {
-            const imageRef = ref(storage, `Aquascape Ideas/${imageName}`);
+            const imageRef = ref(storage, `Acropora/${imageName}`);
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "chalice", imageId);
+                    const docRef = doc(db, "corals", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -182,25 +170,25 @@ const Chalice = () => {
         }
     };
     
-    const onSaveEdit = async (imageId, description, aquascapeType) => {
-        console.log("onSaveEdit params:", { imageId, description, aquascapeType });
+    const onSaveEdit = async (imageId, description, coralName) => {
+        console.log("onSaveEdit params:", { imageId, description, coralName });
 
 
-        if (!imageId || description === undefined || aquascapeType === undefined) {
+        if (!imageId || description === undefined || coralName === undefined) {
             let missingData = '';
             if (!imageId) missingData += 'Image ID ';
             if (description === undefined) missingData += 'Description ';
-            if (aquascapeType === undefined) missingData += 'Aquascape Type ';
+            if (coralName === undefined) missingData += 'Coral Name ';
             alert(`Cannot save changes: Missing information (${missingData.trim()})`);
             return;
         }
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "chalice", imageId);
+            const docRef = doc(db, "corals", imageId);
             await updateDoc(docRef, {
                 description: description,
-                aquascapeType: aquascapeType,
+                coralName: coralName,
                 lastEdited: new Date(),
                 lastEditedBy: userEmail
             });
@@ -213,7 +201,7 @@ const Chalice = () => {
                     return { 
                         ...image, 
                         description: description, 
-                        aquascapeType: aquascapeType,
+                        coralName: coralName,
                         lastEditedBy: userEmail, 
                         lastEdited: new Date()
                     };
@@ -221,12 +209,12 @@ const Chalice = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "chalice", imageId);
+                const docRef = doc(db, "corals", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
                     setSelectedDescription(imageData.description);
-                    setSelectedImageAquascapeType(imageData.aquascapeType);
+                    setSelectedImageCoralName(imageData.coralName);
                     // Update last edited info if needed
                 } else {
                     console.log("Document not found after update.");
@@ -245,7 +233,7 @@ const Chalice = () => {
     };
     
     
-    const ImageModal = ({ url, description, imageAquascapeType, lastEdited, onClose, onEdit }) => {
+    const ImageModal = ({ url, description, imageCoralName, lastEdited, onClose, onEdit }) => {
         if (!url) return null;
     
         return (
@@ -258,8 +246,8 @@ const Chalice = () => {
                         <tbody>
                             <tr>
                                 <td className="coral-name-cell">
-                                    <div className="coral-name-label"><b>Aquascape Type:</b></div>
-                                    <div className="coral-name-value">{imageAquascapeType}</div>
+                                    <div className="coral-name-label"><b>Coral Name:</b></div>
+                                    <div className="coral-name-value">{imageCoralName}</div>
                                 </td>
                                 <td className="last-edited-cell">
                                     Last Edited: {lastEdited.lastEdited}<br />
@@ -282,17 +270,17 @@ const Chalice = () => {
         );
     };
     
-    const ModalEdit = ({ url, description, imageAquascapeType, lastEdited, onClose, onSaveEdit, imageId }) => {
+    const ModalEdit = ({ url, description, imageCoralName, lastEdited, onClose, onSaveEdit, imageId }) => {
         const [editableDescription, setEditableDescription] = useState(description);
-        const [editableAquascapeType, setEditableAquascapeType] = useState(imageAquascapeType);
+        const [editableCoralName, setEditableCoralName] = useState(imageCoralName);
     
         useEffect(() => {
             setEditableDescription(description);
-            setEditableAquascapeType(imageAquascapeType);
-        }, [description, imageAquascapeType]);
+            setEditableCoralName(imageCoralName);
+        }, [description, imageCoralName]);
     
         const handleSave = () => {
-            if (!editableDescription || !editableAquascapeType) {
+            if (!editableDescription || !editableCoralName) {
                 alert("Please fill out all fields before saving.");
                 return;
             }
@@ -300,7 +288,7 @@ const Chalice = () => {
                 alert("Error: Image ID is missing.");
                 return;
             }
-            onSaveEdit(currentImageId, editableDescription, editableAquascapeType);
+            onSaveEdit(currentImageId, editableDescription, editableCoralName);
             onClose();
         };
     
@@ -314,11 +302,11 @@ const Chalice = () => {
                         <tbody>
                             <tr>
                                 <td className="coral-name-cell">
-                                    <p><b>Aquascape Type:</b></p>
+                                    <p><b>Coral Name:</b></p>
                                     <input 
                                         type="text" 
-                                        value={editableAquascapeType} 
-                                        onChange={(e) => setEditableAquascapeType(e.target.value)} 
+                                        value={editableCoralName} 
+                                        onChange={(e) => setEditableCoralName(e.target.value)} 
                                         className="modal-edit-coral-name-input"
                                     />
                                 </td>
@@ -351,8 +339,8 @@ const Chalice = () => {
 
     const fetchImages = async () => {
         try {
-            const chaliceCollection = collection(db, "chalice");
-            const descriptionDocs = await getDocs(chaliceCollection);
+            const coralsCollection = collection(db, "corals");
+            const descriptionDocs = await getDocs(coralsCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -437,7 +425,7 @@ const Chalice = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "chalice", id);
+            const docRef = doc(db, "corals", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -459,18 +447,16 @@ const Chalice = () => {
     
     return (
         <>
-     
         
- 
         <input 
                 type="text" 
-                id="AquascapeTypeInput"  // Adding an id attribute
-                name="aquascapeType"     // Adding a name attribute
+                id="coralNameInput"  // Adding an id attribute
+                name="coralName"     // Adding a name attribute
                 className="coral-name-input"
-                placeholder="Aquascape Type..."
+                placeholder="Coral Name..."
                 maxLength="30"
-                value={imageAquascapeType}
-                onChange={handleAquascapeTypeInput}
+                value={imageCoralName}
+                onChange={handleCoralNameInput}
             />
             <input 
                 type="text" 
@@ -512,7 +498,7 @@ const Chalice = () => {
                 <ImageModal
                 url={selectedImage} 
                 description={selectedDescription} 
-                imageAquascapeType={selectedImageAquascapeType}
+                imageCoralName={selectedImageCoralName}
                 lastEdited={selectedLastEdited}
                 onClose={() => setIsModalOpen(false)}
                 onEdit={handleEdit}
@@ -523,7 +509,7 @@ const Chalice = () => {
                 <ModalEdit 
                     url={selectedImage} 
                     description={selectedDescription} 
-                    imageAquascapeType={selectedImageAquascapeType}
+                    imageCoralName={selectedImageCoralName}
                     lastEdited={selectedLastEdited}
                     onSaveEdit={onSaveEdit}
                     onClose={handleDismiss}
@@ -533,4 +519,4 @@ const Chalice = () => {
     );
 };
 
-export default Chalice;
+export default Acro;

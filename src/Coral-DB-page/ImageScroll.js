@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { storage } from './firebase-config'; // Adjust this import according to your Firebase configuration file
+import { storage } from '../firebase-config'; // Adjust this import according to your Firebase configuration file
 import { ref, list, getDownloadURL } from 'firebase/storage';
 
     const ImageScroll = () => {

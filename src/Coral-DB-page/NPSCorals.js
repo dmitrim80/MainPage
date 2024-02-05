@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from './firebase-config';
+import { storage, db, auth } from '../firebase-config';
 import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
 import { v4 } from 'uuid';
@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 
 
 
-const Monti = () => {
+const NPSCorals = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,6 @@ const Monti = () => {
 
 
   // create new collection
- 
 
 
     
@@ -47,7 +46,7 @@ const Monti = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "montipora", image.id);
+            const docRef = doc(db, "nps corals", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
@@ -99,7 +98,7 @@ const Monti = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "montipora"), {
+            const newDocRef = await addDoc(collection(db, "nps corals"), {
                 url,
                 imageName,
                 description: imageDescription,
@@ -135,7 +134,7 @@ const Monti = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "montipora"), where("imageName", "==", imageName));
+            const q = query(collection(db, "nps corals"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -169,7 +168,7 @@ const Monti = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "montipora", imageId);
+                    const docRef = doc(db, "nps corals", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -197,7 +196,7 @@ const Monti = () => {
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "montipora", imageId);
+            const docRef = doc(db, "nps corals", imageId);
             await updateDoc(docRef, {
                 description: description,
                 aquascapeType: aquascapeType,
@@ -221,7 +220,7 @@ const Monti = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "montipora", imageId);
+                const docRef = doc(db, "nps corals", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
@@ -351,8 +350,8 @@ const Monti = () => {
 
     const fetchImages = async () => {
         try {
-            const montiporaCollection = collection(db, "montipora");
-            const descriptionDocs = await getDocs(montiporaCollection);
+            const npsCoralsCollection = collection(db, "nps corals");
+            const descriptionDocs = await getDocs(npsCoralsCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -437,7 +436,7 @@ const Monti = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "montipora", id);
+            const docRef = doc(db, "nps corals", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -532,4 +531,4 @@ const Monti = () => {
     );
 };
 
-export default Monti;
+export default NPSCorals;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from './firebase-config';
+import { storage, db, auth } from '../firebase-config';
 import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
 import { v4 } from 'uuid';
@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 
 
 
-const Favia = () => {
+const Chalice = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,8 +32,7 @@ const Favia = () => {
 
 
   // create new collection
- 
-
+  
 
 
     
@@ -48,7 +47,7 @@ const Favia = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "favia", image.id);
+            const docRef = doc(db, "chalice", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
@@ -100,7 +99,7 @@ const Favia = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "favia"), {
+            const newDocRef = await addDoc(collection(db, "chalice"), {
                 url,
                 imageName,
                 description: imageDescription,
@@ -136,7 +135,7 @@ const Favia = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "favia"), where("imageName", "==", imageName));
+            const q = query(collection(db, "chalice"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -170,7 +169,7 @@ const Favia = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "favia", imageId);
+                    const docRef = doc(db, "chalice", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -198,7 +197,7 @@ const Favia = () => {
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "favia", imageId);
+            const docRef = doc(db, "chalice", imageId);
             await updateDoc(docRef, {
                 description: description,
                 aquascapeType: aquascapeType,
@@ -222,7 +221,7 @@ const Favia = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "favia", imageId);
+                const docRef = doc(db, "chalice", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
@@ -352,8 +351,8 @@ const Favia = () => {
 
     const fetchImages = async () => {
         try {
-            const faviaCollection = collection(db, "favia");
-            const descriptionDocs = await getDocs(faviaCollection);
+            const chaliceCollection = collection(db, "chalice");
+            const descriptionDocs = await getDocs(chaliceCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -438,7 +437,7 @@ const Favia = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "favia", id);
+            const docRef = doc(db, "chalice", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -460,8 +459,9 @@ const Favia = () => {
     
     return (
         <>
-   
+     
         
+ 
         <input 
                 type="text" 
                 id="AquascapeTypeInput"  // Adding an id attribute
@@ -533,4 +533,4 @@ const Favia = () => {
     );
 };
 
-export default Favia;
+export default Chalice;
