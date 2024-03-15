@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="trainingstyle.css">
+
+</head>
+<body>
+    <h1 id="myH1">Training</h1>
+    <form class="weatherForm">
+        <input type="text" class="cityInput" placeholder="Enter City">
+        <button type="submit">Get Weather</button>
+    </form>
+    <div class="weather-card" style="display: none">
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <input type="text" id="pokemonName" placeholder="Enter Pokemon name">
+    <button id="fetchPokemonBtn" onclick="fetchData()">Fetch Pokemon</button>
+    <br>
+    <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none;">
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="slider">
+        <button class="previous" onclick="prevSlide()">&#10094</button>
+        <button class="next" onclick="nextSlide()">&#10095</button>
+        <div class="slides">
+            <img class="slide" src="./car_images/911-black.png" alt="911 Black"> 
+            <img class="slide" src="./car_images/911-red.png" alt="911 Red"> 
+            <img class="slide" src="./car_images/911-white.png" alt="911 White"> 
+            <img class="slide" src="./car_images/911-lime.png" alt="911 Lime"> 
+            <img class="slide" src="./car_images/911-yellow.png" alt="911 Yellow"> 
+            <img class="slide" src="./car_images/911-blue.png" alt="911 Blue"> 
+            <img class="slide" src="./car_images/911-green.png" alt="911 Green"> 
+        </div>
+        
+    </div>
+    <br>
+    <h1>Rock - Paper - Scissors</h1>
+    <div class="choices">
+        <button onclick="playGame('rock')">👊</button>
+        <button onclick="playGame('paper')">✋</button>
+        <button onclick="playGame('scissors')">✌️</button>    
+    </div>
+    <div id="playerDisplay">PLAYER: </div>
+    <div id="computerDisplay">COMPUTER: </div>
+    <div id="resultDisplay"></div>
+    
+    <div class="scoreDisplay">Player Score: 
+        <span id="playerScoreDisplay">0</span>     
+    </div>
+    
+    <div class="scoreDisplay">Computer Score: 
+        <span id="computerScoreDisplay">0</span>   
+    </div>
+
+
+
+
+
+<br>
+    <button id="btn-mybtn"> My Button</button>
+
+    <button class="myButtons">Button 1</button>
+    <button class="myButtons">Button 2</button>
+    <button class="myButtons">Button 3</button>
+    <button class="myButtons">Button 4</button>
+   
+
+        
+
+
+    
+<div id="myBox2">
+    <img src="./dice_images/supercar.png" title="car" id="img-supercar">
+    <button id="hideBtn">Hide</button>
+</div>
+<div id="myBox">😀
+</div>
+<button id="myButton">Click Me</button>
+    <ol id="list-fruits">
+        <li id="apple1">apple</li>
+        <li id="orange1">orange</li>
+        <li id="banana1">banana</li>
+    </ol>
+    <div id="box1" class="box">
+        <p>Box1</p>
+    </div>
+    <div id="box2" class="box">
+        <p>Box2</p>
+    </div>
+    <div id="box3" class="box">
+        <p>Box3</p>
+    </div>
+    <div id="box4" class="box">
+        <p>Box4</p>
+    </div>
+
+
+
+    <h2>    FOOD</h2>
+    <ul id="fruits">
+        <li id="apple">apple</li>
+        <li>orange</li>
+        <li>banana</li>
+
+    </ul>
+    <ul id="vegetables">
+        <li id="carrot">carrots</li>
+        <li id="onions">onions</li>
+        <li id="potatoes">potatoes</li>
+
+    </ul>
+    <ul id="desserts">
+        <li>cake</li>
+        <li>pie</li>
+        <li>ice cream</li>
+
+    </ul>
+    <h4> Root Vegetables </h4>
+    <ul>
+        <li>Beets </li>
+        <li>Carrots </li>
+        <li>Potatoes </li>
+    </ul>
+    <h4> Non-Root Vegetables</h4>
+    <ul>
+        <li>Broccoli </li>
+        <li>Celery </li>
+        <li>Onions </li>
+    </ul>
+    <p>Calculator</p>
+    <div id="calculator-container">
+        <input id="display-calculator" readonly title="Calculator Display">
+        <div id="keys">
+            <button onclick="appendToDisplay(`+`)" class="operator-btn">+</button>
+            <button onclick="appendToDisplay(`7`)" class="key-btn" >7</button>
+            <button onclick="appendToDisplay(`8`)"class="key-btn">8</button>
+            <button onclick="appendToDisplay(`9`)"class="key-btn">9</button>
+            <button onclick="appendToDisplay(`-`)" class="operator-btn">-</button>
+            <button onclick="appendToDisplay(`4`)"class="key-btn">4</button>
+            <button onclick="appendToDisplay(`5`)"class="key-btn">5</button>
+            <button onclick="appendToDisplay(`6`)"class="key-btn">6</button>
+            <button onclick="appendToDisplay(`*`)" class="operator-btn">*</button>
+            <button onclick="appendToDisplay(`1`)"class="key-btn">1</button>
+            <button onclick="appendToDisplay(`2`)"class="key-btn">2</button>
+            <button onclick="appendToDisplay(`3`)"class="key-btn">3</button>
+            <button onclick="appendToDisplay(`/`)" class="operator-btn">/</button>
+            <button onclick="appendToDisplay(`0`)"class="key-btn">0</button>
+            <button onclick="appendToDisplay(`.`)"class="key-btn">.</button>
+            <button onclick="calculate()"class="key-btn">=</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+        </div>
+    </div>
+    <div id="clock-container">
+        <p>Clock</p>
+        <div id="clock">00:00:00</div>
+    </div>
+    <p>Stopwatch</p>
+    <div id="timer-container">
+        <p id="counter">00:00:00:00</p>
+        <button class="btn-timer-start" onclick="startCounter()">Start</button>
+        <button class="btn-timer-stop" onclick="stopCounter()">Stop</button>
+        <button class="btn-timer-reset" onclick="resetCounter()">Reset</button>
+    </div>
+    
+    <div class="game-container">
+        <h1>Random Password Generator</h1>
+        <div class="chkBox-container">
+                <label for="passwordLength">
+                <input type="number" id="passwordLength" value="10" min="10"/>
+                Password Length</label>
+                <label for="chkLowerCase">
+                <input type="checkbox" id="chkLowerCase"/>
+                include lower case letters</label>
+                <label for="chkUpperCase">
+                <input type="checkbox" id="chkUpperCase"/>
+                include upper case letters</label>
+                <label for="chkNumbers">
+                <input type="checkbox" id="chkNumbers"/>
+                include numbers letters</label>
+                <label for="chkSymbols">
+                <input type="checkbox" id="chkSymbols"/>
+                include symbols letters</label>
+                <p id="txt--password"></p>
+                <button class="btn--RandomPassword" onclick="generatePassword()">
+                Create Password</button>
+                <p id="txt-security-supercomputer"></p>
+                <p id="txt-security-regularcomputer"></p>
+        </div>
+        
+        
+                                        
+
+    </div>
+
+    <div class="game-container2">
+        <h1 style="color: aliceblue;">Dice Roller</h1>        
+
+        <label for="numOfDice" id="labelDice"># of Dice
+        <input type="number" name="numDice" value="1" min="1" id="numOfDice"/>
+        </label>
+        <button class="btnRollDice" onclick="rollDice()">Roll Dice</button>
+        <div id="diceResult"></div>
+        <div id="diceImages"></div>
+    </div>
+    <br>
+    <div class="game-container">
+        <p id="gameResult">Guess the Number!</p>
+        <label for="gameRange" id="labelGame">Enter range of numbers to start the game:</label><br>
+        <input type="text" id="gameRange" name="range" placeholder="example 1-100" class="guess_input"/>
+        <br>
+        <button id="gameBTN">Start the game</button>
+    </div>
+    
+   
+
+ 
+
+    
+    <label for="youAgeInput">Enter your age</label>
+    <input id="youAgeInput" type="number">
+    <button id="ageButton">submit</button>
+    <p id="resultElement"></p>
+
+    <p>Dice</p>
+    <br>
+    <button class="diceButton" id="diceButton">roll</button>
+    <br>
+    <label id="diceLabel1" class="diceLabel">0</label><br>
+    <label id="diceLabel2"class="diceLabel">0</label><br>
+    <label id="diceLabel3"class="diceLabel">0</label><br>
+    <br>
+
+    <label id="countLabel">0</label><br>
+    <div id="btnContainer">
+        <button id="decreaseBtn"class="buttons">decrease</button>
+        <button id="resetBtn"class="buttons">reset</button>
+        <button id="increaseBtn"class="buttons">increase</button>
+    </div>
+
+    <h2 id="myH2">Welcome</h2>
+    <label for="myText">username: </label>
+    <input type="text" id="myText">
+    <button id="mySubmit">submit</button>
+
+    <script src="trainingscript.js"></script>
+    <script type="module" src="index.js"></script>
+    
+</body>
+</html>

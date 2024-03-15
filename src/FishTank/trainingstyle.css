@@ -1,0 +1,485 @@
+body{
+    justify-content: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    background-color:rgba(240, 248, 255, 0.95);
+}
+#countLabel{
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Helvetica;
+
+}
+#btnContainer{
+    text-align: center;
+
+}
+.buttons{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: hsl(240, 30%, 60%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color  0.25s;
+}
+.buttons:hover{
+    background-color: hsl(240, 80%, 53%);
+}
+.diceButton{
+    font-size: 3em;
+    padding: 5px 25px;
+    border-radius: 7px;
+}
+.diceLabel{
+    font-size: 3em;
+}
+.game-container{
+    background-color: rgb(49, 153, 153);
+    width: 300px;
+    height: 500px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+.game-container label{
+    font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:azure;
+}
+
+.chkBox-container{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+#passwordLength{
+    width: 65px;
+    font-size: 2rem;
+}
+.game-container2{
+    background-color:blueviolet;
+    width: 300px;
+    height: 600px;
+    align-items: center;
+    color: aliceblue;
+}
+.game-container label{
+    font-size: 1rem;
+}
+
+#gameResult{
+    font-weight: bold;
+    font-size: large;
+}
+.guess_input{
+    margin-top: 15px;
+    height: 50px;
+    font-size: large;
+    margin-bottom: 15px;
+    text-align: center;
+
+}
+#gameBTN{
+    font-size: larger;
+    font-weight:400;
+    cursor: pointer;
+
+}
+#labelDice{
+    color:aliceblue;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+#numOfDice{
+    width: 50px;
+    font-size: 1.5rem;
+}
+
+#diceResult{
+    margin-top: 10px;
+    color: aliceblue;
+}
+#diceImages{
+margin-top: 10px;
+}
+#txt--password{
+    width: 200px;
+    background-color: aliceblue;
+    color: black;
+    font-size: 1rem;
+}
+.btn--RandomPassword{
+    width: 200px;
+    font-size: 1.2rem;
+}
+#txt-security-supercomputer{
+    width: 200px;
+    background-color: aliceblue;
+    color: black;
+    font-size: 1rem;
+}
+#txt-security-regularcomputer{
+    width: 200px;
+    background-color: aliceblue;
+    color: black;
+    font-size: 1rem; 
+}
+
+
+
+.btn-timer-start{
+    background-color: hsla(90, 67%, 58%, 0.84);
+}
+.btn-timer-start:hover{
+    background-color: hsl(89, 20%, 52%);
+}
+.btn-timer-stop{
+    background-color: hsla(0, 79%, 50%, 0.875);
+}
+.btn-timer-stop:hover{
+    background-color: hsla(15, 100%, 55%, 0.818);
+}
+.btn-timer-reset{
+    background-color: hsla(204, 72%, 28%, 0.711);
+}
+.btn-timer-reset:hover{
+    background-color: hsla(204, 89%, 69%, 0.911);
+}
+#timer-container {
+    background-color: hsla(34, 57%, 70%, 0.804);
+    border-radius: 50px;
+    border: 5px solid;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#timer-container button{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 5px;
+    width: 125px;
+    border:none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+#clock{
+    font-family: monospace;
+    font-size: 4.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+#counter{
+    
+    
+    margin-top: 20px;
+    font-size: 4rem;
+    font-family: monospace;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px;
+    
+}
+
+#calculator-container{
+   font-family: Arial, sans-serif;
+   background-color: hsl(0, 0%, 15%);
+   border-radius: 15px;
+   max-width: 500px;
+   overflow: hidden;
+   margin: 0;
+
+}
+#display-calculator{
+    width: 100%;
+    padding: 20px;
+    font-size: 5rem;
+    text-align: left;
+    border: none;
+    background-color: hsla(0, 0%, 20%);
+    color: aliceblue;
+}
+#keys{
+    display: grid;
+    grid-template-columns: repeat(4,1fr); 
+    gap:10px;
+    padding: 25px;
+} 
+#keys button{
+    padding: auto;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px;
+    color: aliceblue;
+    font-size: 3rem;
+    font-weight: bold;
+}
+.key-btn{
+    padding: auto;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 2px;
+    background-color: hsla(0, 0%, 30%);
+    color: aliceblue;
+    font-size: 3rem;
+    font-weight: bold;
+
+}
+#calculator-container button:hover{
+    background-color: hsla(0, 0%, 40%);
+}
+#calculator-container button:active{
+    background-color: hsla(0, 0%, 50%);
+}
+
+.operator-btn{
+    background-color: hsla(39, 100%, 50%);
+}
+#calculator-container .operator-btn:hover {
+    background-color: hsla(39, 100%, 50%, 0.7); 
+}
+
+
+#calculator-container .operator-btn:active {
+    background-color: hsla(39, 100%, 50%, 0.9); 
+}
+.box{
+    border: 3px solid;
+    width: 300px;
+    height: 125px;
+}
+#myBox{
+    background-color: lightgreen;
+    width: 350px;
+    height: 300px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    font-size: 15rem;
+}
+#myBox2{
+    background-color: hsl(120, 11%, 93%);
+    width: 75%;
+    height: 750px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    font-size: 2rem;
+}
+#myButton{
+    font-size: 3rem;
+
+}
+#img-supercar{
+    width: 500px;
+    
+}
+#hideBtn{
+    font-size: 2rem;
+}
+.myButtons{
+    font-size: 4rem;
+    margin: 10px;
+    border:none;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+#btn-mybtn{
+    width: 150px;
+    height: 50px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    border: none;
+    background-color: hsl(240, 38%, 74%);
+
+}
+.hover{
+    box-shadow: 0 0 15px hwb(0 2% 0% / 0.9);
+    font-weight: bold;
+}
+.disabled{
+    background-color:brown;
+    color: aliceblue;
+}
+.enabled{
+    color: white;
+    background-color: blue;
+}
+#myH1{
+    font-size: 4rem;
+}
+.choices{
+    margin-bottom: 30px;
+
+}
+.choices button{
+    font-size: 7.5rem;
+    min-width: 160px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: hsl(184, 71%, 62%);
+    cursor:pointer;
+    transition: background-color 0.5s ease;
+}
+
+.choices button:hover{
+    background-color: hsl(184, 71%, 82%);
+}
+#playerDisplay, #computerDisplay{
+    font-size: 2.5rem;
+    font-weight:600;
+
+}
+#resultDisplay{
+    font-size: 5rem;
+    margin: 30px 0;
+    font-weight: bold;
+}
+.scoreDisplay{
+    font-size: 2rem;
+}
+.greenText, #playerScoreDisplay{
+    color: rgb(11, 255, 11);
+}
+.redText, #computerScoreDisplay{
+    color:red;
+}
+.slider{
+    position: relative;
+    height: 400px;
+    margin:auto;
+    overflow: hidden;
+}
+.slider img{
+    height: 400px;
+    display: none;
+}
+img.displaySlide{
+    display: block;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+.slider button{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    padding: 10px 15px;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.previous{
+    left:0;
+}
+.next{
+    right:0;
+}
+@keyframes fade{
+    from {opacity:0.5}
+    to {opacity: 1}
+}
+#pokemonName{
+    font-size: 2rem;
+}
+#fetchPokemonBtn{
+    font-size: 2rem;
+}
+#pokemonSprite{
+    width: 500px;
+}
+.weatherForm{
+    margin: 20px;
+}
+.cityInput{
+    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid hsla(0, 0%, 20%,0.3);
+    border-radius: 10px;
+    margin: 10px;
+    width: 300px;
+}
+button[type="submit"]{
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: rgb(54, 79, 28);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.weather-card{
+    background:linear-gradient(180deg,hsl(240, 100%, 70%),hsl(39, 100%, 70%));
+    padding: 50px;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.5);
+    border-radius: 10px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather-card h1{
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 25px;
+
+}
+.weather-card p{
+    font-size: 1.5rem;
+    margin: 5px 0;
+
+}
+.cityDisplay, .tempDisplay{
+    font-size: 3.5rem;
+    font-weight: bold;
+    color:hsla(0, 0%, 0%, 0.75);
+    margin-bottom: 25px;
+
+}
+.humidityDisplay{
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+.descDisplay{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2rem;
+}
+#weatherEmoji{
+    font-size: 7.5rem;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.75);
+}
+.errorDisplay{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color:hsla(0, 0%, 0%, 0.75);
+}

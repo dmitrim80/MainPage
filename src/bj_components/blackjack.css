@@ -27,6 +27,7 @@
     align-items: center;
 }
 
+
 .hand, .dealer-hand, .player-hand {
     display: flex;
     flex-direction: row; /* Lay out children (cards) in a row */

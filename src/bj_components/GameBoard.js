@@ -28,7 +28,7 @@ const GameBoard = () => {
   
   const startNewGame = () => {
     setIsGameOver(false); // Reset the game over flag
-    const newDeck = new Deck();
+    const newDeck = new Deck(); //creating new class
     newDeck.shuffleDeck();
     setDeck(newDeck);
   
@@ -220,8 +220,6 @@ const getCardValue = (rank) => {
 
     <div className="game-board">
         <h1>Blackjack Game</h1>
-        {/* Render Dealer's Hand using Player Component */}
-        {/* Assuming the dealer's second card visibility is controlled by the isFaceDown property */}
         <div className="dealer-hand">
           <div className='h3-container'>
           <h3 className='dealer'>Dealer:
