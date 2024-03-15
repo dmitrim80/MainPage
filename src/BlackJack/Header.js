@@ -5,7 +5,7 @@ const Header = () => {
     <div id='blackjack-header-container'>
         <div id='chips-count'>Chips:</div>
         <div id='games-count'>Game Count:</div>
-        <div id='game-settings'>Settings</div>
+        <div id='game-settings'>⚙️</div>
     </div>
   )
 }

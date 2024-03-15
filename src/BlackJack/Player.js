@@ -16,7 +16,7 @@ const Player = ({hand,isDealer}) => {
             ))}
             </div>
              ) : (
-            <p>No cards yet</p>
+            <p></p>
         )}
         </div>
 

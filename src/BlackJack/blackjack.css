@@ -48,11 +48,38 @@ body{
 
 
 #blackjack-header-container{
+  margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
-  
+}
+#game-settings{
+margin-right: 5px;
+border: 1px solid gold;
+background-color: hsla(25, 72%, 11%, 0.96);
+color: aliceblue;
+border-radius: 15px;
+width: 10%;
+font-size: 1.2rem;
+text-align: center;
+}
+#chips-count{
+margin-left: 5px;
+border: 1px solid gold;
+background-color: hsla(25, 72%, 11%, 0.96);
+color: aliceblue;
+border-radius: 15px;
+width: 40%;
+text-align: center;
+
+}
+#games-count{
+  border: 1px solid gold;
+  background-color: hsla(25, 72%, 11%, 0.96);
+  color: aliceblue;
+  border-radius: 15px;
+  width: 40%;
+  text-align: center;
 }
 
 

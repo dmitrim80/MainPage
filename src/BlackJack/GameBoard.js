@@ -3,6 +3,7 @@
     import Player from './Player';
     import ScoreBoard from "./ScoreBoard";
     import Controls from "./Controls";
+    import Header from "./Header";
 
 
 
@@ -304,6 +305,8 @@
 
         return (
             <>
+                <Header/>
+                <div id='blackjack-header'>BLACKJACK</div>
                 <ScoreBoard 
                 playerHandValue={playerHandValue}
                 dealerHandValue={dealerHandValue}
