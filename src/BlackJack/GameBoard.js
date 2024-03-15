@@ -1,7 +1,6 @@
     import React, { useEffect, useState } from "react";
     import Deck from './Deck';
     import Player from './Player';
-    import ScoreBoard from "./ScoreBoard";
     import Controls from "./Controls";
     import Header from "./Header";
 
@@ -305,26 +304,23 @@
 
         return (
             <>
-                <Header/>
-                <div id='blackjack-header'>BLACKJACK</div>
-                <ScoreBoard 
-                playerHandValue={playerHandValue}
-                dealerHandValue={dealerHandValue}
-                result={result}
-                bet={bet}
-                playerChips={playerChips}
-                gameMessage={gameMessage}
+                <Header
+                    playerHandValue={playerHandValue}
+                    dealerHandValue={dealerHandValue}
+                    result={result}
+                    playerChips={playerChips}
+                    gameMessage={gameMessage}
                 />
                 <Player hand={dealerHand} isDealer={true} />
                 <Player hand={playerHand} isDealer={false} />
                 <Controls 
-                handleHit={handleHit}  
-                handleStand={handleStand}
-                handleDouble={handleDouble}
-                onNewGame={handleNewGame}
-                gameRunning={gameRunning}
-                handleBet={handleBet}
-                resetBet={resetBet}
+                    handleHit={handleHit}  
+                    handleStand={handleStand}
+                    handleDouble={handleDouble}
+                    onNewGame={handleNewGame}
+                    gameRunning={gameRunning}
+                    handleBet={handleBet}
+                    resetBet={resetBet}
                 />
             </>
         );

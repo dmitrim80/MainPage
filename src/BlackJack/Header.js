@@ -1,12 +1,16 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMessage}) => {
   return (
-    <div id='blackjack-header-container'>
-        <div id='chips-count'>Chips:</div>
-        <div id='games-count'>Game Count:</div>
+    <>
+      <div id='blackjack-header-container'>
+        <div id='chips-count'>{`$ ${playerChips}`}</div>
+        <div id='games-count'></div>
         <div id='game-settings'>⚙️</div>
-    </div>
+      </div>
+      <div id='blackjack-header'>BLACKJACK</div>
+    </>
+    
   )
 }
 

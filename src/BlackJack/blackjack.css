@@ -55,31 +55,34 @@ body{
 }
 #game-settings{
 margin-right: 5px;
-border: 1px solid gold;
+border: 1px solid hsl(22, 88%, 66%);
 background-color: hsla(25, 72%, 11%, 0.96);
 color: aliceblue;
 border-radius: 15px;
 width: 10%;
 font-size: 1.2rem;
 text-align: center;
+box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
 #chips-count{
 margin-left: 5px;
-border: 1px solid gold;
+border: 1px solid hsl(22, 88%, 66%);
 background-color: hsla(25, 72%, 11%, 0.96);
 color: aliceblue;
 border-radius: 15px;
 width: 40%;
 text-align: center;
+box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 
 }
 #games-count{
-  border: 1px solid gold;
+  border: 1px solid hsl(22, 88%, 66%);
   background-color: hsla(25, 72%, 11%, 0.96);
   color: aliceblue;
   border-radius: 15px;
   width: 40%;
   text-align: center;
+  box-shadow: 0px 0px 15px rgba(31, 13, 13, 0.968);
 }
 
 
@@ -88,7 +91,7 @@ text-align: center;
     width: 210px;
     height: 140px;
     text-align: center;
-    color: hsla(32, 92%, 53%, 0.947);
+    color: hsl(22, 88%, 66%);
     font-size: 3.2rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight:bolder;
@@ -97,7 +100,7 @@ text-align: center;
     justify-content: center;
     align-items: center;
     width: 100%;
-    text-shadow: -2px -2px 3px rgba(31, 13, 13, 0.968); 
+    text-shadow: 0px 0px 10px rgba(31, 13, 13, 0.99); 
 }
 #dealer-hand{
     display: flex;
@@ -117,17 +120,7 @@ text-align: center;
     width: 100px;
     height: 155px;
 }
-#score-board{
 
-    width: 100%;
-    height: 100px;
-    text-align: left;
-    font-size: 0.75rem;
-    overflow: auto;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
 #player-hand{
     display: flex;
     justify-content: center;
@@ -235,46 +228,9 @@ text-align: center;
   #btn-250{
     background-color: hsla(235, 86%, 71%, 0.967);
   }
-#bet-box{
-    display: flex;
-    justify-content: space-between;
 
-    width: 100%;
-}
-#player-bet{
-font-size: 1rem;
-font-weight: bold;
-margin-left: 85px;
-}
-#player-money{
-    margin-right: 85px;
-font-size: 1rem;
-font-weight: bold;
-}
-#player-label{
-    font-size: 0.6rem;
-    font-weight: bold;
-    margin-right: 70px;
-    margin-left: 70px;
-}
-#result-box{
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    width: 100%;
 
-}
-#score-label{
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    background-color: hsla(0, 0%, 96%, 0.573);
-    border-radius: 20px;
-    padding: 5px;
-}
+
 #btn-new-game {
     background-image: url('./images/place\ your\ bet\ button.png');
     background-size: cover;
