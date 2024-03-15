@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from './images/logo-blackjack.png'
 
 const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMessage}) => {
   return (
@@ -8,7 +9,8 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMess
         <div id='games-count'></div>
         <div id='game-settings'>⚙️</div>
       </div>
-      <div id='blackjack-header'>BLACKJACK</div>
+      {/* <div id='blackjack-header'>BLACKJACK</div> */}
+      <img src={Logo} id='blackjack-logo'/>
     </>
     
   )

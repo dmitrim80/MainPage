@@ -25,6 +25,12 @@ body{
   transform-style: preserve-3d;
 }
 
+#blackjack-logo{
+  margin-top: 20px;
+  width: 300px;
+  opacity: 85%;
+}
+
 #container::before {
   content: '';
   position: absolute;
