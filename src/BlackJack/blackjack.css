@@ -210,8 +210,23 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   #chips-row button:hover{
     box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.217);
   }
-  #btn-5{
-    background-color: hsla(190, 100%, 75%, 0.967);
+  #bet-container-box {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  #bet-container-box img:hover{
+    box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.67);
+  }
+  #bet-container-box img:active{
+    transform: scale(0.95);
+    box-shadow: 0px 4px 6px hsl(159, 59%, 53%);
+  }
+  
+  #chip-img{
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
   }
   #btn-10{
     background-color: hsla(120, 81%, 40%, 0.967);
@@ -337,3 +352,22 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     background-color: hsl(159, 54%, 20%);
   }
   
+  #bet-main-container{
+    display: flex;
+    justify-content: center;
+  }
+  #pointer-animation{
+    color: white;
+    font-size: 1.3rem;
+    text-align:center;
+
+    animation: bobbing 0.7s infinite ease-in-out;
+  }
+  @keyframes bobbing {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
