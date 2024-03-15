@@ -114,18 +114,18 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: center;
     /* background-color: hsla(254, 83%, 19%, 0.877); */
     width: 210px;
-    height: 155px;
+    height: 255px;
 }
 
 #dealer-card1{
     /* background-color: hsla(0, 100%, 50%, 0.473); */
     width: 100px;
-    height: 155px;
+    height: 255px;
 }
 #dealer-card2{
     /* background-color: hsla(0, 100%, 50%, 0.473); */
     width: 100px;
-    height: 155px;
+    height: 255px;
 }
 
 #player-hand{
@@ -133,19 +133,19 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: center;
     /* background-color: hsla(233, 100%, 50%, 0.473); */
     width: 210px;
-    height: 155px;
+    height: 255px;
     gap: 5px;
 }
 #player-card1{
     /* background-color: hsla(0, 100%, 50%, 0.473); */
     width: 100px;
-    height: 155px;
+    height: 255px;
 
 }
 #player-card2{
     /* background-color: hsla(0, 100%, 50%, 0.473); */
     width: 100px;
-    height: 155px;
+    height: 255px;
 }
 #card-image{
     width: 80%;
@@ -157,9 +157,9 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
 #buttons-row{
     display: flex;
-    margin-top: 10px;
+
     justify-content: center;
-    margin-bottom: 10px;
+
 
     height: 55px;
     width: 100%;
@@ -173,26 +173,26 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 
     position: relative;
     height: 150px;
-    margin-bottom: 10px;
     
   }
   #dealer-hand, #player-hand {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 250px;
+    height: 350px;
     overflow: hidden;
     gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
   }
 #card-box{
-    height: 110px;
+    height: 120px;
+
 }
 #card-box img{
     border-radius: 7px; 
     box-shadow: 0 2px 6px rgba(0,0,0,0.7);
-    height: 100%;
+    height: 100%; 
+    
   }
   #chips-row{
     display: flex;
@@ -234,6 +234,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     width: 50px;
     border-radius: 50%;
     cursor: pointer;
+    border: 1px solid black;
   }
   #btn-10{
     background-color: hsla(120, 81%, 40%, 0.967);
@@ -377,4 +378,17 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     50% {
       transform: translateY(-3px);
     }
+  }
+  #score-bubble div{
+    background-color: hsla(0, 0%, 96%, 0.75);
+    color: black;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+  #dealer-score-bubble,#player-score-bubble{
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  
   }

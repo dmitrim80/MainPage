@@ -10,7 +10,7 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMess
         <div id='game-settings'>⚙️</div>
       </div>
       {/* <div id='blackjack-header'>BLACKJACK</div> */}
-      <img src={Logo} id='blackjack-logo'/>
+      {/* <img src={Logo} id='blackjack-logo'/> */}
     </>
     
   )

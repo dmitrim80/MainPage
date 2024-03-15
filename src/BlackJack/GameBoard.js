@@ -311,8 +311,14 @@
                     playerChips={playerChips}
                     gameMessage={gameMessage}
                 />
+                <div id='score-bubble'>
+                    <div id="dealer-score-bubble">{dealerHandValue}</div>
+                </div>
                 <Player hand={dealerHand} isDealer={true} />
                 <Player hand={playerHand} isDealer={false} />
+                <div id='score-bubble'>
+                    <div id="player-score-bubble">{playerHandValue}</div>
+                </div>
                 <Controls 
                     handleHit={handleHit}  
                     handleStand={handleStand}
