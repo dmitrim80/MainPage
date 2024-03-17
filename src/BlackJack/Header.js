@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from './images/logo-blackjack.png'
+import BackCard from './images/gray_back.png'
 
 const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMessage}) => {
   return (
@@ -9,8 +10,10 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMess
         <div id='games-count'></div>
         <div id='game-settings'>⚙️</div>
       </div>
-      {/* <div id='blackjack-header'>BLACKJACK</div> */}
-      {/* <img src={Logo} id='blackjack-logo'/> */}
+      <div id='deck-dealer-row'>
+        <div id='played-deck'>{<img id='card-image-left-corner' alt='back-image' src={BackCard} />}</div>
+        <div id='new-deck'>{<img id='card-image-right-corner' alt='back-image' src={BackCard} />}</div>
+      </div>
     </>
     
   )

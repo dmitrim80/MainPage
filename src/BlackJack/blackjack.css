@@ -51,7 +51,25 @@ body{
 #container.flipped {
   transform: rotateY(180deg);
 }
-
+#deck-dealer-row{
+display: flex;
+justify-content: space-between;
+background-color: antiquewhite;
+width: 100%;
+height: 600px;
+}
+#played-deck{
+left: 0;
+background-color: aqua;
+width: 100px;
+height: 100%;
+}
+#new-deck{
+right: 0;
+background-color: blueviolet;
+width: 100px;
+height: 100%;
+}
 
 
 #blackjack-header-container{
@@ -147,8 +165,36 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     width: 100px;
     height: 255px;
 }
-#card-image{
+#card-image-left-corner{
+    margin-left: 5px;
+    margin-top: 5px;
     width: 80%;
+    /* left corner angle Z 30deg Y -50deg  X 50deg */
+       /* right corner angle Z -65deg Y -19deg  X 50deg */
+    transform: rotateZ(30deg) rotateY(-50deg) rotateX(50deg);
+    transform: perspective();
+}
+#card-image-right-corner{
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 80%;
+  /* left corner angle Z 30deg Y -50deg  X 50deg */
+   /* right corner angle Z -65deg Y -19deg  X 50deg */
+  transform: rotateZ(-65deg) rotateY(-19deg) rotateX(50deg);
+  transform: perspective();
+}
+#card-image{
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 80%;
+  /* left corner angle Z 30deg Y -50deg  X 50deg */
+   /* right corner angle Z -65deg Y -19deg  X 50deg */
+    transform: rotateZ(30deg) rotateY(-50deg) rotateX(50deg);
+    transform: perspective();
+    
+    /* transform: rotateZ(-5deg); */
+
+ 
 }
 #buttons-container{
     margin-top: 10px;
