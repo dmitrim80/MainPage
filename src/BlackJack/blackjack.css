@@ -216,6 +216,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   text-align: center;
   box-shadow: 0px 0px 1px hsla(0, 0%, 0%, 0.917);
 }
+
 #buttons-row{
     display: flex;
     justify-content: center;
@@ -286,7 +287,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     text-align: center;
     box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.917);
   }
-  #chips-row button:hover{
+  #chips-row img:hover{
     box-shadow: 0px 4px 6px hsla(0, 0%, 0%, 0.217);
   }
   #bet-container-box {
@@ -334,6 +335,10 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     gap: 10px;
     min-height: 50px;
     margin-bottom: 10px;
+  }
+  #chips-row-wrapper img:hover{
+    background-color: hsl(159, 54%, 25%);
+    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5);
   }
 
 #btn-new-game {
