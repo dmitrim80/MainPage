@@ -60,6 +60,7 @@ import React, { useEffect, useState,useRef } from "react";
             setPlayerChips(prev => prev + bet);
             setGameMessage("Place A Bet...");
             setBet(0);
+            setBetChips([]);
         }else if (!gameRunning && playerChips >= amount) {
             console.log(`Attempting to place bet: ${amount}`);
             console.log(`Current chips: ${playerChips}, Current bet: ${bet}, Game running: ${gameRunning}`);
@@ -84,6 +85,7 @@ import React, { useEffect, useState,useRef } from "react";
                 setPlayerChips(playerChips + bet);
                 console.log(`bet set to 0`);
                 setBet(0);
+                setBetChips([]);
             }
         };
         
@@ -188,7 +190,7 @@ import React, { useEffect, useState,useRef } from "react";
                     isFaceDown: index === 1 ? false : card.isFaceDown,
                 }));
                 setDealerHand(updatedDealerHand);
-
+                setDealerHandValue(dealerHandValueOneCard);
             }else{
                 setDealerHandValue(dealerHandValueOneCard);
             }         
@@ -200,6 +202,7 @@ import React, { useEffect, useState,useRef } from "react";
         const endGame = () => {
             setButtonsHidden(true);
             setBet(0);
+            setBetChips([]);
             setGamePause(true);
             clearTimeout(endGameTimeout.current);
             endGameTimeout.current = setTimeout(() => {
