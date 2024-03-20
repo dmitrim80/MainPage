@@ -1,5 +1,5 @@
 import React from 'react'
-import cardBack from './images/blue_back.png';
+import cardBack from './images/vegas-back2.png';
 import heartsAce from './images/ace_of_hearts.png';
 import heartsTwo from './images/2_of_hearts.png';
 import heartsThree from './images/3_of_hearts.png';
@@ -112,7 +112,7 @@ const cardImages = {
      "clubs-jack":clubsJack ,
      "clubs-queen":clubsQueen ,
      "clubs-king":clubsKing ,
-    "back": cardBack,
+     "back": cardBack,
   };
 
 

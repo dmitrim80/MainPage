@@ -21,15 +21,22 @@ import React, { useEffect, useState,useRef } from "react";
     const [showScores, setShowScores] = useState(false);
     const [newRound, setNewRound] = useState(false);
     const endGameTimeout = useRef();
+    const [gamePause,setGamePause] = useState(false);
 
     
        
 
     const onBetPlaced = (amount) => {
-        console.log(`Attempting to place bet: ${amount}`);
-        console.log(`Current chips: ${playerChips}, Current bet: ${bet}, Game running: ${gameRunning}`);
-    
-        if (!gameRunning && playerChips >= amount) {
+        if (gamePause) {
+            setGameMessage("Game Paused...");
+            return;
+        }else if (amount === 0) {
+            setPlayerChips(prev => prev + bet);
+            setGameMessage("Place A Bet");
+            setBet(0);
+        }else if (!gameRunning && playerChips >= amount) {
+            console.log(`Attempting to place bet: ${amount}`);
+            console.log(`Current chips: ${playerChips}, Current bet: ${bet}, Game running: ${gameRunning}`);
             setBet(prevBet => prevBet + amount);
             setPlayerChips(prevChips => prevChips - amount);
             // Don't set the gameMessage here, we'll do it in useEffect
@@ -42,38 +49,7 @@ import React, { useEffect, useState,useRef } from "react";
       
         
 
-    const determineOutcome = () => {
-        let outcome="";
-        let resultMessage="";
-    
-        if (dealerHandValue > 21) {
-            outcome = "PlayerWins";
-            resultMessage = "Dealer Bust... You Win!";
-        } else if (playerHandValue > 21) {
-            outcome = "DealerWins";
-            resultMessage = "Bust... Dealer Wins.";
-        } else if (playerHandValue === 21 && dealerHandValue !== 21) {
-            outcome = "PlayerWins";
-            resultMessage = "Blackjack! You Win!";
-        } else if (dealerHandValue === 21 && playerHandValue !== 21) {
-            outcome = "DealerWins";
-            resultMessage = "Blackjack... Dealer Wins.";
-        } else if (playerHandValue > dealerHandValue) {
-            outcome = "PlayerWins";
-            resultMessage = "You Win!";
-        } else if (dealerHandValue > playerHandValue) {
-            outcome = "DealerWins";
-            resultMessage = "Dealer Wins...";
-        } else {
-            outcome = "Push";
-            resultMessage = "Push... It's a Tie!";
-        }
-    
-        setGameOutcome(outcome);
-        setGameMessage(resultMessage);
-    };
-    
-
+   
         
 
         function resetBet(){
@@ -93,8 +69,7 @@ import React, { useEffect, useState,useRef } from "react";
         
             switch(gameOutcome) {
                 case "DealerWins":
-                    outcomeMessage = `You lost your bet of: ${finalBet}`;
-                    // If there's no additional bet handling logic required here, no need to adjust winAmount
+                    outcomeMessage = `Dealer Wins, you lost bet of: ${finalBet}`;
                     break;
                 case "PlayerWins":
                     outcomeMessage = `You Won! Your bet: ${finalBet}`;
@@ -195,16 +170,17 @@ import React, { useEffect, useState,useRef } from "react";
 
 
         const endGame = () => {
-            
+            setGameRunning(false);
+            setBet(0);
+            setGamePause(true);
             clearTimeout(endGameTimeout.current);
             // Keep scores visible for 3 seconds after the game ends
             endGameTimeout.current = setTimeout(() => {
-                setShowScores(false);
-                setGameRunning(false);
-                setBet(0);
                 setGameOutcome("");
                 setGameMessage("Place A Bet");
-            }, 5000);
+                setShowScores(false);
+                setGamePause(false);
+            }, 10000);
         };
 
         const handleStand = () => {
@@ -243,21 +219,34 @@ import React, { useEffect, useState,useRef } from "react";
             setDealerHand(finalDealerHand);
             setDealerHandValue(finalDealerHandValue);
 
+            let outcome="";
+            let resultMessage="";
 
-            determineOutcome();
-
-            // let outcome;
-            // if(finalDealerHandValue > 21){
-            //     outcome = "PlayerWins";
-            // }else if(finalDealerHandValue > playerHandValue){
-            //     outcome = "DealerWins";
-            // }else if(finalDealerHandValue === playerHandValue){
-            //     outcome = "Push";
-            // }else{
-            //     outcome = "PlayerWins";
-            // }
-            
-            // setGameOutcome(outcome);
+            if (finalDealerHandValue > 21) {
+                outcome = "PlayerWins";
+                resultMessage = "Dealer Bust... You Win!";
+            } else if (playerHandValue > 21) {
+                outcome = "DealerWins";
+                resultMessage = "Bust... Dealer Wins.";
+            } else if (playerHandValue === 21 && finalDealerHandValue !== 21) {
+                outcome = "PlayerWins";
+                resultMessage = "Blackjack! You Win!";
+            } else if (finalDealerHandValue === 21 && playerHandValue !== 21) {
+                outcome = "DealerWins";
+                resultMessage = "Blackjack... Dealer Wins.";
+            } else if (playerHandValue > finalDealerHandValue) {
+                outcome = "PlayerWins";
+                resultMessage = "You Win!";
+            } else if (finalDealerHandValue > playerHandValue) {
+                outcome = "DealerWins";
+                resultMessage = "Dealer Wins...";
+            } else {
+                outcome = "Push";
+                resultMessage = "Push... It's a Tie!";
+            }
+            console.log(`From finishDealerTurn Game Outcome: ${outcome}`);
+            setGameMessage(resultMessage);
+            setGameOutcome(outcome);
             
         };
 
@@ -380,11 +369,10 @@ import React, { useEffect, useState,useRef } from "react";
         }
       
         useEffect(() => {
-            // Only call handleGameResult if gameOutcome is set and the game has progressed beyond the start phase
-            if (gameOutcome && gameRunning) {
+            if (gameOutcome) {
               handleGameResult();
             }
-        }, [gameOutcome, gameRunning]);
+        }, [gameOutcome]);
 
         useEffect(() => {
             // This useEffect will now handle updating the gameMessage whenever bet changes
@@ -436,6 +424,7 @@ import React, { useEffect, useState,useRef } from "react";
                 onNewGame={handleNewGame}
                 gameRunning={gameRunning}
                 onBetPlaced={onBetPlaced}
+                bet={bet}
                 />
             </>
         );

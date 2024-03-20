@@ -6,7 +6,7 @@ import chip50 from './images/50-chip.png';
 import chip100 from './images/100-chip.png';
 import chip250 from './images/250-chip.png';
 
-const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning, onBetPlaced }) => {
+const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning, onBetPlaced,bet }) => {
     const chips = [
         { value: 5, img: chip5 },
         { value: 10, img: chip10 },
@@ -27,7 +27,7 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
                     </>
                 ) : (
                     <>
-                        <button id='btn-new-game' onClick={onNewGame}></button>
+                        <button id='btn-new-game' onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}></button>
                         <button id='btn-clear-bet' onClick={() => onBetPlaced(0)}></button> 
                     </>
                 )}

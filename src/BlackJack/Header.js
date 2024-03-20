@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './images/logo-blackjack.png'
-import BackCard from './images/gray_back.png'
+import BackCard from './images/vegas-back2.png'
 
 const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMessage}) => {
   return (
