@@ -23,7 +23,8 @@ const BlackJack = () => {
     };
     return (
         <>
-            <div id="container" className={isFlipped ? 'flipped' : ''} onClick={toggleFlip} style={{'--bg-opacity': opacity, '--z-index': zIndex}}>
+            {/* <div id="container" className={isFlipped ? 'flipped' : ''} onClick={toggleFlip} style={{'--bg-opacity': opacity, '--z-index': zIndex}}> */}
+            <div id="container">
                 <GameBoard onGameRunningChange={handleGameRunningChange} />
             </div>
         </>

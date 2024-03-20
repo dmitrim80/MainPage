@@ -1,4 +1,4 @@
-    import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
     import Deck from './Deck';
     import Player from './Player';
     import Controls from "./Controls";
@@ -8,79 +8,137 @@
 
     const GameBoard = ({ onGameRunningChange }) => {
 
-        const [deck,setDeck] = useState(null);
-        const [dealerHand, setDealerHand] = useState([]);
-        const [playerHand, setPlayerHand] = useState([]);     
-        const [gameRunning, setGameRunning] = useState(false);
-        const [playerHandValue,setPlayerHandValue] = useState(0);
-        const [dealerHandValue,setDealerHandValue] = useState(0);
-        const [result,setResult] = useState("");
-        const [playerChips,setPlayerChips] = useState(1000);
-        const [bet,setBet]=useState(0);
-        const [gameMessage,setGameMessage] = useState("");
-        const [gameOutcome,setGameOutcome] = useState("");
+    const [deck, setDeck] = useState(null);
+    const [dealerHand, setDealerHand] = useState([]);
+    const [playerHand, setPlayerHand] = useState([]);
+    const [gameRunning, setGameRunning] = useState(false);
+    const [playerHandValue, setPlayerHandValue] = useState(0);
+    const [dealerHandValue, setDealerHandValue] = useState(0);
+    const [playerChips, setPlayerChips] = useState(1000);
+    const [bet, setBet] = useState(0);
+    const [gameMessage, setGameMessage] = useState("");
+    const [gameOutcome, setGameOutcome] = useState("");
+    const [showScores, setShowScores] = useState(false);
+    const [newRound, setNewRound] = useState(false);
+    const endGameTimeout = useRef();
 
-        function handleBet(amount){
-            if (playerChips-amount >=0){
-                setGameMessage("");
-                setBet(prevBet => prevBet + amount);
-                setPlayerChips(prevChips => prevChips - amount);
-            }
-            else{
-                setGameMessage("Not Enough Chips!");
-            }
-            
-        };
+    
+       
+
+    const onBetPlaced = (amount) => {
+        console.log(`Attempting to place bet: ${amount}`);
+        console.log(`Current chips: ${playerChips}, Current bet: ${bet}, Game running: ${gameRunning}`);
+    
+        if (!gameRunning && playerChips >= amount) {
+            setBet(prevBet => prevBet + amount);
+            setPlayerChips(prevChips => prevChips - amount);
+            // Don't set the gameMessage here, we'll do it in useEffect
+        } else {
+            console.log("Cannot place bet at this time.");
+            // You might want to handle this case differently, perhaps resetting the message
+        }
+    };
+    
+      
+        
+
+    const determineOutcome = () => {
+        let outcome="";
+        let resultMessage="";
+    
+        if (dealerHandValue > 21) {
+            outcome = "PlayerWins";
+            resultMessage = "Dealer Bust... You Win!";
+        } else if (playerHandValue > 21) {
+            outcome = "DealerWins";
+            resultMessage = "Bust... Dealer Wins.";
+        } else if (playerHandValue === 21 && dealerHandValue !== 21) {
+            outcome = "PlayerWins";
+            resultMessage = "Blackjack! You Win!";
+        } else if (dealerHandValue === 21 && playerHandValue !== 21) {
+            outcome = "DealerWins";
+            resultMessage = "Blackjack... Dealer Wins.";
+        } else if (playerHandValue > dealerHandValue) {
+            outcome = "PlayerWins";
+            resultMessage = "You Win!";
+        } else if (dealerHandValue > playerHandValue) {
+            outcome = "DealerWins";
+            resultMessage = "Dealer Wins...";
+        } else {
+            outcome = "Push";
+            resultMessage = "Push... It's a Tie!";
+        }
+    
+        setGameOutcome(outcome);
+        setGameMessage(resultMessage);
+    };
+    
+
+        
+
         function resetBet(){
             if(bet!==0){
+                console.log(`PlayerChips ${playerChips} + ${bet}`)
                 setPlayerChips(playerChips + bet);
+                console.log(`bet set to 0`);
                 setBet(0);
             }
         };
         
-        function handleGameResult(){
-            let message = "";
-            let newChipsTotal = playerChips;
+        function handleGameResult() {
+            const finalBet = bet; // Capture the bet amount before it gets reset
+        
+            let outcomeMessage;
+            let winAmount = 0;
+        
             switch(gameOutcome) {
                 case "DealerWins":
-                    message= `You lost your bet of: ${bet}`;
+                    outcomeMessage = `You lost your bet of: ${finalBet}`;
+                    // If there's no additional bet handling logic required here, no need to adjust winAmount
                     break;
                 case "PlayerWins":
-                    message=`You Won! your bet:${bet}`;
-                    newChipsTotal += bet*2;
+                    outcomeMessage = `You Won! Your bet: ${finalBet}`;
+                    winAmount = finalBet * 2; // Assuming the player wins double their bet
                     break;
                 case "Push":
-                    message=`Push... It's a Tie.  Bet returned: ${bet}`;
-                    newChipsTotal += bet;
+                    outcomeMessage = `Push... It's a Tie. Bet returned: ${finalBet}`;
+                    winAmount = finalBet; // The bet is returned to the player
                     break;
-
                 default:
-                setGameMessage("UNKNOWN ACTION");
+                    outcomeMessage = "Unknown outcome.";
+                    break;
             }
-            setGameMessage(message);
-            setPlayerChips(newChipsTotal);
-            setBet(0);
-            setGameRunning(false);        
-        };
         
+            // Update game message with the outcome
+            setGameMessage(outcomeMessage);
+        
+            // Update player chips based on the outcome
+            if (winAmount > 0) {
+                setPlayerChips(prevChips => prevChips + winAmount);
+            }
+            console.log(`Handling game result with bet: ${bet}`);
+               
+            endGame();
+        }
 
-            
+
         
         const handleNewGame = () => {
-            
+            setNewRound(true);
             setGameRunning(true);
-            //create a Deck and shuffle
-            const deck = new Deck();
-            deck.shuffleDeck();
-            setDeck(deck);
-            let result = "";
-            setResult(result);
+            setShowScores(true);
+            setGameMessage("");
+            const newDeck = new Deck();
+            newDeck.shuffleDeck();
+            setDeck(newDeck);
             
             
-            const playerFirstCard = deck.drawCard();
-            const playerSecondCard = deck.drawCard();
-            const dealerFirstCard = deck.drawCard();
-            const dealerSecondCard = deck.drawCard();
+            
+            
+            const playerFirstCard = newDeck.drawCard();
+            const playerSecondCard = newDeck.drawCard();
+            const dealerFirstCard = newDeck.drawCard();
+            const dealerSecondCard = newDeck.drawCard();
 
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
@@ -94,29 +152,34 @@
             const dealerHandValueOneCard = calculateHandValue([dealerFirstCard]);
 
             //checking for blackjack or 2 blackjacks
+            let newOutcome; 
+
             if(playerHandValue===21 && dealerHandValue === 21){
+                newOutcome = "Push";
                 
-                setGameOutcome("Push");
-                result = "Push... It's a Tie!";
-                setResult(result);
+                setGameOutcome(newOutcome);
+               
+               
                 let updatedDealerHand = dealerHand.map((card, index) => ({
                     ...card,
                     isFaceDown: index === 1 ? false : card.isFaceDown,
                 }));
                 setDealerHand(updatedDealerHand);
             }else if(playerHandValue ===21){
-                setGameOutcome("PlayerWins");
-                result = "BlackJack! You Win!";
-                setResult(result);
+                newOutcome="PlayerWins";
+                
+                setGameOutcome(newOutcome);
+               
                 let updatedDealerHand = dealerHand.map((card, index) => ({
                     ...card,
                     isFaceDown: index === 1 ? false : card.isFaceDown,
                 }));
                 setDealerHand(updatedDealerHand);
             }else if(dealerHandValue ===21){
-                setGameOutcome("DealerWins");
-                result = "BlackJack... Dealer Wins.";
-                setResult(result);
+                newOutcome="DealerWins";
+                
+                setGameOutcome(newOutcome);;
+               
                 let updatedDealerHand = dealerHand.map((card, index) => ({
                     ...card,
                     isFaceDown: index === 1 ? false : card.isFaceDown,
@@ -128,9 +191,20 @@
             }         
             
         };
+
+
+
         const endGame = () => {
-            setGameRunning(false);
-            // Additional logic for ending the game...
+            
+            clearTimeout(endGameTimeout.current);
+            // Keep scores visible for 3 seconds after the game ends
+            endGameTimeout.current = setTimeout(() => {
+                setShowScores(false);
+                setGameRunning(false);
+                setBet(0);
+                setGameOutcome("");
+                setGameMessage("Place A Bet");
+            }, 5000);
         };
 
         const handleStand = () => {
@@ -164,24 +238,27 @@
         }
 
         const finishDealerTurn = (finalDealerHand,finalDealerHandValue) => {
+            
+
             setDealerHand(finalDealerHand);
             setDealerHandValue(finalDealerHandValue);
 
-            if(finalDealerHandValue>21){
-                setGameOutcome("PlayerWins");
-                setResult("Dealer Bust... You Win!");
-            }else if(finalDealerHandValue > playerHandValue){
-                setGameOutcome("DealerWins");
-                setResult("Dealer Wins...");
-            }else if(finalDealerHandValue === playerHandValue){
-                setGameOutcome("Push");
-                setResult("Push...It's a Tie!");
-            }
-            else{
-                setGameOutcome("PlayerWins");
-                setResult("You win!");
-            }
 
+            determineOutcome();
+
+            // let outcome;
+            // if(finalDealerHandValue > 21){
+            //     outcome = "PlayerWins";
+            // }else if(finalDealerHandValue > playerHandValue){
+            //     outcome = "DealerWins";
+            // }else if(finalDealerHandValue === playerHandValue){
+            //     outcome = "Push";
+            // }else{
+            //     outcome = "PlayerWins";
+            // }
+            
+            // setGameOutcome(outcome);
+            
         };
 
 
@@ -198,13 +275,15 @@
                 const playerHandValue = calculateHandValue(updatedPlayerHand);
                 setPlayerHand(updatedPlayerHand);
                 setPlayerHandValue(playerHandValue);
-
+                let newOutcome;
                 if(playerHandValue>21){
-                    setGameOutcome("DealerWins");
-                    setResult("Bust...Dealer Wins.");
+                    newOutcome ="DealerWins";
+                    
+                    setGameOutcome(newOutcome);
+                  
                     setTimeout(() => { setGameRunning(false); }, 0);
                 }else if(playerHandValue ===21){
-                    setResult("21... waiting for Dealer's turn.");
+              
                     let updatedDealerHand = dealerHand.map((card, index) => ({
                         ...card,
                         isFaceDown: index === 1 ? false : card.isFaceDown,
@@ -231,23 +310,31 @@
                     setDealerHandValue(updatedDealerHandValue);
         
                     if(updatedDealerHandValue>playerHandValue && updatedDealerHandValue<=21){
-                        setGameOutcome("DealerWins");
-                        setResult("Dealer Wins...");
+                        newOutcome="DealerWins";
+                        
+                        setGameOutcome(newOutcome);
+                      
                     }else if(updatedDealerHandValue===playerHandValue){
-                        setGameOutcome("Push");
-                        setResult("Push...It's a Tie!");
+
+                        newOutcome="Push";
+                        
+                        setGameOutcome(newOutcome);
+
+
+               
                     }else if(updatedDealerHandValue >21){
-                        setGameOutcome("PlayerWins");
-                        setResult("Dealer Bust... You Win!");
+                        newOutcome="PlayerWins";
+                        
+                        setGameOutcome(newOutcome);
+
                     }
                     else{
-                        setGameOutcome("PlayerWins");
-                        setResult("You win!");
+                        newOutcome="PlayerWins";
+                        
+                        setGameOutcome(newOutcome);
                     }
                     setGameRunning(false);
-                    
                 }
-
             }
         }
 
@@ -292,27 +379,41 @@
             return total;
         }
       
-        useEffect(()=>{
-            handleGameResult();
-        },[gameOutcome]);
-        
         useEffect(() => {
-            if (typeof onGameRunningChange === 'function') {
-                onGameRunningChange(gameRunning);
+            // Only call handleGameResult if gameOutcome is set and the game has progressed beyond the start phase
+            if (gameOutcome && gameRunning) {
+              handleGameResult();
             }
-        }, [gameRunning, onGameRunningChange]);
+        }, [gameOutcome, gameRunning]);
+
+        useEffect(() => {
+            // This useEffect will now handle updating the gameMessage whenever bet changes
+            if (bet > 0) {
+                setGameMessage(`A bet of ${bet} has been placed.`);
+            }
+          }, [bet]);
+      
+
+          useEffect(() => {
+            return () => {
+                clearTimeout(endGameTimeout.current);
+            };
+        }, []);
+
+        useEffect(() => {
+            console.log(`Bet updated: ${bet}, Player chips: ${playerChips}`);
+          }, [bet, playerChips]);
 
         return (
             <>
                 <Header
-                    playerHandValue={playerHandValue}
-                    dealerHandValue={dealerHandValue}
-                    result={result}
-                    playerChips={playerChips}
-                    gameMessage={gameMessage}
-                />
+                playerHandValue={playerHandValue}
+                dealerHandValue={dealerHandValue}
+                playerChips={playerChips}
+                gameMessage={gameMessage}
+            />
                 <div id='score-bubble'>
-                    <div id="dealer-score-bubble" style={{visibility: gameRunning ? 'visible' : 'hidden'}}>{dealerHandValue}</div>
+                    <div id="dealer-score-bubble" style={{visibility: showScores ? 'visible' : 'hidden'}}>{dealerHandValue}</div>
                 </div>
                 <Player hand={dealerHand} isDealer={true} />
                 <div className="message-container">
@@ -320,18 +421,17 @@
                 </div>
                 <Player hand={playerHand} isDealer={false} />
                 <div id='score-bubble'>
-                    <div id="player-score-bubble"style={{visibility: gameRunning ? 'visible' : 'hidden'}}>{playerHandValue}</div>
+                    <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>{playerHandValue}</div>
                 </div>
                 
-                <Controls 
-                    handleHit={handleHit}  
-                    handleStand={handleStand}
-                    handleDouble={handleDouble}
-                    onNewGame={handleNewGame}
-                    gameRunning={gameRunning}
-                    handleBet={handleBet}
-                    resetBet={resetBet}
-                />
+                <Controls
+                handleHit={handleHit}
+                handleStand={handleStand}
+                handleDouble={handleDouble}
+                onNewGame={handleNewGame}
+                gameRunning={gameRunning}
+                onBetPlaced={onBetPlaced}
+            />
             </>
         );
     };
