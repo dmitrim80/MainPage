@@ -32,7 +32,7 @@ import React, { useEffect, useState,useRef } from "react";
             return;
         }else if (amount === 0) {
             setPlayerChips(prev => prev + bet);
-            setGameMessage("Place A Bet");
+            setGameMessage("Place A Bet...");
             setBet(0);
         }else if (!gameRunning && playerChips >= amount) {
             console.log(`Attempting to place bet: ${amount}`);
@@ -177,7 +177,7 @@ import React, { useEffect, useState,useRef } from "react";
             // Keep scores visible for 3 seconds after the game ends
             endGameTimeout.current = setTimeout(() => {
                 setGameOutcome("");
-                setGameMessage("Place A Bet");
+                setGameMessage("Place A Bet...");
                 setShowScores(false);
                 setGamePause(false);
             }, 10000);
@@ -245,7 +245,7 @@ import React, { useEffect, useState,useRef } from "react";
                 resultMessage = "Push... It's a Tie!";
             }
             console.log(`From finishDealerTurn Game Outcome: ${outcome}`);
-            setGameMessage(resultMessage);
+            console.log(resultMessage);
             setGameOutcome(outcome);
             
         };

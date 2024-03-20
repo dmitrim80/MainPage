@@ -32,7 +32,26 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
                     </>
                 )}
             </div>
+            
+            <div id='chips-row-wrapper-arrows' style={{
+                                        height: 'auto', 
+                                        overflow: 'hidden'}}>
+                <div id='pointer-row-animation' style={{
+                                                visibility: !gameRunning ? 'visible' : 'hidden', display: 'flex', 
+                                                gap: '43px', 
+                                                justifyContent: 'center', 
+                                                transform: 'translateY(3px)'}}>
+
+                    <div id='pointer-animation'>▼</div>
+                    <div id='pointer-animation'>▼</div>
+                    <div id='pointer-animation'>▼</div>
+                    <div id='pointer-animation'>▼</div>
+                    <div id='pointer-animation'>▼</div>
+                    <div id='pointer-animation'>▼</div>
+                </div>
+            </div>
             <div id='chips-row-wrapper' style={{ visibility: gameRunning ? 'hidden' : 'visible' }}>
+
                 {chips.map((chip, index) => (
                 <img key={index}
                     src={chip.img}
@@ -41,7 +60,8 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
                     onClick={() => onBetPlaced(chip.value)}
                     style={{ cursor: 'pointer' }} />
                 ))}
-            </div>
+                
+            </div>  
         </>
     );
 };
