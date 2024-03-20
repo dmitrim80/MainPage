@@ -22,9 +22,35 @@ import React, { useEffect, useState,useRef } from "react";
     const [newRound, setNewRound] = useState(false);
     const endGameTimeout = useRef();
     const [gamePause,setGamePause] = useState(false);
-
-    
+    const [buttonsHidden,setButtonsHidden] = useState(false);
+    const [betChips,setBetChips] = useState([]);
+    const chipWidth = 40;
+    const gap = 0.1;
+    const totalChipTypes = Object.keys(betChips).length;
+    const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
        
+
+
+    const handleChipClick = (amount, imgSrc, event) => {
+        event.stopPropagation();
+        
+   
+        setBetChips(currentChips => {
+            // Create a new object to avoid direct state mutation
+            const newChips = { ...currentChips };
+            const chipType = `chip${amount}`;
+   
+            if (newChips[chipType]) {
+                newChips[chipType].count += 1;
+                // Adjust position logic as necessary
+                newChips[chipType].position += 10; // Example increment
+            } else {
+                newChips[chipType] = { imgSrc, count: 1, position: 0 };
+            }
+   
+            return newChips;
+        });
+    };
 
     const onBetPlaced = (amount) => {
         if (gamePause) {
@@ -99,6 +125,8 @@ import React, { useEffect, useState,useRef } from "react";
 
         
         const handleNewGame = () => {
+
+            setButtonsHidden(false);
             setNewRound(true);
             setGameRunning(true);
             setShowScores(true);
@@ -170,20 +198,23 @@ import React, { useEffect, useState,useRef } from "react";
 
 
         const endGame = () => {
-            setGameRunning(false);
+            setButtonsHidden(true);
             setBet(0);
             setGamePause(true);
             clearTimeout(endGameTimeout.current);
-            // Keep scores visible for 3 seconds after the game ends
             endGameTimeout.current = setTimeout(() => {
+                setDealerHand([]);
+                setPlayerHand([]);
                 setGameOutcome("");
                 setGameMessage("Place A Bet...");
                 setShowScores(false);
                 setGamePause(false);
-            }, 10000);
+                setGameRunning(false);
+            }, 5000);
         };
 
         const handleStand = () => {
+
             // Make 2nd dealer card visible
             let updatedDealerHand = dealerHand.map((card, index) => ({
                 ...card,
@@ -209,7 +240,6 @@ import React, { useEffect, useState,useRef } from "react";
                         finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
                     }
             }
-
             drawCardforDealer();
         }
 
@@ -221,7 +251,8 @@ import React, { useEffect, useState,useRef } from "react";
 
             let outcome="";
             let resultMessage="";
-
+            console.log(`Dealer Hand: ${dealerHandValue}`);
+            console.log(`Dealer Hand: ${playerHandValue}`);
             if (finalDealerHandValue > 21) {
                 outcome = "PlayerWins";
                 resultMessage = "Dealer Bust... You Win!";
@@ -265,12 +296,19 @@ import React, { useEffect, useState,useRef } from "react";
                 setPlayerHand(updatedPlayerHand);
                 setPlayerHandValue(playerHandValue);
                 let newOutcome;
+
                 if(playerHandValue>21){
                     newOutcome ="DealerWins";
                     
                     setGameOutcome(newOutcome);
                   
-                    setTimeout(() => { setGameRunning(false); }, 0);
+                    let updatedDealerHand = dealerHand.map((card, index) => ({
+                        ...card,
+                        isFaceDown: index === 1 ? false : card.isFaceDown,
+                    }));
+                    setDealerHand(updatedDealerHand);
+                    let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                    setDealerHandValue(updatedDealerHandValue);
                 }else if(playerHandValue ===21){
               
                     let updatedDealerHand = dealerHand.map((card, index) => ({
@@ -377,7 +415,7 @@ import React, { useEffect, useState,useRef } from "react";
         useEffect(() => {
             // This useEffect will now handle updating the gameMessage whenever bet changes
             if (bet > 0) {
-                setGameMessage(`A bet of ${bet} has been placed.`);
+                setGameMessage(`Bet of $${bet}!`);
             }
           }, [bet]);
       
@@ -400,6 +438,9 @@ import React, { useEffect, useState,useRef } from "react";
                 playerChips={playerChips}
                 gameMessage={gameMessage}
                 />
+
+
+
                 <div id="game-area">
                     <div id='score-bubble'>
                     <div id="dealer-score-bubble" style={{visibility: showScores ? 'visible' : 'hidden'}}>{dealerHandValue}</div>
@@ -417,6 +458,36 @@ import React, { useEffect, useState,useRef } from "react";
                         <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>{playerHandValue}</div>
                     </div>
                 </div>
+
+
+                <div id='bet-main-container'>
+                    <div id='bet-container-box'style={{
+                                                visibility: !gameRunning ? 'visible' : 'hidden', 
+                                                display: 'flex', 
+                                                gap: '8px', 
+                                                justifyContent: 'center',
+                                                position:'relative',
+                                                height:'50px',
+                                                }}>
+                        
+                    {Object.entries(betChips).map(([chipType, { imgSrc, count, position }], index) => (
+                        Array.from({ length: count }).map((_, chipIndex) => (
+                            <img 
+                                key={`${chipType}-${chipIndex}`}
+                                src={imgSrc}
+                                className='bet-chip-img'
+                                style={{ 
+                                    position: 'absolute', 
+                                    bottom: position + chipIndex * 5,
+                                    left: `calc(50% + ${index * (chipWidth + gap) - totalWidth / 2}px)`
+                                }} 
+                            />
+                        ))
+                    ))}
+                        
+                    </div>
+                </div>
+
                 <Controls
                 handleHit={handleHit}
                 handleStand={handleStand}
@@ -425,6 +496,8 @@ import React, { useEffect, useState,useRef } from "react";
                 gameRunning={gameRunning}
                 onBetPlaced={onBetPlaced}
                 bet={bet}
+                buttonsHidden={buttonsHidden}
+                handleChipClick={handleChipClick}
                 />
             </>
         );

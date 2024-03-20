@@ -6,7 +6,16 @@ import chip50 from './images/50-chip.png';
 import chip100 from './images/100-chip.png';
 import chip250 from './images/250-chip.png';
 
-const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning, onBetPlaced,bet }) => {
+const Controls = ({ onNewGame, 
+                    handleStand, 
+                    handleDouble, 
+                    handleHit, 
+                    gameRunning, 
+                    onBetPlaced,
+                    bet,
+                    buttonsHidden,
+                    handleChipClick }) => 
+    {
     const chips = [
         { value: 5, img: chip5 },
         { value: 10, img: chip10 },
@@ -18,12 +27,17 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
 
     return (
         <>
+        
             <div id='buttons-container'>
                 {gameRunning ? (
                     <>
-                        <button id='btn-stand' onClick={handleStand}></button>
-                        <button id='btn-double' onClick={handleDouble}></button>
-                        <button id='btn-hit' onClick={handleHit}></button>
+                        {!buttonsHidden && (
+                            <>
+                            <button id='btn-stand' onClick={handleStand}>Stand</button>
+                            <button id='btn-double' onClick={handleDouble}>Double</button>
+                            <button id='btn-hit' onClick={handleHit}>Hit</button>
+                            </>
+                        )}
                     </>
                 ) : (
                     <>
@@ -57,7 +71,10 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
                     src={chip.img}
                     alt={`Chip ${chip.value}`}
                     className='chip-img'
-                    onClick={() => onBetPlaced(chip.value)}
+                    onClick={(event) => {
+                        onBetPlaced(chip.value); 
+                        handleChipClick(chip.value, chip.img, event);
+                    }}
                     style={{ cursor: 'pointer' }} />
                 ))}
                 
