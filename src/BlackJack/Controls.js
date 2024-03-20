@@ -32,18 +32,16 @@ const Controls = ({ onNewGame, handleStand, handleDouble, handleHit, gameRunning
                     </>
                 )}
             </div>
-            {!gameRunning && (
-                <div id='chips-row-wrapper' style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-                    {chips.map((chip, index) => (
-                        <img key={index}
-                             src={chip.img}
-                             alt={`Chip ${chip.value}`}
-                             className='chip-img'
-                             onClick={() => onBetPlaced(chip.value)}
-                             style={{ cursor: 'pointer' }} />
-                    ))}
-                </div>
-            )}
+            <div id='chips-row-wrapper' style={{ visibility: gameRunning ? 'hidden' : 'visible' }}>
+                {chips.map((chip, index) => (
+                <img key={index}
+                    src={chip.img}
+                    alt={`Chip ${chip.value}`}
+                    className='chip-img'
+                    onClick={() => onBetPlaced(chip.value)}
+                    style={{ cursor: 'pointer' }} />
+                ))}
+            </div>
         </>
     );
 };

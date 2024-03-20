@@ -411,19 +411,24 @@ import React, { useEffect, useState,useRef } from "react";
                 dealerHandValue={dealerHandValue}
                 playerChips={playerChips}
                 gameMessage={gameMessage}
-            />
-                <div id='score-bubble'>
+                />
+                <div id="game-area">
+                    <div id='score-bubble'>
                     <div id="dealer-score-bubble" style={{visibility: showScores ? 'visible' : 'hidden'}}>{dealerHandValue}</div>
+                    </div>
+                    
+                    <Player hand={dealerHand} isDealer={true} />
+                    
+                    <div className="message-container">
+                        <div className="message-box" style={{visibility:gameMessage.trim()=="" ? 'hidden':'visible'}}>{gameMessage}</div>
+                    </div>
+                    
+                    <Player hand={playerHand} isDealer={false} />
+                    
+                    <div id='score-bubble'>
+                        <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>{playerHandValue}</div>
+                    </div>
                 </div>
-                <Player hand={dealerHand} isDealer={true} />
-                <div className="message-container">
-                    <div className="message-box" style={{visibility:gameMessage.trim()=="" ? 'hidden':'visible'}}>{gameMessage}</div>
-                </div>
-                <Player hand={playerHand} isDealer={false} />
-                <div id='score-bubble'>
-                    <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>{playerHandValue}</div>
-                </div>
-                
                 <Controls
                 handleHit={handleHit}
                 handleStand={handleStand}
@@ -431,7 +436,7 @@ import React, { useEffect, useState,useRef } from "react";
                 onNewGame={handleNewGame}
                 gameRunning={gameRunning}
                 onBetPlaced={onBetPlaced}
-            />
+                />
             </>
         );
     };
