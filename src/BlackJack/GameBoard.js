@@ -29,7 +29,7 @@ import React, { useEffect, useState,useRef } from "react";
     const totalChipTypes = Object.keys(betChips).length;
     const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
        
-
+    const isFirstRender = useRef(true);
 
     const handleChipClick = (amount, imgSrc, event) => {
         event.stopPropagation();
@@ -170,6 +170,7 @@ import React, { useEffect, useState,useRef } from "react";
                     isFaceDown: index === 1 ? false : card.isFaceDown,
                 }));
                 setDealerHand(updatedDealerHand);
+                setDealerHandValue(dealerHandValueOneCard);
             }else if(playerHandValue ===21){
                 newOutcome="PlayerWins";
                 
@@ -180,6 +181,7 @@ import React, { useEffect, useState,useRef } from "react";
                     isFaceDown: index === 1 ? false : card.isFaceDown,
                 }));
                 setDealerHand(updatedDealerHand);
+                setDealerHandValue(dealerHandValueOneCard);
             }else if(dealerHandValue ===21){
                 newOutcome="DealerWins";
                 
@@ -410,13 +412,22 @@ import React, { useEffect, useState,useRef } from "react";
         }
       
         useEffect(() => {
+            if (isFirstRender.current) {
+                isFirstRender.current = false;
+                return;
+            }
+    
             if (gameOutcome) {
-              handleGameResult();
+                handleGameResult();
             }
         }, [gameOutcome]);
+    
 
         useEffect(() => {
-            // This useEffect will now handle updating the gameMessage whenever bet changes
+            if (isFirstRender.current) {
+                isFirstRender.current = false;
+                return;
+            }
             if (bet > 0) {
                 setGameMessage(`Bet of $${bet}!`);
             }
@@ -430,6 +441,10 @@ import React, { useEffect, useState,useRef } from "react";
         }, []);
 
         useEffect(() => {
+            if (isFirstRender.current) {
+                isFirstRender.current = false;
+                return;
+            }
             console.log(`Bet updated: ${bet}, Player chips: ${playerChips}`);
           }, [bet, playerChips]);
 
