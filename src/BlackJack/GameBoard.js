@@ -43,7 +43,7 @@ import React, { useEffect, useState,useRef } from "react";
             if (newChips[chipType]) {
                 newChips[chipType].count += 1;
                 // Adjust position logic as necessary
-                newChips[chipType].position += 10; // Example increment
+                // newChips[chipType].position += 10; 
             } else {
                 newChips[chipType] = { imgSrc, count: 1, position: 0 };
             }
