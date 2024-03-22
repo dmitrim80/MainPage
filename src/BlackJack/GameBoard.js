@@ -160,7 +160,7 @@ import React, { useEffect, useState,useRef } from "react";
                 setDealerHand(dealerHand.map((card, index) => 
                     index === 0 ? { ...card, isFaceDown: false } : card // Flip only the first card
                 ));
-            }, 1000); // Adjust this delay as needed
+            }, 500); // Adjust this delay as needed
 
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
@@ -250,8 +250,17 @@ import React, { useEffect, useState,useRef } from "react";
 
             const drawCardforDealer = () => {
                 if (updatedDealerHandValue < 17 && deck){
-                        const newCard = deck.drawCard();
-                        updatedDealerHand = [...updatedDealerHand,newCard];
+
+                    const newCard = { ...deck.drawCard(), isFaceDown: true };
+                    updatedDealerHand = [...updatedDealerHand, newCard];
+                    setDealerHand(updatedDealerHand);
+                    setTimeout(() => {
+                        const newHand = [...updatedDealerHand];
+                        newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                        setDealerHand(newHand);
+                    },100);
+                        
+                        
                         updatedDealerHandValue = calculateHandValue(updatedDealerHand);
 
                         if(updatedDealerHandValue < 17){
@@ -312,11 +321,19 @@ import React, { useEffect, useState,useRef } from "react";
         const handleHit = () =>{
             
             if(deck.cards.length > 0){
-                const newCard = deck.drawCard();
+                const newCard = { ...deck.drawCard(), isFaceDown: true };
                 const updatedPlayerHand = [...playerHand, newCard];
-                
-                const playerHandValue = calculateHandValue(updatedPlayerHand);
+
                 setPlayerHand(updatedPlayerHand);
+
+                setTimeout(() => {
+                    const newHand = [...updatedPlayerHand];
+                    newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                    setPlayerHand(newHand);
+                },100);
+
+                const playerHandValue = calculateHandValue(updatedPlayerHand);
+                
                 setPlayerHandValue(playerHandValue);
                 let newOutcome;
 
