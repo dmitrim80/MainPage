@@ -33,9 +33,9 @@ const Controls = ({ onNewGame,
                     <>
                         {!buttonsHidden && (
                             <>
-                            <button id='btn-stand' onClick={handleStand}>Stand</button>
-                            <button id='btn-double' onClick={handleDouble}>Double</button>
-                            <button id='btn-hit' onClick={handleHit}>Hit</button>
+                            <button id='btn-stand' onClick={handleStand}></button>
+                            <button id='btn-double' onClick={handleDouble}></button>
+                            <button id='btn-hit' onClick={handleHit}></button>
                             </>
                         )}
                     </>
