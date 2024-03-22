@@ -18,7 +18,7 @@ import React, { useEffect, useState,useRef } from "react";
     const [bet, setBet] = useState(0);
     const [gameMessage, setGameMessage] = useState("");
     const [gameOutcome, setGameOutcome] = useState("");
-    const [showScores, setShowScores] = useState(false);
+    const [showScores, setShowScores] = useState(true);
     const [newRound, setNewRound] = useState(false);
     const endGameTimeout = useRef();
     const [gamePause,setGamePause] = useState(false);
@@ -124,7 +124,11 @@ import React, { useEffect, useState,useRef } from "react";
             endGame();
         }
 
-
+        const revealDealerSecondCard = () => {
+            setDealerHand(dealerHand.map((card, index) => 
+                index === 1 ? { ...card, isFaceDown: false } : card // Flip the second card
+            ));
+        };
         
         const handleNewGame = () => {
 
@@ -140,10 +144,23 @@ import React, { useEffect, useState,useRef } from "react";
             
             
             
-            const playerFirstCard = newDeck.drawCard();
-            const playerSecondCard = newDeck.drawCard();
-            const dealerFirstCard = newDeck.drawCard();
-            const dealerSecondCard = newDeck.drawCard();
+            const playerFirstCard = {...newDeck.drawCard(), isFaceDown: true};
+            const playerSecondCard = {...newDeck.drawCard(), isFaceDown: true};
+            const dealerFirstCard = {...newDeck.drawCard(), isFaceDown: true};
+            const dealerSecondCard = {...newDeck.drawCard(), isFaceDown: true};
+
+            setPlayerHand([playerFirstCard, playerSecondCard]);
+            setDealerHand([dealerFirstCard, dealerSecondCard]);
+            
+            setTimeout(() => {
+                // Flip all player's cards
+                setPlayerHand(playerHand.map(card => ({ ...card, isFaceDown: false })));
+            
+                // Flip all dealer's cards
+                setDealerHand(dealerHand.map((card, index) => 
+                    index === 0 ? { ...card, isFaceDown: false } : card // Flip only the first card
+                ));
+            }, 1000); // Adjust this delay as needed
 
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
@@ -155,6 +172,7 @@ import React, { useEffect, useState,useRef } from "react";
             const dealerHandValue = calculateHandValue(dealerHand);
 
             const dealerHandValueOneCard = calculateHandValue([dealerFirstCard]);
+            
 
             //checking for blackjack or 2 blackjacks
             let newOutcome; 

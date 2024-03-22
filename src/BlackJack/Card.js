@@ -117,11 +117,19 @@ const cardImages = {
 
 
 const Card = ({suit,rank, isFaceDown}) => {
-  const cardImage = isFaceDown ? cardBack: cardImages[`${suit}-${rank}`];
+  const cardImage = isFaceDown ? cardBack : cardImages[`${suit}-${rank}`];
+  
     return (
-        <div id="card-box">
-            <img src={cardImage} alt={isFaceDown ? 'Card Back' : `${rank} of ${suit}`} />
+      <div className="card-box">
+      <div className={`card-content ${!isFaceDown ? 'flip' : ''}`}>
+        <div className="card-front">
+          <img src={cardImages[`${suit}-${rank}`]} alt={`${rank} of ${suit}`} />
         </div>
+        <div className="card-back">
+          <img src={cardBack} alt="Card Back" />
+        </div>
+      </div>
+    </div>
     )
 }
 
