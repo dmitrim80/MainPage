@@ -238,7 +238,7 @@ import React, { useEffect, useState,useRef } from "react";
 
         const handleStand = () => {
 
-            // Make 2nd dealer card visible
+            // Make 2nd dealer card visible, after 1 second delay
             setTimeout(()=>{ 
                 let updatedDealerHand = dealerHand.map((card, index) => ({
                     ...card,
@@ -246,26 +246,31 @@ import React, { useEffect, useState,useRef } from "react";
                 }));
                 setDealerHand(updatedDealerHand);
                 
-                //Recalculate dealerHand value and display it by using setTmeout
+            //Recalculate dealerHand value and display it by using setTmeout
                 let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
                 setDealerHandValue(updatedDealerHandValue);
-    
+            
                 const drawCardforDealer = () => {
+            //check handValue, drawCard until handValue is 17 or higher
                     if (updatedDealerHandValue < 17 && deck){
+                        //delay to draw card by 1.5 seconds, card with facedown
                         setTimeout(() => {
                             const newCard = { ...deck.drawCard(), isFaceDown: true };
                             updatedDealerHand = [...updatedDealerHand, newCard];
                             setDealerHand(updatedDealerHand);
-                            
+                            //delay displaying last card with face up by 1 seconds
                             setTimeout(()=>{
                                 const newHand = [...updatedDealerHand];
-                                newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                                newHand[newHand.length - 1].isFaceDown = false; 
                                 setDealerHand(newHand);
                                 
                                 updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-                            },2000);
+                                setDealerHandValue(updatedDealerHandValue);
+                            },500);
                                 
-                        }, 1500);
+                        }, 1000);
+
+                        setTimeout(()=>{
                             if(updatedDealerHandValue < 17){
                                 setTimeout(()=>{
                                     drawCardforDealer();
@@ -277,10 +282,12 @@ import React, { useEffect, useState,useRef } from "react";
                                 },1500);
                                 
                             }
+                        },1500);
+                            
                         }else{
                             setTimeout(()=>{
                                 finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
-                            },1500);
+                            },500);
                             
                         }
                 }
