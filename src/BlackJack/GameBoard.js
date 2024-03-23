@@ -239,46 +239,63 @@ import React, { useEffect, useState,useRef } from "react";
         const handleStand = () => {
 
             // Make 2nd dealer card visible
-            let updatedDealerHand = dealerHand.map((card, index) => ({
-                ...card,
-                isFaceDown: index === 1 ? false : card.isFaceDown,
-            }));
-            setDealerHand(updatedDealerHand);
-            //Recalculate dealerHand value and display it by using setTmeout
-            let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-            setDealerHandValue(updatedDealerHandValue);
-
-            const drawCardforDealer = () => {
-                if (updatedDealerHandValue < 17 && deck){
-
-                    const newCard = { ...deck.drawCard(), isFaceDown: true };
-                    updatedDealerHand = [...updatedDealerHand, newCard];
-                    setDealerHand(updatedDealerHand);
-                    setTimeout(() => {
-                        const newHand = [...updatedDealerHand];
-                        newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
-                        setDealerHand(newHand);
-                    },100);
-                        
-                        
-                        updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-
-                        if(updatedDealerHandValue < 17){
-                            drawCardforDealer();
-                        }else {
-                            finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
+            setTimeout(()=>{ 
+                let updatedDealerHand = dealerHand.map((card, index) => ({
+                    ...card,
+                    isFaceDown: index === 1 ? false : card.isFaceDown,
+                }));
+                setDealerHand(updatedDealerHand);
+                
+                //Recalculate dealerHand value and display it by using setTmeout
+                let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                setDealerHandValue(updatedDealerHandValue);
+    
+                const drawCardforDealer = () => {
+                    if (updatedDealerHandValue < 17 && deck){
+                        setTimeout(() => {
+                            const newCard = { ...deck.drawCard(), isFaceDown: true };
+                            updatedDealerHand = [...updatedDealerHand, newCard];
+                            setDealerHand(updatedDealerHand);
+                            
+                            setTimeout(()=>{
+                                const newHand = [...updatedDealerHand];
+                                newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                                setDealerHand(newHand);
+                                
+                                updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                            },2000);
+                                
+                        }, 1500);
+                            if(updatedDealerHandValue < 17){
+                                setTimeout(()=>{
+                                    drawCardforDealer();
+                                },1500);
+                                
+                            }else {
+                                setTimeout(()=>{
+                                    finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
+                                },1500);
+                                
+                            }
+                        }else{
+                            setTimeout(()=>{
+                                finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
+                            },1500);
+                            
                         }
-                    }else{
-                        finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
-                    }
-            }
-            drawCardforDealer();
+                }
+                setTimeout(()=>{
+                    drawCardforDealer();
+                },1500);
+                
+            },1000);
+            
         }
 
         const finishDealerTurn = (finalDealerHand,finalDealerHandValue) => {
             
-
-            setDealerHand(finalDealerHand);
+            setTimeout(()=>{
+                setDealerHand(finalDealerHand);
             setDealerHandValue(finalDealerHandValue);
 
             let outcome="";
@@ -310,6 +327,8 @@ import React, { useEffect, useState,useRef } from "react";
             console.log(`From finishDealerTurn Game Outcome: ${outcome}`);
             console.log(resultMessage);
             setGameOutcome(outcome);
+            },1000);
+            
             
         };
 
