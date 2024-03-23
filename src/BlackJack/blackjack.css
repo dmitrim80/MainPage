@@ -499,6 +499,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
 
 .card-front, .card-back {
+  -webkit-backface-visibility: hidden; /* for Safari 5.1+ and iOS 5+ */
   backface-visibility: hidden;
   position: absolute;
   width: 100%;
