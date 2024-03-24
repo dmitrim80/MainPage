@@ -18,9 +18,12 @@ body{
   width: 400px;
   height: 600px;
   overflow: hidden; 
-  border: 5px solid #a47523;
+  border: 1px ridge #d4af37;
   border-radius: 10px;
-  box-shadow: 0 0 20px #ddb01d; 
+  box-shadow: 
+  0 0 5px rgba(255, 119, 0, 0.817), 
+  0 0 5px rgba(145, 255, 0, 0.5), 
+  0 0 5px rgba(255,255,0,0.4);
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
