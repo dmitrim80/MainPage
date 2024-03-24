@@ -396,7 +396,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
       transform: translateY(-3px);
     }
   }
-  #score-bubble div{
+  /* #score-bubble div{
     background-color: hsla(0, 0%, 96%, 0.75);
     color: black;
     width: 30px;
@@ -409,18 +409,64 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   font-weight: bold;
 
   }
-  #dealer-score-bubble{
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  
   #player-score-bubble{
     position: absolute;
     bottom: -30px;
     left: 50%;
     transform: translateX(-50%);
+  } */
+  #dealer-score-bubble{
+    background-color: #d8d5cc; /* Bubble color */
+    color: #000; /* Text color */
+    padding: 1px 10px; /* Adjust padding as needed */
+    border-radius: 50%; /* Rounded corners for the bubble */
+    font-weight: 400; /* Optional: makes text bold */
+    display: inline-block;
+    visibility: hidden; /* Controlled by your JavaScript */
+    transform: translateY(-20px);
   }
+  #dealer-score-bubble::after {
+    content: "";
+    position: absolute;
+    rotate: 180deg;
+    bottom: -20px; /* Position the pointer at the bottom of the bubble */
+    left: 50%; /* Center the pointer */
+    margin-left: -10px; /* Offset by half the pointer's width to truly center it */
+    border-width: 10px; /* Adjust size of the pointer */
+    transform: translateY(5px);
+    border-style: solid;
+    border-color: transparent transparent #d8d5cc transparent; /* Pointer color */
+}
+  #score-bubble {
+    position: relative; /* Needed for absolute positioning of the pointer */
+    display: inline-block; /* Adjust size to content */
+    left: 50%;
+}
+
+#player-score-bubble {
+    background-color: #d8d5cc; /* Bubble color */
+    color: #000; /* Text color */
+    padding: 1px 10px; /* Adjust padding as needed */
+    border-radius: 50%; /* Rounded corners for the bubble */
+    font-weight:400; /* Optional: makes text bold */
+    display: inline-block;
+    visibility: hidden; /* Controlled by your JavaScript */
+    transform: translateY(-34px);
+
+}
+
+#player-score-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: 100%; /* Position the pointer at the bottom of the bubble */
+    left: 50%; /* Center the pointer */
+    margin-left: -10px; /* Offset by half the pointer's width to truly center it */
+    border-width: 10px; /* Adjust size of the pointer */
+    transform: translateY(4px);
+    border-style: solid;
+    border-color: transparent transparent #d8d5cc transparent; /* Pointer color */
+}
 
   #game-area{
     margin-top: 40px;
