@@ -1,10 +1,15 @@
 import React from 'react';
-import chip5 from './images/5-chip.png';
-import chip10 from './images/10-chip.png';
-import chip25 from './images/25-chip.png';
-import chip50 from './images/50-chip.png';
-import chip100 from './images/100-chip.png';
-import chip250 from './images/250-chip.png';
+import chip5 from './images/5-chip-v2.png';
+import chip10 from './images/10-chip-v2.png';
+import chip25 from './images/25-chip-v2.png';
+import chip50 from './images/50-chip-v2.png';
+import chip100 from './images/100-chip-v2.png';
+import chip250 from './images/250-chip-v2.png';
+import btnStand from './images/stand-button2.png';
+import btnDouble from './images/double-button2.png';
+import btnHit from './images/hit-button2.png';
+import btnClear from './images/clear-button2.png';
+import btnBet from './images/bet-button2.png';
 
 const Controls = ({ onNewGame, 
                     handleStand, 
@@ -33,16 +38,16 @@ const Controls = ({ onNewGame,
                     <>
                         {!buttonsHidden && (
                             <>
-                            <button id='btn-stand' onClick={handleStand}></button>
-                            <button id='btn-double' onClick={handleDouble}></button>
-                            <button id='btn-hit' onClick={handleHit}></button>
+                            <img src={btnStand} className='btn-stand' alt='stand-button' onClick={handleStand}/>
+                            <img src={btnDouble} className='btn-double' alt='double-button' onClick={handleDouble}/>
+                            <img src={btnHit} className='btn-hit' alt='hit-button' onClick={handleHit}/>
                             </>
                         )}
                     </>
                 ) : (
                     <>
-                        <button id='btn-new-game' onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}></button>
-                        <button id='btn-clear-bet' onClick={() => onBetPlaced(0)}></button> 
+                        <img src={btnBet} className='btn-new-game' alt='bet-button' onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}/>
+                        <img src={btnClear} className='btn-clear-bet' alt='clear-button' onClick={() => onBetPlaced(0)}/>
                     </>
                 )}
             </div>

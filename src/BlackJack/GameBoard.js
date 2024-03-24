@@ -168,8 +168,7 @@ import React, { useEffect, useState,useRef } from "react";
             const dealerHand = [dealerFirstCard,{...dealerSecondCard,isFaceDown: true }];
             setDealerHand(dealerHand);
             
-            const playerHandValue = 21;
-            //calculateHandValue(playerHand);
+            const playerHandValue = calculateHandValue(playerHand);
             setPlayerHandValue(playerHandValue);
             const dealerHandValue = calculateHandValue(dealerHand);
             

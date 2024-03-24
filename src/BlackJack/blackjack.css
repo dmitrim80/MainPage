@@ -1,5 +1,5 @@
 body{
-    background-color: hsla(0, 0%, 0%, 0.303);
+    background-color: hsla(0, 0%, 0%, 0.703);
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -17,10 +17,10 @@ body{
   align-items: center;
   width: 400px;
   height: 600px;
-  border-radius: 15px;
   overflow: hidden; 
-  border: 3px solid hsla(25, 72%, 11%, 0.96);
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  border: 5px solid #a47523;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ddb01d; 
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
@@ -61,7 +61,6 @@ height: 0px;
 left: 0;
 width: 100px;
 height: 0px;
-background-color: aqua;
 }
 #new-deck{
 right: 0;
@@ -80,7 +79,7 @@ height: 0px;
 }
 #game-settings{
 margin-right: 5px;
-border: 1px solid hsl(22, 88%, 66%);
+border: 1px solid #a47523;
 background-color: hsla(25, 72%, 11%, 0.96);
 color: aliceblue;
 border-radius: 15px;
@@ -91,7 +90,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
 #chips-count{
 margin-left: 5px;
-border: 1px solid hsl(22, 88%, 66%);
+border: 1px solid #a47523;
 background-color: hsla(25, 72%, 11%, 0.96);
 color: aliceblue;
 border-radius: 15px;
@@ -101,7 +100,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 
 }
 #games-count{
-  border: 1px solid hsl(22, 88%, 66%);
+  border: 1px solid #a47523;
   background-color: hsla(25, 72%, 11%, 0.96);
   color: aliceblue;
   border-radius: 15px;
@@ -116,7 +115,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     width: 210px;
     height: 140px;
     text-align: center;
-    color: hsl(22, 88%, 66%);
+    color: #a47523;
     font-size: 3.2rem;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight:bolder;
@@ -273,11 +272,8 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5);
   }
 
-#btn-new-game {
-    background-image: url('./images/place-bet-button.png');
-    background-size: cover;
-    background-position: center;
-    border:1px solid rgba(12, 11, 9, 0.728);
+.btn-new-game {
+    border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
     width: 75px;
     height: 75px;
@@ -286,21 +282,17 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease; /* Add box-shadow to the transition */
   }
   
-  #btn-new-game:hover {
+  .btn-new-game:hover {
     background-color: hsl(159, 54%, 25%);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
   }
   
-  #btn-new-game:active {
+  .btn-new-game:active {
     transform: scale(0.95);
     background-color: hsl(159, 54%, 20%);
   }
-  
-#btn-clear-bet{
-    background-image: url(./images/clear-button-x.png);
-    background-size: cover;
-    background-position: center;
-    border:1px solid rgba(12, 11, 9, 0.728);
+  .btn-clear-bet{
+    border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
     width: 75px;
     height: 75px;
@@ -308,20 +300,18 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     border-radius: 50%;
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
 }
-#btn-clear-bet:hover {
+.btn-clear-bet:hover {
     background-color: hsl(159, 54%, 25%);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
   }
   
-  #btn-clear-bet:active {
+  .btn-clear-bet:active {
     transform: scale(0.95);
     background-color: hsl(159, 54%, 20%);
   }
-  #btn-stand{
-    background-image: url(./images/stand-button.png);
-    background-size: cover;
-    background-position: center;
-    border:4px solid rgba(12, 11, 9, 0.728);
+
+  .btn-stand {
+    border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
     width: 75px;
     height: 75px;
@@ -330,20 +320,19 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
 
   }
-  #btn-stand:hover{
+
+  .btn-stand:hover{
     background-color: hsl(159, 54%, 25%);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
   
   }
-  #btn-stand:active{
+  .btn-stand:active{
     transform: scale(0.95);
     background-color: hsl(159, 54%, 20%);
   }
-  #btn-double{
-    background-image: url(./images/double-button.png);
-    background-size: cover;
-    background-position: center;
-    border:4px solid rgba(12, 11, 9, 0.728);
+  .btn-double{
+
+    border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
     width: 75px;
     height: 75px;
@@ -352,20 +341,17 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
  
   }
-  #btn-double:hover{
+  .btn-double:hover{
     background-color: hsl(159, 54%, 25%);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
   
   }
-  #btn-double:active{
+  .btn-double:active{
     transform: scale(0.95);
     background-color: hsl(159, 54%, 20%);
   }
-  #btn-hit{
-    background-image: url(./images/hit-button.png);
-    background-size: cover;
-    background-position: center;
-    border:4px solid rgba(12, 11, 9, 0.728);
+  .btn-hit{
+    border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
     width: 75px;
     height: 75px;
@@ -374,12 +360,12 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
 
   }
-  #btn-hit:hover{
+  .btn-hit:hover{
     background-color: hsl(159, 54%, 25%);
     box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
   
   }
-  #btn-hit:active{
+  .btn-hit:active{
     transform: scale(0.95);
     background-color: hsl(159, 54%, 20%);
   }
