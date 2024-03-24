@@ -268,8 +268,8 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     margin-bottom: 10px;
   }
   #chips-row-wrapper img:hover{
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5);
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   }
 
 .btn-new-game {
@@ -283,13 +283,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   }
   
   .btn-new-game:hover {
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   }
   
   .btn-new-game:active {
     transform: scale(0.95);
-    background-color: hsl(159, 54%, 20%);
+    background-color: #ddb01d; 
   }
   .btn-clear-bet{
     border:0px solid rgba(12, 11, 9, 0.728);
@@ -301,13 +301,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
 }
 .btn-clear-bet:hover {
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
+    background-color:#a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   }
   
   .btn-clear-bet:active {
     transform: scale(0.95);
-    background-color: hsl(159, 54%, 20%);
+    background-color: #a47523;
   }
 
   .btn-stand {
@@ -322,13 +322,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   }
 
   .btn-stand:hover{
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
   .btn-stand:active{
     transform: scale(0.95);
-    background-color: hsl(159, 54%, 20%);
+    background-color: #a47523;
   }
   .btn-double{
 
@@ -342,13 +342,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
  
   }
   .btn-double:hover{
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
   .btn-double:active{
     transform: scale(0.95);
-    background-color: hsl(159, 54%, 20%);
+    background-color: #a47523;
   }
   .btn-hit{
     border:0px solid rgba(12, 11, 9, 0.728);
@@ -361,13 +361,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 
   }
   .btn-hit:hover{
-    background-color: hsl(159, 54%, 25%);
-    box-shadow: 0px 0px 8px 3px rgba(0, 255, 0, 0.5); /* Example green glow effect */
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
   .btn-hit:active{
     transform: scale(0.95);
-    background-color: hsl(159, 54%, 20%);
+    background-color:#a47523;
   }
   
   #bet-main-container{
