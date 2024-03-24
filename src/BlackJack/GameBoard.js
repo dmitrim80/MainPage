@@ -97,8 +97,8 @@ import React, { useEffect, useState,useRef } from "react";
         
             switch(gameOutcome) {
                 case "PlayerWins BlackJack":
-                    outcomeMessage = `BlacJack, You Won $${finalBet}!!!`;
-                    winAmount = finalBet * 2; 
+                    outcomeMessage = `BlacJack, You Won $${finalBet*1.5}!!!`;
+                    winAmount = finalBet * 2.5; 
                     break;
                 case "DealerWins BlackJack":
                     outcomeMessage = `BlacJack, Dealer wins... you lost $${finalBet}`;
@@ -168,8 +168,8 @@ import React, { useEffect, useState,useRef } from "react";
             const dealerHand = [dealerFirstCard,{...dealerSecondCard,isFaceDown: true }];
             setDealerHand(dealerHand);
             
-            const playerHandValue = calculateHandValue(playerHand);
-            
+            const playerHandValue = 21;
+            //calculateHandValue(playerHand);
             setPlayerHandValue(playerHandValue);
             const dealerHandValue = calculateHandValue(dealerHand);
             
