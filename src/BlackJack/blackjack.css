@@ -396,102 +396,37 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
       transform: translateY(-3px);
     }
   }
-  /* #score-bubble div{
-    background-color: hsla(0, 0%, 96%, 0.75);
-    color: black;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-  #dealer-score-bubble,#player-score-bubble{
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-
-  }
-  
-  #player-score-bubble{
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-  } */
-  #dealer-score-bubble{
-    background-color: #d8d5cc; /* Bubble color */
-    color: #000; /* Text color */
-    padding: 1px 10px; /* Adjust padding as needed */
-    border-radius: 50%; /* Rounded corners for the bubble */
-    font-weight: 400; /* Optional: makes text bold */
-    display: inline-block;
-    visibility: hidden; /* Controlled by your JavaScript */
-    transform: translateY(-20px);
-  }
-  #dealer-score-bubble::after {
-    content: "";
-    position: absolute;
-    rotate: 180deg;
-    bottom: -20px; /* Position the pointer at the bottom of the bubble */
-    left: 50%; /* Center the pointer */
-    margin-left: -10px; /* Offset by half the pointer's width to truly center it */
-    border-width: 10px; /* Adjust size of the pointer */
-    transform: translateY(5px);
-    border-style: solid;
-    border-color: transparent transparent #d8d5cc transparent; /* Pointer color */
-}
-  #score-bubble {
-    position: relative; /* Needed for absolute positioning of the pointer */
-    display: inline-block; /* Adjust size to content */
-    left: 50%;
-}
-
-#player-score-bubble {
-    background-color: #d8d5cc; /* Bubble color */
-    color: #000; /* Text color */
-    padding: 1px 10px; /* Adjust padding as needed */
-    border-radius: 50%; /* Rounded corners for the bubble */
-    font-weight:400; /* Optional: makes text bold */
-    display: inline-block;
-    visibility: hidden; /* Controlled by your JavaScript */
-    transform: translateY(-34px);
-
-}
-
-#player-score-bubble::after {
-    content: "";
-    position: absolute;
-    bottom: 100%; /* Position the pointer at the bottom of the bubble */
-    left: 50%; /* Center the pointer */
-    margin-left: -10px; /* Offset by half the pointer's width to truly center it */
-    border-width: 10px; /* Adjust size of the pointer */
-    transform: translateY(4px);
-    border-style: solid;
-    border-color: transparent transparent #d8d5cc transparent; /* Pointer color */
-}
-
-  #game-area{
-    margin-top: 40px;
+  .game-area{
+    margin-top: 60px;
     position: relative;
     height: 100%;
-    width: 150px;
+    width: 70%;
     perspective: 1000px;
+
+    display: flex;
+    justify-content: center;
   }
   .message-container{
   display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+
+  position:absolute;
+  top: 43%;
+  height:35px;
   width:100%;
+  justify-content: center;
 }
   .message-box{
     color: hsl(21, 38%, 13%);
-    font-size:medium;
-    font-weight: bold;
+
+    height: 100%;
+    text-align: center;
+    font-size:large;
+    font-weight: bolder;
     border-radius: 7px;
-    background-color: hsla(24, 13%, 85%, 0.96);
+    background-color: hsla(24, 13%, 85%, 0.76);
     padding: 2px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
   }
 
 
@@ -511,12 +446,68 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     position: absolute;
   }
   #dealer-hand{
-    top: 10px;
+    top: 0px;
   }
   #player-hand{
-    bottom: 10px;
+    bottom: 0px;
   }
 
+  #score-bubble {
+    position: absolute;
+    width: 100%; /* Ensure it spans the entire width of the game-area */
+    display: flex;
+    justify-content: center;
+}
+#dealer-score-bubble, #player-score-bubble {
+  background-color: #d8d5cc; /* Bubble color */
+  color: #000; /* Text color */
+  padding: 1px 10px; /* Adjust padding as needed */
+  border-radius: 50%; /* Rounded corners for the bubble */
+  font-weight: 400;
+  visibility: hidden; /* Controlled by your JavaScript */
+  position: absolute;
+  left: 50%; /* Center the bubble horizontally */
+  transform: translateX(-50%); /* Ensure it's centered properly */
+}
+#dealer-score-bubble {
+  top: -30px; /* Position it at the top of the game-area */
+}
+
+#dealer-score-bubble::after {
+  content: "";
+  position: absolute;
+  rotate: 180deg;
+  left: 50%;
+  margin-left: -20px;
+  border-width: 10px;
+  transform: translate(-50%, -100%); /* Adjust to position the pointer correctly */
+  border-style: solid;
+  border-color: transparent transparent #d8d5cc transparent; /* Matching bubble color */
+}
+
+#player-score-bubble {
+  bottom: -285px; /* Position it at the bottom of the game-area */
+}
+
+#player-score-bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* Center the pointer under the bubble */
+  margin-left: 0px; /* Half the pointer's base width to truly center it */
+  border-width: 10px; /* Adjust the size of the pointer */
+  
+  /* Position the pointer just below the bubble */
+  bottom: 22px; /* Adjust based on the bubble's height and desired gap */
+  transform: translateX(-50%); /* Ensures accurate horizontal centering */
+  
+  border-style: solid;
+  border-color: transparent transparent #d8d5cc transparent; /* Arrow points up */
+}
+
+
+
+
+  
 .card-box{
     perspective: 1000px;
     margin: 0 -15px;

@@ -586,9 +586,12 @@ import React, { useEffect, useState,useRef } from "react";
 
 
 
-                <div id="game-area">
+                <div className="game-area">
                     <div id='score-bubble'>
-                    <div id="dealer-score-bubble" style={{visibility: showScores ? 'visible' : 'hidden'}}>{dealerHandValue}</div>
+                        <div id="dealer-score-bubble" 
+                        style={
+                            {visibility: showScores ? 'visible' : 'hidden'}
+                            }>{dealerHandValue}</div>
                     </div>
                     
                     <Player hand={dealerHand} isDealer={true} />
