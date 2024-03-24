@@ -96,15 +96,22 @@ import React, { useEffect, useState,useRef } from "react";
             let winAmount = 0;
         
             switch(gameOutcome) {
+                case "PlayerWins BlackJack":
+                    outcomeMessage = `BlacJack, You Won $${finalBet}!!!`;
+                    winAmount = finalBet * 2; 
+                    break;
+                case "DealerWins BlackJack":
+                    outcomeMessage = `BlacJack, Dealer wins... you lost $${finalBet}`;
+                    break;
                 case "DealerWins":
-                    outcomeMessage = `Dealer Wins, you lost bet of: ${finalBet}`;
+                    outcomeMessage = `Dealer Wins, you lost bet of: $${finalBet}`;
                     break;
                 case "PlayerWins":
-                    outcomeMessage = `You Won! Your bet: ${finalBet}`;
-                    winAmount = finalBet * 2; // Assuming the player wins double their bet
+                    outcomeMessage = `You Won $${finalBet}!`;
+                    winAmount = finalBet * 2; 
                     break;
                 case "Push":
-                    outcomeMessage = `Push... It's a Tie. Bet returned: ${finalBet}`;
+                    outcomeMessage = `Push! Tie... Bet returned: $${finalBet}`;
                     winAmount = finalBet; // The bet is returned to the player
                     break;
                 default:
@@ -123,12 +130,6 @@ import React, { useEffect, useState,useRef } from "react";
                
             endGame();
         }
-
-        const revealDealerSecondCard = () => {
-            setDealerHand(dealerHand.map((card, index) => 
-                index === 1 ? { ...card, isFaceDown: false } : card // Flip the second card
-            ));
-        };
         
         const handleNewGame = () => {
 
@@ -168,9 +169,10 @@ import React, { useEffect, useState,useRef } from "react";
             setDealerHand(dealerHand);
             
             const playerHandValue = calculateHandValue(playerHand);
+            
             setPlayerHandValue(playerHandValue);
             const dealerHandValue = calculateHandValue(dealerHand);
-
+            
             const dealerHandValueOneCard = calculateHandValue([dealerFirstCard]);
             
 
@@ -178,39 +180,52 @@ import React, { useEffect, useState,useRef } from "react";
             let newOutcome; 
 
             if(playerHandValue===21 && dealerHandValue === 21){
+                
+               
+            setTimeout(()=>{
                 newOutcome = "Push";
                 
                 setGameOutcome(newOutcome);
-               
-               
-                let updatedDealerHand = dealerHand.map((card, index) => ({
+                const updatedDealerHand = dealerHand.map(card => ({
                     ...card,
-                    isFaceDown: index === 1 ? false : card.isFaceDown,
+                    isFaceDown: false,
                 }));
                 setDealerHand(updatedDealerHand);
                 setDealerHandValue(dealerHandValueOneCard);
+            },500);   
+                
+
             }else if(playerHandValue ===21){
-                newOutcome="PlayerWins";
+                setTimeout(()=>{
+                    newOutcome="PlayerWins BlackJack";
+                    setGameOutcome(newOutcome);
+                    const updatedDealerHand = dealerHand.map(card => ({
+                        ...card,
+                        isFaceDown: false,
+                    }));
+                    setDealerHand(updatedDealerHand);
+                    setDealerHandValue(dealerHandValueOneCard);
+                },500);
+
                 
-                setGameOutcome(newOutcome);
-               
-                let updatedDealerHand = dealerHand.map((card, index) => ({
-                    ...card,
-                    isFaceDown: index === 1 ? false : card.isFaceDown,
-                }));
-                setDealerHand(updatedDealerHand);
-                setDealerHandValue(dealerHandValueOneCard);
+
             }else if(dealerHandValue ===21){
-                newOutcome="DealerWins";
+
                 
-                setGameOutcome(newOutcome);;
+
+                setTimeout(()=>{
+                    newOutcome="DealerWins BlackJack";
+                    setGameOutcome(newOutcome);;
+                    const updatedDealerHand = dealerHand.map(card => ({
+                        ...card,
+                        isFaceDown:false,
+                    }));
+                    setDealerHand(updatedDealerHand);
+                    setDealerHandValue(dealerHandValueOneCard);
+                },500);
                
-                let updatedDealerHand = dealerHand.map((card, index) => ({
-                    ...card,
-                    isFaceDown: index === 1 ? false : card.isFaceDown,
-                }));
-                setDealerHand(updatedDealerHand);
-                setDealerHandValue(dealerHandValueOneCard);
+                
+
             }else{
                 setDealerHandValue(dealerHandValueOneCard);
             }         
@@ -237,7 +252,8 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const handleStand = () => {
-
+            console.log("Dealer Hand:",dealerHandValue);
+            console.log("Player Hand:",playerHandValue);
             // Make 2nd dealer card visible, after 1 second delay
             setTimeout(()=>{ 
                 let updatedDealerHand = dealerHand.map((card, index) => ({
@@ -304,11 +320,10 @@ import React, { useEffect, useState,useRef } from "react";
             setTimeout(()=>{
                 setDealerHand(finalDealerHand);
             setDealerHandValue(finalDealerHandValue);
-
+            console.log("Finishing Dealer Turn, Player Hand:", playerHandValue);
+            console.log("Finishing Dealer Turn, final dealer Hand:", finalDealerHandValue);
             let outcome="";
             let resultMessage="";
-            console.log(`Dealer Hand: ${dealerHandValue}`);
-            console.log(`Dealer Hand: ${playerHandValue}`);
             if (finalDealerHandValue > 21) {
                 outcome = "PlayerWins";
                 resultMessage = "Dealer Bust... You Win!";
@@ -341,7 +356,49 @@ import React, { useEffect, useState,useRef } from "react";
 
 
         const handleDouble = () =>{
-            console.log("double");
+                // Check if doubling down is allowed (typically, you can only double down on your first two cards)
+                if (playerHand.length !== 2) {
+                    setGameMessage("Doubling down is not allowed at this time.");
+                    return;
+                }
+            
+                // Check if the player has enough chips to double the bet
+                if (playerChips >= bet && !gamePause) {
+                    setPlayerChips((prevChips) => prevChips - bet); // Deduct the additional bet amount from player's chips
+                    setBet((prevBet) => prevBet * 2); // Double the bet
+                    
+                    // Draw one additional card for the player and add it to their hand
+                        setTimeout(() => {
+                            const newCard = { ...deck.drawCard(), isFaceDown: true };
+                            const updatedPlayerHand = [...playerHand, newCard];
+                            const updatedPlayerHandValue = calculateHandValue(updatedPlayerHand);
+                            setPlayerHandValue(updatedPlayerHandValue);
+                            setPlayerHand(updatedPlayerHand);
+                            //delay displaying last card with face up by 1 seconds
+                            setTimeout(()=>{
+                                console.log("player hand value:",playerHandValue);
+                                const newHand = [...updatedPlayerHand];
+                                newHand[newHand.length - 1].isFaceDown = false; 
+                                setPlayerHand(newHand);
+                                const newPlayerHandValue = calculateHandValue(newHand);
+                                console.log("new player hand value:",newPlayerHandValue);
+                                setPlayerHandValue(newPlayerHandValue);
+                                // Check if the player is bust after doubling down
+                                setTimeout(()=>{
+                                    if (newPlayerHandValue > 21) {
+                                    setGameMessage("Bust! You've exceeded 21.");
+                                    setGameOutcome("DealerWins"); // This might lead to the game ending process
+                                } else {
+                                    setTimeout(()=>{handleStand();},500);
+                                    
+                                } 
+                                },500);
+                            },500);
+                        }, 500);}
+                        else {
+                            // Not enough chips or game is paused
+                            setGameMessage("Not enough chips to double down or game is paused.");
+                        }
         };
 
         const handleHit = () =>{
@@ -471,6 +528,16 @@ import React, { useEffect, useState,useRef } from "react";
 
             return total;
         }
+
+        useEffect(() => {
+            
+            const playerHandValue = calculateHandValue(playerHand);
+            console.log("useEffect Player:",playerHandValue);
+            const dealerHandValue = calculateHandValue(dealerHand);
+            console.log("useEffect Dealer:",dealerHandValue);
+            setPlayerHandValue(playerHandValue);
+            setDealerHandValue(dealerHandValue);
+        }, [playerHand,dealerHand]);
       
         useEffect(() => {
             if (isFirstRender.current) {
@@ -490,7 +557,7 @@ import React, { useEffect, useState,useRef } from "react";
                 return;
             }
             if (bet > 0) {
-                setGameMessage(`Bet of $${bet}!`);
+                setGameMessage(`Bet of $${bet}`);
             }
           }, [bet]);
       
