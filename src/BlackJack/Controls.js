@@ -56,8 +56,9 @@ const Controls = ({ onNewGame,
                                         height: 'auto', 
                                         overflow: 'hidden'}}>
                 <div id='pointer-row-animation' style={{
-                                                visibility: !gameRunning ? 'visible' : 'hidden', display: 'flex', 
-                                                gap: '44px', 
+                                                visibility: !gameRunning ? 'visible' : 'hidden', 
+                                                display: 'flex', 
+                                                gap: '40px', 
                                                 justifyContent: 'center', 
                                                 transform: 'translateY(3px)'}}>
 
