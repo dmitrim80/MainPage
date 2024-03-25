@@ -424,7 +424,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     font-size:large;
     font-weight: bolder;
     border-radius: 7px;
-    background-color: hsla(24, 13%, 85%, 0.76);
+    background-color: hsl(24, 13%, 85%);
     padding: 2px;
     padding-right: 10px;
     padding-left: 10px;
