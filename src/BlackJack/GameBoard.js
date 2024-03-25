@@ -28,7 +28,7 @@ import React, { useEffect, useState,useRef } from "react";
     const gap = 0.1;
     const totalChipTypes = Object.keys(betChips).length;
     const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
-       
+    const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
 
     const handleChipClick = (amount, imgSrc, event) => {
@@ -97,17 +97,17 @@ import React, { useEffect, useState,useRef } from "react";
         
             switch(gameOutcome) {
                 case "PlayerWins BlackJack":
-                    outcomeMessage = `BlacJack, You Won $${finalBet*1.5}!!!`;
+                    outcomeMessage = `BlacJack, You Won +$${finalBet*1.5}!!!`;
                     winAmount = finalBet * 2.5; 
                     break;
                 case "DealerWins BlackJack":
-                    outcomeMessage = `BlacJack, Dealer wins... you lost $${finalBet}`;
+                    outcomeMessage = `BlacJack, Dealer wins... -$${finalBet}`;
                     break;
-                case "DealerWins":
-                    outcomeMessage = `Dealer Wins, you lost bet of: $${finalBet}`;
+                case "DealerWins Bust":
+                    outcomeMessage = `Bust! Dealer Wins! -$${finalBet}`;
                     break;
                 case "PlayerWins":
-                    outcomeMessage = `You Won $${finalBet}!`;
+                    outcomeMessage = `You Won +$${finalBet}!`;
                     winAmount = finalBet * 2; 
                     break;
                 case "Push":
@@ -173,7 +173,7 @@ import React, { useEffect, useState,useRef } from "react";
             const dealerHandValue = calculateHandValue(dealerHand);
             
             const dealerHandValueOneCard = calculateHandValue([dealerFirstCard]);
-            
+            setDealerFirstCardValue(dealerHandValueOneCard);
 
             //checking for blackjack or 2 blackjacks
             let newOutcome; 
@@ -263,6 +263,7 @@ import React, { useEffect, useState,useRef } from "react";
                 
             //Recalculate dealerHand value and display it by using setTmeout
                 let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                console.log("stand: dealer:",updatedDealerHandValue);
                 setDealerHandValue(updatedDealerHandValue);
             
                 const drawCardforDealer = () => {
@@ -370,12 +371,9 @@ import React, { useEffect, useState,useRef } from "react";
                         setTimeout(() => {
                             const newCard = { ...deck.drawCard(), isFaceDown: true };
                             const updatedPlayerHand = [...playerHand, newCard];
-                            const updatedPlayerHandValue = calculateHandValue(updatedPlayerHand);
-                            setPlayerHandValue(updatedPlayerHandValue);
                             setPlayerHand(updatedPlayerHand);
-                            //delay displaying last card with face up by 1 seconds
+                            //delay displaying last card with face up by 0.5 seconds
                             setTimeout(()=>{
-                                console.log("player hand value:",playerHandValue);
                                 const newHand = [...updatedPlayerHand];
                                 newHand[newHand.length - 1].isFaceDown = false; 
                                 setPlayerHand(newHand);
@@ -385,11 +383,9 @@ import React, { useEffect, useState,useRef } from "react";
                                 // Check if the player is bust after doubling down
                                 setTimeout(()=>{
                                     if (newPlayerHandValue > 21) {
-                                    setGameMessage("Bust! You've exceeded 21.");
-                                    setGameOutcome("DealerWins"); // This might lead to the game ending process
+                                    setGameOutcome("DealerWins Bust"); // This might lead to the game ending process
                                 } else {
                                     setTimeout(()=>{handleStand();},500);
-                                    
                                 } 
                                 },500);
                             },500);
@@ -590,8 +586,9 @@ import React, { useEffect, useState,useRef } from "react";
                     <div id='score-bubble'>
                         <div id="dealer-score-bubble" 
                         style={
-                            {visibility: showScores ? 'visible' : 'hidden'}
-                            }>{dealerHandValue}</div>
+                        {visibility: showScores ? 'visible' : 'hidden'}}>
+            {dealerHand[1] && dealerHand[1].isFaceDown ? dealerFirstCardValue : dealerHandValue}
+                            </div>
                     </div>
                     
                     <Player hand={dealerHand} isDealer={true} />
