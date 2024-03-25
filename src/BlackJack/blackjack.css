@@ -15,7 +15,7 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  width: 380px;
   height: 600px;
   overflow: hidden; 
   border: 1px ridge #d4af37;
