@@ -18,7 +18,7 @@ import React, { useEffect, useState,useRef } from "react";
     const [bet, setBet] = useState(0);
     const [gameMessage, setGameMessage] = useState("");
     const [gameOutcome, setGameOutcome] = useState("");
-    const [showScores, setShowScores] = useState(true);
+    const [showScores, setShowScores] = useState(false);
     const [newRound, setNewRound] = useState(false);
     const endGameTimeout = useRef();
     const [gamePause,setGamePause] = useState(false);
