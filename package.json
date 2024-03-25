@@ -1,6 +1,6 @@
 {
   "homepage": "http://dmitrimorozov.com",
-  "name": "digitalbc",
+  "name": "blackjack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
