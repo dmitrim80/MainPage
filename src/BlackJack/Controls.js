@@ -19,7 +19,9 @@ const Controls = ({ onNewGame,
                     onBetPlaced,
                     bet,
                     buttonsHidden,
-                    handleChipClick }) => 
+                    handleChipClick,
+                    standPressed,
+                    }) => 
     {
     const chips = [
         { value: 5, img: chip5 },
@@ -38,16 +40,44 @@ const Controls = ({ onNewGame,
                     <>
                         {!buttonsHidden && (
                             <>
-                            <img src={btnStand} className='btn-stand' alt='stand-button' onClick={handleStand}/>
-                            <img src={btnDouble} className='btn-double' alt='double-button' onClick={handleDouble}/>
-                            <img src={btnHit} className='btn-hit' alt='hit-button' onClick={handleHit}/>
+                            <img    
+                                    src={btnStand} 
+                                    className={`btn-stand ${standPressed ? 'disabled' : ''}`}
+                                    alt='stand-button' 
+                                    onClick={!standPressed ? ()=>handleStand() : undefined}
+                                    style={{cursor: standPressed?'not-allowed':'pointer'}}
+                            />
+                            <img    
+                                    src={btnDouble}
+                                    className={`btn-double ${standPressed ? 'disabled' : ''}`}
+                                    alt='double-button' 
+                                    onClick={!standPressed ? ()=>handleDouble() : undefined}
+                                    style={{cursor: standPressed?'not-allowed':'pointer'}}
+                            />
+                            <img    
+                                    src={btnHit} 
+                                    className={`btn-hit ${standPressed ? 'disabled': ''}`}
+                                    alt='hit-button' 
+                                    onClick={!standPressed ? ()=>handleHit() : undefined}
+                                    style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                            />
                             </>
                         )}
                     </>
                 ) : (
                     <>
-                        <img src={btnBet} className='btn-new-game' alt='bet-button' onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}/>
-                        <img src={btnClear} className='btn-clear-bet' alt='clear-button' onClick={() => onBetPlaced(0)}/>
+                        <img 
+                            src={btnBet} 
+                            className='btn-new-game' 
+                            alt='bet-button' 
+                            onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}
+                        />
+                        <img 
+                            src={btnClear} 
+                            className='btn-clear-bet' 
+                            alt='clear-button' 
+                            onClick={() => onBetPlaced(0)}
+                        />
                     </>
                 )}
             </div>

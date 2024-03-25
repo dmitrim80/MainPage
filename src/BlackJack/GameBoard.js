@@ -30,6 +30,7 @@ import React, { useEffect, useState,useRef } from "react";
     const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
     const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
+    const [standPressed, setStandPressed] = useState(false);
 
     const handleChipClick = (amount, imgSrc, event) => {
         event.stopPropagation();
@@ -70,12 +71,6 @@ import React, { useEffect, useState,useRef } from "react";
         }
     };
     
-      
-        
-
-   
-        
-
         function resetBet(){
             if(bet!==0){
                 
@@ -107,7 +102,7 @@ import React, { useEffect, useState,useRef } from "react";
                     outcomeMessage = `Dealer Wins... -$${finalBet}`;
                     break;
                 case "PlayerWins Bust":
-                    outcomeMessage = `Bust! Player Wins! +$${finalBet}`;
+                    outcomeMessage = `Dealer Bust... Player Wins! +$${finalBet}`;
                     winAmount = finalBet * 2; 
                     break;
                 case "PlayerWins":
@@ -235,9 +230,8 @@ import React, { useEffect, useState,useRef } from "react";
             
         };
 
-
-
         const endGame = () => {
+            setStandPressed(false);
             setButtonsHidden(true);
             setBet(0);
             setBetChips([]);
@@ -253,15 +247,10 @@ import React, { useEffect, useState,useRef } from "react";
                 setGameRunning(false);
             }, 5000);
         };
-
-        const handleStand = () => {
-            const recalculatePlayerHandValue = () => {
-                const updatedPlayerHandValue = calculateHandValue(playerHand);
-                setPlayerHandValue(updatedPlayerHandValue); 
-            };
+        
+        const handleStand = (newHandValue = playerHandValue) => {
+            setStandPressed(true);
             
-            recalculatePlayerHandValue();
-
            
             // Make 2nd dealer card visible, after 1 second delay
             setTimeout(()=>{ 
@@ -304,7 +293,7 @@ import React, { useEffect, useState,useRef } from "react";
                                 
                             }else {
                                 setTimeout(()=>{
-                                    finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
+                                    finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
                                 },1500);
                                 
                             }
@@ -313,11 +302,12 @@ import React, { useEffect, useState,useRef } from "react";
                         }else{
                             setTimeout(()=>{
                                 
-                                finishDealerTurn(updatedDealerHand, updatedDealerHandValue);
+                                finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
                             },500);
                             
                         }
                 }
+                
                 setTimeout(()=>{
                     drawCardforDealer();
                 },1500);
@@ -326,7 +316,7 @@ import React, { useEffect, useState,useRef } from "react";
             
         }
 
-        const finishDealerTurn = (finalDealerHand,finalDealerHandValue) => {
+        const finishDealerTurn = (finalDealerHand,finalDealerHandValue,newHandValue=playerHandValue) => {
             
             setTimeout(()=>{
                 setDealerHand(finalDealerHand);
@@ -336,19 +326,19 @@ import React, { useEffect, useState,useRef } from "react";
                 if (finalDealerHandValue > 21) {
                     outcome = "PlayerWins Bust";
             
-                } else if (playerHandValue > 21) {
+                } else if (newHandValue > 21) {
                     outcome = "DealerWins Bust";
             
-                } else if (playerHandValue === 21 && finalDealerHandValue !== 21) {
+                } else if (newHandValue === 21 && finalDealerHandValue !== 21) {
                     outcome = "PlayerWins";
 
-                } else if (finalDealerHandValue === 21 && playerHandValue !== 21) {
+                } else if (finalDealerHandValue === 21 && newHandValue !== 21) {
                     outcome = "DealerWins";
     
-                } else if (playerHandValue > finalDealerHandValue) {
+                } else if (newHandValue > finalDealerHandValue) {
                     outcome = "PlayerWins";
             
-                } else if (finalDealerHandValue > playerHandValue) {
+                } else if (finalDealerHandValue > newHandValue) {
                     outcome = "DealerWins";
 
                 } else {
@@ -361,9 +351,10 @@ import React, { useEffect, useState,useRef } from "react";
             },1000);
             
         };
-
+        
 
         const handleDouble = () =>{
+            setStandPressed(true);
                 // Check if doubling down is allowed (typically, you can only double down on your first two cards)
                 if (playerHand.length !== 2) {
                     setGameMessage("Doubling down is not allowed at this time.");
@@ -385,20 +376,21 @@ import React, { useEffect, useState,useRef } from "react";
                                 const newHand = [...updatedPlayerHand];
                                 newHand[newHand.length - 1].isFaceDown = false; 
                                 setPlayerHand(newHand);
+
                                 const newPlayerHandValue = calculateHandValue(newHand);
-                             
+                                
                                 setPlayerHandValue(newPlayerHandValue);
                                 // Check if the player is bust after doubling down
                                 setTimeout(()=>{
                                     if (newPlayerHandValue > 21) {
-                                    setGameOutcome("DealerWins Bust");
                                     const updatedDealerHand = dealerHand.map((card, index) => ({
                                         ...card,
                                         isFaceDown: index === 1 ? false : card.isFaceDown,
                                     }));
                                     setDealerHand(updatedDealerHand);
+                                    setGameOutcome("DealerWins Bust");
                                 } else {
-                                    setTimeout(()=>{handleStand();},500);
+                                    handleStand(newPlayerHandValue);
                                 } 
                                 },500);
                             },500);
@@ -407,6 +399,7 @@ import React, { useEffect, useState,useRef } from "react";
                             // Not enough chips or game is paused
                             setGameMessage("Not enough chips to double down or game is paused.");
                         }
+
         };
 
         const handleHit = () =>{
@@ -536,7 +529,21 @@ import React, { useEffect, useState,useRef } from "react";
 
             return total;
         }
-
+        useEffect(() => {
+            if (playerHand.length > 0) {
+                const newPlayerHandValue = calculateHandValue(playerHand);
+                setPlayerHandValue(newPlayerHandValue);
+        
+                // Move the logic to determine if the game should proceed to handleStand or another function here
+                if (newPlayerHandValue > 21) {
+                    setGameOutcome("DealerWins Bust");
+                    // Additional logic for dealer's turn can go here
+                } else {
+                    // Since handleStand might rely on updated hand value, ensure it's called here or in response to updated state
+                    // handleStand();
+                }
+            }
+        }, [playerHand]); // Only re-run the effect if playerHand changes
         useEffect(() => {
             
             const playerHandValue = calculateHandValue(playerHand);
@@ -656,6 +663,7 @@ import React, { useEffect, useState,useRef } from "react";
                 bet={bet}
                 buttonsHidden={buttonsHidden}
                 handleChipClick={handleChipClick}
+                standPressed={standPressed}
                 />
             </>
         );

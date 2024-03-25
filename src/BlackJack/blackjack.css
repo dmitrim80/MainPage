@@ -312,7 +312,10 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transform: scale(0.95);
     background-color: #a47523;
   }
-
+  .disabled {
+    opacity: 0.5; /* Make the button appear faded */
+    pointer-events: none; /* Prevent clicking */
+  }
   .btn-stand {
     border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
