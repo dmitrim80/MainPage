@@ -62,14 +62,11 @@ import React, { useEffect, useState,useRef } from "react";
             setBet(0);
             setBetChips([]);
         }else if (!gameRunning && playerChips >= amount) {
-            console.log(`Attempting to place bet: ${amount}`);
-            console.log(`Current chips: ${playerChips}, Current bet: ${bet}, Game running: ${gameRunning}`);
             setBet(prevBet => prevBet + amount);
             setPlayerChips(prevChips => prevChips - amount);
             // Don't set the gameMessage here, we'll do it in useEffect
         } else {
-            console.log("Cannot place bet at this time.");
-            // You might want to handle this case differently, perhaps resetting the message
+            return;
         }
     };
     
@@ -81,9 +78,9 @@ import React, { useEffect, useState,useRef } from "react";
 
         function resetBet(){
             if(bet!==0){
-                console.log(`PlayerChips ${playerChips} + ${bet}`)
+                
                 setPlayerChips(playerChips + bet);
-                console.log(`bet set to 0`);
+                
                 setBet(0);
                 setBetChips([]);
             }
@@ -133,7 +130,7 @@ import React, { useEffect, useState,useRef } from "react";
             if (winAmount > 0) {
                 setPlayerChips(prevChips => prevChips + winAmount);
             }
-            console.log(`Handling game result with bet: ${bet}`);
+        
                
             endGame();
         }
@@ -265,8 +262,7 @@ import React, { useEffect, useState,useRef } from "react";
             
             recalculatePlayerHandValue();
 
-            console.log("Dealer Hand:",dealerHandValue);
-            console.log("Player Hand:",playerHandValue);
+           
             // Make 2nd dealer card visible, after 1 second delay
             setTimeout(()=>{ 
                 let updatedDealerHand = dealerHand.map((card, index) => ({
@@ -277,7 +273,7 @@ import React, { useEffect, useState,useRef } from "react";
                 
             //Recalculate dealerHand value and display it by using setTmeout
                 let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-                console.log("stand: dealer:",updatedDealerHandValue);
+               
                 setDealerHandValue(updatedDealerHandValue);
             
                 const drawCardforDealer = () => {
@@ -335,8 +331,7 @@ import React, { useEffect, useState,useRef } from "react";
             setTimeout(()=>{
                 setDealerHand(finalDealerHand);
                 setDealerHandValue(finalDealerHandValue);
-                console.log("Finishing Dealer Turn, Player Hand:", playerHandValue);
-                console.log("Finishing Dealer Turn, final dealer Hand:", finalDealerHandValue);
+             
                 let outcome="";
                 if (finalDealerHandValue > 21) {
                     outcome = "PlayerWins Bust";
@@ -360,7 +355,7 @@ import React, { useEffect, useState,useRef } from "react";
                     outcome = "Push";
         
                 }
-                console.log(`From finishDealerTurn Game Outcome: ${outcome}`);
+               
 
                 setGameOutcome(outcome);
             },1000);
@@ -391,7 +386,7 @@ import React, { useEffect, useState,useRef } from "react";
                                 newHand[newHand.length - 1].isFaceDown = false; 
                                 setPlayerHand(newHand);
                                 const newPlayerHandValue = calculateHandValue(newHand);
-                                console.log("new player hand value:",newPlayerHandValue);
+                             
                                 setPlayerHandValue(newPlayerHandValue);
                                 // Check if the player is bust after doubling down
                                 setTimeout(()=>{
@@ -545,9 +540,9 @@ import React, { useEffect, useState,useRef } from "react";
         useEffect(() => {
             
             const playerHandValue = calculateHandValue(playerHand);
-            console.log("useEffect Player:",playerHandValue);
+          
             const dealerHandValue = calculateHandValue(dealerHand);
-            console.log("useEffect Dealer:",dealerHandValue);
+           
             setPlayerHandValue(playerHandValue);
             setDealerHandValue(dealerHandValue);
         }, [playerHand,dealerHand]);
@@ -586,7 +581,7 @@ import React, { useEffect, useState,useRef } from "react";
                 isFirstRender.current = false;
                 return;
             }
-            console.log(`Bet updated: ${bet}, Player chips: ${playerChips}`);
+            
           }, [bet, playerChips]);
 
         return (
