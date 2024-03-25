@@ -477,13 +477,14 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 #dealer-score-bubble::after {
   content: "";
   position: absolute;
-  rotate: 180deg;
   left: 50%;
-  margin-left: -20px;
+  margin-left: 0px; /* Adjusted for center alignment */
   border-width: 10px;
-  transform: translate(-50%, -100%); /* Adjust to position the pointer correctly */
+  /* Combines translation and rotation into a single transform property */
+  transform: translate(-50%, -100%) rotate(180deg); 
+  margin-top: 40px;
   border-style: solid;
-  border-color: transparent transparent #d8d5cc transparent; /* Matching bubble color */
+  border-color: transparent transparent #d8d5cc transparent; /* Arrow pointing up with bubble color */
 }
 
 #player-score-bubble {
