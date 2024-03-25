@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.109ab185.chunk.css",
-    "main.js": "/static/js/main.b6a5a519.chunk.js",
-    "main.js.map": "/static/js/main.b6a5a519.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.99c759af.js",
-    "runtime-main.js.map": "/static/js/runtime-main.99c759af.js.map",
+    "main.js": "/static/js/main.fe133790.chunk.js",
+    "main.js.map": "/static/js/main.fe133790.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f41275ff.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f41275ff.js.map",
     "static/css/2.3eff9e2a.chunk.css": "/static/css/2.3eff9e2a.chunk.css",
-    "static/js/2.3e1d3e32.chunk.js": "/static/js/2.3e1d3e32.chunk.js",
-    "static/js/2.3e1d3e32.chunk.js.map": "/static/js/2.3e1d3e32.chunk.js.map",
-    "static/js/3.e8051746.chunk.js": "/static/js/3.e8051746.chunk.js",
-    "static/js/3.e8051746.chunk.js.map": "/static/js/3.e8051746.chunk.js.map",
+    "static/js/2.f8352e0a.chunk.js": "/static/js/2.f8352e0a.chunk.js",
+    "static/js/2.f8352e0a.chunk.js.map": "/static/js/2.f8352e0a.chunk.js.map",
+    "static/js/3.b94f66c5.chunk.js": "/static/js/3.b94f66c5.chunk.js",
+    "static/js/3.b94f66c5.chunk.js.map": "/static/js/3.b94f66c5.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.245233c70c0cd559088eb581e3f07e96.js": "/precache-manifest.245233c70c0cd559088eb581e3f07e96.js",
+    "precache-manifest.d87e576767f00e84ab3e066b39567d56.js": "/precache-manifest.d87e576767f00e84ab3e066b39567d56.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.3eff9e2a.chunk.css.map": "/static/css/2.3eff9e2a.chunk.css.map",
     "static/css/main.109ab185.chunk.css.map": "/static/css/main.109ab185.chunk.css.map",
-    "static/js/2.3e1d3e32.chunk.js.LICENSE.txt": "/static/js/2.3e1d3e32.chunk.js.LICENSE.txt",
+    "static/js/2.f8352e0a.chunk.js.LICENSE.txt": "/static/js/2.f8352e0a.chunk.js.LICENSE.txt",
     "static/media/10-chip-v2.png": "/static/media/10-chip-v2.3a023e24.png",
     "static/media/100-chip-v2.png": "/static/media/100-chip-v2.56f3f00f.png",
     "static/media/10_of_clubs.png": "/static/media/10_of_clubs.c29b28f3.png",
@@ -84,10 +84,10 @@
     "static/media/vegas-back2.png": "/static/media/vegas-back2.6fd38ed5.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.99c759af.js",
+    "static/js/runtime-main.f41275ff.js",
     "static/css/2.3eff9e2a.chunk.css",
-    "static/js/2.3e1d3e32.chunk.js",
+    "static/js/2.f8352e0a.chunk.js",
     "static/css/main.109ab185.chunk.css",
-    "static/js/main.b6a5a519.chunk.js"
+    "static/js/main.fe133790.chunk.js"
   ]
 }
