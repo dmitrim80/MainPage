@@ -1,5 +1,5 @@
 // import React,{ useState, useEffect } from "react"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // import Header from "./Header";
@@ -10,8 +10,10 @@ import './App.css'
 // import './../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
 import BlackJack from './BlackJack/BlackJack'
 
+
 export default function App() {
 
+  
 //   const [isLoading, setIsLoading] = useState(true); 
 //   const [darkMode, setDarkMode] = useState(false);
 
@@ -32,12 +34,19 @@ export default function App() {
 //     }
 // }, [darkMode]);
 
+
+
+
     return (
       <>
+      
+
+      <BlackJack/>
+     
         {/* <Header/>
         <Main/>
         <Footer/> */}
-        <BlackJack/>
+        
       </> 
     )
 }
