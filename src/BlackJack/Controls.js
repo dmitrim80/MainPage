@@ -10,6 +10,7 @@ import btnDouble from './images/double-button2.png';
 import btnHit from './images/hit-button2.png';
 import btnClear from './images/clear-button2.png';
 import btnBet from './images/bet-button2.png';
+import btnSplit from './images/split-button.png';
 
 const Controls = ({ onNewGame, 
                     handleStand, 
@@ -21,6 +22,8 @@ const Controls = ({ onNewGame,
                     buttonsHidden,
                     handleChipClick,
                     standPressed,
+                    handleSplit,
+                    splitAvailable,
                     }) => 
     {
     const chips = [
@@ -53,6 +56,13 @@ const Controls = ({ onNewGame,
                                     alt='double-button' 
                                     onClick={!standPressed ? ()=>handleDouble() : undefined}
                                     style={{cursor: standPressed?'not-allowed':'pointer'}}
+                            />
+                            <img    
+                                    src={btnSplit} 
+                                    className={`btn-split ${(standPressed || !splitAvailable )? 'disabled': ''}`}
+                                    alt='split-button' 
+                                    onClick={!standPressed ? ()=>handleSplit() : undefined}
+                                    style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                             />
                             <img    
                                     src={btnHit} 

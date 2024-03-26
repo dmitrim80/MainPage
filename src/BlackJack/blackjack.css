@@ -207,6 +207,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     width: 100%;
     gap: 10px;
     min-height: 85px ;
+    margin-bottom: -15px;
 }
 .bet-chip-img {
   position: absolute;
@@ -231,7 +232,6 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     height: 55px;
     width: 100%;
     gap: 15px;
-    margin-bottom: 20px;
 }
 
   #chips-row{
@@ -302,7 +302,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: center;
     gap: 10px;
     min-height: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
   }
   #chips-row-wrapper img:hover{
     background-color: #a47523;
@@ -389,6 +389,24 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   .btn-double:active{
     transform: scale(0.95);
     background-color: #a47523;
+  }
+  .btn-split{
+    border:0px solid rgba(12, 11, 9, 0.728);
+    cursor: pointer;
+    width: 75px;
+    height: 75px;
+    background-color: hsl(160, 10%, 12%);
+    border-radius: 50%;
+    transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
+  }
+  .btn-split:hover{
+    background-color: #a47523;
+    box-shadow: 0px 0px 8px 3px #ddb01d; 
+  
+  }
+  .btn-split:active{
+    transform: scale(0.95);
+    background-color:#a47523;
   }
   .btn-hit{
     border:0px solid rgba(12, 11, 9, 0.728);
@@ -525,7 +543,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
 
 #player-score-bubble {
-  bottom: -285px; /* Position it at the bottom of the game-area */
+  bottom: -308px; /* Position it at the bottom of the game-area */
 }
 
 #player-score-bubble::after {

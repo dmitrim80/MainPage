@@ -31,7 +31,12 @@ import React, { useEffect, useState,useRef } from "react";
     const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
     const [standPressed, setStandPressed] = useState(false);
+    const [splitAvailable,setSplitAvailable] = useState(false);
 
+    const handleSplit = ()=>{
+
+        console.log("Split");
+    }
     const handleChipClick = (amount, imgSrc, event) => {
         event.stopPropagation();
         
@@ -664,6 +669,7 @@ import React, { useEffect, useState,useRef } from "react";
                 buttonsHidden={buttonsHidden}
                 handleChipClick={handleChipClick}
                 standPressed={standPressed}
+                splitAvailable={splitAvailable}
                 />
             </>
         );
