@@ -38,32 +38,68 @@ import React, { useEffect, useState,useRef } from "react";
     const [playerHand1Value,setPlayerHand1Value]= useState(0);
     const [playerHand2Value,setPlayerHand2Value]=useState(0);
     const [hitPressed,setHitPressed] = useState(false);
-
+    const [betHand1,setBetHand1] = useState(0);
+    const [betHand2,setBetHand2] = useState(0);
+    const [hand1TurnFinished,setHand1TurnFinished] = useState(false);
+    const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
 
     const handleSplit = ()=>{
 
         if (playerChips >= bet && !gamePause)
         {
+            const betHand1 = bet;
+            const betHand2 = bet;
+            setBetHand1(betHand1);
+            setBetHand2(betHand2);
+            setPlayerChips(playerChips-bet);
+            
             const newDeck = deck;
-        const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
-        const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
-        const playerHand1 = [playerHand[0],playerHand1SecondCard];
-        const playerHand2 = [playerHand[1],playerHand2SecondCard];
-        setPlayerHand1(playerHand1);
-        setPlayerHand2(playerHand2);
-        setTwoHands(true);
-        setPlayerHand([]);
-        setTimeout(()=>{
-            setPlayerHand1(playerHand1.map(card => ({...card,isFaceDown: false})))
-            setPlayerHand2(playerHand2.map(card => ({...card,isFaceDown: false})))
-        },500);
-        const playerHand1Value = calculateHandValue(playerHand1);
-        const playerHand2Value = calculateHandValue(playerHand2);
-        setPlayerHand1Value(playerHand1Value);
-        setPlayerHand2Value(playerHand2Value);
-        setPlayerHandValue(0);
-        let gameMessage = "Player Hand1, what do you want to do?"
-        setGameMessage(gameMessage);
+            const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+            const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+            const playerHand1 = [playerHand[0],playerHand1SecondCard];
+            const playerHand2 = [playerHand[1],playerHand2SecondCard];
+            setPlayerHand1(playerHand1);
+            setPlayerHand2(playerHand2);
+            setTwoHands(true);
+            setPlayerHand([]);
+            setTimeout(()=>{
+                setPlayerHand1(playerHand1.map(card => ({...card,isFaceDown: false})))
+                setPlayerHand2(playerHand2.map(card => ({...card,isFaceDown: false})))
+            },500);
+            const playerHand1Value = calculateHandValue(playerHand1);
+            const playerHand2Value = calculateHandValue(playerHand2);
+            setPlayerHand1Value(playerHand1Value);
+            setPlayerHand2Value(playerHand2Value);
+            setPlayerHandValue(0);
+            
+            if(playerHand1Value===21 && playerHand2Value ===21){
+                let gameMessage = `Wow! Two BlackJack... you won $${betHand1*2.5+betHand2*2.5}`;
+                setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
+                setGameMessage(gameMessage);
+                endGame();
+            }else{
+                //checking turn for hand1 during split
+                if(playerHand1Value === 21){
+                    let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
+                    setBetHand1(betHand1*2.5);
+                    setHand1TurnFinished(true);
+                }
+                else{
+                    let gameMessage = "Player Hand1, what do you want to do?"
+                    setGameMessage(gameMessage);
+
+                }
+                //checking turn for hand2 during split
+                if(playerHand2Value === 21){
+                    let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
+                    setBetHand2(betHand2*2.5);
+                    setHand2TurnFinished(true);
+                }else{
+                    let gameMessage = "Player Hand2, what do you want to do?"
+                    setGameMessage(gameMessage);
+                }
+                
+            }
         }else{
             setGameMessage("Not enough chips for split...");
             return;
@@ -278,14 +314,6 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const endGame = () => {
-            setHitPressed(false);
-            setTwoHands(false);
-            setStandPressed(false);
-            setButtonsHidden(true);
-            setBet(0);
-            setBetChips([]);
-            setGamePause(true);
-            clearTimeout(endGameTimeout.current);
             endGameTimeout.current = setTimeout(() => {
                 setDealerHand([]);
                 setPlayerHand([]);
@@ -294,6 +322,14 @@ import React, { useEffect, useState,useRef } from "react";
                 setShowScores(false);
                 setGamePause(false);
                 setGameRunning(false);
+                setHitPressed(false);
+                setTwoHands(false);
+                setStandPressed(false);
+                setButtonsHidden(true);
+                setBet(0);
+                setBetChips([]);
+                setGamePause(true);
+                clearTimeout(endGameTimeout.current);
             }, 5000);
         };
         
