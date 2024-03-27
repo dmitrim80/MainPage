@@ -46,9 +46,10 @@ import React, { useEffect, useState,useRef } from "react";
     const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
 
     const handleSplit = ()=>{
-
+        
         if (playerChips >= bet && !gamePause)
         {
+            setButtonsHidden(true);
             const betHand1 = bet;
             const betHand2 = bet;
             setBetHand1(betHand1);
@@ -316,13 +317,14 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const endGame = () => {
+            setGamePause(true);
+            
             endGameTimeout.current = setTimeout(() => {
                 setDealerHand([]);
                 setPlayerHand([]);
                 setGameOutcome("");
                 setGameMessage("Place A Bet...");
                 setShowScores(false);
-                setGamePause(false);
                 setGameRunning(false);
                 setHitPressed(false);
                 setTwoHands(false);
@@ -330,7 +332,7 @@ import React, { useEffect, useState,useRef } from "react";
                 setButtonsHidden(true);
                 setBet(0);
                 setBetChips([]);
-                setGamePause(true);
+                setGamePause(false);
                 clearTimeout(endGameTimeout.current);
             }, 5000);
         };
@@ -819,6 +821,7 @@ import React, { useEffect, useState,useRef } from "react";
                 splitAvailable={splitAvailable}
                 handleSplit={handleSplit}
                 hitPressed={hitPressed}
+                twoHands={twoHands}
                 />
             </>
         );

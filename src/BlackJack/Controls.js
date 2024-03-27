@@ -25,6 +25,7 @@ const Controls = ({ onNewGame,
                     handleSplit,
                     splitAvailable,
                     hitPressed,
+                    twoHands,
                     }) => 
     {
     const chips = [
