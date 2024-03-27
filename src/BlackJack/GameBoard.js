@@ -3,6 +3,8 @@ import React, { useEffect, useState,useRef } from "react";
     import Player from './Player';
     import Controls from "./Controls";
     import Header from "./Header";
+    import btnStand from './images/stand-button2.png';
+    import btnHit from './images/hit-button2.png';
 
 
 
@@ -98,7 +100,7 @@ import React, { useEffect, useState,useRef } from "react";
                     let gameMessage = "Player Hand2, what do you want to do?"
                     setGameMessage(gameMessage);
                 }
-                
+
             }
         }else{
             setGameMessage("Not enough chips for split...");
@@ -713,6 +715,23 @@ import React, { useEffect, useState,useRef } from "react";
                                         {playerHand1Value}
                                     </div>
                                 </div>
+                                <div id="split-buttons-box">
+                                    <img    
+                                            src={btnStand} 
+                                            className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
+                                            alt='stand-button' 
+                                            onClick={!standPressed ? ()=>handleStand() : undefined}
+                                            style={{cursor: standPressed?'not-allowed':'pointer'}}
+                                    />
+                                    
+                                    <img    
+                                            src={btnHit} 
+                                            className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
+                                            alt='hit-button' 
+                                            onClick={!standPressed ? ()=>handleHit() : undefined}
+                                            style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                    />
+                                </div>
                             </div>
 
                             <div id="player-hand2">
@@ -723,6 +742,23 @@ import React, { useEffect, useState,useRef } from "react";
                                     <div id="player2-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>
                                         {playerHand2Value}
                                     </div>
+                                </div>
+                                <div id="split-buttons-box">
+                                    <img    
+                                            src={btnStand} 
+                                            className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
+                                            alt='stand-button' 
+                                            onClick={!standPressed ? ()=>handleStand() : undefined}
+                                            style={{cursor: standPressed?'not-allowed':'pointer'}}
+                                    />
+                                    
+                                    <img    
+                                            src={btnHit} 
+                                            className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
+                                            alt='hit-button' 
+                                            onClick={!standPressed ? ()=>handleHit() : undefined}
+                                            style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                    />
                                 </div>
                             </div>
                         </div>
