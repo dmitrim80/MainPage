@@ -31,11 +31,31 @@ import React, { useEffect, useState,useRef } from "react";
     const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
     const [standPressed, setStandPressed] = useState(false);
-    const [splitAvailable,setSplitAvailable] = useState(false);
+    const [splitAvailable,setSplitAvailable] = useState(true);
+    const [playerHand1,setPlayerHand1] = useState([]);
+    const [playerHand2,setPlayerHand2] = useState([]);
+    const [twoHands,setTwoHands] = useState(false);
+    const [playerHand1Value,setPlayerHand1Value]= useState(0);
+    const [playerHand2Value,setPlayerHand2Value]=useState(0);
+
 
     const handleSplit = ()=>{
+        const newDeck = deck;
+        const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+        const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+        const playerHand1 = [playerHand[0],playerHand1SecondCard];
+        const playerHand2 = [playerHand[1],playerHand2SecondCard];
+        setPlayerHand1(playerHand1);
+        setPlayerHand2(playerHand2);
+        setTwoHands(true);
+        setPlayerHand([]);
+        setTimeout(()=>{
+            setPlayerHand1(playerHand1.map(card => ({...card,isFaceDown: false})))
+            setPlayerHand2(playerHand2.map(card => ({...card,isFaceDown: false})))
+        },500);
+        const playerHand1Value = calculateHandValue(playerHand1);
+        const playerHand2Value = calculateHandValue(playerHand2);
 
-        console.log("Split");
     }
     const handleChipClick = (amount, imgSrc, event) => {
         event.stopPropagation();
@@ -136,7 +156,7 @@ import React, { useEffect, useState,useRef } from "react";
         }
         
         const handleNewGame = () => {
-
+            
             setButtonsHidden(false);
             setNewRound(true);
             setGameRunning(true);
@@ -157,18 +177,25 @@ import React, { useEffect, useState,useRef } from "react";
             setPlayerHand([playerFirstCard, playerSecondCard]);
             setDealerHand([dealerFirstCard, dealerSecondCard]);
             
+            
+
             setTimeout(() => {
                 // Flip all player's cards
                 setPlayerHand(playerHand.map(card => ({ ...card, isFaceDown: false })));
-            
-                // Flip all dealer's cards
+                
+                // Flip 1st dealercards
                 setDealerHand(dealerHand.map((card, index) => 
                     index === 0 ? { ...card, isFaceDown: false } : card // Flip only the first card
                 ));
+                if(playerFirstCard.rank === playerSecondCard.rank ){
+                    setSplitAvailable(true);
+                    console.log("SPLIT");
+                };
             }, 500); // Adjust this delay as needed
 
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
+          
             const dealerHand = [dealerFirstCard,{...dealerSecondCard,isFaceDown: true }];
             setDealerHand(dealerHand);
             
@@ -605,15 +632,13 @@ import React, { useEffect, useState,useRef } from "react";
                 gameMessage={gameMessage}
                 />
 
-
-
                 <div className="game-area">
                     <div id='score-bubble'>
                         <div id="dealer-score-bubble" 
-                        style={
-                        {visibility: showScores ? 'visible' : 'hidden'}}>
-            {dealerHand[1] && dealerHand[1].isFaceDown ? dealerFirstCardValue : dealerHandValue}
-                            </div>
+                            style={
+                            {visibility: showScores ? 'visible' : 'hidden'}}>
+                            {dealerHand[1] && dealerHand[1].isFaceDown ? dealerFirstCardValue : dealerHandValue}
+                        </div>
                     </div>
                     
                     <Player hand={dealerHand} isDealer={true} />
@@ -621,41 +646,74 @@ import React, { useEffect, useState,useRef } from "react";
                     <div className="message-container">
                         <div className="message-box" style={{visibility:gameMessage.trim()=="" ? 'hidden':'visible'}}>{gameMessage}</div>
                     </div>
-                    
-                    <Player hand={playerHand} isDealer={false} />
-                    
-                    <div id='score-bubble'>
-                        <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>{playerHandValue}</div>
-                    </div>
+
+                    {
+                    twoHands ? (
+                        <div id="player-2hands-box">
+                            
+                            <div id="player-hand1">
+                                
+                                <Player hand={playerHand1} isDealer={false} />
+                                
+                                <div id='score-bubble'>
+                                    <div id="player1-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>    
+                                        {playerHand1Value}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="player-hand2">
+                                
+                                <Player hand={playerHand2} isDealer={false} /> 
+
+                                <div id='score-bubble'>
+                                    <div id="player2-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>
+                                        {playerHand2Value}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : (
+                        <div id="player-hand-box">
+                                
+                                <Player hand={playerHand} isDealer={false} />
+                                
+                                <div id='score-bubble'>
+                                    <div id="player-score-bubble"style={{visibility: showScores ? 'visible' : 'hidden'}}>    
+                                        {playerHandValue}
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    )}
                 </div>
-
-
+                
                 <div id='bet-main-container'>
-                    <div id='bet-container-box'style={{
-                                                visibility: !gameRunning ? 'visible' : 'hidden', 
-                                                display: 'flex', 
-                                                gap: '8px', 
-                                                justifyContent: 'center',
-                                                position:'relative',
-                                                height:'50px',
-                                                }}>
+                        <div id='bet-container-box'
+                            style={{
+                            visibility: !gameRunning ? 'visible' : 'hidden', 
+                            display: 'flex', 
+                            gap: '8px', 
+                            justifyContent: 'center',
+                            position:'relative',
+                            }}>
                         
-                    {Object.entries(betChips).map(([chipType, { imgSrc, count, position }], index) => (
-                        Array.from({ length: count }).map((_, chipIndex) => (
-                            <img 
-                                key={`${chipType}-${chipIndex}`}
-                                src={imgSrc}
-                                className='bet-chip-img'
-                                style={{ 
-                                    position: 'absolute', 
-                                    bottom: position + chipIndex * 5,
-                                    left: `calc(50% + ${index * (chipWidth + gap) - totalWidth / 2}px)`
-                                }} 
-                            />
-                        ))
-                    ))}
-                        
-                    </div>
+                            {Object.entries(betChips).map(([chipType, { imgSrc, count, position }], index) => (
+                                Array.from({ length: count }).map((_, chipIndex) => (
+                                    <img 
+                                        key={`${chipType}-${chipIndex}`}
+                                        src={imgSrc}
+                                        className='bet-chip-img'
+                                        style={{ 
+                                            position: 'absolute', 
+                                            // transform:'translateY(15px)',
+                                            bottom: position + chipIndex * 5 -25,
+                                            left: `calc(50% + ${index * (chipWidth + gap) - totalWidth / 2}px)`
+                                        }} 
+                                    />
+                                ))
+                            ))}    
+                        </div>
                 </div>
 
                 <Controls
@@ -670,6 +728,7 @@ import React, { useEffect, useState,useRef } from "react";
                 handleChipClick={handleChipClick}
                 standPressed={standPressed}
                 splitAvailable={splitAvailable}
+                handleSplit={handleSplit}
                 />
             </>
         );

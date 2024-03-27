@@ -61,7 +61,7 @@ const Controls = ({ onNewGame,
                                     src={btnSplit} 
                                     className={`btn-split ${(standPressed || !splitAvailable )? 'disabled': ''}`}
                                     alt='split-button' 
-                                    onClick={!standPressed ? ()=>handleSplit() : undefined}
+                                    onClick={() => !standPressed && handleSplit()}
                                     style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                             />
                             <img    

@@ -8,7 +8,7 @@ const Player = ({hand,isDealer}) => {
 
   return (
     <>
-        <div id={`${isDealer ? 'dealer-hand' : 'player-hand'}`}>
+        <div className={`${isDealer ? 'dealer-hand' : 'player-hand'}`}>
             {hand.length > 0 ? (
             <div id="hand">
             {hand.map((card, index) => (
@@ -16,7 +16,8 @@ const Player = ({hand,isDealer}) => {
             ))}
             </div>
              ) : (
-            <p></p>
+            <>
+            </>
         )}
         </div>
 
