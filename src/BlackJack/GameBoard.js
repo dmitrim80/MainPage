@@ -263,6 +263,7 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const endGame = () => {
+            setTwoHands(false);
             setStandPressed(false);
             setButtonsHidden(true);
             setBet(0);
