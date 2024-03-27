@@ -37,10 +37,14 @@ import React, { useEffect, useState,useRef } from "react";
     const [twoHands,setTwoHands] = useState(false);
     const [playerHand1Value,setPlayerHand1Value]= useState(0);
     const [playerHand2Value,setPlayerHand2Value]=useState(0);
+    const [hitPressed,setHitPressed] = useState(false);
 
 
     const handleSplit = ()=>{
-        const newDeck = deck;
+
+        if (playerChips >= bet && !gamePause)
+        {
+            const newDeck = deck;
         const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
         const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
         const playerHand1 = [playerHand[0],playerHand1SecondCard];
@@ -55,6 +59,17 @@ import React, { useEffect, useState,useRef } from "react";
         },500);
         const playerHand1Value = calculateHandValue(playerHand1);
         const playerHand2Value = calculateHandValue(playerHand2);
+        setPlayerHand1Value(playerHand1Value);
+        setPlayerHand2Value(playerHand2Value);
+        setPlayerHandValue(0);
+        let gameMessage = "Player Hand1, what do you want to do?"
+        setGameMessage(gameMessage);
+        }else{
+            setGameMessage("Not enough chips for split...");
+            return;
+        }
+        
+
 
     }
     const handleChipClick = (amount, imgSrc, event) => {
@@ -156,7 +171,7 @@ import React, { useEffect, useState,useRef } from "react";
         }
         
         const handleNewGame = () => {
-            
+            setHitPressed(false);
             setButtonsHidden(false);
             setNewRound(true);
             setGameRunning(true);
@@ -263,6 +278,7 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const endGame = () => {
+            setHitPressed(false);
             setTwoHands(false);
             setStandPressed(false);
             setButtonsHidden(true);
@@ -387,13 +403,13 @@ import React, { useEffect, useState,useRef } from "react";
         
 
         const handleDouble = () =>{
-            setStandPressed(true);
+            
                 // Check if doubling down is allowed (typically, you can only double down on your first two cards)
                 if (playerHand.length !== 2) {
                     setGameMessage("Doubling down is not allowed at this time.");
                     return;
                 }
-            
+                setStandPressed(true);
                 // Check if the player has enough chips to double the bet
                 if (playerChips >= bet && !gamePause) {
                     setPlayerChips((prevChips) => prevChips - bet); // Deduct the additional bet amount from player's chips
@@ -430,13 +446,13 @@ import React, { useEffect, useState,useRef } from "react";
                         }, 500);}
                         else {
                             // Not enough chips or game is paused
-                            setGameMessage("Not enough chips to double down or game is paused.");
+                            setGameMessage("Not enough chips to double down.");
                         }
 
         };
 
         const handleHit = () =>{
-            
+            setHitPressed(true);
             if(deck.cards.length > 0){
                 const newCard = { ...deck.drawCard(), isFaceDown: true };
                 const updatedPlayerHand = [...playerHand, newCard];
@@ -730,6 +746,7 @@ import React, { useEffect, useState,useRef } from "react";
                 standPressed={standPressed}
                 splitAvailable={splitAvailable}
                 handleSplit={handleSplit}
+                hitPressed={hitPressed}
                 />
             </>
         );

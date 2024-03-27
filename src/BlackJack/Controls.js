@@ -24,6 +24,7 @@ const Controls = ({ onNewGame,
                     standPressed,
                     handleSplit,
                     splitAvailable,
+                    hitPressed,
                     }) => 
     {
     const chips = [
@@ -52,14 +53,14 @@ const Controls = ({ onNewGame,
                             />
                             <img    
                                     src={btnDouble}
-                                    className={`btn-double ${standPressed ? 'disabled' : ''}`}
+                                    className={`btn-double ${standPressed || hitPressed ? 'disabled' : ''}`}
                                     alt='double-button' 
                                     onClick={!standPressed ? ()=>handleDouble() : undefined}
                                     style={{cursor: standPressed?'not-allowed':'pointer'}}
                             />
                             <img    
                                     src={btnSplit} 
-                                    className={`btn-split ${(standPressed || !splitAvailable )? 'disabled': ''}`}
+                                    className={`btn-split ${(standPressed || !splitAvailable || hitPressed )? 'disabled': ''}`}
                                     alt='split-button' 
                                     onClick={() => !standPressed && handleSplit()}
                                     style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
