@@ -388,13 +388,12 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   }
 
   .split-btn-stand:hover{
-    background-color: #a47523;
-    box-shadow: 0px 0px 8px 3px #ddb01d; 
+    box-shadow: 0px 0px 8px 3px #f44d4d; 
   
   }
   .split-btn-stand:active{
     transform: scale(0.95);
-    background-color: #a47523;
+    background-color: #a42347;
   }
 
 
@@ -410,13 +409,13 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
  
   }
   .btn-double:hover{
-    background-color: #a47523;
+
     box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
   .btn-double:active{
     transform: scale(0.95);
-    background-color: #a47523;
+
   }
   .btn-split{
     border:0px solid rgba(12, 11, 9, 0.728);
@@ -428,7 +427,6 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
   }
   .btn-split:hover{
-    background-color: #a47523;
     box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
@@ -447,7 +445,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 
   }
   .btn-hit:hover{
-    background-color: #a47523;
+
     box-shadow: 0px 0px 8px 3px #ddb01d; 
   
   }
@@ -475,12 +473,12 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
   }
   .split-btn-hit:hover{
     background-color: #a47523;
-    box-shadow: 0px 0px 8px 3px #ddb01d; 
+    box-shadow: 0px 0px 8px 3px #66f888; 
   
   }
   .split-btn-hit:active{
     transform: scale(0.95);
-    background-color:#a47523;
+    background-color:#25a423;
   }
   
  
