@@ -592,28 +592,36 @@ position: relative;
 #player1-score-bubble::after {
   content: "";
   position: absolute;
-  left: 50%; /* Center the pointer under the bubble */
-  margin-left: 0px; /* Half the pointer's base width to truly center it */
-  border-width: 10px; /* Adjust the size of the pointer */
-  
-  /* Position the pointer just below the bubble */
-  bottom: 22px; /* Adjust based on the bubble's height and desired gap */
-  transform: translateX(-50%); /* Ensures accurate horizontal centering */
-  
+  left: 50%;
+  margin-left: 0px; /* Adjusted for center alignment */
+  border-width: 10px;
+  /* Combines translation and rotation into a single transform property */
+  transform: translate(-50%, -100%) rotate(180deg); 
+  margin-top: 40px;
   border-style: solid;
-  border-color: transparent transparent #d8d5cc transparent; /* Arrow points up */
+  border-color: transparent transparent #d8d5cc transparent; /* Arrow pointing up with bubble color */
 }
 #player2-score-bubble::after {
   content: "";
   position: absolute;
-  left: 50%; /* Center the pointer under the bubble */
-  margin-left: 0px; /* Half the pointer's base width to truly center it */
-  border-width: 10px; /* Adjust the size of the pointer */
-  /* Position the pointer just below the bubble */
-  bottom: 22px; /* Adjust based on the bubble's height and desired gap */
-  transform: translateX(-50%); /* Ensures accurate horizontal centering */
+  left: 50%;
+  margin-left: 0px; /* Adjusted for center alignment */
+  border-width: 10px;
+  /* Combines translation and rotation into a single transform property */
+  transform: translate(-50%, -100%) rotate(180deg); 
+  margin-top: 40px;
   border-style: solid;
-  border-color: transparent transparent #d8d5cc transparent; /* Arrow points up */
+  border-color: transparent transparent #d8d5cc transparent; /* Arrow pointing up with bubble color */
+}
+#player-score-bubble {
+  position: absolute;
+  bottom: -30px; 
+  display: flex;
+}
+#player1-score-bubble,#player2-score-bubble{
+  position: absolute;
+  top: -130px; 
+  display: flex;
 }
 
 
@@ -654,9 +662,5 @@ position: relative;
 #player-hand-box{
   position: relative;
 }
-#player-score-bubble,#player1-score-bubble,#player2-score-bubble {
-  position: absolute;
-  bottom: -30px; 
-  display: flex;
-}
+
 
