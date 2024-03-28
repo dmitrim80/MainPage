@@ -282,6 +282,7 @@
                 setGamePause(true);
                 
                 endGameTimeout.current = setTimeout(() => {
+                    setSplitAvailable(false);
                     setHand1TurnFinished(false);
                     setHand2TurnFinished(false);
                     setSplitPressed(false);
