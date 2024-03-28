@@ -169,6 +169,7 @@
        
         
         const handleNewGame = () => {
+            setSplitAvailable(false);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
             setSplitPressed(false);
