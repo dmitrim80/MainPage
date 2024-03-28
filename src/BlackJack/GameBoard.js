@@ -300,7 +300,7 @@
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
-                }, 5000);
+                }, 2000);
         };
             
         const handleStand = (newHandValue = playerHandValue,hand = null) => {
@@ -350,7 +350,7 @@
                                             setDealerHandValue(updatedDealerHandValue);
                                         },500);
                                             
-                                    }, 1000);
+                                    }, 500);
         
                                     setTimeout(()=>{
                                         if(updatedDealerHandValue < 17){
@@ -382,6 +382,7 @@
                         },1000);
                     }
                 }else{
+                    setStandPressed(true);
                     // Make 2nd dealer card visible, after 1 second delay
                 setTimeout(()=>{ 
                     let updatedDealerHand = dealerHand.map((card, index) => ({
@@ -530,7 +531,7 @@
 
                     setGameOutcome(outcome);
                 }
-            },1000);
+            },500);
             
         };
         
