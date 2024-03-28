@@ -19,7 +19,7 @@
         const [dealerHandValue, setDealerHandValue] = useState(0);
         const [playerChips, setPlayerChips] = useState(1000);
         const [bet, setBet] = useState(0);
-        const [gameMessage, setGameMessage] = useState("");
+        const [gameMessage, setGameMessage] = useState("Place A Bet");
         const [gameOutcome, setGameOutcome] = useState("");
         const [gameOutcome1, setGameOutcome1] = useState("");
         const [gameOutcome2, setGameOutcome2] = useState("");
@@ -36,7 +36,7 @@
         const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
         const isFirstRender = useRef(true);
         const [standPressed, setStandPressed] = useState(false);
-        const [splitAvailable,setSplitAvailable] = useState(true);
+        const [splitAvailable,setSplitAvailable] = useState(false);
         const [playerHand1,setPlayerHand1] = useState([]);
         const [playerHand2,setPlayerHand2] = useState([]);
         const [twoHands,setTwoHands] = useState(false);
@@ -177,7 +177,7 @@
             setNewRound(true);
             setGameRunning(true);
             setShowScores(true);
-            setGameMessage("Place A Bet...");
+            setGameMessage(`Your bet is ${bet}`);
             const newDeck = new Deck();
             newDeck.shuffleDeck();
             setDeck(newDeck);
