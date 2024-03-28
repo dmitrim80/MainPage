@@ -2,7 +2,7 @@ import React from 'react'
 import Logo from './images/logo-blackjack.png'
 import BackCard from './images/vegas-back2.png'
 
-const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,gameMessage}) => {
+const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips}) => {
   return (
     <>
       <div id='blackjack-header-container'>

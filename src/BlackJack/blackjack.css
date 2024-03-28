@@ -514,23 +514,40 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: space-between;
     opacity: 1;
   }
+  #dealer-message-box{
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center;
+    align-items: center; /* Center children horizontally */
+    min-height: 200px;
+    width: 100%;
+
+  }
+  #dealerhand-fixedbox {
+    width: 100%; /* Adjust this based on how wide you want this box to be */
+    min-height: 90px; /* This should be at least as tall as the dealer's hand would be */
+    display: flex;
+    justify-content: center; /* Center child content horizontally */
+    align-items: center; /* Center child content vertically */
+}
   .message-container{
-  display: flex;
-  position:relative;
-  width:100%; 
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   
 }
   .message-box{
     color: hsl(21, 38%, 13%);
-    height:100px;
+    min-height: 100px; /* Ensure it takes up space even when empty/hidden */
     width: 200px;
     text-align: center;
-    font-size:12px;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 7px;
     background-color: hsl(24, 13%, 85%);
-    padding: 2px 5px 2px 5px;
+    padding: 2px 5px;
+    opacity: 0.75;
     
   }
   
@@ -541,6 +558,7 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: center; 
     align-items: center;
     height: 100px;
+    position: relative; 
     
   }
   #dealer-hand, #player-hand {
@@ -548,10 +566,11 @@ box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
     justify-content: center;
     width: 100%;
     overflow:visible;
-    position: absolute;
+    
   }
   #dealer-hand{
     top: 0px;
+
   }
   #player-hand{
     bottom: 0px;

@@ -36,7 +36,7 @@
         const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
         const isFirstRender = useRef(true);
         const [standPressed, setStandPressed] = useState(false);
-        const [splitAvailable,setSplitAvailable] = useState(false);
+        const [splitAvailable,setSplitAvailable] = useState(true);
         const [playerHand1,setPlayerHand1] = useState([]);
         const [playerHand2,setPlayerHand2] = useState([]);
         const [twoHands,setTwoHands] = useState(false);
@@ -86,6 +86,15 @@
                     setGameMessage(gameMessage);
                     endGame();
                 }else{
+                    //checking turn for hand2 during split
+                    if(playerHand2Value === 21){
+                        let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
+                        setBetHand2(betHand2*2.5);
+                        setHand2TurnFinished(true);
+                    }else{
+                        let gameMessage = "What do you want to do?\nHit or Stand"
+                        setGameMessage(gameMessage);
+                    }
                     //checking turn for hand1 during split
                     if(playerHand1Value === 21){
                         let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
@@ -93,19 +102,11 @@
                         setHand1TurnFinished(true);
                     }
                     else{
-                        let gameMessage = "Player Hand1, what do you want to do?"
+                        let gameMessage = "What do you want to do?\nHit or Stand"
                         setGameMessage(gameMessage);
 
                     }
-                    //checking turn for hand2 during split
-                    if(playerHand2Value === 21){
-                        let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
-                        setBetHand2(betHand2*2.5);
-                        setHand2TurnFinished(true);
-                    }else{
-                        let gameMessage = "Player Hand2, what do you want to do?"
-                        setGameMessage(gameMessage);
-                    }
+                    
 
                 }
             }else{
@@ -149,7 +150,7 @@
             }else if (!gameRunning && playerChips >= amount) {
                 setBet(prevBet => prevBet + amount);
                 setPlayerChips(prevChips => prevChips - amount);
-                // Don't set the gameMessage here, we'll do it in useEffect
+                
             } else {
                 return;
             }
@@ -176,7 +177,7 @@
             setNewRound(true);
             setGameRunning(true);
             setShowScores(true);
-            setGameMessage("");
+            setGameMessage("Place A Bet...");
             const newDeck = new Deck();
             newDeck.shuffleDeck();
             setDeck(newDeck);
@@ -299,7 +300,7 @@
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
-                }, 2000);
+                }, 3000);
         };
             
         const handleStand = (newHandValue = playerHandValue,hand = null) => {
@@ -330,7 +331,12 @@
                             let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
                         
                             setDealerHandValue(updatedDealerHandValue);
-                        
+                            console.log(gameOutcome1,gameOutcome2);
+                            if(playerHand1Value>21 && playerHand2Value>21){
+                                setGameMessage("Bust... Dealer Wins!");
+                                endGame();
+                                return;
+                            }
                             const drawCardforDealer = () => {
                         //check handValue, drawCard until handValue is 17 or higher
                                 if (updatedDealerHandValue < 17 && deck){
@@ -584,42 +590,88 @@
         };
 
         const handleHit = (hand = null) =>{
+            let outcome1;
+            let outcome2;
             if(splitPressed){
-                if(hand==="hand1"){
-                    if(deck.cards.length > 0){
-                        const newCard = { ...deck.drawCard(), isFaceDown: true };
-                        const updatedPlayerHand1 = [...playerHand1, newCard];
-        
-                        setPlayerHand1(updatedPlayerHand1);
-        
-                        setTimeout(() => {
-                            const newHand = [...updatedPlayerHand1];
-                            newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
-                            setPlayerHand1(newHand);
-                        },500);
-                        const playerHand1Value = calculateHandValue(updatedPlayerHand1);
-                    
-                        setPlayerHand1Value(playerHand1Value);
+                if(hand1TurnFinished && hand2TurnFinished){
+                    let newOutcome ="DealerWins";
+                
+                    let updatedDealerHand = dealerHand.map((card, index) => ({
+                        ...card,
+                        isFaceDown: index === 1 ? false : card.isFaceDown,
+                    }));
+                    setDealerHand(updatedDealerHand);
+                    let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                    setDealerHandValue(updatedDealerHandValue);
+                    setGameOutcome(newOutcome);
+                    setGameMessage("Bust... Dealer Wins!");
+                    endGame();
+                }else{
+                    if(hand==="hand1"){
+                        if(hand1TurnFinished){
+                            return;
+                        }else{
+                            if(playerHand1Value ===21){
+                                setHand1TurnFinished(true);
+                                return;
+                            }else
+                            if(deck.cards.length > 0){
+                                const newCard = { ...deck.drawCard(), isFaceDown: true };
+                                const updatedPlayerHand1 = [...playerHand1, newCard];
+                
+                                setPlayerHand1(updatedPlayerHand1);
+                
+                                setTimeout(() => {
+                                    const newHand = [...updatedPlayerHand1];
+                                    newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                                    setPlayerHand1(newHand);
+                                },500);
+                                const playerHand1Value = calculateHandValue(updatedPlayerHand1);
+                            
+                                setPlayerHand1Value(playerHand1Value);
+                                if(playerHand1Value > 21){
+                                    outcome1 = "DealerWins Bust";
+                                    setHand1TurnFinished(true);
+                                    setGameOutcome1(outcome1);
+                                    return;
+                                }
+                            }
+                        }
                         
-                    }
-                }else if(hand==="hand2"){
-                    if(deck.cards.length > 0){
-                        const newCard = { ...deck.drawCard(), isFaceDown: true };
-                        const updatedPlayerHand2 = [...playerHand2, newCard];
-        
-                        setPlayerHand2(updatedPlayerHand2);
-        
-                        setTimeout(() => {
-                            const newHand = [...updatedPlayerHand2];
-                            newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
-                            setPlayerHand2(newHand);
-                        },500);
-                        const playerHand2Value = calculateHandValue(updatedPlayerHand2);
-                    
-                        setPlayerHand2Value(playerHand2Value);
+                    }else if(hand==="hand2"){
+                        if(hand2TurnFinished){
+                            return;
+                        }else{
+                            if(playerHand2Value ===21){
+                                setHand1TurnFinished(true);
+                                return;
+                            }else
+                            if(deck.cards.length > 0){
+                                const newCard = { ...deck.drawCard(), isFaceDown: true };
+                                const updatedPlayerHand2 = [...playerHand2, newCard];
+                
+                                setPlayerHand2(updatedPlayerHand2);
+                
+                                setTimeout(() => {
+                                    const newHand = [...updatedPlayerHand2];
+                                    newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                                    setPlayerHand2(newHand);
+                                },500);
+                                const playerHand2Value = calculateHandValue(updatedPlayerHand2);
+                            
+                                setPlayerHand2Value(playerHand2Value);
+                                if(playerHand2Value > 21){
+                                    outcome2 = "DealerWins Bust";
+                                    setHand2TurnFinished(true);
+                                    setGameOutcome1(outcome2);
+                                    return;
+                                }
+                            }
+                        }
                         
-                    }
-                }    
+                    }    
+                }
+                
             }else{
                 setHitPressed(true);
                 if(deck.cards.length > 0){
@@ -758,71 +810,72 @@
             let outcomeMessage2;
             let winAmount = 0;
             if(splitPressed){
-                
-                switch(gameOutcome1) {
-                    case "PlayerWins BlackJack":
-                        outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
-                        winAmount = betHand1 + betHand1 * 1.5; 
-                        break;
-                    case "DealerWins BlackJack":
-                        outcomeMessage1 = `BlacJack, Dealer wins...1st hand -$${betHand1}`;
-                        break;
-                    case "DealerWins Bust":
-                        outcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${betHand1}`;
-                        break;
-                    case "DealerWins":
-                        outcomeMessage1 = `Dealer Wins...1st hand -$${betHand1}`;
-                        break;
-                    case "PlayerWins Bust":
-                        outcomeMessage1 = `Dealer Bust...1st hand Win! +$${betHand1}`;
-                        winAmount = betHand1 * 2; 
-                        break;
-                    case "PlayerWins":
-                        outcomeMessage1 = `1st Hand Win! +$${betHand1}!`;
-                        winAmount = betHand1 * 2; 
-                        break;
-                    case "Push":
-                        outcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${betHand1}`;
-                        winAmount = betHand1; // The bet is returned to the player
-                        break;
-                    default:
-                        outcomeMessage1 = "Unknown outcome.";
-                        break;
+                if(gameOutcome2==="" || gameOutcome1 ===""){
+                    return;
+                }else{
+                    switch(gameOutcome1) {
+                        case "PlayerWins BlackJack":
+                            outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
+                            winAmount = betHand1 + betHand1 * 1.5; 
+                            break;
+                        case "DealerWins BlackJack":
+                            outcomeMessage1 = `BlacJack, Dealer wins...1st hand -$${betHand1}`;
+                            break;
+                        case "DealerWins Bust":
+                            outcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${betHand1}`;
+                            break;
+                        case "DealerWins":
+                            outcomeMessage1 = `Dealer Wins...1st hand -$${betHand1}`;
+                            break;
+                        case "PlayerWins Bust":
+                            outcomeMessage1 = `Dealer Bust...1st hand Win! +$${betHand1}`;
+                            winAmount = betHand1 * 2; 
+                            break;
+                        case "PlayerWins":
+                            outcomeMessage1 = `1st Hand Win! +$${betHand1}!`;
+                            winAmount = betHand1 * 2; 
+                            break;
+                        case "Push":
+                            outcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${betHand1}`;
+                            winAmount = betHand1; // The bet is returned to the player
+                            break;
+                        default:
+                            outcomeMessage1 = "Unknown outcome.";
+                            break;
+                    }
+                    switch(gameOutcome2) {
+                        case "PlayerWins BlackJack":
+                            outcomeMessage2 = `BlacJack 2nd hand, win: ${betHand2*1.5}`;
+                            winAmount = winAmount + betHand2 + betHand2 * 1.5; 
+                            break;
+                        case "DealerWins BlackJack":
+                            outcomeMessage2 = `BlacJack, Dealer wins...2nd hand -$${betHand2}`;
+                            break;
+                        case "DealerWins Bust":
+                            outcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${betHand2}`;
+                            break;
+                        case "DealerWins":
+                            outcomeMessage2 = `Dealer Wins...2nd hand -$${betHand2}`;
+                            break;
+                        case "PlayerWins Bust":
+                            outcomeMessage2 = `Dealer Bust...2nd hand Win! +$${betHand2}`;
+                            winAmount = winAmount+betHand2 * 2; 
+                            break;
+                        case "PlayerWins":
+                            outcomeMessage2 = `2nd Hand Win! +$${betHand2}!`;
+                            winAmount = winAmount+betHand2 * 2; 
+                            break;
+                        case "Push":
+                            outcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${betHand2}`;
+                            winAmount = winAmount+betHand2; // The bet is returned to the player
+                            break;
+                        default:
+                            outcomeMessage2 = "Unknown outcome.";
+                            break;
+                    }
+                    let finalMessage = outcomeMessage1 + " " +outcomeMessage2+"total win: "+winAmount;
+                    setGameMessage(finalMessage);
                 }
-                switch(gameOutcome2) {
-                    case "PlayerWins BlackJack":
-                        outcomeMessage2 = `BlacJack 2nd hand, win: ${betHand2*1.5}`;
-                        winAmount = winAmount + betHand2 + betHand2 * 1.5; 
-                        break;
-                    case "DealerWins BlackJack":
-                        outcomeMessage2 = `BlacJack, Dealer wins...2nd hand -$${betHand2}`;
-                        break;
-                    case "DealerWins Bust":
-                        outcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${betHand2}`;
-                        break;
-                    case "DealerWins":
-                        outcomeMessage2 = `Dealer Wins...2nd hand -$${betHand2}`;
-                        break;
-                    case "PlayerWins Bust":
-                        outcomeMessage2 = `Dealer Bust...2nd hand Win! +$${betHand2}`;
-                        winAmount = winAmount+betHand2 * 2; 
-                        break;
-                    case "PlayerWins":
-                        outcomeMessage2 = `2nd Hand Win! +$${betHand2}!`;
-                        winAmount = winAmount+betHand2 * 2; 
-                        break;
-                    case "Push":
-                        outcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${betHand2}`;
-                        winAmount = winAmount+betHand2; // The bet is returned to the player
-                        break;
-                    default:
-                        outcomeMessage2 = "Unknown outcome.";
-                        break;
-                }
-                let finalMessage = outcomeMessage1 + " " +outcomeMessage2+"total win: "+winAmount;
-                
-                setGameMessage(finalMessage);
-
             }else{
                 switch(gameOutcome) {
                     case "PlayerWins BlackJack":
@@ -946,7 +999,6 @@
                 playerHandValue={playerHandValue}
                 dealerHandValue={dealerHandValue}
                 playerChips={playerChips}
-                gameMessage={gameMessage}
                 />
                 
 
@@ -959,12 +1011,16 @@
                         </div>
                     </div>
                     
-                    <Player hand={dealerHand} isDealer={true} />
-
-
-                    <div className="message-container">
-                        <div className="message-box" style={{visibility:gameMessage.trim()=="" ? 'hidden':'visible'}}>{gameMessage}</div>
+                    <div id="dealer-message-box">
+                        <div id="dealerhand-fixedbox">
+                            <Player hand={dealerHand} isDealer={true} />
+                        </div>
+ 
+                        <div className="message-container">
+                            <div className="message-box">{gameMessage}</div>
+                        </div>
                     </div>
+                    
 
                     {
                     twoHands ? (
