@@ -1,155 +1,160 @@
-import React, { useEffect, useState,useRef } from "react";
-    import Deck from './Deck';
-    import Player from './Player';
-    import Controls from "./Controls";
-    import Header from "./Header";
-    import btnStand from './images/stand-button2.png';
-    import btnHit from './images/hit-button2.png';
-
-
-
-    const GameBoard = ({ onGameRunningChange }) => {
-
-    const [deck, setDeck] = useState(null);
-    const [dealerHand, setDealerHand] = useState([]);
-    const [playerHand, setPlayerHand] = useState([]);
-    const [gameRunning, setGameRunning] = useState(false);
-    const [playerHandValue, setPlayerHandValue] = useState(0);
-    const [dealerHandValue, setDealerHandValue] = useState(0);
-    const [playerChips, setPlayerChips] = useState(1000);
-    const [bet, setBet] = useState(0);
-    const [gameMessage, setGameMessage] = useState("");
-    const [gameOutcome, setGameOutcome] = useState("");
-    const [showScores, setShowScores] = useState(false);
-    const [newRound, setNewRound] = useState(false);
-    const endGameTimeout = useRef();
-    const [gamePause,setGamePause] = useState(false);
-    const [buttonsHidden,setButtonsHidden] = useState(false);
-    const [betChips,setBetChips] = useState([]);
-    const chipWidth = 40;
-    const gap = 0.1;
-    const totalChipTypes = Object.keys(betChips).length;
-    const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
-    const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
-    const isFirstRender = useRef(true);
-    const [standPressed, setStandPressed] = useState(false);
-    const [splitAvailable,setSplitAvailable] = useState(true);
-    const [playerHand1,setPlayerHand1] = useState([]);
-    const [playerHand2,setPlayerHand2] = useState([]);
-    const [twoHands,setTwoHands] = useState(false);
-    const [playerHand1Value,setPlayerHand1Value]= useState(0);
-    const [playerHand2Value,setPlayerHand2Value]=useState(0);
-    const [hitPressed,setHitPressed] = useState(false);
-    const [betHand1,setBetHand1] = useState(0);
-    const [betHand2,setBetHand2] = useState(0);
-    const [hand1TurnFinished,setHand1TurnFinished] = useState(false);
-    const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
-
-    const handleSplit = ()=>{
-        
-        if (playerChips >= bet && !gamePause)
-        {
-            setButtonsHidden(true);
-            const betHand1 = bet;
-            const betHand2 = bet;
-            setBetHand1(betHand1);
-            setBetHand2(betHand2);
-            setPlayerChips(playerChips-bet);
-            
-            const newDeck = deck;
-            const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
-            const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
-            const playerHand1 = [playerHand[0],playerHand1SecondCard];
-            const playerHand2 = [playerHand[1],playerHand2SecondCard];
-            setPlayerHand1(playerHand1);
-            setPlayerHand2(playerHand2);
-            setTwoHands(true);
-            setPlayerHand([]);
-            setTimeout(()=>{
-                setPlayerHand1(playerHand1.map(card => ({...card,isFaceDown: false})))
-                setPlayerHand2(playerHand2.map(card => ({...card,isFaceDown: false})))
-            },500);
-            const playerHand1Value = calculateHandValue(playerHand1);
-            const playerHand2Value = calculateHandValue(playerHand2);
-            setPlayerHand1Value(playerHand1Value);
-            setPlayerHand2Value(playerHand2Value);
-            setPlayerHandValue(0);
-            
-            if(playerHand1Value===21 && playerHand2Value ===21){
-                let gameMessage = `Wow! Two BlackJack... you won $${betHand1*2.5+betHand2*2.5}`;
-                setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
-                setGameMessage(gameMessage);
-                endGame();
-            }else{
-                //checking turn for hand1 during split
-                if(playerHand1Value === 21){
-                    let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
-                    setBetHand1(betHand1*2.5);
-                    setHand1TurnFinished(true);
-                }
-                else{
-                    let gameMessage = "Player Hand1, what do you want to do?"
-                    setGameMessage(gameMessage);
-
-                }
-                //checking turn for hand2 during split
-                if(playerHand2Value === 21){
-                    let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
-                    setBetHand2(betHand2*2.5);
-                    setHand2TurnFinished(true);
-                }else{
-                    let gameMessage = "Player Hand2, what do you want to do?"
-                    setGameMessage(gameMessage);
-                }
-
-            }
-        }else{
-            setGameMessage("Not enough chips for split...");
-            return;
-        }
-        
-
-
-    }
-    const handleChipClick = (amount, imgSrc, event) => {
-        event.stopPropagation();
-        
-   
-        setBetChips(currentChips => {
-            // Create a new object to avoid direct state mutation
-            const newChips = { ...currentChips };
-            const chipType = `chip${amount}`;
-   
-            if (newChips[chipType]) {
-                newChips[chipType].count += 1;
-                // Adjust position logic as necessary
-                // newChips[chipType].position += 10; 
-            } else {
-                newChips[chipType] = { imgSrc, count: 1, position: 0 };
-            }
-   
-            return newChips;
-        });
-    };
-
-    const onBetPlaced = (amount) => {
-        if (gamePause) {
-            setGameMessage("Game Paused...");
-            return;
-        }else if (amount === 0) {
-            setPlayerChips(prev => prev + bet);
-            setGameMessage("Place A Bet...");
-            setBet(0);
-            setBetChips([]);
-        }else if (!gameRunning && playerChips >= amount) {
-            setBet(prevBet => prevBet + amount);
-            setPlayerChips(prevChips => prevChips - amount);
-            // Don't set the gameMessage here, we'll do it in useEffect
-        } else {
-            return;
-        }
-    };
+    import React, { useEffect, useState,useRef } from "react";
+        import Deck from './Deck';
+        import Player from './Player';
+        import Controls from "./Controls";
+        import Header from "./Header";
+        import btnStand from './images/stand-button2.png';
+        import btnHit from './images/hit-button2.png';
     
+
+
+
+        const GameBoard = ({ onGameRunningChange }) => {
+
+        const [deck, setDeck] = useState(null);
+        const [dealerHand, setDealerHand] = useState([]);
+        const [playerHand, setPlayerHand] = useState([]);
+        const [gameRunning, setGameRunning] = useState(false);
+        const [playerHandValue, setPlayerHandValue] = useState(0);
+        const [dealerHandValue, setDealerHandValue] = useState(0);
+        const [playerChips, setPlayerChips] = useState(1000);
+        const [bet, setBet] = useState(0);
+        const [gameMessage, setGameMessage] = useState("");
+        const [gameOutcome, setGameOutcome] = useState("");
+        const [gameOutcome1, setGameOutcome1] = useState("");
+        const [gameOutcome2, setGameOutcome2] = useState("");
+        const [showScores, setShowScores] = useState(false);
+        const [newRound, setNewRound] = useState(false);
+        const endGameTimeout = useRef();
+        const [gamePause,setGamePause] = useState(false);
+        const [buttonsHidden,setButtonsHidden] = useState(false);
+        const [betChips,setBetChips] = useState([]);
+        const chipWidth = 40;
+        const gap = 0.1;
+        const totalChipTypes = Object.keys(betChips).length;
+        const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
+        const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
+        const isFirstRender = useRef(true);
+        const [standPressed, setStandPressed] = useState(false);
+        const [splitAvailable,setSplitAvailable] = useState(true);
+        const [playerHand1,setPlayerHand1] = useState([]);
+        const [playerHand2,setPlayerHand2] = useState([]);
+        const [twoHands,setTwoHands] = useState(false);
+        const [playerHand1Value,setPlayerHand1Value]= useState(0);
+        const [playerHand2Value,setPlayerHand2Value]=useState(0);
+        const [hitPressed,setHitPressed] = useState(false);
+        const [betHand1,setBetHand1] = useState(0);
+        const [betHand2,setBetHand2] = useState(0);
+        const [hand1TurnFinished,setHand1TurnFinished] = useState(false);
+        const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
+        const [splitPressed,setSplitPressed] = useState(false);
+    
+        const handleSplit = ()=>{
+            
+            if (playerChips >= bet && !gamePause)
+            {
+                setButtonsHidden(true);
+                setSplitPressed(true);
+                const betHand1 = bet;
+                const betHand2 = bet;
+                setBetHand1(betHand1);
+                setBetHand2(betHand2);
+                setPlayerChips(playerChips-bet);
+                
+                const newDeck = deck;
+                const playerHand1SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+                const playerHand2SecondCard = {...newDeck.drawCard(), isFaceDown: true};
+                const playerHand1 = [playerHand[0],playerHand1SecondCard];
+                const playerHand2 = [playerHand[1],playerHand2SecondCard];
+                setPlayerHand1(playerHand1);
+                setPlayerHand2(playerHand2);
+                setTwoHands(true);
+                setPlayerHand([]);
+                setTimeout(()=>{
+                    setPlayerHand1(playerHand1.map(card => ({...card,isFaceDown: false})))
+                    setPlayerHand2(playerHand2.map(card => ({...card,isFaceDown: false})))
+                },500);
+                const playerHand1Value = calculateHandValue(playerHand1);
+                const playerHand2Value = calculateHandValue(playerHand2);
+                setPlayerHand1Value(playerHand1Value);
+                setPlayerHand2Value(playerHand2Value);
+                setPlayerHandValue(0);
+                
+                if(playerHand1Value===21 && playerHand2Value ===21){
+                    let gameMessage = `Wow! Two BlackJack... you won $${betHand1*2.5+betHand2*2.5}`;
+                    setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
+                    setGameMessage(gameMessage);
+                    endGame();
+                }else{
+                    //checking turn for hand1 during split
+                    if(playerHand1Value === 21){
+                        let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
+                        setBetHand1(betHand1*2.5);
+                        setHand1TurnFinished(true);
+                    }
+                    else{
+                        let gameMessage = "Player Hand1, what do you want to do?"
+                        setGameMessage(gameMessage);
+
+                    }
+                    //checking turn for hand2 during split
+                    if(playerHand2Value === 21){
+                        let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
+                        setBetHand2(betHand2*2.5);
+                        setHand2TurnFinished(true);
+                    }else{
+                        let gameMessage = "Player Hand2, what do you want to do?"
+                        setGameMessage(gameMessage);
+                    }
+
+                }
+            }else{
+                setGameMessage("Not enough chips for split...");
+                return;
+            }
+            
+
+
+        }
+        const handleChipClick = (amount, imgSrc, event) => {
+            event.stopPropagation();
+            
+    
+            setBetChips(currentChips => {
+                // Create a new object to avoid direct state mutation
+                const newChips = { ...currentChips };
+                const chipType = `chip${amount}`;
+    
+                if (newChips[chipType]) {
+                    newChips[chipType].count += 1;
+                    // Adjust position logic as necessary
+                    // newChips[chipType].position += 10; 
+                } else {
+                    newChips[chipType] = { imgSrc, count: 1, position: 0 };
+                }
+    
+                return newChips;
+            });
+        };
+
+        const onBetPlaced = (amount) => {
+            if (gamePause) {
+                setGameMessage("Game Paused...");
+                return;
+            }else if (amount === 0) {
+                setPlayerChips(prev => prev + bet);
+                setGameMessage("Place A Bet...");
+                setBet(0);
+                setBetChips([]);
+            }else if (!gameRunning && playerChips >= amount) {
+                setBet(prevBet => prevBet + amount);
+                setPlayerChips(prevChips => prevChips - amount);
+                // Don't set the gameMessage here, we'll do it in useEffect
+            } else {
+                return;
+            }
+        };
+        
         function resetBet(){
             if(bet!==0){
                 
@@ -159,57 +164,13 @@ import React, { useEffect, useState,useRef } from "react";
                 setBetChips([]);
             }
         };
-        
-        function handleGameResult() {
-            const finalBet = bet; // Capture the bet amount before it gets reset
-        
-            let outcomeMessage;
-            let winAmount = 0;
-        
-            switch(gameOutcome) {
-                case "PlayerWins BlackJack":
-                    outcomeMessage = `BlacJack, You Won +$${finalBet*1.5}!!!`;
-                    winAmount = finalBet + finalBet * 1.5; 
-                    break;
-                case "DealerWins BlackJack":
-                    outcomeMessage = `BlacJack, Dealer wins... -$${finalBet}`;
-                    break;
-                case "DealerWins Bust":
-                    outcomeMessage = `Bust! Dealer Wins! -$${finalBet}`;
-                    break;
-                case "DealerWins":
-                    outcomeMessage = `Dealer Wins... -$${finalBet}`;
-                    break;
-                case "PlayerWins Bust":
-                    outcomeMessage = `Dealer Bust... Player Wins! +$${finalBet}`;
-                    winAmount = finalBet * 2; 
-                    break;
-                case "PlayerWins":
-                    outcomeMessage = `You Won +$${finalBet}!`;
-                    winAmount = finalBet * 2; 
-                    break;
-                case "Push":
-                    outcomeMessage = `Push! Tie... Bet returned: $${finalBet}`;
-                    winAmount = finalBet; // The bet is returned to the player
-                    break;
-                default:
-                    outcomeMessage = "Unknown outcome.";
-                    break;
-            }
-        
-            // Update game message with the outcome
-            setGameMessage(outcomeMessage);
-        
-            // Update player chips based on the outcome
-            if (winAmount > 0) {
-                setPlayerChips(prevChips => prevChips + winAmount);
-            }
-        
-               
-            endGame();
-        }
+            
+       
         
         const handleNewGame = () => {
+            setHand1TurnFinished(false);
+            setHand2TurnFinished(false);
+            setSplitPressed(false);
             setHitPressed(false);
             setButtonsHidden(false);
             setNewRound(true);
@@ -249,7 +210,7 @@ import React, { useEffect, useState,useRef } from "react";
 
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
-          
+        
             const dealerHand = [dealerFirstCard,{...dealerSecondCard,isFaceDown: true }];
             setDealerHand(dealerHand);
             
@@ -265,7 +226,7 @@ import React, { useEffect, useState,useRef } from "react";
 
             if(playerHandValue===21 && dealerHandValue === 21){
                 
-               
+            
             setTimeout(()=>{
                 newOutcome = "Push";
                 
@@ -307,7 +268,7 @@ import React, { useEffect, useState,useRef } from "react";
                     setDealerHand(updatedDealerHand);
                     setDealerHandValue(dealerHandValueOneCard);
                 },500);
-               
+            
                 
 
             }else{
@@ -317,92 +278,172 @@ import React, { useEffect, useState,useRef } from "react";
         };
 
         const endGame = () => {
-            setGamePause(true);
-            
-            endGameTimeout.current = setTimeout(() => {
-                setDealerHand([]);
-                setPlayerHand([]);
-                setGameOutcome("");
-                setGameMessage("Place A Bet...");
-                setShowScores(false);
-                setGameRunning(false);
-                setHitPressed(false);
-                setTwoHands(false);
-                setStandPressed(false);
-                setButtonsHidden(true);
-                setBet(0);
-                setBetChips([]);
-                setGamePause(false);
-                clearTimeout(endGameTimeout.current);
-            }, 5000);
-        };
-        
-        const handleStand = (newHandValue = playerHandValue) => {
-            setStandPressed(true);
-            
-           
-            // Make 2nd dealer card visible, after 1 second delay
-            setTimeout(()=>{ 
-                let updatedDealerHand = dealerHand.map((card, index) => ({
-                    ...card,
-                    isFaceDown: index === 1 ? false : card.isFaceDown,
-                }));
-                setDealerHand(updatedDealerHand);
+                setGamePause(true);
                 
-            //Recalculate dealerHand value and display it by using setTmeout
-                let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-               
-                setDealerHandValue(updatedDealerHandValue);
+                endGameTimeout.current = setTimeout(() => {
+                    setHand1TurnFinished(false);
+                    setHand2TurnFinished(false);
+                    setSplitPressed(false);
+                    setDealerHand([]);
+                    setPlayerHand([]);
+                    setGameOutcome("");
+                    setGameOutcome1("");
+                    setGameOutcome2("");
+                    setGameMessage("Place A Bet...");
+                    setShowScores(false);
+                    setGameRunning(false);
+                    setHitPressed(false);
+                    setTwoHands(false);
+                    setStandPressed(false);
+                    setButtonsHidden(true);
+                    setBet(0);
+                    setBetChips([]);
+                    setGamePause(false);
+                    clearTimeout(endGameTimeout.current);
+                }, 5000);
+        };
             
-                const drawCardforDealer = () => {
-            //check handValue, drawCard until handValue is 17 or higher
-                    if (updatedDealerHandValue < 17 && deck){
-                        //delay to draw card by 1.5 seconds, card with facedown
-                        setTimeout(() => {
-                            const newCard = { ...deck.drawCard(), isFaceDown: true };
-                            updatedDealerHand = [...updatedDealerHand, newCard];
-                            setDealerHand(updatedDealerHand);
-                            //delay displaying last card with face up by 1 seconds
-                            setTimeout(()=>{
-                                const newHand = [...updatedDealerHand];
-                                newHand[newHand.length - 1].isFaceDown = false; 
-                                setDealerHand(newHand);
-                                
-                                updatedDealerHandValue = calculateHandValue(updatedDealerHand);
-                                setDealerHandValue(updatedDealerHandValue);
-                            },500);
-                                
-                        }, 1000);
+        const handleStand = (newHandValue = playerHandValue,hand = null) => {
+                
+                if(splitPressed){
 
-                        setTimeout(()=>{
-                            if(updatedDealerHandValue < 17){
+                    if(hand==="hand1" && standPressed == false){
+                        const playerHand1Value = newHandValue;
+                        console.log(playerHand1Value);
+                        setHand1TurnFinished(true);
+                    }
+                    if(hand==="hand2" && standPressed == false){
+                        const playerHand2Value = newHandValue;
+                        console.log(playerHand2Value);
+                        setHand2TurnFinished(true);
+                    }
+                    
+                    if(hand1TurnFinished&&hand2TurnFinished){
+                       
+                        setTimeout(()=>{ 
+                            let updatedDealerHand = dealerHand.map((card, index) => ({
+                                ...card,
+                                isFaceDown: index === 1 ? false : card.isFaceDown,
+                            }));
+                            setDealerHand(updatedDealerHand);
+                            
+                        //Recalculate dealerHand value and display it by using setTmeout
+                            let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                        
+                            setDealerHandValue(updatedDealerHandValue);
+                        
+                            const drawCardforDealer = () => {
+                        //check handValue, drawCard until handValue is 17 or higher
+                                if (updatedDealerHandValue < 17 && deck){
+                                    //delay to draw card by 1.5 seconds, card with facedown
+                                    setTimeout(() => {
+                                        const newCard = { ...deck.drawCard(), isFaceDown: true };
+                                        updatedDealerHand = [...updatedDealerHand, newCard];
+                                        setDealerHand(updatedDealerHand);
+                                        //delay displaying last card with face up by 1 seconds
+                                        setTimeout(()=>{
+                                            const newHand = [...updatedDealerHand];
+                                            newHand[newHand.length - 1].isFaceDown = false; 
+                                            setDealerHand(newHand);
+                                            
+                                            updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                                            setDealerHandValue(updatedDealerHandValue);
+                                        },500);
+                                            
+                                    }, 1000);
+        
+                                    setTimeout(()=>{
+                                        if(updatedDealerHandValue < 17){
+                                            setTimeout(()=>{
+                                                drawCardforDealer();
+                                            },1500);
+                                            
+                                        }else {
+                                            setTimeout(()=>{
+                                                finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
+                                            },1500);
+                                            
+                                        }
+                                    },1500);
+                                        
+                                    }else{
+                                        setTimeout(()=>{
+                                            
+                                            finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
+                                        },500);
+                                        
+                                    }
+                            }
+                            
+                            setTimeout(()=>{
+                                drawCardforDealer();
+                            },1500);
+                            
+                        },1000);
+                    }
+                }else{
+                    // Make 2nd dealer card visible, after 1 second delay
+                setTimeout(()=>{ 
+                    let updatedDealerHand = dealerHand.map((card, index) => ({
+                        ...card,
+                        isFaceDown: index === 1 ? false : card.isFaceDown,
+                    }));
+                    setDealerHand(updatedDealerHand);
+                    
+                //Recalculate dealerHand value and display it by using setTmeout
+                    let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                
+                    setDealerHandValue(updatedDealerHandValue);
+                
+                    const drawCardforDealer = () => {
+                //check handValue, drawCard until handValue is 17 or higher
+                        if (updatedDealerHandValue < 17 && deck){
+                            //delay to draw card by 1.5 seconds, card with facedown
+                            setTimeout(() => {
+                                const newCard = { ...deck.drawCard(), isFaceDown: true };
+                                updatedDealerHand = [...updatedDealerHand, newCard];
+                                setDealerHand(updatedDealerHand);
+                                //delay displaying last card with face up by 1 seconds
                                 setTimeout(()=>{
-                                    drawCardforDealer();
-                                },1500);
+                                    const newHand = [...updatedDealerHand];
+                                    newHand[newHand.length - 1].isFaceDown = false; 
+                                    setDealerHand(newHand);
+                                    
+                                    updatedDealerHandValue = calculateHandValue(updatedDealerHand);
+                                    setDealerHandValue(updatedDealerHandValue);
+                                },500);
+                                    
+                            }, 1000);
+
+                            setTimeout(()=>{
+                                if(updatedDealerHandValue < 17){
+                                    setTimeout(()=>{
+                                        drawCardforDealer();
+                                    },1500);
+                                    
+                                }else {
+                                    setTimeout(()=>{
+                                        finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
+                                    },1500);
+                                    
+                                }
+                            },1500);
                                 
-                            }else {
+                            }else{
                                 setTimeout(()=>{
+                                    
                                     finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
-                                },1500);
+                                },500);
                                 
                             }
-                        },1500);
-                            
-                        }else{
-                            setTimeout(()=>{
-                                
-                                finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
-                            },500);
-                            
-                        }
+                    }
+                    
+                    setTimeout(()=>{
+                        drawCardforDealer();
+                    },1500);
+                    
+                },1000);
                 }
-                
-                setTimeout(()=>{
-                    drawCardforDealer();
-                },1500);
-                
-            },1000);
-            
         }
 
         const finishDealerTurn = (finalDealerHand,finalDealerHandValue,newHandValue=playerHandValue) => {
@@ -410,33 +451,85 @@ import React, { useEffect, useState,useRef } from "react";
             setTimeout(()=>{
                 setDealerHand(finalDealerHand);
                 setDealerHandValue(finalDealerHandValue);
-             
-                let outcome="";
-                if (finalDealerHandValue > 21) {
-                    outcome = "PlayerWins Bust";
             
-                } else if (newHandValue > 21) {
-                    outcome = "DealerWins Bust";
-            
-                } else if (newHandValue === 21 && finalDealerHandValue !== 21) {
-                    outcome = "PlayerWins";
+                if (splitPressed){
+                    let outcome1="";
+                    let outcome2="";
+                    //playerHand1 outcome
+                    if (finalDealerHandValue > 21) {
+                        outcome1 = "PlayerWins Bust";
+                
+                    } else if (playerHand1Value > 21) {
+                        outcome1 = "DealerWins Bust";
+                
+                    } else if (playerHand1Value === 21 && finalDealerHandValue !== 21) {
+                        outcome1 = "PlayerWins";
 
-                } else if (finalDealerHandValue === 21 && newHandValue !== 21) {
-                    outcome = "DealerWins";
-    
-                } else if (newHandValue > finalDealerHandValue) {
-                    outcome = "PlayerWins";
-            
-                } else if (finalDealerHandValue > newHandValue) {
-                    outcome = "DealerWins";
-
-                } else {
-                    outcome = "Push";
+                    } else if (finalDealerHandValue === 21 && playerHand1Value !== 21) {
+                        outcome1 = "DealerWins";
         
-                }
-               
+                    } else if (playerHand1Value > finalDealerHandValue) {
+                        outcome1 = "PlayerWins";
+                
+                    } else if (finalDealerHandValue > playerHand1Value) {
+                        outcome1 = "DealerWins";
 
-                setGameOutcome(outcome);
+                    } else {
+                        outcome1 = "Push";
+                    }
+                    //playerHand2 outcome
+                    if (finalDealerHandValue > 21) {
+                        outcome2 = "PlayerWins Bust";
+                
+                    } else if (playerHand2Value > 21) {
+                        outcome2 = "DealerWins Bust";
+                
+                    } else if (playerHand2Value === 21 && finalDealerHandValue !== 21) {
+                        outcome2 = "PlayerWins";
+
+                    } else if (finalDealerHandValue === 21 && playerHand2Value !== 21) {
+                        outcome2 = "DealerWins";
+        
+                    } else if (playerHand2Value > finalDealerHandValue) {
+                        outcome2 = "PlayerWins";
+                
+                    } else if (finalDealerHandValue > playerHand2Value) {
+                        outcome2 = "DealerWins";
+
+                    } else {
+                        outcome2 = "Push";
+                    }
+                    console.log(outcome1);
+                    console.log(outcome2);
+
+                    setGameOutcome1(outcome1);
+                    setGameOutcome2(outcome2);
+                }else{
+                    let outcome="";
+                    if (finalDealerHandValue > 21) {
+                        outcome = "PlayerWins Bust";
+                
+                    } else if (newHandValue > 21) {
+                        outcome = "DealerWins Bust";
+                
+                    } else if (newHandValue === 21 && finalDealerHandValue !== 21) {
+                        outcome = "PlayerWins";
+
+                    } else if (finalDealerHandValue === 21 && newHandValue !== 21) {
+                        outcome = "DealerWins";
+        
+                    } else if (newHandValue > finalDealerHandValue) {
+                        outcome = "PlayerWins";
+                
+                    } else if (finalDealerHandValue > newHandValue) {
+                        outcome = "DealerWins";
+
+                    } else {
+                        outcome = "Push";
+                    }
+
+                    setGameOutcome(outcome);
+                }
             },1000);
             
         };
@@ -514,7 +607,7 @@ import React, { useEffect, useState,useRef } from "react";
                     newOutcome ="DealerWins";
                     
                     setGameOutcome(newOutcome);
-                  
+                
                     let updatedDealerHand = dealerHand.map((card, index) => ({
                         ...card,
                         isFaceDown: index === 1 ? false : card.isFaceDown,
@@ -523,7 +616,7 @@ import React, { useEffect, useState,useRef } from "react";
                     let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
                     setDealerHandValue(updatedDealerHandValue);
                 }else if(playerHandValue ===21){
-              
+            
                     let updatedDealerHand = dealerHand.map((card, index) => ({
                         ...card,
                         isFaceDown: index === 1 ? false : card.isFaceDown,
@@ -553,7 +646,7 @@ import React, { useEffect, useState,useRef } from "react";
                         newOutcome="DealerWins";
                         
                         setGameOutcome(newOutcome);
-                      
+                    
                     }else if(updatedDealerHandValue===playerHandValue){
 
                         newOutcome="Push";
@@ -561,7 +654,7 @@ import React, { useEffect, useState,useRef } from "react";
                         setGameOutcome(newOutcome);
 
 
-               
+            
                     }else if(updatedDealerHandValue >21){
                         newOutcome="PlayerWins";
                         
@@ -618,6 +711,121 @@ import React, { useEffect, useState,useRef } from "react";
 
             return total;
         }
+
+        function handleGameResult() {
+            const finalBet = bet; // Capture the bet amount before it gets reset
+        
+            let outcomeMessage;
+            let outcomeMessage1;
+            let outcomeMessage2;
+            let winAmount = 0;
+            if(splitPressed){
+                console.log("Split Outcome");
+                switch(gameOutcome1) {
+                    case "PlayerWins BlackJack":
+                        outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
+                        winAmount = betHand1 + betHand1 * 1.5; 
+                        break;
+                    case "DealerWins BlackJack":
+                        outcomeMessage1 = `BlacJack, Dealer wins...1st hand -$${betHand1}`;
+                        break;
+                    case "DealerWins Bust":
+                        outcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${betHand1}`;
+                        break;
+                    case "DealerWins":
+                        outcomeMessage1 = `Dealer Wins...1st hand -$${betHand1}`;
+                        break;
+                    case "PlayerWins Bust":
+                        outcomeMessage1 = `Dealer Bust...1st hand Win! +$${betHand1}`;
+                        winAmount = betHand1 * 2; 
+                        break;
+                    case "PlayerWins":
+                        outcomeMessage1 = `1st Hand Win! +$${betHand1}!`;
+                        winAmount = betHand1 * 2; 
+                        break;
+                    case "Push":
+                        outcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${betHand1}`;
+                        winAmount = betHand1; // The bet is returned to the player
+                        break;
+                    default:
+                        outcomeMessage1 = "Unknown outcome.";
+                        break;
+                }
+                switch(gameOutcome2) {
+                    case "PlayerWins BlackJack":
+                        outcomeMessage2 = `BlacJack 2nd hand, win: ${betHand2*1.5}`;
+                        winAmount = winAmount + betHand2 + betHand2 * 1.5; 
+                        break;
+                    case "DealerWins BlackJack":
+                        outcomeMessage2 = `BlacJack, Dealer wins...2nd hand -$${betHand2}`;
+                        break;
+                    case "DealerWins Bust":
+                        outcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${betHand2}`;
+                        break;
+                    case "DealerWins":
+                        outcomeMessage2 = `Dealer Wins...2nd hand -$${betHand2}`;
+                        break;
+                    case "PlayerWins Bust":
+                        outcomeMessage2 = `Dealer Bust...2nd hand Win! +$${betHand2}`;
+                        winAmount = winAmount+betHand2 * 2; 
+                        break;
+                    case "PlayerWins":
+                        outcomeMessage2 = `2nd Hand Win! +$${betHand2}!`;
+                        winAmount = winAmount+betHand2 * 2; 
+                        break;
+                    case "Push":
+                        outcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${betHand2}`;
+                        winAmount = winAmount+betHand2; // The bet is returned to the player
+                        break;
+                    default:
+                        outcomeMessage2 = "Unknown outcome.";
+                        break;
+                }
+                let finalMessage = outcomeMessage1 + " " +outcomeMessage2+"total win: "+winAmount;
+                console.log(finalMessage);
+                setGameMessage(finalMessage);
+
+            }else{
+                switch(gameOutcome) {
+                    case "PlayerWins BlackJack":
+                        outcomeMessage = `BlacJack, You Won +$${finalBet*1.5}!!!`;
+                        winAmount = finalBet + finalBet * 1.5; 
+                        break;
+                    case "DealerWins BlackJack":
+                        outcomeMessage = `BlacJack, Dealer wins... -$${finalBet}`;
+                        break;
+                    case "DealerWins Bust":
+                        outcomeMessage = `Bust! Dealer Wins! -$${finalBet}`;
+                        break;
+                    case "DealerWins":
+                        outcomeMessage = `Dealer Wins... -$${finalBet}`;
+                        break;
+                    case "PlayerWins Bust":
+                        outcomeMessage = `Dealer Bust... Player Wins! +$${finalBet}`;
+                        winAmount = finalBet * 2; 
+                        break;
+                    case "PlayerWins":
+                        outcomeMessage = `You Won +$${finalBet}!`;
+                        winAmount = finalBet * 2; 
+                        break;
+                    case "Push":
+                        outcomeMessage = `Push! Tie... Bet returned: $${finalBet}`;
+                        winAmount = finalBet; // The bet is returned to the player
+                        break;
+                    default:
+                        outcomeMessage = "Unknown outcome.";
+                        break;
+                }
+            
+                setGameMessage(outcomeMessage);
+
+            }
+            if (winAmount > 0) {
+                setPlayerChips(prevChips => prevChips + winAmount);
+            }
+            endGame();
+        }
+        
         useEffect(() => {
             if (playerHand.length > 0) {
                 const newPlayerHandValue = calculateHandValue(playerHand);
@@ -633,27 +841,34 @@ import React, { useEffect, useState,useRef } from "react";
                 }
             }
         }, [playerHand]); // Only re-run the effect if playerHand changes
+        
         useEffect(() => {
             
             const playerHandValue = calculateHandValue(playerHand);
-          
+        
             const dealerHandValue = calculateHandValue(dealerHand);
-           
+        
             setPlayerHandValue(playerHandValue);
             setDealerHandValue(dealerHandValue);
         }, [playerHand,dealerHand]);
-      
+    
         useEffect(() => {
+
             if (isFirstRender.current) {
                 isFirstRender.current = false;
                 return;
             }
-    
-            if (gameOutcome) {
+            if(splitPressed){
+                let i=0;
+                console.log("calling split gameResult",++i);
+                handleGameResult();
+            }else if(gameOutcome) {
+                let i=0;
+                console.log("calling gameResult",++i);
                 handleGameResult();
             }
-        }, [gameOutcome]);
-    
+            
+        }, [gameOutcome,gameOutcome1,gameOutcome2]);
 
         useEffect(() => {
             if (isFirstRender.current) {
@@ -663,10 +878,9 @@ import React, { useEffect, useState,useRef } from "react";
             if (bet > 0) {
                 setGameMessage(`Bet of $${bet}`);
             }
-          }, [bet]);
-      
-
-          useEffect(() => {
+        }, [bet]);
+    
+        useEffect(() => {
             return () => {
                 clearTimeout(endGameTimeout.current);
             };
@@ -678,7 +892,17 @@ import React, { useEffect, useState,useRef } from "react";
                 return;
             }
             
-          }, [bet, playerChips]);
+        }, [bet, playerChips]);
+
+        useEffect(()=>{
+            if (hand1TurnFinished && hand2TurnFinished) {
+                console.log("Both hands have finished.");
+                // Now you can safely perform actions that depend on both hands being finished.
+                setStandPressed(true);
+                handleStand();
+                // Any additional logic that needs to run after both hands are finished can go here.
+            }
+        },[hand1TurnFinished,hand2TurnFinished])
 
         return (
             <>
@@ -688,6 +912,7 @@ import React, { useEffect, useState,useRef } from "react";
                 playerChips={playerChips}
                 gameMessage={gameMessage}
                 />
+                
 
                 <div className="game-area">
                     <div id='score-bubble'>
@@ -699,7 +924,8 @@ import React, { useEffect, useState,useRef } from "react";
                     </div>
                     
                     <Player hand={dealerHand} isDealer={true} />
-                    
+
+
                     <div className="message-container">
                         <div className="message-box" style={{visibility:gameMessage.trim()=="" ? 'hidden':'visible'}}>{gameMessage}</div>
                     </div>
@@ -722,17 +948,22 @@ import React, { useEffect, useState,useRef } from "react";
                                             src={btnStand} 
                                             className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
                                             alt='stand-button' 
-                                            onClick={!standPressed ? ()=>handleStand() : undefined}
+                                            title="Stand"
+                                            onClick={!standPressed ? ()=>handleStand(playerHand1Value,"hand1") : undefined}
                                             style={{cursor: standPressed?'not-allowed':'pointer'}}
+                                        
                                     />
                                     
                                     <img    
                                             src={btnHit} 
                                             className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
                                             alt='hit-button' 
+                                            title="Hit"
                                             onClick={!standPressed ? ()=>handleHit() : undefined}
                                             style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                
                                     />
+                                
                                 </div>
                             </div>
 
@@ -745,22 +976,30 @@ import React, { useEffect, useState,useRef } from "react";
                                         {playerHand2Value}
                                     </div>
                                 </div>
-                                <div id="split-buttons-box">
+                                <div 
+                                    id="split-buttons-box" >
+
                                     <img    
                                             src={btnStand} 
                                             className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
                                             alt='stand-button' 
-                                            onClick={!standPressed ? ()=>handleStand() : undefined}
+                                            title="Stand"
+                                            onClick={!standPressed ? ()=>handleStand(playerHand2Value,"hand2") : undefined}
                                             style={{cursor: standPressed?'not-allowed':'pointer'}}
+
                                     />
+                                
                                     
                                     <img    
                                             src={btnHit} 
                                             className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
                                             alt='hit-button' 
+                                            title="Hit"
                                             onClick={!standPressed ? ()=>handleHit() : undefined}
                                             style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                
                                     />
+                                
                                 </div>
                             </div>
                         </div>
@@ -787,7 +1026,10 @@ import React, { useEffect, useState,useRef } from "react";
                             gap: '8px', 
                             justifyContent: 'center',
                             position:'relative',
-                            }}>
+                            }}
+                        
+                            >
+                            
                         
                             {Object.entries(betChips).map(([chipType, { imgSrc, count, position }], index) => (
                                 Array.from({ length: count }).map((_, chipIndex) => (
@@ -806,6 +1048,7 @@ import React, { useEffect, useState,useRef } from "react";
                             ))}    
                         </div>
                 </div>
+
 
                 <Controls
                 handleHit={handleHit}

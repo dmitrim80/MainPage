@@ -49,6 +49,7 @@ const Controls = ({ onNewGame,
                                     src={btnStand} 
                                     className={`btn-stand ${standPressed ? 'disabled' : ''}`}
                                     alt='stand-button' 
+                                    title="Stand"
                                     onClick={!standPressed ? ()=>handleStand() : undefined}
                                     style={{cursor: standPressed?'not-allowed':'pointer'}}
                             />
@@ -56,6 +57,7 @@ const Controls = ({ onNewGame,
                                     src={btnDouble}
                                     className={`btn-double ${standPressed || hitPressed ? 'disabled' : ''}`}
                                     alt='double-button' 
+                                    title="Double"
                                     onClick={!standPressed ? ()=>handleDouble() : undefined}
                                     style={{cursor: standPressed?'not-allowed':'pointer'}}
                             />
@@ -63,6 +65,7 @@ const Controls = ({ onNewGame,
                                     src={btnSplit} 
                                     className={`btn-split ${(standPressed || !splitAvailable || hitPressed )? 'disabled': ''}`}
                                     alt='split-button' 
+                                    title="Split"
                                     onClick={() => !standPressed && handleSplit()}
                                     style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                             />
@@ -70,6 +73,7 @@ const Controls = ({ onNewGame,
                                     src={btnHit} 
                                     className={`btn-hit ${standPressed ? 'disabled': ''}`}
                                     alt='hit-button' 
+                                    title="Hit"
                                     onClick={!standPressed ? ()=>handleHit() : undefined}
                                     style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                             />
@@ -82,12 +86,14 @@ const Controls = ({ onNewGame,
                             src={btnBet} 
                             className='btn-new-game' 
                             alt='bet-button' 
+                            title="Place A Bet"
                             onClick={() => bet === 0 ? onBetPlaced(0):onNewGame()}
                         />
                         <img 
                             src={btnClear} 
                             className='btn-clear-bet' 
                             alt='clear-button' 
+                            title="Clear"
                             onClick={() => onBetPlaced(0)}
                         />
                     </>
@@ -118,6 +124,7 @@ const Controls = ({ onNewGame,
                 <img key={index}
                     src={chip.img}
                     alt={`Chip ${chip.value}`}
+                    title={`$${chip.value}`}
                     className='chip-img'
                     onClick={(event) => {
                         onBetPlaced(chip.value); 
