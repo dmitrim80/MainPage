@@ -36,7 +36,7 @@
         const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
         const isFirstRender = useRef(true);
         const [standPressed, setStandPressed] = useState(false);
-        const [splitAvailable,setSplitAvailable] = useState(true);
+        const [splitAvailable,setSplitAvailable] = useState(false);
         const [playerHand1,setPlayerHand1] = useState([]);
         const [playerHand2,setPlayerHand2] = useState([]);
         const [twoHands,setTwoHands] = useState(false);
@@ -584,9 +584,60 @@
 
         };
 
-        const handleHit = () =>{
-            setHitPressed(true);
-            if(deck.cards.length > 0){
+        const handleHit = (hand = null) =>{
+            if(splitPressed){
+                if(hand==="hand1"){
+                    if(deck.cards.length > 0){
+                        const newCard = { ...deck.drawCard(), isFaceDown: true };
+                        const updatedPlayerHand1 = [...playerHand1, newCard];
+        
+                        setPlayerHand1(updatedPlayerHand1);
+        
+                        setTimeout(() => {
+                            const newHand = [...updatedPlayerHand1];
+                            newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                            setPlayerHand1(newHand);
+                        },500);
+                        const playerHand1Value = calculateHandValue(updatedPlayerHand1);
+                    
+                        setPlayerHand1Value(playerHand1Value);
+                        let newOutcome1;
+                        
+                        if(playerHand1Value>21){
+                            newOutcome1 ="DealerWins";
+                        }else if(playerHand1Value ===21){
+                            console.log("player hand1:21, disable hit button");
+                        }
+                        console.log(newOutcome1);
+                    }
+                }else if(hand==="hand2"){
+                    if(deck.cards.length > 0){
+                        const newCard = { ...deck.drawCard(), isFaceDown: true };
+                        const updatedPlayerHand2 = [...playerHand2, newCard];
+        
+                        setPlayerHand2(updatedPlayerHand2);
+        
+                        setTimeout(() => {
+                            const newHand = [...updatedPlayerHand2];
+                            newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
+                            setPlayerHand2(newHand);
+                        },500);
+                        const playerHand2Value = calculateHandValue(updatedPlayerHand2);
+                    
+                        setPlayerHand2Value(playerHand2Value);
+                        let newOutcome2;
+                        
+                        if(playerHand1Value>21){
+                            newOutcome2 ="DealerWins";
+                        }else if(playerHand1Value ===21){
+                            console.log("player hand1:21, disable hit button");
+                        }
+                        console.log(newOutcome2);
+                    }
+                }    
+            }else{
+                setHitPressed(true);
+                if(deck.cards.length > 0){
                 const newCard = { ...deck.drawCard(), isFaceDown: true };
                 const updatedPlayerHand = [...playerHand, newCard];
 
@@ -596,7 +647,7 @@
                     const newHand = [...updatedPlayerHand];
                     newHand[newHand.length - 1].isFaceDown = false; // Flip only the new card
                     setPlayerHand(newHand);
-                },100);
+                },500);
 
                 const playerHandValue = calculateHandValue(updatedPlayerHand);
                 
@@ -669,6 +720,8 @@
                     setGameRunning(false);
                 }
             }
+            }
+            
         }
 
         const getCardValue = (rank) =>{
@@ -959,7 +1012,7 @@
                                             className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
                                             alt='hit-button' 
                                             title="Hit"
-                                            onClick={!standPressed ? ()=>handleHit() : undefined}
+                                            onClick={!standPressed ? ()=>handleHit("hand1") : undefined}
                                             style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                                 
                                     />
@@ -995,7 +1048,7 @@
                                             className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
                                             alt='hit-button' 
                                             title="Hit"
-                                            onClick={!standPressed ? ()=>handleHit() : undefined}
+                                            onClick={!standPressed ? ()=>handleHit("hand2") : undefined}
                                             style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                                 
                                     />
