@@ -204,7 +204,6 @@
                 ));
                 if(playerFirstCard.rank === playerSecondCard.rank ){
                     setSplitAvailable(true);
-                    console.log("SPLIT");
                 };
             }, 500); // Adjust this delay as needed
 
@@ -309,12 +308,12 @@
 
                     if(hand==="hand1" && standPressed == false){
                         const playerHand1Value = newHandValue;
-                        console.log(playerHand1Value);
+                        
                         setHand1TurnFinished(true);
                     }
                     if(hand==="hand2" && standPressed == false){
                         const playerHand2Value = newHandValue;
-                        console.log(playerHand2Value);
+                        
                         setHand2TurnFinished(true);
                     }
                     
@@ -500,8 +499,7 @@
                     } else {
                         outcome2 = "Push";
                     }
-                    console.log(outcome1);
-                    console.log(outcome2);
+                    
 
                     setGameOutcome1(outcome1);
                     setGameOutcome2(outcome2);
@@ -602,14 +600,7 @@
                         const playerHand1Value = calculateHandValue(updatedPlayerHand1);
                     
                         setPlayerHand1Value(playerHand1Value);
-                        let newOutcome1;
                         
-                        if(playerHand1Value>21){
-                            newOutcome1 ="DealerWins";
-                        }else if(playerHand1Value ===21){
-                            console.log("player hand1:21, disable hit button");
-                        }
-                        console.log(newOutcome1);
                     }
                 }else if(hand==="hand2"){
                     if(deck.cards.length > 0){
@@ -626,14 +617,7 @@
                         const playerHand2Value = calculateHandValue(updatedPlayerHand2);
                     
                         setPlayerHand2Value(playerHand2Value);
-                        let newOutcome2;
                         
-                        if(playerHand1Value>21){
-                            newOutcome2 ="DealerWins";
-                        }else if(playerHand1Value ===21){
-                            console.log("player hand1:21, disable hit button");
-                        }
-                        console.log(newOutcome2);
                     }
                 }    
             }else{
@@ -774,7 +758,7 @@
             let outcomeMessage2;
             let winAmount = 0;
             if(splitPressed){
-                console.log("Split Outcome");
+                
                 switch(gameOutcome1) {
                     case "PlayerWins BlackJack":
                         outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
@@ -836,7 +820,7 @@
                         break;
                 }
                 let finalMessage = outcomeMessage1 + " " +outcomeMessage2+"total win: "+winAmount;
-                console.log(finalMessage);
+                
                 setGameMessage(finalMessage);
 
             }else{
@@ -913,12 +897,10 @@
                 return;
             }
             if(splitPressed){
-                let i=0;
-                console.log("calling split gameResult",++i);
+                
                 handleGameResult();
             }else if(gameOutcome) {
-                let i=0;
-                console.log("calling gameResult",++i);
+                
                 handleGameResult();
             }
             
@@ -950,7 +932,7 @@
 
         useEffect(()=>{
             if (hand1TurnFinished && hand2TurnFinished) {
-                console.log("Both hands have finished.");
+                
                 // Now you can safely perform actions that depend on both hands being finished.
                 setStandPressed(true);
                 handleStand();
