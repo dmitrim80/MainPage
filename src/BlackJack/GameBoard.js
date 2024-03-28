@@ -331,7 +331,7 @@
                             let updatedDealerHandValue = calculateHandValue(updatedDealerHand);
                         
                             setDealerHandValue(updatedDealerHandValue);
-                            console.log(gameOutcome1,gameOutcome2);
+                            
                             if(playerHand1Value>21 && playerHand2Value>21){
                                 setGameMessage("Bust... Dealer Wins!");
                                 endGame();
