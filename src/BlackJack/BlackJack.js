@@ -6,7 +6,7 @@ import LoadingOverlay from './LoadingOverlay'
 const BlackJack = () => {
     const [isLoading,setIsLoading] = useState(true);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [opacity, setOpacity] = useState(0.45); // Initial opacity
+    const [opacity, setOpacity] = useState(1);
     const [zIndex, setZIndex] = useState(-1);
     const [isGameActive, setIsGameActive] = useState(false);
 
@@ -23,18 +23,29 @@ const BlackJack = () => {
             }, 300);
         }
     };
-    useEffect(()=>{
-        const timer = setTimeout(()=>{
-          setIsLoading(false);
-        },6000);
+    useEffect(() => {
+        // Start the fade-out effect slightly before hiding the overlay
+        const fadeOutTimer = setTimeout(() => {
+          // Assuming you have a method to change the overlay's opacity
+          // This could be directly via CSS classes or inline styles
+          setOpacity(0); // This assumes your LoadingOverlay responds to opacity changes
+        }, 4000); // Start fade out slightly before removing the overlay
       
-        return () => clearTimeout(timer);
-      },[]);
+        const removeOverlayTimer = setTimeout(() => {
+            setIsLoading(false);
+          }, 5000); // 4 seconds + 1 second of fade-out
+      
+        return () => {
+            clearTimeout(fadeOutTimer);
+            clearTimeout(removeOverlayTimer); 
+        };
+      }, []);
     return (
         <>
             {/* <div id="container" className={isFlipped ? 'flipped' : ''} onClick={toggleFlip} style={{'--bg-opacity': opacity, '--z-index': zIndex}}> */}
             <div id="container">
-                <LoadingOverlay isVisible={isLoading} />
+                
+                <LoadingOverlay isVisible={isLoading} style={{ opacity: opacity }}  />
                 <GameBoard onGameRunningChange={handleGameRunningChange} />
             </div>
         </>
