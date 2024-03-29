@@ -36,7 +36,7 @@
         const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
         const isFirstRender = useRef(true);
         const [standPressed, setStandPressed] = useState(false);
-        const [splitAvailable,setSplitAvailable] = useState(false);
+        const [splitAvailable,setSplitAvailable] = useState(true);
         const [playerHand1,setPlayerHand1] = useState([]);
         const [playerHand2,setPlayerHand2] = useState([]);
         const [twoHands,setTwoHands] = useState(false);
@@ -48,7 +48,24 @@
         const [hand1TurnFinished,setHand1TurnFinished] = useState(false);
         const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
         const [splitPressed,setSplitPressed] = useState(false);
-    
+
+        const [result,setResult] = useState("");
+        const [progressBarWidth,setProgressBarWidth] = useState(0);
+        const [gameResultsCount, setGameResultsCount] = useState({
+            totalGamesPlayed: 0,
+            gamesWon: 0,
+            gamesLost: 0,
+            numberOfTie: 0,
+            numberOfBlackJacks: 0,
+            numberOfSplits: 0,
+            numberOfDoubles: 0,
+            numberOfBusts: 0,
+            numberOfWinsWith2Cards: 0,
+            totalAmountOfBets:0,
+            totalAmountOfBetsWon:0,
+            totalAmountOfBetsLost:0
+        });
+
         const handleSplit = ()=>{
             
             if (playerChips >= bet && !gamePause)
@@ -84,6 +101,8 @@
                     let gameMessage = `Wow! Two BlackJack... you won $${betHand1*2.5+betHand2*2.5}`;
                     setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
                     setGameMessage(gameMessage);
+                    let result = "Push";
+                    setResult(result);
                     endGame();
                 }else{
                     //checking turn for hand2 during split
@@ -92,7 +111,7 @@
                         setBetHand2(betHand2*2.5);
                         setHand2TurnFinished(true);
                     }else{
-                        let gameMessage = "What do you want to do?\nHit or Stand"
+                        let gameMessage = `What do you want to do? Hit or Stand`;                        
                         setGameMessage(gameMessage);
                     }
                     //checking turn for hand1 during split
@@ -156,20 +175,18 @@
             }
         };
         
-        function resetBet(){
-            if(bet!==0){
-                
-                setPlayerChips(playerChips + bet);
-                
-                setBet(0);
-                setBetChips([]);
-            }
-        };
-            
-       
+        
+        const assignGameResults = () =>{
+            setGameResultsCount(prevResult =>({
+                ...prevResult, 
+                totalGamesPlayed: prevResult.totalGamesPlayed+1
+            }));
+        }
+        
         
         const handleNewGame = () => {
-            setSplitAvailable(false);
+            
+            setSplitAvailable(true);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
             setSplitPressed(false);
@@ -238,6 +255,7 @@
                 }));
                 setDealerHand(updatedDealerHand);
                 setDealerHandValue(dealerHandValueOneCard);
+                
             },500);   
                 
 
@@ -279,8 +297,9 @@
         };
 
         const endGame = () => {
-                setGamePause(true);
                 
+                assignGameResults();
+                setGamePause(true);
                 endGameTimeout.current = setTimeout(() => {
                     setSplitAvailable(false);
                     setHand1TurnFinished(false);
@@ -336,6 +355,8 @@
                             
                             if(playerHand1Value>21 && playerHand2Value>21){
                                 setGameMessage("Bust... Dealer Wins!");
+                                let result = "Dealer Wins";
+                                setResult(result);
                                 endGame();
                                 return;
                             }
@@ -363,15 +384,15 @@
                                         if(updatedDealerHandValue < 17){
                                             setTimeout(()=>{
                                                 drawCardforDealer();
-                                            },1500);
+                                            },1000);
                                             
                                         }else {
                                             setTimeout(()=>{
                                                 finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
-                                            },1500);
+                                            },2000);
                                             
                                         }
-                                    },1500);
+                                    },1000);
                                         
                                     }else{
                                         setTimeout(()=>{
@@ -384,7 +405,7 @@
                             
                             setTimeout(()=>{
                                 drawCardforDealer();
-                            },1500);
+                            },2000);
                             
                         },1000);
                     }
@@ -441,7 +462,7 @@
                                 setTimeout(()=>{
                                     
                                     finishDealerTurn(updatedDealerHand, updatedDealerHandValue,newHandValue);
-                                },500);
+                                },1500);
                                 
                             }
                     }
@@ -607,6 +628,8 @@
                     setDealerHandValue(updatedDealerHandValue);
                     setGameOutcome(newOutcome);
                     setGameMessage("Bust... Dealer Wins!");
+                    let result = "Dealer Wins";
+                    setResult(result);
                     endGame();
                 }else{
                     if(hand==="hand1"){
@@ -805,6 +828,10 @@
         }
 
         function handleGameResult() {
+            let result = "";
+            let splitHand1 ="";
+            let splitHand2 ="";
+
             const finalBet = bet; // Capture the bet amount before it gets reset
         
             let outcomeMessage;
@@ -818,64 +845,80 @@
                     switch(gameOutcome1) {
                         case "PlayerWins BlackJack":
                             outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
+                            splitHand1 = "1st Hand - Player Wins";
                             winAmount = betHand1 + betHand1 * 1.5; 
                             break;
                         case "DealerWins BlackJack":
                             outcomeMessage1 = `BlacJack, Dealer wins...1st hand -$${betHand1}`;
+                            splitHand1 = "1st Hand - Dealer Wins";
                             break;
                         case "DealerWins Bust":
                             outcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${betHand1}`;
+                            splitHand1 = "1st Hand - Dealer Wins";
                             break;
                         case "DealerWins":
                             outcomeMessage1 = `Dealer Wins...1st hand -$${betHand1}`;
+                            splitHand1 = "1st Hand - Dealer Wins";
                             break;
                         case "PlayerWins Bust":
                             outcomeMessage1 = `Dealer Bust...1st hand Win! +$${betHand1}`;
+                            splitHand1 = "1st Hand - Player Wins";
                             winAmount = betHand1 * 2; 
                             break;
                         case "PlayerWins":
                             outcomeMessage1 = `1st Hand Win! +$${betHand1}!`;
+                            splitHand1 = "1st Hand - Player Wins";
                             winAmount = betHand1 * 2; 
                             break;
                         case "Push":
                             outcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${betHand1}`;
+                            splitHand1 = "1st Hand - Push";
                             winAmount = betHand1; // The bet is returned to the player
                             break;
                         default:
                             outcomeMessage1 = "Unknown outcome.";
+                            splitHand1 = "1st Hand - Unknown";
                             break;
                     }
                     switch(gameOutcome2) {
                         case "PlayerWins BlackJack":
                             outcomeMessage2 = `BlacJack 2nd hand, win: ${betHand2*1.5}`;
                             winAmount = winAmount + betHand2 + betHand2 * 1.5; 
+                            splitHand1 = "1st Hand - Player Wins";
                             break;
                         case "DealerWins BlackJack":
                             outcomeMessage2 = `BlacJack, Dealer wins...2nd hand -$${betHand2}`;
+                            splitHand1 = "2nd Hand - Dealer Wins";
                             break;
                         case "DealerWins Bust":
                             outcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${betHand2}`;
+                            splitHand1 = "2nd Hand - Dealer Wins";
                             break;
                         case "DealerWins":
                             outcomeMessage2 = `Dealer Wins...2nd hand -$${betHand2}`;
+                            splitHand1 = "2nd Hand - Dealer Wins";
                             break;
                         case "PlayerWins Bust":
                             outcomeMessage2 = `Dealer Bust...2nd hand Win! +$${betHand2}`;
+                            splitHand1 = "2nd Hand - Player Wins";
                             winAmount = winAmount+betHand2 * 2; 
                             break;
                         case "PlayerWins":
                             outcomeMessage2 = `2nd Hand Win! +$${betHand2}!`;
+                            splitHand1 = "2nd Hand - Player Wins";
                             winAmount = winAmount+betHand2 * 2; 
                             break;
                         case "Push":
                             outcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${betHand2}`;
+                            splitHand1 = "2nd Hand - Push";
                             winAmount = winAmount+betHand2; // The bet is returned to the player
                             break;
                         default:
                             outcomeMessage2 = "Unknown outcome.";
                             break;
                     }
-                    let finalMessage = outcomeMessage1 + " " +outcomeMessage2+"total win: "+winAmount;
+                    result = splitHand1 +"\n"+splitHand2;
+                    let finalMessage = outcomeMessage1 + "\n " +outcomeMessage2+"\total win: "+winAmount;
                     setGameMessage(finalMessage);
                 }
             }else{
@@ -883,42 +926,57 @@
                     case "PlayerWins BlackJack":
                         outcomeMessage = `BlacJack, You Won +$${finalBet*1.5}!!!`;
                         winAmount = finalBet + finalBet * 1.5; 
+                        result = "Player Wins";
                         break;
                     case "DealerWins BlackJack":
                         outcomeMessage = `BlacJack, Dealer wins... -$${finalBet}`;
+                        result = "Dealer Wins";
                         break;
                     case "DealerWins Bust":
                         outcomeMessage = `Bust! Dealer Wins! -$${finalBet}`;
+                        result = "Dealer Wins";
                         break;
                     case "DealerWins":
                         outcomeMessage = `Dealer Wins... -$${finalBet}`;
+                        result = "Dealer Wins";
                         break;
                     case "PlayerWins Bust":
                         outcomeMessage = `Dealer Bust... Player Wins! +$${finalBet}`;
                         winAmount = finalBet * 2; 
+                        result = "Player Wins";
                         break;
                     case "PlayerWins":
                         outcomeMessage = `You Won +$${finalBet}!`;
                         winAmount = finalBet * 2; 
+                        result = "Player Wins";
                         break;
                     case "Push":
                         outcomeMessage = `Push! Tie... Bet returned: $${finalBet}`;
                         winAmount = finalBet; // The bet is returned to the player
+                        result = "Push";
                         break;
                     default:
                         outcomeMessage = "Unknown outcome.";
+                        result = "Unknown";
                         break;
                 }
             
                 setGameMessage(outcomeMessage);
-
+                if (winAmount > 0) {
+                    setPlayerChips(prevChips => prevChips + winAmount);
+                }
             }
-            if (winAmount > 0) {
-                setPlayerChips(prevChips => prevChips + winAmount);
-            }
+            
+            setResult(result);            
             endGame();
         }
         
+        useEffect(()=>{
+
+            const newWidth = (gameResultsCount.totalGamesPlayed)/20*100;
+            setProgressBarWidth(newWidth);
+        },[gameResultsCount.totalGamesPlayed]);
+
         useEffect(() => {
             if (playerHand.length > 0) {
                 const newPlayerHandValue = calculateHandValue(playerHand);
@@ -929,8 +987,7 @@
                     setGameOutcome("DealerWins Bust");
                     // Additional logic for dealer's turn can go here
                 } else {
-                    // Since handleStand might rely on updated hand value, ensure it's called here or in response to updated state
-                    // handleStand();
+                    return;
                 }
             }
         }, [playerHand]); // Only re-run the effect if playerHand changes
@@ -951,14 +1008,7 @@
                 isFirstRender.current = false;
                 return;
             }
-            if(splitPressed){
-                
-                handleGameResult();
-            }else if(gameOutcome) {
-                
-                handleGameResult();
-            }
-            
+            handleGameResult();
         }, [gameOutcome,gameOutcome1,gameOutcome2]);
 
         useEffect(() => {
@@ -995,12 +1045,15 @@
             }
         },[hand1TurnFinished,hand2TurnFinished])
 
+        
         return (
             <>
                 <Header
                 playerHandValue={playerHandValue}
                 dealerHandValue={dealerHandValue}
                 playerChips={playerChips}
+                progressBarWidth={progressBarWidth}
+                result={result}
                 />
                 
 
@@ -1040,21 +1093,21 @@
                                 <div id="split-buttons-box">
                                     <img    
                                             src={btnStand} 
-                                            className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
+                                            className={`split-btn-stand ${(standPressed || hand1TurnFinished) ? 'disabled' : ''}`}
                                             alt='stand-button' 
                                             title="Stand"
-                                            onClick={!standPressed ? ()=>handleStand(playerHand1Value,"hand1") : undefined}
-                                            style={{cursor: standPressed?'not-allowed':'pointer'}}
+                                            onClick={(!standPressed && !hand1TurnFinished)? ()=>handleStand(playerHand1Value,"hand1") : undefined}
+                                            style={{cursor: (standPressed || hand1TurnFinished)?'not-allowed':'pointer'}}
                                         
                                     />
                                     
                                     <img    
                                             src={btnHit} 
-                                            className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
+                                            className={`split-btn-hit ${(standPressed || hand1TurnFinished) ? 'disabled': ''}`}
                                             alt='hit-button' 
                                             title="Hit"
-                                            onClick={!standPressed ? ()=>handleHit("hand1") : undefined}
-                                            style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                            onClick={(!standPressed && !hand1TurnFinished) ? ()=>handleHit("hand1") : undefined}
+                                            style={{cursor:((standPressed || hand1TurnFinished)) ? 'not-allowed':'pointer'}}
                                 
                                     />
                                 
@@ -1075,22 +1128,22 @@
 
                                     <img    
                                             src={btnStand} 
-                                            className={`split-btn-stand ${standPressed ? 'disabled' : ''}`}
+                                            className={`split-btn-stand ${(standPressed || hand2TurnFinished)? 'disabled' : ''}`}
                                             alt='stand-button' 
                                             title="Stand"
-                                            onClick={!standPressed ? ()=>handleStand(playerHand2Value,"hand2") : undefined}
-                                            style={{cursor: standPressed?'not-allowed':'pointer'}}
+                                            onClick={(!standPressed && !hand2TurnFinished) ? ()=>handleStand(playerHand2Value,"hand2") : undefined}
+                                            style={{cursor: (standPressed || hand2TurnFinished)?'not-allowed':'pointer'}}
 
                                     />
                                 
                                     
                                     <img    
                                             src={btnHit} 
-                                            className={`split-btn-hit ${standPressed ? 'disabled': ''}`}
+                                            className={`split-btn-hit ${(standPressed || hand2TurnFinished) ? 'disabled': ''}`}
                                             alt='hit-button' 
                                             title="Hit"
-                                            onClick={!standPressed ? ()=>handleHit("hand2") : undefined}
-                                            style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                            onClick={(!standPressed && !hand2TurnFinished)? ()=>handleHit("hand2") : undefined}
+                                            style={{cursor:(standPressed || hand1TurnFinished) ? 'not-allowed':'pointer'}}
                                 
                                     />
                                 

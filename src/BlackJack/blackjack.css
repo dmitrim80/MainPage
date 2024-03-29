@@ -128,7 +128,7 @@ font-size: 1.2rem;
 text-align: center;
 box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 }
-#chips-count{
+#chips-count,#games-count,#game-result{
 margin-left: 5px;
 border: 1px solid #a47523;
 background-color: hsla(25, 72%, 11%, 0.96);
@@ -137,17 +137,17 @@ border-radius: 15px;
 width: 40%;
 text-align: center;
 box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
-
+align-content: center;
 }
-#games-count{
-  border: 1px solid #a47523;
-  background-color: hsla(25, 72%, 11%, 0.96);
-  color: aliceblue;
+#games-count-filler{
+  width: 5%;
+  height: 80%;
+  background-color: #25a423;
   border-radius: 15px;
-  width: 40%;
-  text-align: center;
-  box-shadow: 0px 0px 15px rgba(31, 13, 13, 0.968);
+  transition: width 0.5s ease-out;
+  
 }
+
 
 
 #blackjack-header{

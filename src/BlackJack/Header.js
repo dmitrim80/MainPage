@@ -2,12 +2,15 @@ import React from 'react'
 import Logo from './images/logo-blackjack.png'
 import BackCard from './images/vegas-back2.png'
 
-const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips}) => {
+const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,progressBarWidth}) => {
   return (
     <>
       <div id='blackjack-header-container'>
         <div id='chips-count'>{`$ ${playerChips}`}</div>
-        <div id='games-count'></div>
+        <div id='games-count'>
+          <div id='games-count-filler' style={{width:`${progressBarWidth}%`}}></div>
+        </div>
+        {/* <div id='game-result'>{result}</div>  */}
         <div id='game-settings'>⚙️</div>
       </div>
       <div id='deck-dealer-row'>
@@ -15,7 +18,6 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips}) => {
         <div id='new-deck'>{<img id='card-image-right-corner' alt='back-image' src={BackCard} />}</div>
       </div>
     </>
-    
   )
 }
 
