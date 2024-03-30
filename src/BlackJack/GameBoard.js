@@ -5,6 +5,12 @@
         import Header from "./Header";
         import btnStand from './images/stand-button2.png';
         import btnHit from './images/hit-button2.png';
+        import chip5 from './images/5-chip-v2.png';
+        import chip10 from './images/10-chip-v2.png';
+        import chip25 from './images/25-chip-v2.png';
+        import chip50 from './images/50-chip-v2.png';
+        import chip100 from './images/100-chip-v2.png';
+        import chip250 from './images/250-chip-v2.png';
 
         const GameBoard = ({ onGameRunningChange }) => {
 
@@ -64,6 +70,15 @@
             totalAmountOfBetsWon:0,
             totalAmountOfBetsLost:0
         });
+
+        const chips = [
+            { value: 5, img: chip5 },
+            { value: 10, img: chip10 },
+            { value: 25, img: chip25 },
+            { value: 50, img: chip50 },
+            { value: 100, img: chip100 },
+            { value: 250, img: chip250 },
+        ];
 
         const asignPreviousBet = (bet) =>{
             let currentBet = bet;
@@ -161,18 +176,22 @@
             });
         };
 
-        const onBetPlaced = (amount) => {
+        const onBetPlaced = (newBet, sendingPreviousBet = false) => {
             if (gamePause) {
                 setGameMessage("Game Paused...");
                 return;
-            }else if (amount === 0) {
+            }else if (newBet === 0) {
                 setPlayerChips(prev => prev + bet);
                 setGameMessage("Place A Bet...");
                 setBet(0);
                 setBetChips([]);
-            }else if (!gameRunning && playerChips >= amount) {
-                setBet(prevBet => prevBet + amount);
-                setPlayerChips(prevChips => prevChips - amount);
+            }else if (!gameRunning && playerChips >= newBet) {
+                if(sendingPreviousBet){
+                    setPlayerChips(prevChips => prevChips - newBet);
+                }else{
+                    setBet(prevBet => prevBet + newBet);
+                    setPlayerChips(prevChips => prevChips - newBet);
+                }
                 
             } else {
                 return;
@@ -190,7 +209,12 @@
         
         const handleNewGame = () => {
             
+            
             asignPreviousBet(bet);
+            if(previousBet!==0){
+                let sendingPreviousBet = true;
+                onBetPlaced(previousBet,sendingPreviousBet);
+            }
             setSplitAvailable(false);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
@@ -325,7 +349,7 @@
                     if(previousBet !== 0){
                         setBet(previousBet);
                     }
-                    setBetChips([]);
+                    // setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
                 }, 3000);
@@ -847,7 +871,6 @@
             let outcomeMessage;
             let outcomeMessage1;
             let outcomeMessage2;
-            let winAmount = 0;
             if(splitPressed){
                 if(gameOutcome2==="" || gameOutcome1 ===""){
                     return;
@@ -856,7 +879,7 @@
                         case "PlayerWins BlackJack":
                             outcomeMessage1 = `BlacJack 1st hand, win: ${betHand1*1.5}`;
                             splitHand1 = "1st Hand - Player Wins";
-                            winAmount = betHand1 + betHand1 * 1.5; 
+                             
                             break;
                         case "DealerWins BlackJack":
                             outcomeMessage1 = `BlacJack, Dealer wins...1st hand -$${betHand1}`;
@@ -873,17 +896,17 @@
                         case "PlayerWins Bust":
                             outcomeMessage1 = `Dealer Bust...1st hand Win! +$${betHand1}`;
                             splitHand1 = "1st Hand - Player Wins";
-                            winAmount = betHand1 * 2; 
+                            
                             break;
                         case "PlayerWins":
                             outcomeMessage1 = `1st Hand Win! +$${betHand1}!`;
                             splitHand1 = "1st Hand - Player Wins";
-                            winAmount = betHand1 * 2; 
+                            
                             break;
                         case "Push":
                             outcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${betHand1}`;
                             splitHand1 = "1st Hand - Push";
-                            winAmount = betHand1; // The bet is returned to the player
+                         
                             break;
                         default:
                             outcomeMessage1 = "Unknown outcome.";
@@ -893,7 +916,7 @@
                     switch(gameOutcome2) {
                         case "PlayerWins BlackJack":
                             outcomeMessage2 = `BlacJack 2nd hand, win: ${betHand2*1.5}`;
-                            winAmount = winAmount + betHand2 + betHand2 * 1.5; 
+                         
                             splitHand1 = "1st Hand - Player Wins";
                             break;
                         case "DealerWins BlackJack":
@@ -911,31 +934,31 @@
                         case "PlayerWins Bust":
                             outcomeMessage2 = `Dealer Bust...2nd hand Win! +$${betHand2}`;
                             splitHand1 = "2nd Hand - Player Wins";
-                            winAmount = winAmount+betHand2 * 2; 
+                           
                             break;
                         case "PlayerWins":
                             outcomeMessage2 = `2nd Hand Win! +$${betHand2}!`;
                             splitHand1 = "2nd Hand - Player Wins";
-                            winAmount = winAmount+betHand2 * 2; 
+                       
                             break;
                         case "Push":
                             outcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${betHand2}`;
                             splitHand1 = "2nd Hand - Push";
-                            winAmount = winAmount+betHand2; // The bet is returned to the player
+                           
                             break;
                         default:
                             outcomeMessage2 = "Unknown outcome.";
                             break;
                     }
                     result = splitHand1 +"\n"+splitHand2;
-                    let finalMessage = outcomeMessage1 + "\n " +outcomeMessage2+"\total win: "+winAmount;
+                    let finalMessage = outcomeMessage1 + "\n " +outcomeMessage2;
                     setGameMessage(finalMessage);
                 }
             }else{
                 switch(gameOutcome) {
                     case "PlayerWins BlackJack":
                         outcomeMessage = `BlacJack, You Won +$${finalBet*1.5}!!!`;
-                        winAmount = finalBet + finalBet * 1.5; 
+                        
                         result = "Player Wins";
                         break;
                     case "DealerWins BlackJack":
@@ -952,29 +975,27 @@
                         break;
                     case "PlayerWins Bust":
                         outcomeMessage = `Dealer Bust... Player Wins! +$${finalBet}`;
-                        winAmount = finalBet * 2; 
+                    
                         result = "Player Wins";
                         break;
                     case "PlayerWins":
                         outcomeMessage = `You Won +$${finalBet}!`;
-                        winAmount = finalBet * 2; 
+                        
                         result = "Player Wins";
                         break;
                     case "Push":
                         outcomeMessage = `Push! Tie... Bet returned: $${finalBet}`;
-                        winAmount = finalBet; // The bet is returned to the player
+                       
                         result = "Push";
                         break;
                     default:
-                        // outcomeMessage = "Unknown outcome.";
-                        // result = "Unknown";
+                        outcomeMessage = "Unknown outcome.";
+                        result = "Unknown";
                         break;
                 }
             
                 setGameMessage(outcomeMessage);
-                if (winAmount > 0) {
-                    setPlayerChips(prevChips => prevChips + winAmount);
-                }
+                
             }
             
             setResult(result);            
