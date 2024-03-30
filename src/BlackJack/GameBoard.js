@@ -15,6 +15,7 @@
         const [dealerHand, setDealerHand] = useState([]);
         const [playerHand, setPlayerHand] = useState([]);
         const [gameRunning, setGameRunning] = useState(false);
+        const [buttonsHidden,setButtonsHidden] = useState(false);
         const [playerHandValue, setPlayerHandValue] = useState(0);
         const [dealerHandValue, setDealerHandValue] = useState(0);
         const [playerChips, setPlayerChips] = useState(1000);
@@ -27,7 +28,7 @@
         const [newRound, setNewRound] = useState(false);
         const endGameTimeout = useRef();
         const [gamePause,setGamePause] = useState(false);
-        const [buttonsHidden,setButtonsHidden] = useState(false);
+        
         const [betChips,setBetChips] = useState([]);
         const chipWidth = 40;
         const gap = 0.1;
@@ -50,7 +51,7 @@
         const [splitPressed,setSplitPressed] = useState(false);
 
         const [result,setResult] = useState("");
-        const [progressBarWidth,setProgressBarWidth] = useState(0);
+        const [progressBarWidth,setProgressBarWidth] = useState(5);
         const [gameResultsCount, setGameResultsCount] = useState({
             totalGamesPlayed: 0,
             gamesWon: 0,
