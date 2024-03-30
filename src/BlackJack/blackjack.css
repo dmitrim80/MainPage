@@ -187,7 +187,8 @@ align-content: center;
   align-items: center;
 }
 #games-count-filler{
-  width: 25%;
+  margin-left: 2px;
+  margin-right: 2px;
   height: 85%;
   background-color: #e4b528;
   border-radius: 15px;

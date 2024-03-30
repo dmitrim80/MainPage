@@ -49,7 +49,7 @@
         const [splitPressed,setSplitPressed] = useState(false);
 
         const [result,setResult] = useState("");
-        const [progressBarWidth,setProgressBarWidth] = useState(1);
+        const [progressBarWidth,setProgressBarWidth] = useState(10);
         const [gameResultsCount, setGameResultsCount] = useState({
             totalGamesPlayed: 0,
             gamesWon: 0,
@@ -984,7 +984,7 @@
         
         useEffect(()=>{
             if(gameResultsCount.totalGamesPlayed){
-                const newWidth = (gameResultsCount.totalGamesPlayed)/20*100;
+                const newWidth = (gameResultsCount.totalGamesPlayed)/10*100;
                 setProgressBarWidth(newWidth);
             }
         },[gameResultsCount.totalGamesPlayed]);
