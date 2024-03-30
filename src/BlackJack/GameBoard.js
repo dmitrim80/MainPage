@@ -321,7 +321,7 @@
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
-                }, 1000);
+                }, 500);
         };
             
         const handleStand = (newHandValue = playerHandValue,hand = null) => {
