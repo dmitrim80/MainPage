@@ -14,8 +14,8 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,progress
         <div id='game-settings'>⚙️</div>
       </div>
       <div id='deck-dealer-row'>
-        <div id='discard-tray'>{<img id='card-image-left-corner' alt='back-image' src={BackCard} />}</div>
-        <div id='new-deck'>{<img id='card-image-right-corner' alt='back-image' src={BackCard} />}</div>
+        {/* <div id='discard-tray'>{<img id='card-image-left-corner' alt='back-image' src={BackCard} />}</div>
+        <div id='new-deck'>{<img id='card-image-right-corner' alt='back-image' src={BackCard} />}</div> */}
       </div>
     </>
   )

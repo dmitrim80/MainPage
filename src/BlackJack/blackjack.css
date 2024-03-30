@@ -185,7 +185,7 @@ align-content: center;
 #games-count-filler{
   width: 5%;
   height: 80%;
-  background-color: #25a423;
+  background-color: #e4b528;
   border-radius: 15px;
   transition: width 0.5s ease-out;
   
@@ -581,16 +581,14 @@ align-content: center;
   
 }
   .message-box{
-    color: hsl(21, 38%, 13%);
+    color: #f5c432;
     min-height: 100px; /* Ensure it takes up space even when empty/hidden */
     width: 200px;
     text-align: center;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 7px;
-    background-color: hsl(24, 13%, 85%);
-    padding: 2px 5px;
-    opacity: 0.75;
+    font-size: 20px;
+    font-weight: bolder;
+    opacity: 1;
+    font-family:serif;
     
   }
   

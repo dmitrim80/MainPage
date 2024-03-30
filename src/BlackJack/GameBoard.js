@@ -321,7 +321,7 @@
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
-                }, 3000);
+                }, 1000);
         };
             
         const handleStand = (newHandValue = playerHandValue,hand = null) => {
@@ -956,8 +956,8 @@
                         result = "Push";
                         break;
                     default:
-                        outcomeMessage = "Unknown outcome.";
-                        result = "Unknown";
+                        // outcomeMessage = "Unknown outcome.";
+                        // result = "Unknown";
                         break;
                 }
             
