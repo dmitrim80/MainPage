@@ -46,14 +46,6 @@ const Controls = ({ onNewGame,
                         {!buttonsHidden && (
                             <>
                             <img    
-                                    src={btnStand} 
-                                    className={`btn-stand ${standPressed ? 'disabled' : ''}`}
-                                    alt='stand-button' 
-                                    title="Stand"
-                                    onClick={!standPressed ? ()=>handleStand() : undefined}
-                                    style={{cursor: standPressed?'not-allowed':'pointer'}}
-                            />
-                            <img    
                                     src={btnDouble}
                                     className={`btn-double ${standPressed || hitPressed ? 'disabled' : ''}`}
                                     alt='double-button' 
@@ -62,12 +54,12 @@ const Controls = ({ onNewGame,
                                     style={{cursor: standPressed?'not-allowed':'pointer'}}
                             />
                             <img    
-                                    src={btnSplit} 
-                                    className={`btn-split ${(standPressed || !splitAvailable || hitPressed )? 'disabled': ''}`}
-                                    alt='split-button' 
-                                    title="Split"
-                                    onClick={() => !standPressed && handleSplit()}
-                                    style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                                    src={btnStand} 
+                                    className={`btn-stand ${standPressed ? 'disabled' : ''}`}
+                                    alt='stand-button' 
+                                    title="Stand"
+                                    onClick={!standPressed ? ()=>handleStand() : undefined}
+                                    style={{cursor: standPressed?'not-allowed':'pointer'}}
                             />
                             <img    
                                     src={btnHit} 
@@ -77,6 +69,15 @@ const Controls = ({ onNewGame,
                                     onClick={!standPressed ? ()=>handleHit() : undefined}
                                     style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
                             />
+                            <img    
+                                    src={btnSplit} 
+                                    className={`btn-split ${(standPressed || !splitAvailable || hitPressed )? 'disabled': ''}`}
+                                    alt='split-button' 
+                                    title="Split"
+                                    onClick={() => !standPressed && handleSplit()}
+                                    style={{cursor:(standPressed) ? 'not-allowed':'pointer'}}
+                            />
+                            
                             </>
                         )}
                     </>
@@ -106,7 +107,7 @@ const Controls = ({ onNewGame,
                 <div id='pointer-row-animation' style={{
                                                 visibility: !gameRunning ? 'visible' : 'hidden', 
                                                 display: 'flex', 
-                                                gap: '40px', 
+                                                gap: '44px', 
                                                 justifyContent: 'center', 
                                                 transform: 'translateY(3px)'}}>
 

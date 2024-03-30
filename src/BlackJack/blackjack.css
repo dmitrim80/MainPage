@@ -188,7 +188,7 @@ align-content: center;
 }
 #games-count-filler{
   width: 25%;
-  height: 75%;
+  height: 85%;
   background-color: #e4b528;
   border-radius: 15px;
   transition: width 0.5s ease-out;
@@ -557,7 +557,6 @@ align-content: center;
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
-
     justify-content: space-between;
     opacity: 1;
   }
@@ -576,6 +575,7 @@ align-content: center;
     display: flex;
     justify-content: center; /* Center child content horizontally */
     align-items: center; /* Center child content vertically */
+    
 }
   .message-container{
     display: flex;
@@ -584,16 +584,18 @@ align-content: center;
     width: 100%;
   
 }
-  .message-box{
+  #message-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #f5c432;
-    min-height: 100px; /* Ensure it takes up space even when empty/hidden */
-    width: 200px;
+    min-height: 100px; 
+    width: 100%;
     text-align: center;
     font-size: 20px;
     font-weight: bolder;
     opacity: 1;
     font-family:serif;
-    
   }
   
 

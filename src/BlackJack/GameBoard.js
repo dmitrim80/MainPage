@@ -5,9 +5,6 @@
         import Header from "./Header";
         import btnStand from './images/stand-button2.png';
         import btnHit from './images/hit-button2.png';
-    
-
-
 
         const GameBoard = ({ onGameRunningChange }) => {
 
@@ -32,6 +29,7 @@
         const [betChips,setBetChips] = useState([]);
         const chipWidth = 40;
         const gap = 0.1;
+        const [previousBet,setPreviousBet] = useState(0);
         const totalChipTypes = Object.keys(betChips).length;
         const totalWidth = totalChipTypes * chipWidth + (totalChipTypes - 1) * gap;
         const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
@@ -51,7 +49,7 @@
         const [splitPressed,setSplitPressed] = useState(false);
 
         const [result,setResult] = useState("");
-        const [progressBarWidth,setProgressBarWidth] = useState(5);
+        const [progressBarWidth,setProgressBarWidth] = useState(1);
         const [gameResultsCount, setGameResultsCount] = useState({
             totalGamesPlayed: 0,
             gamesWon: 0,
@@ -66,6 +64,11 @@
             totalAmountOfBetsWon:0,
             totalAmountOfBetsLost:0
         });
+
+        const asignPreviousBet = (bet) =>{
+            let currentBet = bet;
+            setPreviousBet(currentBet);
+        }
 
         const handleSplit = ()=>{
             
@@ -122,7 +125,7 @@
                         setHand1TurnFinished(true);
                     }
                     else{
-                        let gameMessage = "What do you want to do?\nHit or Stand"
+                        let gameMessage = "What do you want to do? Hit or Stand"
                         setGameMessage(gameMessage);
 
                     }
@@ -187,6 +190,7 @@
         
         const handleNewGame = () => {
             
+            asignPreviousBet(bet);
             setSplitAvailable(false);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
@@ -298,6 +302,7 @@
         };
 
         const endGame = () => {
+                
                 assignGameResults();
                 setGamePause(true);
                 endGameTimeout.current = setTimeout(() => {
@@ -317,7 +322,9 @@
                     setTwoHands(false);
                     setStandPressed(false);
                     setButtonsHidden(true);
-                    setBet(0);
+                    if(previousBet !== 0){
+                        setBet(previousBet);
+                    }
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
@@ -357,6 +364,7 @@
                                 setGameMessage("Bust... Dealer Wins!");
                                 let result = "Dealer Wins";
                                 setResult(result);
+                                
                                 endGame();
                                 return;
                             }
@@ -630,6 +638,7 @@
                     setGameMessage("Bust... Dealer Wins!");
                     let result = "Dealer Wins";
                     setResult(result);
+                    
                     endGame();
                 }else{
                     if(hand==="hand1"){
@@ -828,6 +837,7 @@
         }
 
         function handleGameResult() {
+            
             let result = "";
             let splitHand1 ="";
             let splitHand2 ="";
@@ -968,13 +978,15 @@
             }
             
             setResult(result);            
+            
             endGame();
         }
         
         useEffect(()=>{
-
-            const newWidth = (gameResultsCount.totalGamesPlayed)/20*100;
-            setProgressBarWidth(newWidth);
+            if(gameResultsCount.totalGamesPlayed){
+                const newWidth = (gameResultsCount.totalGamesPlayed)/20*100;
+                setProgressBarWidth(newWidth);
+            }
         },[gameResultsCount.totalGamesPlayed]);
 
         useEffect(() => {
@@ -1003,13 +1015,10 @@
         }, [playerHand,dealerHand]);
     
         useEffect(() => {
-
-            if (isFirstRender.current) {
-                isFirstRender.current = false;
-                return;
+            if (gameOutcome || gameOutcome1 || gameOutcome2) {
+              handleGameResult();
             }
-            handleGameResult();
-        }, [gameOutcome,gameOutcome1,gameOutcome2]);
+          }, [gameOutcome, gameOutcome1, gameOutcome2]);
 
         useEffect(() => {
             if (isFirstRender.current) {
@@ -1072,7 +1081,7 @@
                         </div>
  
                         <div className="message-container">
-                            <div className="message-box">{gameMessage}</div>
+                            <div id="message-box">{gameMessage}</div>
                         </div>
                     </div>
                     
