@@ -297,7 +297,6 @@
         };
 
         const endGame = () => {
-                
                 assignGameResults();
                 setGamePause(true);
                 endGameTimeout.current = setTimeout(() => {
@@ -321,7 +320,7 @@
                     setBetChips([]);
                     setGamePause(false);
                     clearTimeout(endGameTimeout.current);
-                }, 500);
+                }, 3000);
         };
             
         const handleStand = (newHandValue = playerHandValue,hand = null) => {
