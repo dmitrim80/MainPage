@@ -46,7 +46,9 @@ const GameBoard = ({ onGameRunningChange }) => {
     const [hand1TurnFinished,setHand1TurnFinished] = useState(false);
     const [hand2TurnFinished,setHand2TurnFinished] = useState(false);
     const [splitPressed,setSplitPressed] = useState(false);
-
+    
+    //counter for progressBar
+    const [gamesCount,setGamesCount] = useState(1);
     const [result,setResult] = useState("");
     const [progressBarWidth,setProgressBarWidth] = useState(10);
     const [gameResultsCount, setGameResultsCount] = useState({
@@ -373,6 +375,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             ...prevResult, 
             totalGamesPlayed: prevResult.totalGamesPlayed+1
         }));
+        setGamesCount(count=>count+1);
     }
     
     
@@ -1022,8 +1025,21 @@ const GameBoard = ({ onGameRunningChange }) => {
     },[previousBet]);
     useEffect(()=>{
         if(gameResultsCount.totalGamesPlayed){
-            const newWidth = (gameResultsCount.totalGamesPlayed)/10*100;
+            const newWidth = (gamesCount)/10*100;
             setProgressBarWidth(newWidth);
+            
+            if(newWidth===100){
+                setPlayerChips(chips=>chips+200);
+                setGameMessage("Next Level! You get $200 extra chips!!!");
+                
+                const timeoutId = setTimeout(() => {
+                    setGamesCount(1);
+                    setProgressBarWidth(10); // Reset to 10 assuming you want to restart progress from 10% for visual consistency
+                }, 5000);
+
+                return () => clearTimeout(timeoutId);
+            }
+            ;
         }
     },[gameResultsCount.totalGamesPlayed]);
 
