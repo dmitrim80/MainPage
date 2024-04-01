@@ -1,5 +1,4 @@
 import React from 'react'
-import IMG from './images/background1.png'
 import LOGO from './images/logo-blackjack.png'
 const LoadingOverlay = ({isVisible, style}) => {
     if (!isVisible) {

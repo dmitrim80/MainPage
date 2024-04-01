@@ -26,6 +26,12 @@ const Controls = ({ onNewGame,
                     splitAvailable,
                     hitPressed,
                     twoHands,
+                    setPreviousBet,
+                    clearBet,
+                    previousBet,
+                    setBet,
+                    setBetChips,
+                    playerChips,
                     }) => 
     {
     const chips = [
@@ -95,7 +101,14 @@ const Controls = ({ onNewGame,
                             className='btn-clear-bet' 
                             alt='clear-button' 
                             title="Clear"
-                            onClick={() => onBetPlaced(0)}
+                            onClick={() => {
+                                if(previousBet>0){
+                                    setBetChips([]);
+                                }else{
+                                    onBetPlaced(0);
+                                }
+                                
+                            }}
                         />
                     </>
                 )}
@@ -128,8 +141,22 @@ const Controls = ({ onNewGame,
                     title={`$${chip.value}`}
                     className='chip-img'
                     onClick={(event) => {
-                        onBetPlaced(chip.value); 
-                        handleChipClick(chip.value, chip.img, event);
+                        if(chip.value > playerChips){
+                            return;
+                        }else{
+                            if(previousBet > 0){
+                                setPreviousBet(0);
+                                setBet(0);
+                                setBetChips([]);
+                                onBetPlaced(chip.value); 
+                                handleChipClick(chip.value, chip.img, event);
+                            }else{
+                                onBetPlaced(chip.value); 
+                                handleChipClick(chip.value, chip.img, event);
+                            }
+                        }
+                        
+                        
                     }}
                     style={{ cursor: 'pointer' }} />
                 ))}

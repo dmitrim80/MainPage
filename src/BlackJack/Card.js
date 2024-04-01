@@ -117,7 +117,7 @@ const cardImages = {
 
 
 const Card = ({suit,rank, isFaceDown}) => {
-  const cardImage = isFaceDown ? cardBack : cardImages[`${suit}-${rank}`];
+  // const cardImage = isFaceDown ? cardBack : cardImages[`${suit}-${rank}`];
   
     return (
       <div className="card-box">

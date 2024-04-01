@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React,{useEffect,useState} from 'react';
 import './blackjack.css';
 import GameBoard from './GameBoard';
 import LoadingOverlay from './LoadingOverlay'
 
 const BlackJack = () => {
     const [isLoading,setIsLoading] = useState(true);
-    const [isFlipped, setIsFlipped] = useState(false);
+    // const [isFlipped, setIsFlipped] = useState(false);
     const [opacity, setOpacity] = useState(1);
-    const [zIndex, setZIndex] = useState(-1);
+    // const [zIndex, setZIndex] = useState(-1);
     const [isGameActive, setIsGameActive] = useState(false);
 
     const handleGameRunningChange = (isRunning) => {
       setIsGameActive(isRunning); // Use the renamed state setter
   };
+  
 
-    const toggleFlip = () => {
-        if (!isGameActive) { // Use the renamed state variable
-            setIsFlipped(!isFlipped);
-            setTimeout(() => {
-                setOpacity(opacity === 0.45 ? 1 : 0.45);
-                setZIndex(zIndex === -1 ? 1 : -1);
-            }, 300);
-        }
-    };
+    // const toggleFlip = () => {
+    //     if (!isGameActive) { // Use the renamed state variable
+    //         setIsFlipped(!isFlipped);
+    //         setTimeout(() => {
+    //             setOpacity(opacity === 0.45 ? 1 : 0.45);
+    //             setZIndex(zIndex === -1 ? 1 : -1);
+    //         }, 300);
+    //     }
+    // };
     useEffect(() => {
         // Start the fade-out effect slightly before hiding the overlay
         const fadeOutTimer = setTimeout(() => {
@@ -40,13 +41,15 @@ const BlackJack = () => {
             clearTimeout(removeOverlayTimer); 
         };
       }, []);
+
     return (
         <>
             {/* <div id="container" className={isFlipped ? 'flipped' : ''} onClick={toggleFlip} style={{'--bg-opacity': opacity, '--z-index': zIndex}}> */}
             <div id="container">
                 
-                {/* <LoadingOverlay isVisible={isLoading} style={{ opacity: opacity }}  /> */}
+                <LoadingOverlay isVisible={isLoading} style={{ opacity: opacity }}  />
                 <GameBoard onGameRunningChange={handleGameRunningChange} />
+                {/* <GameBoard/> */}
             </div>
         </>
     );
