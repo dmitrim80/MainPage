@@ -104,6 +104,8 @@ const Controls = ({ onNewGame,
                             onClick={() => {
                                 if(previousBet>0){
                                     setBetChips([]);
+                                    setPreviousBet(0);
+                                    onBetPlaced(0);
                                 }else{
                                     onBetPlaced(0);
                                 }
