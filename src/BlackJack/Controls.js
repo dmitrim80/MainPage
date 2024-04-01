@@ -105,9 +105,11 @@ const Controls = ({ onNewGame,
                                 if(previousBet>0){
                                     setBetChips([]);
                                     setPreviousBet(0);
-                                    onBetPlaced(0);
+                                    setBet(0);
                                 }else{
                                     onBetPlaced(0);
+
+                                    
                                 }
                                 
                             }}
