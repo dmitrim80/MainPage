@@ -76,7 +76,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     
     const handleGameResult = () => {
         
-        console.log("Finishing game round summary...");
+        
         let splitHand1="";
         let splitHand2="";
 
@@ -94,11 +94,7 @@ const GameBoard = ({ onGameRunningChange }) => {
         let newOutcomeMessage2="";
 
         // let finalOutcome;
-        console.log("Previous Bet:",preBet);
-        console.log("Player chips after bet:",chips);
-        console.log("Player bet single hand:",betOneHand);
-        console.log("Player bet split hand1:",bet1);
-        console.log("Player bet split hand2:",bet2);
+    
 
         if(splitPressed){
             if(gameOutcome2==="" || gameOutcome1 ===""){
@@ -189,7 +185,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                 }
                 let finalMessage = newOutcomeMessage1 + "\n " +newOutcomeMessage2;
                 setGameMessage(finalMessage);
-                console.log("split hand1:",splitHand1,"split hand2:",splitHand2);
+                
             }
         }else{
             switch(gameOutcome) {
@@ -226,34 +222,24 @@ const GameBoard = ({ onGameRunningChange }) => {
                     newOutcomeMessage = "Unknown outcome.";
                     break;
             }
-            console.log("newOutcomeMessage:",newOutcomeMessage);
+            
             setGameMessage(newOutcomeMessage);
             
         }
         if (newOutcomeMessage === ""){
-            console.log("split outcome");
-            console.log("Player Chips after the bet:",chips);
-            console.log("Outcome of 1st Hand:",newOutcomeMessage1);
-            console.log("Bet result:",bet1Outcome);
-
-            
-            console.log("Outcome of 2nd Hand:",newOutcomeMessage2);
-            console.log("Bet result:",bet2Outcome);
+           
             betOutcome= bet2Outcome + bet1Outcome + bet1+bet2;
-            console.log("Final Bet outcome, sum of 2 outcomes + two bets:",betOutcome);
+      
             chips = betOutcome + chips;
-            console.log("Player chips update:",chips);
+          
             setPlayerChips(chips);
             
         }else{
-            console.log("Single Hand Outcome");
-            console.log("Player Chips after the bet:",chips);
-            console.log("Outcome of a Sing Hand:",newOutcomeMessage);
-            console.log("betOutcome:",betOutcome," add with betOneHand:",betOneHand);
+           
             betOutcome = betOutcome + betOneHand;
-            console.log("Bet result bet + betOutcome:",betOutcome);
+           
             chips = betOutcome +chips;
-            console.log("Player chips updated:",chips);
+           
             setPlayerChips(chips);
             
         }       
@@ -300,7 +286,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                 let result = "Push";
                 setResult(result);
                 setPreviousBet(betHand1);
-                console.log("Setting Previous Bet...");
+                
                 endGame();
             }else{
                 //checking turn for hand2 during split
@@ -308,7 +294,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                     let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
                     setBetHand2(betHand2*2.5);
                     setHand2TurnFinished(true);
-                    console.log(resultHand2);
+                   
                 }else{
                     let gameMessage = `What do you want to do? Hit or Stand`;                        
                     setGameMessage(gameMessage);
@@ -318,7 +304,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                     let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
                     setBetHand1(betHand1*2.5);
                     setHand1TurnFinished(true);
-                    console.log(resultHand1);
+                   
                 }
                 else{
                     let gameMessage = "What do you want to do? Hit or Stand"
@@ -369,13 +355,11 @@ const GameBoard = ({ onGameRunningChange }) => {
         }else if (!gameRunning && playerChips >= newBet) {
             if(sendingPreviousBet){
                 setPlayerChips(prevChips => prevChips - newBet);
-                console.log("player chips being changed");
-                console.log(bet);
+            
             }else{
                 setBet(prevBet => prevBet + newBet);
                 setPlayerChips(prevChips => prevChips - newBet);
-                console.log("player chips being changed");
-                console.log("bet being changed");
+               
             }
             
         } else {
@@ -395,8 +379,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     const handleNewGame = () => {
         
 
-        console.log("playerChips after bet:",playerChips);
-        console.log("bet:",bet);
+       
         
         if (previousBet > playerChips){
             setGameMessage(`Not enough chips, change your bet...`);
@@ -498,11 +481,11 @@ const GameBoard = ({ onGameRunningChange }) => {
     const asignPreviousBet = (bet) =>{
         let currentBet = bet;
         setPreviousBet(currentBet);
-        console.log("(asignPreviousBet) Setting Previous Bet...");
+       
     }
 
     const endGame = () => {
-            console.log("running endGame");
+         
             assignGameResults();
             setGamePause(true);
             endGameTimeout.current = setTimeout(() => {
@@ -534,12 +517,12 @@ const GameBoard = ({ onGameRunningChange }) => {
 
                 if(hand==="hand1" && standPressed === false){
                     const playerHand1Value = newHandValue;
-                    console.log("playerhand1Value:",playerHand1Value);
+                  
                     setHand1TurnFinished(true);
                 }
                 if(hand==="hand2" && standPressed === false){
                     const playerHand2Value = newHandValue;
-                    console.log("playerhand2Value:",playerHand2Value);
+                   
                     setHand2TurnFinished(true);
                 }
                 
@@ -923,6 +906,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             let newOutcome;
 
             if(playerHandValue>21){
+                setStandPressed(true);
                 newOutcome ="DealerWins";
                 
                 setGameOutcome(newOutcome);
@@ -1098,8 +1082,8 @@ const GameBoard = ({ onGameRunningChange }) => {
             return;
         }
 
-        console.log("useEffect, playerChips changed to:",playerChips);
-        console.log("useEffect,bet is set to:",bet);
+       
+
         
 
     }, [bet, playerChips]);
