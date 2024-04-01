@@ -427,8 +427,8 @@ align-content: center;
   .split-btn-stand {
     border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     background-color: hsl(160, 10%, 12%);
     border-radius: 50%;
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
@@ -512,8 +512,8 @@ align-content: center;
   .split-btn-hit{
     border:0px solid rgba(12, 11, 9, 0.728);
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     background-color: hsl(160, 10%, 12%);
     border-radius: 50%;
     transition: transform 0.1s ease, background-color 0.1s ease, box-shadow 0.2s ease;
