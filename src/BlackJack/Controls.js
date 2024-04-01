@@ -102,7 +102,7 @@ const Controls = ({ onNewGame,
                             alt='clear-button' 
                             title="Clear"
                             onClick={() => {
-                                console.log("previous bet:",previousBet);
+                                
                                 if(previousBet>0){
                                     setBetChips([]);
                                     setPreviousBet(0);

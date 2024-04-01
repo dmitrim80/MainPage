@@ -756,14 +756,15 @@ const GameBoard = ({ onGameRunningChange }) => {
 
     const handleDouble = () =>{
         
-            // Check if doubling down is allowed (typically, you can only double down on your first two cards)
+            
             if (playerHand.length !== 2) {
                 setGameMessage("Doubling down is not allowed at this time.");
                 return;
             }
-            setStandPressed(true);
+            
             // Check if the player has enough chips to double the bet
             if (playerChips >= bet && !gamePause) {
+                setStandPressed(true);
                 setPlayerChips((prevChips) => prevChips - bet); // Deduct the additional bet amount from player's chips
                 setBet((prevBet) => prevBet * 2); // Double the bet
                 
@@ -1288,7 +1289,6 @@ const GameBoard = ({ onGameRunningChange }) => {
             setBet={setBet}
             setBetChips={setBetChips}
             playerChips={playerChips}
-
             />
         </>
     );
