@@ -66,8 +66,8 @@ const GameBoard = ({ onGameRunningChange }) => {
         totalAmountOfBets:0,
         totalAmountOfBetsWon:0,
         totalAmountOfBetsLost:0,
-        previousGameResults:""
-    });
+        previousGameResults:{roundNumber,playerHand,playerHandValue,dealerHand,dealerHandValue,roundOutcome},
+        });
 
     const clearBet = () => {
         // Assuming you want to clear the bet and return the bet amount to the player's chips only if the bet hasn't been played yet
