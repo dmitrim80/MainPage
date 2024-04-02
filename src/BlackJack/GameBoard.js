@@ -51,6 +51,8 @@ const GameBoard = ({ onGameRunningChange }) => {
     const [gamesCount,setGamesCount] = useState(1);
     const [result,setResult] = useState("");
     const [progressBarWidth,setProgressBarWidth] = useState(10);
+    const [roundNumber,setRoundNumber] = useState(0);
+    const [roundOutcome,setRoundOutcome] = useState("");
     const [gameResultsCount, setGameResultsCount] = useState({
         totalGamesPlayed: 0,
         gamesWon: 0,
@@ -149,15 +151,15 @@ const GameBoard = ({ onGameRunningChange }) => {
         });
     }
     //calculates total amount of bets won
-    const playerBetsWon = (betsWon) =>{
-        let betsWon = betsWon;
+    const playerBetsWon = (betWon) =>{
+        let betsWon = betWon;
         setGameResultsCount(prevState =>{
             return{...prevState, totalAmountOfBetsWon:prevState.totalAmountOfBetsWon +betsWon};
         })
     }
     //calculates total amount of bets lost
-    const playerBetsLost = (betsLost) =>{
-        let betsLost = betsLost;
+    const playerBetsLost = (betLost) =>{
+        let betsLost = betLost;
         setGameResultsCount(prevState =>{
             return{...prevState, totalAmountOfBetsLost:prevState.totalAmountOfBetsLost -betsLost};
         })
