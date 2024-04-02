@@ -148,12 +148,23 @@ const GameBoard = ({ onGameRunningChange }) => {
             return{...prevState,totalAmountOfBets:prevState.totalAmountOfBets + currentBet};
         });
     }
+    //calculates total amount of bets won
     const playerBetsWon = (betsWon) =>{
         let betsWon = betsWon;
         setGameResultsCount(prevState =>{
             return{...prevState, totalAmountOfBetsWon:prevState.totalAmountOfBetsWon +betsWon};
         })
     }
+    //calculates total amount of bets lost
+    const playerBetsLost = (betsLost) =>{
+        let betsLost = betsLost;
+        setGameResultsCount(prevState =>{
+            return{...prevState, totalAmountOfBetsLost:prevState.totalAmountOfBetsLost -betsLost};
+        })
+    }
+    
+
+
     
     
 
@@ -199,6 +210,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet1Outcome = bet1 * (-1);
                         playerLoss();
                         dealerBlackJack();
+                        playerBetsLost(bet1);
                         break;
                     case "DealerWins Bust":
                         newOutcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${bet1}`;
@@ -206,12 +218,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet1Outcome = bet1 * (-1);
                         playerLoss();
                         playerBusts();
+                        playerBetsLost(bet1);
                         break;
                     case "DealerWins":
                         newOutcomeMessage1 = `Dealer Wins...1st hand -$${bet1}`;
                         splitHand1 = "1st Hand - Dealer Wins";
                         bet1Outcome = bet1 * (-1);
                         playerLoss();
+                        playerBetsLost(bet1);
                         break;
                     case "PlayerWins Bust":
                         newOutcomeMessage1 = `Dealer Bust...1st hand Win! +$${bet1}`;
@@ -256,6 +270,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet2Outcome = bet2 * (-1);
                         playerLoss();
                         dealerBlackJack();
+                        playerBetsLost(bet2);
                         break;
                     case "DealerWins Bust":
                         newOutcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${bet2}`;
@@ -263,12 +278,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet2Outcome = bet2 * (-1);
                         playerLoss();
                         playerBusts();
+                        playerBetsLost(bet2);
                         break;
                     case "DealerWins":
                         newOutcomeMessage2 = `Dealer Wins...2nd hand -$${bet2}`;
                         splitHand1 = "2nd Hand - Dealer Wins";
                         bet2Outcome = bet2 * (-1);
                         playerLoss();
+                        playerBetsLost(bet2);
                         break;
                     case "PlayerWins Bust":
                         newOutcomeMessage2 = `Dealer Bust...2nd hand Win! +$${bet2}`;
@@ -315,17 +332,20 @@ const GameBoard = ({ onGameRunningChange }) => {
                     betOutcome = betOneHand * (-1);
                     playerLoss();
                     dealerBlackJack();
+                    playerBetsLost(betOneHand);
                     break;
                 case "DealerWins Bust":
                     newOutcomeMessage = `Bust! Dealer Wins! -$${betOneHand}`;
                     betOutcome = betOneHand * (-1);
                     playerLoss();
                     playerBusts();
+                    playerBetsLost(betOneHand);
                     break;
                 case "DealerWins":
                     newOutcomeMessage = `Dealer Wins... -$${betOneHand}`;
                     betOutcome = betOneHand * (-1);
                     playerLoss();
+                    playerBetsLost(betOneHand);
                     break;
                 case "PlayerWins Bust":
                     newOutcomeMessage = `Dealer Bust... Player Wins! +$${betOneHand}`;
