@@ -133,6 +133,22 @@ const GameBoard = ({ onGameRunningChange }) => {
             return{...prevState, numberOfBusts:prevState.numberOfBusts + 1};
         });
     }
+    //calculates number of games won with 2 cards, excluding blackjack
+    const winWithOutHit = () =>{
+        if(!hitPressed){
+            setGameResultsCount(prevState => {
+                return{...prevState,numberOfWinsWith2Cards: prevState.numberOfWinsWith2Cards+1 };
+            });
+        }
+    }
+    //calculates total amount of Bets
+    const totalAmountOfBets = (bet) => {
+        let currentBet = bet;
+        setGameResultsCount(prevState => {
+            return{...prevState,totalAmountOfBets:prevState.totalAmountOfBets + currentBet};
+        });
+    }
+    
     
 
     const handleGameResult = () => {
@@ -151,7 +167,9 @@ const GameBoard = ({ onGameRunningChange }) => {
         let newOutcomeMessage ="";
         let newOutcomeMessage1="";
         let newOutcomeMessage2="";
-
+        totalAmountOfBets(bet1);
+        totalAmountOfBets(bet2);
+        totalAmountOfBets(bet);
         // let finalOutcome;
     
 
@@ -162,10 +180,11 @@ const GameBoard = ({ onGameRunningChange }) => {
                 switch(gameOutcome1) {
                     case "PlayerWins BlackJack":
                         newOutcomeMessage1 = `BlackJack 1st hand, win: ${bet1*1.5}`;
-                        bet1Outcome = bet1*1.5;
+                        bet1Outcome = bet1*2.5;
                         splitHand1 = "1st Hand - Player Wins";
                         playerWins();
                         playerBlackJack();
+                        
                         break;
                     case "DealerWins BlackJack":
                         newOutcomeMessage1 = `BlackJack, Dealer wins...1st hand -$${bet1}`;
@@ -192,12 +211,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                         splitHand1 = "1st Hand - Player Wins";
                         bet1Outcome = bet1;
                         playerWins();
+                        winWithOutHit();
                         break;
                     case "PlayerWins":
                         newOutcomeMessage1 = `1st Hand Win! +$${bet1}!`;
                         splitHand1 = "1st Hand - Player Wins";
                         bet1Outcome = bet1;
                         playerWins();
+                        winWithOutHit();
                         break;
                     case "Push":
                         newOutcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${bet1}`;
@@ -213,10 +234,11 @@ const GameBoard = ({ onGameRunningChange }) => {
                 switch(gameOutcome2) {
                     case "PlayerWins BlackJack":
                         newOutcomeMessage2 = `BlackJack 2nd hand, win: ${bet2*1.5}`;
-                        bet2Outcome = bet2*1.5;
+                        bet2Outcome = bet2*2.5;
                         splitHand1 = "1st Hand - Player Wins";
                         playerWins();
                         playerBlackJack();
+                
                         break;
                     case "DealerWins BlackJack":
                         newOutcomeMessage2 = `BlackJack, Dealer wins...2nd hand -$${bet2}`;
@@ -244,12 +266,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet2Outcome = bet2;
                         playerWins();
                         playerBusts();
+                        winWithOutHit();
                         break;
                     case "PlayerWins":
                         newOutcomeMessage2 = `2nd Hand Win! +$${bet2}!`;
                         splitHand1 = "2nd Hand - Player Wins";
                         bet2Outcome = bet2;
                         playerWins();
+                        winWithOutHit();
                         break;
                     case "Push":
                         newOutcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${bet2}`;
@@ -269,7 +293,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             switch(gameOutcome) {
                 case "PlayerWins BlackJack":
                     newOutcomeMessage = `BlackJack, You Won +$${betOneHand*1.5}!!!`;
-                    betOutcome =  betOneHand *1.5;
+                    betOutcome =  betOneHand *2.5;
                     playerWins();
                     playerBlackJack();
                     break;
@@ -295,11 +319,13 @@ const GameBoard = ({ onGameRunningChange }) => {
                     betOutcome = betOneHand;
                     playerWins();
                     playerBusts();
+                    winWithOutHit();
                     break;
                 case "PlayerWins":
                     newOutcomeMessage = `You Won +$${betOneHand}!`;
                     betOutcome = betOneHand;
                     playerWins();
+                    winWithOutHit();
                     break;
                 case "Push":
                     newOutcomeMessage = `Push! Tie... Bet returned: $${betOneHand}`;
@@ -597,6 +623,8 @@ const GameBoard = ({ onGameRunningChange }) => {
                 setStandPressed(false);
                 setButtonsHidden(true);
                 setGamePause(false);
+                setBetHand1(0);
+                setBetHand2(0);
                 clearTimeout(endGameTimeout.current);
                 
             }, 3000);
