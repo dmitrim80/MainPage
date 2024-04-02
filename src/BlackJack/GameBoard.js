@@ -148,6 +148,12 @@ const GameBoard = ({ onGameRunningChange }) => {
             return{...prevState,totalAmountOfBets:prevState.totalAmountOfBets + currentBet};
         });
     }
+    const playerBetsWon = (betsWon) =>{
+        let betsWon = betsWon;
+        setGameResultsCount(prevState =>{
+            return{...prevState, totalAmountOfBetsWon:prevState.totalAmountOfBetsWon +betsWon};
+        })
+    }
     
     
 
@@ -184,6 +190,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         splitHand1 = "1st Hand - Player Wins";
                         playerWins();
                         playerBlackJack();
+                        playerBetsWon(bet1Outcome);
                         
                         break;
                     case "DealerWins BlackJack":
@@ -212,6 +219,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet1Outcome = bet1;
                         playerWins();
                         winWithOutHit();
+                        playerBetsWon(bet1Outcome);
                         break;
                     case "PlayerWins":
                         newOutcomeMessage1 = `1st Hand Win! +$${bet1}!`;
@@ -219,6 +227,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet1Outcome = bet1;
                         playerWins();
                         winWithOutHit();
+                        playerBetsWon(bet1Outcome);
                         break;
                     case "Push":
                         newOutcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${bet1}`;
@@ -238,6 +247,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         splitHand1 = "1st Hand - Player Wins";
                         playerWins();
                         playerBlackJack();
+                        playerBetsWon(bet2Outcome);
                 
                         break;
                     case "DealerWins BlackJack":
@@ -267,6 +277,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                         playerWins();
                         playerBusts();
                         winWithOutHit();
+                        playerBetsWon(bet2Outcome);
                         break;
                     case "PlayerWins":
                         newOutcomeMessage2 = `2nd Hand Win! +$${bet2}!`;
@@ -274,11 +285,12 @@ const GameBoard = ({ onGameRunningChange }) => {
                         bet2Outcome = bet2;
                         playerWins();
                         winWithOutHit();
+                        playerBetsWon(bet2Outcome);
                         break;
                     case "Push":
                         newOutcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${bet2}`;
                         splitHand1 = "2nd Hand - Push";
-                        bet2Outcome = bet2;
+                        bet2Outcome = 0;
                         playerPush();
                         break;
                     default:
@@ -296,6 +308,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                     betOutcome =  betOneHand *2.5;
                     playerWins();
                     playerBlackJack();
+                    playerBetsWon(betOutcome);
                     break;
                 case "DealerWins BlackJack":
                     newOutcomeMessage = `BlackJack, Dealer wins... -$${betOneHand}`;
@@ -320,12 +333,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                     playerWins();
                     playerBusts();
                     winWithOutHit();
+                    playerBetsWon(betOutcome);
                     break;
                 case "PlayerWins":
                     newOutcomeMessage = `You Won +$${betOneHand}!`;
                     betOutcome = betOneHand;
                     playerWins();
                     winWithOutHit();
+                    playerBetsWon(betOutcome);
                     break;
                 case "Push":
                     newOutcomeMessage = `Push! Tie... Bet returned: $${betOneHand}`;
