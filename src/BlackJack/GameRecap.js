@@ -6,30 +6,30 @@ const GameRecap = ({gameResultsCount}) => {
     <div id='gamerecap-container'>
         
         <div id='gamerecap-element'>
-            <div id='gamerecap-cell'>{`Game Playeds:${results.totalGamesPlayed}`}</div>
-            <div id='gamerecap-cell'>{`gamesWon:${results.gamesWon}`}</div>
-            <div id='gamerecap-cell'>{`gamesLost:${results.gamesLoss}`}</div>
-            <div id='gamerecap-cell'>{`numberOfTie:${results.numberOfTie}`}</div>
+            <div id='gamerecap-cell'>Game Playeds:<br/>{results.totalGamesPlayed}</div>
+            <div id='gamerecap-cell'>Games Won:<br/>{results.gamesWon}</div>
+            <div id='gamerecap-cell'>Games Lost:<br/>{results.gamesLoss}</div>
+            <div id='gamerecap-cell'>Number of Tied Games:<br/>{results.numberOfTie}</div>
         </div>
         <div id='gamerecap-element'>
-            <div id='gamerecap-cell'>{`numberOfBusts:${results.numberOfBusts}`}</div>
-            <div id='gamerecap-cell'>{`numberOfBlackJacksByPlayer:${results.numberOfBlackJacksByPlayer}`}</div>
-            <div id='gamerecap-cell'>{`numberOfBlackJacksByDealer:${results.numberOfBlackJacksByDealer}`}</div>
-            <div id='gamerecap-cell'>{`numberOfSplitsAvailable:${results.numberOfSplitsAvailable}`}</div>
+            <div id='gamerecap-cell'>Number of Busts:<br/>{results.numberOfBusts}</div>
+            <div id='gamerecap-cell'>Number of BlackJacks by Player:<br/>{results.numberOfBlackJacksByPlayer}</div>
+            <div id='gamerecap-cell'>Number of BlackJacks by Dealer:<br/>{results.numberOfBlackJacksByDealer}</div>
+            <div id='gamerecap-cell'>Number of Splits Available:<br/>{results.numberOfSplitsAvailable}</div>
             
         </div>
         <div id='gamerecap-element'>
-            <div id='gamerecap-cell'>{`numberOfsplitsPlayed:${results.numberOfsplitsPlayed}`}</div>
-            <div id='gamerecap-cell'>{`totalAmountOfBetsLost:${results.totalAmountOfBetsLost}`}</div>
-            <div id='gamerecap-cell'>{`numberOfWinsWith2Cards:${results.numberOfWinsWith2Cards}`}</div>
-            <div id='gamerecap-cell'>{`totalAmountOfBets:${results.totalAmountOfBets}`}</div>
+            <div id='gamerecap-cell'>Number of Splits Played:<br/>{results.numberOfsplitsPlayed}</div>
+            <div id='gamerecap-cell'>Total Amount of Bets Lost:<br/>${results.totalAmountOfBetsLost}</div>
+            <div id='gamerecap-cell'>Number of Wins With Two Cards:<br/>{results.numberOfWinsWith2Cards}</div>
+            <div id='gamerecap-cell'>Bets total:<br/>${results.totalAmountOfBets}</div>
             
         </div>
         <div id='gamerecap-element'>
-            <div id='gamerecap-cell'>{`totalAmountOfBetsWon:${results.totalAmountOfBetsWon}`}</div>
-            <div id='gamerecap-cell'>{`numberOfDoubles:${results.numberOfBusts}`}</div>
-            <div id='gamerecap-cell'>{`Previous Game Results`}</div>
-            <div id='gamerecap-cell'>{`previousGameResults`}</div>
+            <div id='gamerecap-cell'>Bets total won:<br/>${results.totalAmountOfBetsWon}</div>
+            <div id='gamerecap-cell'>Number of Doubles Played:<br/>{results.numberOfBusts}</div>
+            <div id='gamerecap-cell'>Game Results<br/></div>
+            <div id='gamerecap-cell'>Game Results<br/></div>
         </div>
         
     </div>
