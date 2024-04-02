@@ -5,7 +5,7 @@ import Controls from "./Controls";
 import Header from "./Header";
 import btnStand from './images/stand-button2.png';
 import btnHit from './images/hit-button2.png';
-
+import GameRecap from "./GameRecap";
 
 const GameBoard = ({ onGameRunningChange }) => {
     const [deck, setDeck] = useState(null);
@@ -56,14 +56,18 @@ const GameBoard = ({ onGameRunningChange }) => {
         gamesWon: 0,
         gamesLost: 0,
         numberOfTie: 0,
+
         numberOfBlackJacks: 0,
         numberOfSplits: 0,
         numberOfDoubles: 0,
         numberOfBusts: 0,
+
         numberOfWinsWith2Cards: 0,
         totalAmountOfBets:0,
         totalAmountOfBetsWon:0,
-        totalAmountOfBetsLost:0
+        totalAmountOfBetsLost:0,
+
+        previousGameResults:""
     });
 
     const clearBet = () => {
@@ -75,13 +79,42 @@ const GameBoard = ({ onGameRunningChange }) => {
         setPreviousBet(0); // Reset the previous bet to 0
         // Additional logic as needed
     };
-    
+
+    // calculates number of games Won
+    const playerWins = () =>{
+        const gamesWon = setGameResultsCount.gamesWon;
+        setGameResultsCount(prevState => {
+            return{...prevState, gamesWon:prevState.gamesWon + 1};
+        });
+    }
+    // calculates number of games Lost
+    const playerLost = () =>{
+        const gamesLost = setGameResultsCount.gamesLost;
+        setGameResultsCount(prevState => {
+            return{...prevState, gamesLost:prevState.gamesLost + 1};
+        });
+    }
+    // calculates number of Tie games.
+    const playerPush = () =>{
+        const gamesPush = setGameResultsCount.numberOfTie;
+        setGameResultsCount(prevState => {
+            return{...prevState, numberOfTie:prevState.gamesPush + 1};
+        });
+    }
+
+    const playerBusts = () =>{
+        const gamesBust = setGameResultsCount.numberOfBusts;
+        setGameResultsCount(prevState => {
+            return{...prevState, numberOfBusts:prevState.gamesBust + 1};
+        });
+    }
+
+
     const handleGameResult = () => {
         
         
         let splitHand1="";
         let splitHand2="";
-
         let preBet = previousBet;
         let chips = playerChips;
         let betOneHand = bet;
@@ -90,7 +123,6 @@ const GameBoard = ({ onGameRunningChange }) => {
         let betOutcome = 0;
         let bet1Outcome=0;
         let bet2Outcome=0;
-
         let newOutcomeMessage ="";
         let newOutcomeMessage1="";
         let newOutcomeMessage2="";
@@ -107,38 +139,44 @@ const GameBoard = ({ onGameRunningChange }) => {
                         newOutcomeMessage1 = `BlackJack 1st hand, win: ${bet1*1.5}`;
                         bet1Outcome = bet1*1.5;
                         splitHand1 = "1st Hand - Player Wins";
-                            
+                        playerWins();
                         break;
                     case "DealerWins BlackJack":
                         newOutcomeMessage1 = `BlackJack, Dealer wins...1st hand -$${bet1}`;
                         splitHand1 = "1st Hand - Dealer Wins";
                         bet1Outcome = bet1 * (-1);
+                        playerLost();
                         break;
                     case "DealerWins Bust":
                         newOutcomeMessage1 = `Bust! Dealer Wins! 1st hand  -$${bet1}`;
                         splitHand1 = "1st Hand - Dealer Wins";
                         bet1Outcome = bet1 * (-1);
+                        playerLost();
+                        playerBusts();
                         break;
                     case "DealerWins":
                         newOutcomeMessage1 = `Dealer Wins...1st hand -$${bet1}`;
                         splitHand1 = "1st Hand - Dealer Wins";
                         bet1Outcome = bet1 * (-1);
+                        playerLost();
                         break;
                     case "PlayerWins Bust":
                         newOutcomeMessage1 = `Dealer Bust...1st hand Win! +$${bet1}`;
                         splitHand1 = "1st Hand - Player Wins";
                         bet1Outcome = bet1;
+                        playerWins();
                         break;
                     case "PlayerWins":
                         newOutcomeMessage1 = `1st Hand Win! +$${bet1}!`;
                         splitHand1 = "1st Hand - Player Wins";
                         bet1Outcome = bet1;
+                        playerWins();
                         break;
                     case "Push":
                         newOutcomeMessage1 = `Push! 1st Hand Tie... Bet returned: $${bet1}`;
                         splitHand1 = "1st Hand - Push";
                         bet1Outcome = 0;
-                        
+                        playerPush();
                         break;
                     default:
                         newOutcomeMessage1 = "Unknown outcome.";
@@ -150,36 +188,44 @@ const GameBoard = ({ onGameRunningChange }) => {
                         newOutcomeMessage2 = `BlackJack 2nd hand, win: ${bet2*1.5}`;
                         bet2Outcome = bet2*1.5;
                         splitHand1 = "1st Hand - Player Wins";
+                        playerWins();
                         break;
                     case "DealerWins BlackJack":
                         newOutcomeMessage2 = `BlackJack, Dealer wins...2nd hand -$${bet2}`;
                         splitHand1 = "2nd Hand - Dealer Wins";
                         bet2Outcome = bet2 * (-1);
+                        playerLost();
                         break;
                     case "DealerWins Bust":
                         newOutcomeMessage2 = `Bust! Dealer Wins! 2nd hand  -$${bet2}`;
                         splitHand1 = "2nd Hand - Dealer Wins";
                         bet2Outcome = bet2 * (-1);
+                        playerLost();
+                        playerBusts();
                         break;
                     case "DealerWins":
                         newOutcomeMessage2 = `Dealer Wins...2nd hand -$${bet2}`;
                         splitHand1 = "2nd Hand - Dealer Wins";
                         bet2Outcome = bet2 * (-1);
+                        playerLost();
                         break;
                     case "PlayerWins Bust":
                         newOutcomeMessage2 = `Dealer Bust...2nd hand Win! +$${bet2}`;
                         splitHand1 = "2nd Hand - Player Wins";
                         bet2Outcome = bet2;
+                        playerWins();
                         break;
                     case "PlayerWins":
                         newOutcomeMessage2 = `2nd Hand Win! +$${bet2}!`;
                         splitHand1 = "2nd Hand - Player Wins";
                         bet2Outcome = bet2;
+                        playerWins();
                         break;
                     case "Push":
                         newOutcomeMessage2 = `Push! 1st Hand Tie... Bet returned: $${bet2}`;
                         splitHand1 = "2nd Hand - Push";
                         bet2Outcome = bet2;
+                        playerPush();
                         break;
                     default:
                         newOutcomeMessage2 = "Unknown outcome.";
@@ -194,31 +240,38 @@ const GameBoard = ({ onGameRunningChange }) => {
                 case "PlayerWins BlackJack":
                     newOutcomeMessage = `BlackJack, You Won +$${betOneHand*1.5}!!!`;
                     betOutcome =  betOneHand *1.5;
-                    
+                    playerWins();
                     break;
                 case "DealerWins BlackJack":
                     newOutcomeMessage = `BlackJack, Dealer wins... -$${betOneHand}`;
                     betOutcome = betOneHand * (-1);
+                    playerLost();
                     break;
                 case "DealerWins Bust":
                     newOutcomeMessage = `Bust! Dealer Wins! -$${betOneHand}`;
                     betOutcome = betOneHand * (-1);
+                    playerLost();
+                    playerBusts();
                     break;
                 case "DealerWins":
                     newOutcomeMessage = `Dealer Wins... -$${betOneHand}`;
                     betOutcome = betOneHand * (-1);
+                    playerLost();
                     break;
                 case "PlayerWins Bust":
                     newOutcomeMessage = `Dealer Bust... Player Wins! +$${betOneHand}`;
                     betOutcome = betOneHand;
+                    playerWins();
                     break;
                 case "PlayerWins":
                     newOutcomeMessage = `You Won +$${betOneHand}!`;
                     betOutcome = betOneHand;
+                    playerWins();
                     break;
                 case "Push":
                     newOutcomeMessage = `Push! Tie... Bet returned: $${betOneHand}`;
                     betOutcome = 0;
+                    playerPush();
                     break;
                 default:
                     newOutcomeMessage = "Unknown outcome.";
@@ -1024,6 +1077,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     useEffect(()=>{
         
     },[previousBet]);
+
     useEffect(()=>{
         if(gameResultsCount.totalGamesPlayed){
             const newWidth = (gamesCount)/10*100;
@@ -1118,7 +1172,8 @@ const GameBoard = ({ onGameRunningChange }) => {
     
     return (
         <>
-            <Header
+        <div id="container">
+        <Header
             playerHandValue={playerHandValue}
             dealerHandValue={dealerHandValue}
             playerChips={playerChips}
@@ -1290,7 +1345,11 @@ const GameBoard = ({ onGameRunningChange }) => {
             setBetChips={setBetChips}
             playerChips={playerChips}
             />
-        </>
+        </div>
+        <GameRecap
+            gameResultsCount={gameResultsCount}
+        />
+       </>
     );
 };
 export default GameBoard;
