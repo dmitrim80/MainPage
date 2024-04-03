@@ -135,6 +135,7 @@ body{
   
   color: #ece8db;
   width: 100%;
+  font-size: 8.9px;
   border-radius: 10px;
   padding: 5px;
   overflow-y: auto;
@@ -143,7 +144,7 @@ body{
 #gamerecap-cell{
   color: #ece8db;
   padding: 5px;
-  
+  font-size: 8.9px;
 }
 
 .logo-img {
