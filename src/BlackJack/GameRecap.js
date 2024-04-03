@@ -6,7 +6,7 @@ const GameRecap = ({gameResultsCount}) => {
     <div id='gamerecap-container'>
         
         <div id='gamerecap-element'>
-            <div id='gamerecap-cell'>Game Playeds:<br/><br/>{results.totalGamesPlayed}</div>
+            <div id='gamerecap-cell' style={{ fontSize:'8.9px'}}>Game Playeds:<br/><br/>{results.totalGamesPlayed}</div>
             <div id='gamerecap-cell'>Games Won:<br/><br/>{results.gamesWon}</div>
             
         </div>

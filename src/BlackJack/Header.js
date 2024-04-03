@@ -5,7 +5,7 @@ const Header = ({playerHandValue,dealerHandValue,result,bet,playerChips,progress
   return (
     <>
       <div id='blackjack-header-container'>
-        <div id='chips-count'>{`$${playerChips}`}</div>
+        <div className='chips-count'>{`$${playerChips}`}</div>
         <div id='games-count'>
           <div id='games-count-filler' style={{width:`${progressBarWidth}%`}}></div>
         </div>

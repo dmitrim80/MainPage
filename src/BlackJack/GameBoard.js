@@ -38,7 +38,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
     const [standPressed, setStandPressed] = useState(false);
-    const [splitAvailable,setSplitAvailable] = useState(false);
+    const [splitAvailable,setSplitAvailable] = useState(true);
     const [playerHand1,setPlayerHand1] = useState([]);
     const [playerHand2,setPlayerHand2] = useState([]);
     const [twoHands,setTwoHands] = useState(false);
@@ -447,19 +447,17 @@ const GameBoard = ({ onGameRunningChange }) => {
             setPlayerHandValue(0);
             
             if(playerHand1Value===21 && playerHand2Value ===21){
-                let gameMessage = `Wow! Two BlackJack... you won $${betHand1*2.5+betHand2*2.5}`;
-                setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
-                setGameMessage(gameMessage);
-                let result = "Push";
-                setResult(result);
-                setPreviousBet(betHand1);
                 
-                endGame();
+                // setPlayerChips(playerChips+betHand1*2.5+betHand2*2.5);
+                setGameOutcome1("PlayerWins BlackJack");
+                setGameOutcome2("PlayerWins BlackJack");
+                setHand2TurnFinished(true);
+                setHand1TurnFinished(true);
             }else{
                 //checking turn for hand2 during split
                 if(playerHand2Value === 21){
-                    let resultHand2 = `Hand2 BlackJack you won ${betHand2*2.5}`;
-                    setBetHand2(betHand2*2.5);
+                    // setBetHand2(betHand2*2.5);
+                    setGameOutcome2("PlayerWins BlackJack");
                     setHand2TurnFinished(true);
                    
                 }else{
@@ -468,8 +466,9 @@ const GameBoard = ({ onGameRunningChange }) => {
                 }
                 //checking turn for hand1 during split
                 if(playerHand1Value === 21){
-                    let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
-                    setBetHand1(betHand1*2.5);
+                    // let resultHand1 = `Hand1 BlackJack you won ${betHand1*2.5}`;
+                    setGameOutcome1("PlayerWins");
+                    // setBetHand1(betHand1*2.5);
                     setHand1TurnFinished(true);
                    
                 }
@@ -558,7 +557,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                 onBetPlaced(previousBet,sendingPreviousBet);
             }
             asignPreviousBet(bet);
-            setSplitAvailable(false);
+            setSplitAvailable(true);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
             setSplitPressed(false);
@@ -669,7 +668,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             assignGameResults();
             setGamePause(true);
             endGameTimeout.current = setTimeout(() => {
-                setSplitAvailable(false);
+                setSplitAvailable(true);
                 setHand1TurnFinished(false);
                 setHand2TurnFinished(false);
                 setSplitPressed(false);
