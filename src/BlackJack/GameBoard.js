@@ -6,11 +6,15 @@ import Header from "./Header";
 import btnStand from './images/stand-button2.png';
 import btnHit from './images/hit-button2.png';
 import GameRecap from "./GameRecap";
+import GameHistory from "./GameHistory";
 
 const GameBoard = ({ onGameRunningChange }) => {
     const [deck, setDeck] = useState(null);
     const [dealerHand, setDealerHand] = useState([]);
+    const [dealerHandText,setDealerHandText]=useState([]);
     const [playerHand, setPlayerHand] = useState([]);
+    const [playerHandText,setPlayerHandText]=useState([]);
+
     const [gameRunning, setGameRunning] = useState(false);
     const [buttonsHidden,setButtonsHidden] = useState(false);
     const [playerHandValue, setPlayerHandValue] = useState(0);
@@ -51,8 +55,9 @@ const GameBoard = ({ onGameRunningChange }) => {
     const [gamesCount,setGamesCount] = useState(1);
     const [result,setResult] = useState("");
     const [progressBarWidth,setProgressBarWidth] = useState(10);
-    const [roundNumber,setRoundNumber] = useState(0);
+    const [roundNumber,setRoundNumber] = useState(1);
     const [roundOutcome,setRoundOutcome] = useState("");
+    const [gameRoundsHistory, setGameRoundsHistory] = useState([]);
     const [gameResultsCount, setGameResultsCount] = useState({
         totalGamesPlayed: 0,
         gamesWon: 0,
@@ -68,8 +73,14 @@ const GameBoard = ({ onGameRunningChange }) => {
         totalAmountOfBets:0,
         totalAmountOfBetsWon:0,
         totalAmountOfBetsLost:0,
-        previousGameResults:{roundNumber,playerHand,playerHandValue,dealerHand,dealerHandValue,roundOutcome},
         });
+    
+    const cardToString = (card) => {
+        return `${card.rank} of ${card.suit}`;
+        };
+    const convertHandToText = (hand) => {
+        return hand.map(cardToString);
+        };
 
     const clearBet = () => {
         // Assuming you want to clear the bet and return the bet amount to the player's chips only if the bet hasn't been played yet
@@ -125,6 +136,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     }
      //calculate number of doubles played
      const doublesPlayed = () =>{
+        console.log("running doublesPlayed inside doublesPlayed");
         setGameResultsCount(prevState =>{
             return{...prevState, numberOfDoubles:prevState.numberOfDoubles + 1};
         });
@@ -164,8 +176,11 @@ const GameBoard = ({ onGameRunningChange }) => {
             return{...prevState, totalAmountOfBetsLost:prevState.totalAmountOfBetsLost -betsLost};
         })
     }
+   
     
-
+    const updateGameRoundsHistory = (newRoundResults) => {
+        setGameRoundsHistory(prevHistory => [...prevHistory, newRoundResults]);
+      };
 
     
     
@@ -639,7 +654,18 @@ const GameBoard = ({ onGameRunningChange }) => {
     }
 
     const endGame = () => {
-         
+            const roundResults = {
+                roundNumber: roundNumber,
+                playerHand: [...playerHandText], // You may need to adjust based on how your card objects are structured
+                playerHandValue: playerHandValue,
+                dealerHand: [...dealerHandText], // Adjust as necessary for your card objects
+                dealerHandValue: dealerHandValue,
+                outcome: gameOutcome // Or any other outcome variable you have
+            };
+
+            updateGameRoundsHistory(roundResults);
+
+            setRoundNumber(prevRoundNumber => prevRoundNumber + 1);
             assignGameResults();
             setGamePause(true);
             endGameTimeout.current = setTimeout(() => {
@@ -918,6 +944,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             
             // Check if the player has enough chips to double the bet
             if (playerChips >= bet && !gamePause) {
+                console.log("calling doublesPlayed within handleDouble");
                 doublesPlayed();
                 setStandPressed(true);
                 setPlayerChips((prevChips) => prevChips - bet); // Deduct the additional bet amount from player's chips
@@ -1177,6 +1204,16 @@ const GameBoard = ({ onGameRunningChange }) => {
         return total;
     }
 
+    useEffect(() => {
+        const newPlayerHandText = convertHandToText(playerHand);
+        setPlayerHandText(newPlayerHandText);
+      }, [playerHand]);
+      
+    useEffect(() => {
+    const newDealerHandText = convertHandToText(dealerHand);
+    setDealerHandText(newDealerHandText);
+    }, [dealerHand]);
+
     useEffect(()=>{
         
     },[previousBet]);
@@ -1275,6 +1312,10 @@ const GameBoard = ({ onGameRunningChange }) => {
     
     return (
         <>
+        <GameHistory
+            gameResultsCount={gameResultsCount}
+            gameRoundsHistory={gameRoundsHistory}
+        />
         <div id="container">
         <Header
             playerHandValue={playerHandValue}
