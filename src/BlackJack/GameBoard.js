@@ -591,10 +591,6 @@ const GameBoard = ({ onGameRunningChange }) => {
                 setDealerHand(dealerHand.map((card, index) => 
                     index === 0 ? { ...card, isFaceDown: false } : card // Flip only the first card
                 ));
-                if(playerFirstCard.rank === playerSecondCard.rank ){
-                    setSplitAvailable(true);
-                    splitsAvailable();
-                };
             }, 500); // Adjust this delay as needed
             const playerHand = [playerFirstCard,playerSecondCard];
             setPlayerHand(playerHand);
@@ -608,7 +604,8 @@ const GameBoard = ({ onGameRunningChange }) => {
             //checking for blackjack or 2 blackjacks
             let newOutcome; 
             if(playerHandValue===21 && dealerHandValue === 21){
-            setTimeout(()=>{
+                setDealerHandValue(dealerHandValue);
+                setTimeout(()=>{
                 newOutcome = "Push";        
                 setGameOutcome(newOutcome);
                 const updatedDealerHand = dealerHand.map(card => ({
@@ -616,9 +613,10 @@ const GameBoard = ({ onGameRunningChange }) => {
                     isFaceDown: false,
                 }));
                 setDealerHand(updatedDealerHand);
-                setDealerHandValue(dealerHandValueOneCard);               
-            },500);   
+                               
+            },1500);   
             }else if(playerHandValue ===21){
+                setDealerHandValue(dealerHandValue);
                 setTimeout(()=>{
                     newOutcome="PlayerWins BlackJack";
                     setGameOutcome(newOutcome);
@@ -627,9 +625,11 @@ const GameBoard = ({ onGameRunningChange }) => {
                         isFaceDown: false,
                     }));
                     setDealerHand(updatedDealerHand);
-                    setDealerHandValue(dealerHandValueOneCard);
-                },500);
+                    
+                },1500);
             }else if(dealerHandValue ===21){
+                
+                setDealerHandValue(dealerHandValue);
                 setTimeout(()=>{
                     newOutcome="DealerWins BlackJack";
                     setGameOutcome(newOutcome);;
@@ -638,10 +638,13 @@ const GameBoard = ({ onGameRunningChange }) => {
                         isFaceDown:false,
                     }));
                     setDealerHand(updatedDealerHand);
-                    setDealerHandValue(dealerHandValueOneCard);
-                },500);
+                },1500);
             }else{
                 setDealerHandValue(dealerHandValueOneCard);
+                if(playerFirstCard.rank === playerSecondCard.rank ){
+                    setSplitAvailable(true);
+                    splitsAvailable();
+                };
             }         
         }    
     };
