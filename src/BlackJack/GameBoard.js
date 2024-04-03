@@ -38,7 +38,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     const [dealerFirstCardValue,setDealerFirstCardValue] = useState(0);
     const isFirstRender = useRef(true);
     const [standPressed, setStandPressed] = useState(false);
-    const [splitAvailable,setSplitAvailable] = useState(true);
+    const [splitAvailable,setSplitAvailable] = useState(false);
     const [playerHand1,setPlayerHand1] = useState([]);
     const [playerHand2,setPlayerHand2] = useState([]);
     const [twoHands,setTwoHands] = useState(false);
@@ -557,7 +557,7 @@ const GameBoard = ({ onGameRunningChange }) => {
                 onBetPlaced(previousBet,sendingPreviousBet);
             }
             asignPreviousBet(bet);
-            setSplitAvailable(true);
+            setSplitAvailable(false);
             setHand1TurnFinished(false);
             setHand2TurnFinished(false);
             setSplitPressed(false);
@@ -668,7 +668,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             assignGameResults();
             setGamePause(true);
             endGameTimeout.current = setTimeout(() => {
-                setSplitAvailable(true);
+                setSplitAvailable(false);
                 setHand1TurnFinished(false);
                 setHand2TurnFinished(false);
                 setSplitPressed(false);
