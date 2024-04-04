@@ -1,35 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ef1171a2f58f5c28ebd7bfee89394dcd",
+    "revision": "d03e1c7514411b02c92812e66fc2c70c",
     "url": "/index.html"
   },
   {
-    "revision": "f42c26d7865c58af5853",
+    "revision": "107c5497082535a6963f",
     "url": "/static/css/2.3eff9e2a.chunk.css"
   },
   {
-    "revision": "d4564c0576fa4a817359",
-    "url": "/static/css/main.f7890fe0.chunk.css"
+    "revision": "16a6d1959bee82750142",
+    "url": "/static/css/main.526afe36.chunk.css"
   },
   {
-    "revision": "f42c26d7865c58af5853",
-    "url": "/static/js/2.cc3da364.chunk.js"
+    "revision": "107c5497082535a6963f",
+    "url": "/static/js/2.53cd4ad6.chunk.js"
   },
   {
-    "revision": "4860e1ef5d7d9a8adf978172e103a753",
-    "url": "/static/js/2.cc3da364.chunk.js.LICENSE.txt"
+    "revision": "c90a7c6482cb709e2e13c9af6c963fb9",
+    "url": "/static/js/2.53cd4ad6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a80e94689c610ab5d23a",
-    "url": "/static/js/3.06e73402.chunk.js"
+    "revision": "c2dff4e6c06781513219",
+    "url": "/static/js/3.5a24c04b.chunk.js"
   },
   {
-    "revision": "d4564c0576fa4a817359",
-    "url": "/static/js/main.449d333b.chunk.js"
+    "revision": "16a6d1959bee82750142",
+    "url": "/static/js/main.4278a29c.chunk.js"
   },
   {
-    "revision": "7c60dc1791f5f7994e67",
-    "url": "/static/js/runtime-main.719c4095.js"
+    "revision": "a363ad92985c4ac99df9",
+    "url": "/static/js/runtime-main.ae6b0191.js"
   },
   {
     "revision": "3a023e24dbbf30f5834290985ef3d5ce",
@@ -200,6 +200,22 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/9_of_spades.e5b29fde.png"
   },
   {
+    "revision": "e95a77aefe809937d588ba09fd676935",
+    "url": "/static/media/FacebookIcon.e95a77ae.svg"
+  },
+  {
+    "revision": "c91403433ef4c38c74f86c89fbe65da2",
+    "url": "/static/media/GitHubIcon.c9140343.svg"
+  },
+  {
+    "revision": "ecc2d395417bdb3eb8c397a2cb49a2ef",
+    "url": "/static/media/RasmusAndersson-Inter-Variable.ecc2d395.ttf"
+  },
+  {
+    "revision": "90bf001ed34b9c8879f94dcb617dd2ac",
+    "url": "/static/media/TwitterIcon.90bf001e.svg"
+  },
+  {
     "revision": "07d1c180bead76a0b8cf8e488dfc2755",
     "url": "/static/media/ace_of_clubs.07d1c180.png"
   },
@@ -222,6 +238,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "006263822280a5846521676db742dc87",
     "url": "/static/media/clear-button2.00626382.png"
+  },
+  {
+    "revision": "59a86445fb8af873785cc59e0874a045",
+    "url": "/static/media/codepen.59a86445.svg"
   },
   {
     "revision": "ae841ef6ea540fea656ffd669bc4faeb",
@@ -262,6 +282,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "9b18a729ba5bda5ca4ef62fc6fdb4f62",
     "url": "/static/media/king_of_spades.9b18a729.png"
+  },
+  {
+    "revision": "2ed42d14642b21d40c99b10e224c4fee",
+    "url": "/static/media/linkedin.2ed42d14.svg"
   },
   {
     "revision": "96aa3714ee2985ee6acf2a4c854a211e",
