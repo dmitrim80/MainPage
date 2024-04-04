@@ -1,14 +1,17 @@
 // import React,{ useState, useEffect } from "react"
-import React from 'react'
-import './App.css'
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React from 'react';
+import Main from './Main_Page/Main';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import BlackJack from './BlackJack/BlackJack';
+import './BlackJack/blackjack.css';
+import './Main_Page/main.css';
 // import Header from "./Header";
 // import Main from "./Main";
 // import Footer from "./Footer";
 // import Bootstrap from "./Boot";
 // import './../node_modules/bootstrap/dist/js/bootstrap.bundle.min';
 // import './../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
-import BlackJack from './BlackJack/BlackJack'
+
 
 
 export default function App() {
@@ -33,20 +36,13 @@ export default function App() {
 //         document.body.classList.remove("dark-mode");
 //     }
 // }, [darkMode]);
-
-
-
-
     return (
-      <>
-      
-
-      <BlackJack/>
-     
-        {/* <Header/>
-        <Main/>
-        <Footer/> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main/>}/>
+          <Route path="/blackjack" element={<BlackJack/>}/>
+        </Routes>
+      </BrowserRouter>
         
-      </> 
     )
 }

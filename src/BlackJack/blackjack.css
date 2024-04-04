@@ -1,5 +1,5 @@
 body{
-    background-color: hsla(0, 0%, 0%, 0.703);
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +11,7 @@ body{
 }
 
 #bj-main-container{
+  background-color: hsla(140, 18%, 26%, 0.921);
   margin-top: 10px;
   position: relative;
   background-size: cover;

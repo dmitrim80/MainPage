@@ -1,0 +1,131 @@
+
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'InterVariable';
+  src: url('../assets/fonts/RasmusAndersson-Inter-Variable.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+    background-color: hsla(40, 5%, 12%, 0.963);
+}
+body div{
+  color: hsla(209, 43%, 90%, 0.752);
+  font-family: 'InterVariable', sans-serif;
+}
+.main-box {
+  
+  display: flex;
+  align-items: stretch;
+}
+.spacer {
+  flex-grow: 1; /* Allows the spacer to grow and fill available space */
+  min-width: 20px; /* Minimum initial width of the spacer */
+}
+/* Example media query to increase spacer size on wider screens */
+@media (min-width: 768px) {
+  .spacer {
+    min-width: 40px; /* Increases minimum width of the spacer */
+  }
+}
+
+
+/* HEADER */
+.header-container {
+  width: 470px;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+.page1 {
+  display: flex;
+  flex-direction: column;
+  min-height: 410px;
+  margin: 100px;
+  width: 400px; 
+  flex-grow: 1;
+}
+
+.header-box{
+  width: 450px;
+  }
+.header-h1{
+    font-size: 3rem;
+    font-weight: bolder;
+}
+.textbox-h5 h5{
+  margin-top: 5px;
+  font-weight: medium;
+}
+.textbox-p1{
+    margin-top: 10px;
+    width: 300px;
+    font-size: 1rem;
+}
+.local-links-box{
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items:start;
+  justify-content: center;
+}
+.link-about{
+  margin-top: 20px;
+}
+.link-experience{
+  margin-top: 20px;
+}
+.link-projects{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.social-icons-box{
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+}
+.social-icons a{
+  margin-right: 20px;
+}
+.social-icons img{
+  width: 24px;
+}
+.social-icons a:last-child {
+  margin-right: 0;
+}
+
+
+
+.body-wrapper {
+  flex-grow: 1; /* Take up the remaining space */
+  overflow: hidden; /* Prevents the container itself from scrolling */
+  display: flex;
+  flex-direction: column;
+}
+/* BODY */
+.body-container {
+  flex-grow: 1;
+  max-width: 500px; 
+  min-width: 400px; 
+  margin-right: 100px;
+  justify-content: center;
+}
+.more-pages{
+  margin-top: 100px;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#about{
+  margin-bottom: 10px;
+}
+
+
