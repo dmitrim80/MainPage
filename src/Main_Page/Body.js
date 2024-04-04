@@ -35,7 +35,7 @@ const Body = () => {
             <div id='projects'>
                 <b><Link to="/blackjack">BlackJack - Game</Link></b> 
                 <br/>
-                Project Completion Date: April, 2024
+                Project Date: April, 2024
             </div>
         </div>
     </div>
