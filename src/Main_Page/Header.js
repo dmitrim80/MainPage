@@ -12,7 +12,7 @@ const Header = () => {
         
         <div className='page1'>
                 <div className='header-box'><h1 className='header-h1'>Dmitri Morozov</h1></div>
-                <div className='textbox-h5'><h5>Junior Software Engineer</h5></div>
+                <div className='textbox-h5'><h5 className='header-h5'>Junior Software Engineer</h5></div>
                 <div className='textbox-p1'>I build pixel-perfect, engaging, and accessible digital experiences.</div>
                 <div className='local-links-box'>
                     <div className='header-links'id='header-link-about'><a href='#about'>About</a></div>

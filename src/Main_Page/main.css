@@ -17,40 +17,100 @@ body div{
   font-family: 'InterVariable', sans-serif;
 }
 .main-box {
+  
   display: flex;
   align-items: stretch;
+  align-self: flex-start;
 }
-.spacer {
-  flex-grow: 1; 
-  min-width: 20px; /* Minimum initial width of the spacer */
+@media (min-width: 1280px) {
+  .main-box {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+  .header-container {
+    margin-left: 100px;
+  }
+  .body-container {
+    margin-right: 100px; 
+  }
+  .header-h1{
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .header-h5{
+    font-size: 20px;
+    font-weight:500;
+  }
 }
-/* Example media query to increase spacer size on wider screens */
 @media (min-width: 1024px) {
-  .spacer {
-    min-width: 20px; 
+  body .main-box {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+  .header-container {
+    margin-left: 100px; 
+  }
+  .body-container {
+    margin-right: 75px; 
+  }
+  .header-h1{
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .header-h5{
+    font-size: 20px;
+    font-weight:500;
+  }
+  .body-container {
+    flex-grow: 1;
+    min-width: 300px; 
+    max-width: 500px; 
+    margin-right: 100px;
+    justify-content: center;
   }
 }
 
-.header-container {
-  width: 470px;
-  height: 100vh;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
-@media (max-width: 1024px) {
-  body .main-box .header-container, body .main-box .body-container, .page1, .body-wrapper {
-    margin-left: 20px;
-    margin-right: 20px;
+@media (max-width: 1023px) {
+  body .main-box {
+    position: absolute;
+    left: 50px;
+    right: 50px;
   }
   body .main-box .header-container {
     position: static;
     height: auto;
-    min-height: 300px;
+    min-height: 400px;
+  }
+  body .main-box .body-container {
+    overflow-y: auto;
+    height: auto;
+  }
+  
+  .main-box {
+    flex-direction: column;
+  }
+  .header-h1{
+    font-size: 48px;
+    font-weight: bold;
+  }
+  .header-h5{
+    font-size: 20px;
+    font-weight:500;
+  }
+}
+
+@media (max-width: 767px) {
+  body .main-box {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+  }
+  body .main-box .header-container {
+    position: static;
+    height: auto;
+    min-height: 400px;
   }
   body .main-box .body-container {
     overflow-y: auto;
@@ -59,13 +119,53 @@ body div{
   .main-box {
     flex-direction: column;
   }
-}
-@media (min-width: 1025px) {
-  .header-container {
-    margin-left: 75px; /* Apply 100px left margin to the header */
+  .header-h1{
+    font-size: 48px;
+    font-weight: bold;
   }
-  .body-container {
-    margin-right: 75px; /* Apply 100px right margin to the body */
+  .header-h5{
+    font-size: 20px;
+    font-weight:500;
+  }
+}
+
+@media (max-width: 639px) {
+  .main-box {
+    position: absolute;
+    left: 25px;
+    right: 25px;
+  }
+  .header-h1{
+    font-size: 36px;
+    font-weight: bold;
+  }
+  .header-h5{
+    font-size: 18px;
+    font-weight:500;
+  }
+}
+
+
+.header-container {
+  width: 400px;
+  height: 100vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  
+}
+
+.spacer {
+  flex-grow: 1; 
+  min-width: 1px; 
+}
+
+@media (min-width: 1024px) {
+  .spacer {
+    min-width: 1px; 
   }
 }
 /* HEADER */
@@ -74,17 +174,11 @@ body div{
   flex-direction: column;
   min-height: 410px;
   margin-top: 75px;
-  width: 400px; 
+  width: 470px;
+  
   flex-grow: 1;
 }
 
-.header-box{
-  width: 450px;
-  }
-.header-h1{
-    font-size: 3rem;
-    font-weight: bolder;
-}
 .textbox-h5 h5{
   margin-top: 5px;
   font-weight: medium;
@@ -95,7 +189,7 @@ body div{
     font-size: 1rem;
 }
 .local-links-box{
-  margin-top: 70px;
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items:start;
@@ -218,13 +312,7 @@ body div{
   flex-direction: column;
 }
 /* BODY */
-.body-container {
-  flex-grow: 1;
-  max-width: 400px; 
-  min-width: 300px; 
-  margin-right: 75px;
-  justify-content: center;
-}
+
 .more-pages{
   margin-top: 75px;
   text-align: start;
