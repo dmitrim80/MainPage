@@ -37,6 +37,26 @@ const Body = () => {
                 <br/>
                 Project Date: April, 2024
             </div>
+            <div id='projects'>
+                <b className='projects-link'><Link to="/blackjack">BlackJack - Game</Link></b> 
+                <br/>
+                Project Date: April, 2024
+            </div>
+            <div id='projects'>
+                <b className='projects-link'><Link to="/blackjack">BlackJack - Game</Link></b> 
+                <br/>
+                Project Date: April, 2024
+            </div>
+            <div id='projects'>
+                <b className='projects-link'><Link to="/blackjack">BlackJack - Game</Link></b> 
+                <br/>
+                Project Date: April, 2024
+            </div>
+            <div id='projects'>
+                <b className='projects-link'><Link to="/blackjack">BlackJack - Game</Link></b> 
+                <br/>
+                Project Date: April, 2024
+            </div>
         </div>
     </div>
     </>
