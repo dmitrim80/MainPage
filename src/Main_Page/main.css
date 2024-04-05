@@ -9,7 +9,7 @@
   font-style: normal;
 }
 body {
-    background-color: hsla(40, 5%, 12%, 0.963);
+    background-color: hsla(240, 42%, 9%, 0.963);
     
 }
 body div{
@@ -44,11 +44,15 @@ body div{
 
 
 @media (max-width: 1024px) {
+  body .main-box .header-container, body .main-box .body-container, .page1, .body-wrapper {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
   body .main-box .header-container {
     position: static;
     height: auto;
     min-height: 300px;
-    margin-left: -100px;
+    
   }
 
   body .main-box .body-container {
@@ -70,7 +74,7 @@ body div{
   display: flex;
   flex-direction: column;
   min-height: 410px;
-  margin-top: 100px;
+  margin-top: 75px;
   width: 400px; 
   flex-grow: 1;
   margin-left: 100px;
@@ -98,18 +102,19 @@ body div{
   flex-direction: column;
   align-items:start;
   justify-content: flex-start;
-}
-.link-about{
-  margin-top: 20px;
-}
-.link-experience{
-  margin-top: 20px;
-}
-.link-projects{
-  margin-top: 20px;
-  margin-bottom: 50px;
+
 }
 
+.header-links{
+  display: flex;
+  margin-top: 20px;
+}
+.social-icons a, .header-links a, .projects-link a{
+  margin-right: 20px;
+  text-decoration: none;
+  position: relative; 
+  display: inline-block; 
+}
 .social-icons-box{
   margin-top: auto;
   display: flex;
@@ -117,13 +122,100 @@ body div{
 }
 .social-icons a{
   margin-right: 20px;
+  text-decoration: none;
+  
 }
+.social-icons a:hover{
+  text-decoration:none;
+}
+
 .social-icons img{
   width: 24px;
 }
 .social-icons a:last-child {
   margin-right: 0;
 }
+
+
+.header-links a {
+  display: inline-block;
+  color: #64748b; /* slate-500 equivalent */
+  text-decoration: none;
+  position: relative;
+  padding-left: 65px; /* Adjust as necessary for alignment */
+  transition: color 0.15s ease-in-out;
+}
+
+
+
+.header-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%; /* Align vertically with the text */
+  left: 10px; /* Start closer to the text */
+  transform: translateY(-50%); /* Center vertically */
+  height: 2px; /* Thickness of the animated line */
+  width: 32px; /* Start width as 0 to hide initially */
+  background-color: #475569; /* slate-600 equivalent */
+  transition: width 0.3s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.header-links a:hover {
+  color: #e2e8f0; /* slate-200 equivalent */
+}
+
+.header-links a:hover::before {
+  width: 50px; /* Adjust width to match the animation target */
+  background-color: #e2e8f0; /* slate-200 equivalent */
+}
+#header-link-about a {
+  color: #e2e8f0; /* Color for active state, assuming slate-200 equivalent */
+}
+
+#header-link-about a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 1px;
+  width: 20px; /* Initial width for the active state */
+  background-color: #e2e8f0; /* Color for the line in active state, assuming slate-200 equivalent */
+}
+
+/* Applying hover styles to all links */
+.header-links a {
+  display: inline-block;
+  color: #64748b; /* Color for normal state, assuming slate-500 equivalent */
+  text-decoration: none;
+  position: relative;
+  padding-left: 65px; /* Adjust as necessary */
+  transition: color 0.15s ease-in-out;
+}
+
+.header-links a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1px;
+  width: 20px; /* Initial width for non-active states */
+  background-color: #475569; /* Color for the line in non-active states, assuming slate-600 equivalent */
+  transition: width 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+#header-link-about a::before {
+  width: 50%; /* Full width for the "About" link underline */
+}
+.header-links a:hover {
+  color: #e2e8f0; /* Hover color, assuming slate-200 equivalent */
+}
+
+.header-links a:hover::before {
+  width: 50px; /* Expanded width on hover */
+  background-color: #e2e8f0; /* Hover color for the line, assuming slate-200 equivalent */
+}
+
 
 .body-wrapper {
   flex-grow: 1; /* Take up the remaining space */
@@ -136,11 +228,11 @@ body div{
   flex-grow: 1;
   max-width: 500px; 
   min-width: 400px; 
-  margin-right: 100px;
+  margin-right: 75px;
   justify-content: center;
 }
 .more-pages{
-  margin-top: 100px;
+  margin-top: 75px;
   text-align: start;
   display: flex;
   flex-direction: column;
@@ -151,3 +243,6 @@ body div{
 }
 
 
+#projects{
+margin-bottom: 100px;
+}

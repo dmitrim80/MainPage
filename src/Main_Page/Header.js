@@ -15,9 +15,9 @@ const Header = () => {
                 <div className='textbox-h5'><h5>Junior Software Engineer</h5></div>
                 <div className='textbox-p1'>I build pixel-perfect, engaging, and accessible digital experiences.</div>
                 <div className='local-links-box'>
-                    <div className='link-about'><a href='#about'>About</a></div>
-                    <div className='link-experience'><a href='#experience'>Experience</a></div>
-                    <div className='link-projects'><a href='#projects'>Projects</a></div>
+                    <div className='header-links'id='header-link-about'><a href='#about'>About</a></div>
+                    <div className='header-links'id='header-link-experience'><a href='#experience'>Experience</a></div>
+                    <div className='header-links'id='header-link-projects'><a href='#projects'>Projects</a></div>
                 </div>
             
             <div className="social-icons-box">
