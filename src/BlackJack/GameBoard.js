@@ -8,7 +8,12 @@ import btnHit from './images/hit-button2.png';
 import GameRecap from "./GameRecap";
 import GameHistory from "./GameHistory";
 
+
 const GameBoard = ({ onGameRunningChange }) => {
+    const [showMessages, setShowMessages] = useState(false); 
+    const [messages, setMessages] = useState([]);
+    const [clickCount, setClickCount] = useState(0); // State to count clicks
+    const [handleSettings,setHandleSettings] = useState(false);
     const [deck, setDeck] = useState(null);
     const [dealerHand, setDealerHand] = useState([]);
     const [dealerHandText,setDealerHandText]=useState([]);
@@ -74,7 +79,31 @@ const GameBoard = ({ onGameRunningChange }) => {
         totalAmountOfBetsWon:0,
         totalAmountOfBetsLost:0,
         });
+
+    const cardValues = [2,3,4,5,6,7,8,9,10,10,10,10,11];
+    //
     
+
+    const twoHandsPosibilities = () => {
+        let messages = [];
+        let x = 1; // Ensure this starts at 1 every time this function is called
+        for (let i = 0; i < cardValues.length; i++) {
+            for (let j = i; j < cardValues.length; j++) {
+                let value = cardValues[i] + cardValues[j];
+                let message = `${x} Combo: ${cardValues[i]} + ${cardValues[j]} = ${value}`;
+                messages.push(message);
+                x++;
+            }
+
+        }
+        
+        return messages;
+    };
+
+    
+    const callSettings = () =>{
+        setHandleSettings(!handleSettings);
+    }    
     const cardToString = (card) => {
         return `${card.rank} of ${card.suit}`;
         };
@@ -525,9 +554,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             }else{
                 setBet(prevBet => prevBet + newBet);
                 setPlayerChips(prevChips => prevChips - newBet);
-               
             }
-            
         } else {
             return;
         }
@@ -544,10 +571,6 @@ const GameBoard = ({ onGameRunningChange }) => {
     
     
     const handleNewGame = () => {
-        
-
-       
-        
         if (previousBet > playerChips){
             setGameMessage(`Not enough chips, change your bet...`);
             return;
@@ -1206,6 +1229,9 @@ const GameBoard = ({ onGameRunningChange }) => {
         return total;
     }
 
+    
+
+  
     useEffect(() => {
         const newPlayerHandText = convertHandToText(playerHand);
         setPlayerHandText(newPlayerHandText);
@@ -1294,11 +1320,6 @@ const GameBoard = ({ onGameRunningChange }) => {
             isFirstRender.current = false;
             return;
         }
-
-       
-
-        
-
     }, [bet, playerChips]);
 
     useEffect(()=>{
@@ -1311,9 +1332,30 @@ const GameBoard = ({ onGameRunningChange }) => {
         }
     },[hand1TurnFinished,hand2TurnFinished])
 
-    
+    useEffect(() => {
+        setMessages(twoHandsPosibilities());
+    }, []);
+
+
     return (
         <>
+        {handleSettings && <div className='odds-main-box' onClick={()=>callSettings()}>
+                <div className="message-box-settings">
+                    <button onClick={
+                        (e) => {e.stopPropagation(); 
+                        setShowMessages(!showMessages);
+                        }}>Show Combos
+                    </button>
+                    {showMessages && (
+                        <div className='message-box-settings'>
+                            {messages.map((message, index) => (
+                                <p className="combo-text" key={index}>{message}</p>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>}
+        
         <GameHistory
             gameResultsCount={gameResultsCount}
             gameRoundsHistory={gameRoundsHistory}
@@ -1325,6 +1367,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             playerChips={playerChips}
             progressBarWidth={progressBarWidth}
             result={result}
+            callSettings={callSettings}
             />
             
 

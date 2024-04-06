@@ -3,6 +3,7 @@ import './blackjack.css';
 import GameBoard from './GameBoard';
 import LoadingOverlay from './LoadingOverlay'
 
+
 const BlackJack = () => {
     const [isLoading,setIsLoading] = useState(true);
     // const [isFlipped, setIsFlipped] = useState(false);
@@ -44,12 +45,13 @@ const BlackJack = () => {
 
     return (
         <>
+        
             {/* <div id="container" className={isFlipped ? 'flipped' : ''} onClick={toggleFlip} style={{'--bg-opacity': opacity, '--z-index': zIndex}}> */}
             <div id="bj-main-container">
                 
-                <LoadingOverlay isVisible={isLoading} style={{ opacity: opacity }}  />
-                <GameBoard onGameRunningChange={handleGameRunningChange} />
-                {/* <GameBoard/> */}
+                {/* <LoadingOverlay isVisible={isLoading} style={{ opacity: opacity }}  />
+                <GameBoard onGameRunningChange={handleGameRunningChange} /> */}
+                <GameBoard/>
             </div>
             
         </>

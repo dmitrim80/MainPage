@@ -242,10 +242,11 @@ background-color: hsla(25, 72%, 11%, 0.96);
 color: aliceblue;
 border-radius: 15px;
 width: 10%;
-font-size: 0.6rem;
+font-size: 1rem;
 text-align: center;
 box-shadow: 0px 0px 10px rgba(31, 13, 13, 0.968);
 height: 100%;
+cursor: pointer;
 }
 .chips-count,#games-count,#game-result{
 margin-left: 5px;
@@ -673,7 +674,26 @@ height: 100%;
     opacity: 1;
     font-family:serif;
   }
-  
+  .message-box-settings{
+    display: flex;
+    flex-direction: column; /* Ensure children are laid out vertically */
+    align-items:flex-start;
+    justify-content:flex-start;
+    color: #f5c432;
+    min-height: 100px; /* Ensure this is enough to show initial items */
+    width: 50%;
+    font-weight: bolder;
+    opacity: 1;
+    font-family: serif;
+    overflow-y: auto; /* Ensures scrolling for overflow */
+    max-height: 2000px; /* Example fixed max-height */
+  }
+  .combo-text{
+    font-family: serif;
+    height: auto;
+    font-size: 8px;
+    color: #fffcf3;
+  }
 
   #hand, #dealer-hand, #player-hand {
     display:flex;
@@ -846,5 +866,24 @@ position: relative;
 #player-hand-box{
   position: relative;
 }
-
-
+.odds-main-box{
+  position: absolute;
+  top: 0;
+  left: 24.4%;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 4s ease-out;
+  opacity: 1;
+  width: 367px;
+  height: 598px;
+  background-color: hsla(140, 18%, 26%, 0.75); 
+  border-radius: 10px;
+}
+.odds-main-box{
+  overflow-y: auto;
+}
