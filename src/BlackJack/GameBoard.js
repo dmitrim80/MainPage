@@ -59,7 +59,7 @@ const GameBoard = ({ onGameRunningChange }) => {
     //counter for progressBar
     const [gamesCount,setGamesCount] = useState(1);
     const [result,setResult] = useState("");
-    const [progressBarWidth,setProgressBarWidth] = useState(10);
+    const [progressBarWidth,setProgressBarWidth] = useState(5);
     const [roundNumber,setRoundNumber] = useState(1);
     const [roundOutcome,setRoundOutcome] = useState("");
     const [gameRoundsHistory, setGameRoundsHistory] = useState([]);
@@ -79,24 +79,95 @@ const GameBoard = ({ onGameRunningChange }) => {
         totalAmountOfBetsWon:0,
         totalAmountOfBetsLost:0,
         });
-
-    const cardValues = [2,3,4,5,6,7,8,9,10,10,10,10,11];
-    //
+        
     
+    
+    const handsPosibilities = (playerCard1Value,playerCard2Value,dealerCard1Value) =>{
+        const cardValues = [0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
+        const dCard1Value = dealerCard1Value;
+        const pCard1Value = playerCard1Value;
+        const pCard2Value = playerCard2Value;
+        let winningDealerCardValue = (pCard1Value+pCard2Value)-dCard1Value+1;
+        const cardCounts = [0, 0, 4, 4, 4, 4, 4, 4, 4, 4, 16, 4];
+        const dealerStopValue = 17;
+        const playerHandValue = 18; // Player's hand value for comparison
+        let totalWinningCards = 0;
+        let totalCardsRemaining = cardCounts.reduce((acc, count) => acc + count, 0);
+        let safeCardsTotal = 0;
+        const currentHandValue = pCard1Value + pCard2Value;
+        
+        const valueToIndex = (value) => {
+            if (value >= 2 && value <= 10) return value;
+            if (value === 11) return 12; // Assuming Ace is represented as 11
+            return 10; // Face cards (J, Q, K) are all treated as 10
+        };
+        cardCounts[valueToIndex(playerCard1Value)]--;
+        cardCounts[valueToIndex(playerCard2Value)]--;
+        cardCounts[valueToIndex(dealerCard1Value)]--;
 
+        const maxSafeValue = 21 - currentHandValue;
+        
+        //calculating safe cards for players 3rd card.
+        cardCounts.forEach((count, index) => {
+            if (index === 12 && maxSafeValue >= 11) { // Ace as 11
+              safeCardsTotal += count;
+            } else if (index === 12 && maxSafeValue >= 1) { // Ace as 1
+              safeCardsTotal += count;
+            } else if (index <= maxSafeValue) {
+              safeCardsTotal += count;
+            }
+          });
+
+          for (let secondCardIndex = 2; secondCardIndex <= 11; secondCardIndex++) {
+            let possibleDealerValueAfterSecondCard = dCard1Value + (secondCardIndex === 11 ? 11 : secondCardIndex);
+            
+            // Exclude scenarios where the dealer reaches the stop value or higher with the second card
+            if (possibleDealerValueAfterSecondCard >= dealerStopValue) continue;
+        
+            // Iterate over potential third cards
+            for (let thirdCardIndex = 2; thirdCardIndex <= 11; thirdCardIndex++) {
+                let finalDealerValue = possibleDealerValueAfterSecondCard + (thirdCardIndex === 11 ? 11 : thirdCardIndex);
+                
+                // Conditions for the dealer's win with the third card
+                if (finalDealerValue > playerHandValue && finalDealerValue <= 21) {
+                    totalWinningCards += cardCounts[thirdCardIndex];
+                }
+            }
+        }
+        
+        let probabilityOfWinningW3cards = (totalWinningCards / totalCardsRemaining) * 100;
+        console.log(`Probability of dealer winning with 3rd card: ${probabilityOfWinningW3cards.toFixed(2)}%`);
+          // player 3rd card probability
+        const probabilityOfNotBusting = (safeCardsTotal / totalCardsRemaining) * 100;
+        console.log("3rd card probability:",probabilityOfNotBusting);
+
+        //dealer card probability
+        let numberOfWinningCards = cardCounts.slice(winningDealerCardValue, 12).reduce((acc, count) => acc + count, 0);
+        console.log("Number of wining cards remain for dealer:",numberOfWinningCards);
+        let probabilityOfWinning = parseFloat((numberOfWinningCards / totalCardsRemaining) * 100).toFixed(2);
+
+        console.log("Probability of drawing a card of ",winningDealerCardValue,"or higher:" + probabilityOfWinning + "%");
+
+        // console.log("Number of hands greater than ",currentHandValue," ",numberOfHigherHands);
+
+    }
+    
+   
     const twoHandsPosibilities = () => {
+        const cardValues = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11];
         let messages = [];
         let x = 1; // Ensure this starts at 1 every time this function is called
-        for (let i = 0; i < cardValues.length; i++) {
-            for (let j = i; j < cardValues.length; j++) {
-                let value = cardValues[i] + cardValues[j];
-                let message = `${x} Combo: ${cardValues[i]} + ${cardValues[j]} = ${value}`;
+        for (let i = 0; i < 52; i++) {
+            for (let j = i + 1; j < 52; j++) {
+                let cardValue1 = cardValues[i%13];
+                let cardValue2 = cardValues[j%13];
+                let value = cardValue1 + cardValue2;
+                let message = `${x} Combo: ${cardValue1} + ${cardValue2} = ${value}`;
+                
                 messages.push(message);
                 x++;
             }
-
-        }
-        
+        }  
         return messages;
     };
 
@@ -619,6 +690,9 @@ const GameBoard = ({ onGameRunningChange }) => {
             setPlayerHand(playerHand);
             const dealerHand = [dealerFirstCard,{...dealerSecondCard,isFaceDown: true }];
             setDealerHand(dealerHand);
+            
+            const playerFirstCardValue = calculateHandValue([playerFirstCard]);
+            const playerSecondCardValue = calculateHandValue([playerSecondCard]);
             const playerHandValue = calculateHandValue(playerHand);
             setPlayerHandValue(playerHandValue);
             const dealerHandValue = calculateHandValue(dealerHand);
@@ -626,6 +700,9 @@ const GameBoard = ({ onGameRunningChange }) => {
             setDealerFirstCardValue(dealerHandValueOneCard);
             //checking for blackjack or 2 blackjacks
             let newOutcome; 
+            //passing 3 card values to check probability
+            handsPosibilities(playerFirstCardValue,playerSecondCardValue,dealerHandValueOneCard);
+
             if(playerHandValue===21 && dealerHandValue === 21){
                 setDealerHandValue(dealerHandValue);
                 setTimeout(()=>{
@@ -1218,9 +1295,7 @@ const GameBoard = ({ onGameRunningChange }) => {
             }
             total += value;
         })
-        // Adjust score based on how many ace, initial ace value is 11, 
-        //    subtract 10 from total score until score is less than 21 
-        //    AND number of aces more than 0
+
         while (total > 21 && aceCount > 0) {
             total -= 10;
             aceCount -= 1;
@@ -1248,16 +1323,16 @@ const GameBoard = ({ onGameRunningChange }) => {
 
     useEffect(()=>{
         if(gameResultsCount.totalGamesPlayed){
-            const newWidth = (gamesCount)/10*100;
+            const newWidth = (gamesCount)/20*100;
             setProgressBarWidth(newWidth);
             
             if(newWidth===100){
-                setPlayerChips(chips=>chips+200);
-                setGameMessage("Next Level! You get $200 extra chips!!!");
+                setPlayerChips(chips=>chips+100);
+                setGameMessage("Next Level! You get $100 extra chips!!!");
                 
                 const timeoutId = setTimeout(() => {
                     setGamesCount(1);
-                    setProgressBarWidth(10); // Reset to 10 assuming you want to restart progress from 10% for visual consistency
+                    setProgressBarWidth(5); 
                 }, 5000);
 
                 return () => clearTimeout(timeoutId);
@@ -1346,13 +1421,14 @@ const GameBoard = ({ onGameRunningChange }) => {
                         setShowMessages(!showMessages);
                         }}>Show Combos
                     </button>
-                    {showMessages && (
+                    {/* {showMessages && (
                         <div className='message-box-settings'>
                             {messages.map((message, index) => (
                                 <p className="combo-text" key={index}>{message}</p>
                             ))}
                         </div>
-                    )}
+                    )} */}
+
                 </div>
             </div>}
         

@@ -11,7 +11,7 @@ import './Main_Page/main.css';
 // import Bootstrap from "./Boot";
 // import './../node_modules/bootstrap/dist/js/bootstrap.bundle.min';
 // import './../node_modules/bootstrap/dist/css/bootstrap.min.css'; 
-
+                                              
 
 
 export default function App() {
