@@ -30,7 +30,7 @@ const Main = () => {
               bottom: 0,
               background: `radial-gradient(circle 100px at 
                 ${spotlightPosition.x}px 
-                ${spotlightPosition.y}px, rgba(255,255,255,0.045) 0%, rgba(0,0,0,0.1) 500%)`,
+                ${spotlightPosition.y}px, rgba(255,255,255,0.045) 0%, rgba(0,0,0,0.2) 500%)`,
               pointerEvents: 'none', // Allow clicks to pass through
               zIndex: 9999, // Ensure it's above all other content but does not block interaction
           }}></div>
