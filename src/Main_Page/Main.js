@@ -2,10 +2,42 @@ import React, {useState,useEffect}from 'react'
 import './main.css'
 import Header from './Header'
 import Body from './Body'
+import {debounce} from './Utilities'
 
 
 const Main = () => {
+  const [activeLink,setActiveLink] = useState('about');
   const [spotlightPosition, setSpotlightPosition] = useState({ x: -200, y: -200 });
+
+  useEffect(() => {
+    // The handleScroll function that you want to debounce
+    const handleScroll = () => {
+      const sections = ['about', 'interests', 'projects']; // Update with your section IDs
+      let currentActiveLink = '';
+      const scrollPosition = window.scrollY;
+  
+      sections.forEach((sectionId) => {
+        const sectionEl = document.getElementById(sectionId);
+        if (sectionEl) {
+          const sectionTop = sectionEl.offsetTop;
+          const sectionHeight = sectionEl.offsetHeight;
+          // Check if the section is at least halfway in view
+          if (scrollPosition >= sectionTop - sectionHeight / 2 && scrollPosition < sectionTop + sectionHeight / 2) {
+            currentActiveLink = sectionId;
+          }
+        }
+      });
+  
+      setActiveLink(currentActiveLink);
+    };
+  
+    // Apply debounce to the handleScroll function
+    const debouncedHandleScroll = debounce(handleScroll, 100);
+  
+    window.addEventListener('scroll', debouncedHandleScroll);
+    return () => window.removeEventListener('scroll', debouncedHandleScroll);
+  }, []); // Note: Since debounce creates a new function, dependencies related to the effect should be stable or included in the dependency array.
+  
 
   useEffect(() => {
     const updateSpotlightPosition = (e) => {
@@ -22,7 +54,7 @@ const Main = () => {
   return (
     <>
     <div className='main-box'>
-    <div className="overlay" style={{
+      <div className="overlay" style={{
               position: 'fixed',
               top: 0,
               left: 0,
@@ -30,16 +62,17 @@ const Main = () => {
               bottom: 0,
               background: `radial-gradient(circle 100px at 
                 ${spotlightPosition.x}px 
-                ${spotlightPosition.y}px, rgba(255,255,255,0.045) 0%, rgba(0,0,0,0.2) 500%)`,
+                ${spotlightPosition.y}px, 
+                rgba(255,255,255,0.045) 0%,
+                rgba(0,0,0,0.2) 500%)`,
               pointerEvents: 'none', // Allow clicks to pass through
-              zIndex: 9999, // Ensure it's above all other content but does not block interaction
+              zIndex: 9999, // Ensure it's above all other content
           }}></div>
-        <Header/>
-        <div className="spacer"></div> 
-        <div className="body-wrapper">
+          <Header activeLink={activeLink} setActiveLink={setActiveLink} />
+          <div className="spacer"></div> 
+          <div className="body-wrapper">
             <Body/>
-        </div>
-        
+          </div>
     </div>
     
     </>
