@@ -1,35 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cf54a7e931c62a67431e71417fe73812",
+    "revision": "1a6dec0375d163346111353350c2ec2e",
     "url": "/index.html"
   },
   {
-    "revision": "643e53e80400b6cbde0f",
+    "revision": "2003b452ea89c7764742",
     "url": "/static/css/2.3eff9e2a.chunk.css"
   },
   {
-    "revision": "078accf861b837f35863",
-    "url": "/static/css/main.75b1be95.chunk.css"
+    "revision": "ce7db297c716fbeaccd1",
+    "url": "/static/css/main.908ecaaa.chunk.css"
   },
   {
-    "revision": "643e53e80400b6cbde0f",
-    "url": "/static/js/2.4005cfc5.chunk.js"
+    "revision": "2003b452ea89c7764742",
+    "url": "/static/js/2.0a909898.chunk.js"
   },
   {
     "revision": "c90a7c6482cb709e2e13c9af6c963fb9",
-    "url": "/static/js/2.4005cfc5.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.0a909898.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "08bc5482181b5a2dc7e6",
-    "url": "/static/js/3.d330006f.chunk.js"
+    "revision": "1b14852d3065a61eed03",
+    "url": "/static/js/3.548dfc6c.chunk.js"
   },
   {
-    "revision": "078accf861b837f35863",
-    "url": "/static/js/main.a5fb4e8a.chunk.js"
+    "revision": "ce7db297c716fbeaccd1",
+    "url": "/static/js/main.12847903.chunk.js"
   },
   {
-    "revision": "3b620f1b3c87b380a7c5",
-    "url": "/static/js/runtime-main.c736e0cd.js"
+    "revision": "da8f122e5fe3c04b51f0",
+    "url": "/static/js/runtime-main.e448daea.js"
   },
   {
     "revision": "3a023e24dbbf30f5834290985ef3d5ce",
@@ -208,12 +208,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/GitHubIcon.c9140343.svg"
   },
   {
-    "revision": "ecc2d395417bdb3eb8c397a2cb49a2ef",
-    "url": "/static/media/RasmusAndersson-Inter-Variable.ecc2d395.ttf"
+    "revision": "753bd86618b0faefb54da21403a261bb",
+    "url": "/static/media/RasmusAndersson-Inter-Bold.753bd866.otf"
   },
   {
-    "revision": "90bf001ed34b9c8879f94dcb617dd2ac",
-    "url": "/static/media/TwitterIcon.90bf001e.svg"
+    "revision": "8c46da0df447785681cc1dc57c1a9da9",
+    "url": "/static/media/RasmusAndersson-Inter-Medium.8c46da0d.otf"
+  },
+  {
+    "revision": "abc871061d039396f05da175faf9277f",
+    "url": "/static/media/RasmusAndersson-Inter-Regular.abc87106.ttf"
   },
   {
     "revision": "07d1c180bead76a0b8cf8e488dfc2755",
@@ -250,6 +254,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2121fae0b4a2751a6c3cb266e2d92a58",
     "url": "/static/media/hit-button2.2121fae0.png"
+  },
+  {
+    "revision": "b6c744edbbd685bced0fe1f69d0a0e89",
+    "url": "/static/media/icons8-instagram.b6c744ed.svg"
   },
   {
     "revision": "1861c1e4a50028cb1dfce55e531ff292",
@@ -290,6 +298,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "96aa3714ee2985ee6acf2a4c854a211e",
     "url": "/static/media/logo-blackjack.96aa3714.png"
+  },
+  {
+    "revision": "25bfe418f6f5a967de2dc3c6007e2187",
+    "url": "/static/media/new-twitter-logo.25bfe418.svg"
   },
   {
     "revision": "9e84dd75995fe4a3b8871bab4cbb3898",
