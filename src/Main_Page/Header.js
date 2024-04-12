@@ -30,7 +30,6 @@ const Header = ({activeLink, setActiveLink}) => {
                 <div className='textbox-h5'><h5 className='header-h5'><b>Junior Software Engineer</b></h5></div>
                 <div className='textbox-p1'>I build pixel-perfect, engaging, and accessible digital experiences.</div>
 
-
                 <div className='local-links-box'>
                     <div className='header-links'id='header-link-about'>
                       <a href="#about" 
