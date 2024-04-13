@@ -8,12 +8,15 @@ const Body = () => {
       <div className="body-container">
         <div className="more-pages">
           <section id="about">
+            <p className="header-p">
             With a Bachelor of Science in Computer Science, my academic and
             internship experiences have equipped me with a solid foundation in
             software development, data structures, and algorithms. I am eager to
             apply my knowledge and skills in a professional setting as an
             Entry-Level Software Engineer, crafting solutions that make a
             difference.
+            </p>
+            
             <div className="headline-box">About Me</div>
             <div>
               As a graduate with a passion for software engineering, I have
@@ -45,63 +48,30 @@ const Body = () => {
           </section>
 
           <section id="projects">
-            <div className="headline-box" id="projects">
-              Projects
-            </div>
-
-            <div className="project-container">
-              <div className="overLay-project-container"></div>
-              <header className="header-time">2024 — Present</header>
-              <div className="project-main-content">
-                <h3 className="project-header">
-                  <a
-                    href=""
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    aria-label="tittle"
-                  >
-                    PROJECT NAME 
-                    <span id='project-arrow' role='img' aria-label="Link to project">↗</span>
-                  </a>
-                </h3>
-
-                <p className="project-description">
-                  Build and maintain critical components used to construct
-                  Klaviyo’s frontend, work closely with cross-functional teams
-                  to implement and advocate for web accessibility.
-                </p>
-
-                <ul className="skill-elements" aria-label="Technologies used">
-                  <li>
-                    <div className="skill-e">JavaScript</div>
-                  </li>
-                  <li>
-                    <div className="skill-e">TypeScript</div>
-                  </li>
-                  <li>
-                    <div className="skill-e">React</div>
-                  </li>
-                  <li>
-                    <div className="skill-e">Storybook</div>
-                  </li>
-                </ul>
-
-              </div>
-            </div>
-
-            <div className="project-box">
-              <Link className="img-link" to="/blackjack">
-                <img
-                  src={bjlogo}
-                  className="project-img"
-                  alt="logo-blackjack"
-                />
-              </Link>
-
-              <b>Project Date: April, 2024 </b>
-
-              <p>
-                As part of my capstone project, I developed a fully-functional
+            
+            <ol className="projects-list">
+            
+            <Link className="project-link" to="/blackjack"> 
+              <li>
+                <div className="project-container">
+                  <div className="overLay-project-container"></div>
+                  <header className="header-time">2024 — Present</header>
+                  <div className="project-main-content">
+                    <p>
+                        <img 
+                            src={bjlogo}
+                            className="project-img"
+                            alt="logo-blackjack"
+                        /> 
+                        <span className="project-header">BlackJack Game</span>
+                        <span 
+                            id="project-arrow"
+                            role="img"
+                            aria-label="Link to project">
+                        ↗</span>
+                    </p>  
+                    <p className="project-description">
+                    As part of my capstone project, I developed a fully-functional
                 BlackJack game. This project allowed me to apply and showcase my
                 proficiency in JavaScript, HTML, and CSS, creating a game that
                 is not only enjoyable but also visually appealing and
@@ -112,26 +82,121 @@ const Body = () => {
                 security using Firebase as a backend service. Collaborating with
                 peers for code reviews and optimizations, emphasizing clean,
                 maintainable code.
-              </p>
-            </div>
-            <div className="headline-box">Skills</div>
-            <div>
-              <p>
-                <b>Programming Languages</b>
-                <br />
-                JavaScript, TypeScript, HTML, CSS, Swift, Python, R<br />
-                <b>Libraries & Frameworks</b>
-                <br />
-                React
-                <br />
-                Tools & Platforms
-                <br />
-                GitHub, Firebase
-              </p>
-            </div>
+                    </p>
+
+                    <ul
+                      className="skill-elements"
+                      aria-label="Technologies used"
+                    >
+                      <li>
+                        <div className="skill-e">JavaScript</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">JSX</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">React</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">CSS</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">HTML</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              </Link>
+
+              <Link className="project-link" to="/"> 
+              <li>
+                <div className="project-container">
+                  <div className="overLay-project-container"></div>
+                  <header className="header-time">2023 — Present</header>
+                  <div className="project-main-content">
+                  <p id="project-head">
+                        
+                        <span className="project-header">Coral Database Website</span>
+                        <span 
+                            id="project-arrow"
+                            role="img"
+                            aria-label="Link to project">
+                        ↗</span>
+                    </p>  
+                    <p className="project-description">
+                    Created website for marine-life enthusiasts share images of different coral species.Google database is used for a secure storage with authentication for users. Upload/ Download update description create personal favorites and share with others. Projects is ongoing...
+                    </p>
+
+                    <ul
+                      className="skill-elements"
+                      aria-label="Technologies used"
+                    >
+                      <li>
+                        <div className="skill-e">JavaScript</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">JSX</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">React</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">CSS</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">HTML</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">Firebase</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              </Link>
+              <Link className="project-link" to="/"> 
+              <li>
+                <div className="project-container">
+                  <div className="overLay-project-container"></div>
+                  <header className="header-time">July 2023 — Dec 2023</header>
+                  <div className="project-main-content">
+                    <p id="project-head">
+                        
+                        <span className="project-header">Casino Game</span>
+                        <span 
+                            id="project-arrow"
+                            role="img"
+                            aria-label="Link to project">
+                        ↗</span>
+                    </p>  
+                    <p className="project-description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quaerat fuga deleniti dolorum ipsam distinctio assumenda vel tempora necessitatibus aspernatur!
+            
+                    </p>
+
+                    <ul
+                      className="skill-elements"
+                      aria-label="Technologies used"
+                    >
+                      <li>
+                        <div className="skill-e">Swift</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">Firebase</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">Firestore</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              </Link>
+            </ol>
           </section>
 
-          <section id="personal interests">
+          <section id="personal">
             <div className="headline-box">Personal Interests</div>
             <div>
               In addition to my passion for software engineering, I maintain an
