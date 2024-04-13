@@ -236,7 +236,9 @@ body div{
     line-height: 28px;
     color:var(--clr-neutral-200); 
   }
-
+  .body-container{
+    margin-left: .25rem;
+  }
 }
 /* end of different view options*/
 
