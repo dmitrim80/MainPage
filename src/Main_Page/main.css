@@ -179,6 +179,10 @@ body div{
     min-width: 2.5rem;
     max-width: 9rem;
   } 
+ .body-container{
+  margin-left: -1rem;
+ }
+
 }
 @media (max-width: 767px) {
   body .main-box {
@@ -210,11 +214,7 @@ body div{
     letter-spacing:-0.5px;
     color:var(--clr-neutral-200); 
   }
-  .more-pages{
-    margin-top: 4.5rem;
-    
 
-  }
 }
 @media (max-width: 639px) {
   .main-box {
@@ -236,6 +236,7 @@ body div{
     line-height: 28px;
     color:var(--clr-neutral-200); 
   }
+
 }
 /* end of different view options*/
 
