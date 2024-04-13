@@ -571,7 +571,8 @@ line-height: 1.25rem;
 }
 .bottom-email-link{
   text-decoration: none;
-  color: var(--clr-neutral-200);
+  color: var(--clr-primary-300);
   font-family: var(--ff-med);
-  
+  font-size: var(--fs-350);
+  cursor: pointer;
 }

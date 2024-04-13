@@ -125,7 +125,7 @@ const Body = () => {
                         ↗</span>
                     </p>  
                     <p className="project-description">
-                    Created website for marine-life enthusiasts share images of different coral species.Google database is used for a secure storage with authentication for users. Upload/ Download update description create personal favorites and share with others. Projects is ongoing...
+                    Developed a vibrant website designed for marine-life enthusiasts to share and explore images of diverse coral species. This platform utilizes Google's robust database services for secure image storage, complete with user authentication to ensure privacy and safety. Users can upload and download images, update descriptions, curate personal favorites, and share their discoveries with the community. The project is actively evolving, with ongoing enhancements to enrich user experience and interaction.
                     </p>
 
                     <ul
@@ -171,8 +171,7 @@ const Body = () => {
                         ↗</span>
                     </p>  
                     <p className="project-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta quaerat fuga deleniti dolorum ipsam distinctio assumenda vel tempora necessitatibus aspernatur!
-            
+                    Dive into the sleek world of app development with our Swift-based casino game! Enjoy smooth, intuitive gameplay on your iOS device, featuring rich graphics and seamless performance. Perfect for gamers looking to experience top-tier casino action on the go.
                     </p>
 
                     <ul
