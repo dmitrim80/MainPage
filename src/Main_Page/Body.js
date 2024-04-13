@@ -92,9 +92,6 @@ const Body = () => {
                         <div className="skill-e">JavaScript</div>
                       </li>
                       <li>
-                        <div className="skill-e">JSX</div>
-                      </li>
-                      <li>
                         <div className="skill-e">React</div>
                       </li>
                       <li>
@@ -134,9 +131,6 @@ const Body = () => {
                     >
                       <li>
                         <div className="skill-e">JavaScript</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">JSX</div>
                       </li>
                       <li>
                         <div className="skill-e">React</div>
