@@ -212,9 +212,8 @@ const Body = () => {
           <section id="contact">
             <div className="headline-box">Contact</div>
             <div className="bottom-contact-box">
-              I am excited about the opportunity to contribute to innovative
-              projects and teams. For collaborations or opportunities, please
-              reach out to me at{" "}
+            Designed and coded in Visual Studio Code by yours truly. Built with React and CSS. All text is set in the Inter font.
+            You can reach out to me at{" "}
               <a
                 href="mailto:dmitri.m80@gmail.com"
                 className="bottom-email-link"
