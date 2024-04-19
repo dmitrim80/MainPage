@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./main.css";
 import Header from "./Header";
 import Body from "./Body";
 import { debounce } from "./Utilities";
+import "./main.css";
 
 const Main = () => {
   const [activeLink, setActiveLink] = useState("about");

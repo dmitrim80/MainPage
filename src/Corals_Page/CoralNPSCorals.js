@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from '../firebase-config';
+import { storage, db, auth } from './CoralFirebase-config';
 import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
 import { v4 } from 'uuid';
@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 
 
 
-const FishTankFurn = () => {
+const NPSCorals = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +32,6 @@ const FishTankFurn = () => {
 
 
   // create new collection
- 
 
 
     
@@ -47,7 +46,7 @@ const FishTankFurn = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "fishtankfurniture", image.id);
+            const docRef = doc(db, "nps corals", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
@@ -99,7 +98,7 @@ const FishTankFurn = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "fishtankfurniture"), {
+            const newDocRef = await addDoc(collection(db, "nps corals"), {
                 url,
                 imageName,
                 description: imageDescription,
@@ -135,7 +134,7 @@ const FishTankFurn = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "fishtankfurniture"), where("imageName", "==", imageName));
+            const q = query(collection(db, "nps corals"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -169,7 +168,7 @@ const FishTankFurn = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "fishtankfurniture", imageId);
+                    const docRef = doc(db, "nps corals", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -197,7 +196,7 @@ const FishTankFurn = () => {
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "fishtankfurniture", imageId);
+            const docRef = doc(db, "nps corals", imageId);
             await updateDoc(docRef, {
                 description: description,
                 aquascapeType: aquascapeType,
@@ -221,7 +220,7 @@ const FishTankFurn = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "fishtankfurniture", imageId);
+                const docRef = doc(db, "nps corals", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
@@ -351,8 +350,8 @@ const FishTankFurn = () => {
 
     const fetchImages = async () => {
         try {
-            const fishtankfurnitureCollection = collection(db, "fishtankfurniture");
-            const descriptionDocs = await getDocs(fishtankfurnitureCollection);
+            const npsCoralsCollection = collection(db, "nps corals");
+            const descriptionDocs = await getDocs(npsCoralsCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -437,7 +436,7 @@ const FishTankFurn = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "fishtankfurniture", id);
+            const docRef = doc(db, "nps corals", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -458,7 +457,9 @@ const FishTankFurn = () => {
     };
     
     return (
-        <>
+        <div className="page-main-box">
+      <div className="page-inputbox">
+        <div className="page-input-boxes">
      
         
         <input 
@@ -471,31 +472,35 @@ const FishTankFurn = () => {
                 value={imageAquascapeType}
                 onChange={handleAquascapeTypeInput}
             />
-            <input 
-                type="text" 
-                id="descriptionInput"  // Adding an id attribute
-                name="description"     // Adding a name attribute
-                className="description-input"
-                placeholder="Enter image description (max 255 characters)" 
-                maxLength="255"
-                value={imageDescription}
-                onChange={handleDescriptionInput}
-            />
+            <textarea
+            id="descriptionInput"
+            name="description"
+            className="description-input"
+            placeholder="Enter image description (max 300 characters)"
+            maxLength="255"
+            rows="4" // Sets the initial visible number of lines
+            onChange={handleDescriptionInput}
+            value={imageDescription}
+          ></textarea>
+          </div>
+          <div className="page-input-box2">
             <input 
             type="file" 
             id="imageUpload"       // Existing id attribute
-            name="imageUpload"     // Adding a name attribute 
+            name="imageUpload" 
+            className="file-box"    // Adding a name attribute 
             value={fileInputValue}
             onChange={handleFileInputChange}
              />
-            <button className="upload-btn" onClick={uploadImage}>Upload Image</button>
-            
+            <button className="page-btn-upload" onClick={uploadImage}>Upload Image</button>
+            </div>
+            </div>
 
-            <div className="images-list">
+            <div className="page-images-list">
             {currentImages.map((image, index) =>  (
-                    <div key={image.imageName} className="image-container">
-                        <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
-                        <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
+                    <div key={image.imageName} className="page-image-container">
+                        <img src={image.url} className="page-img-grid" onClick={() => handleImageClick(image)} />
+                        <button className="page-btn" onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>
                 ))}
@@ -528,8 +533,8 @@ const FishTankFurn = () => {
                     onClose={handleDismiss}
                 />
             )}
-        </>
+       </div>
     );
 };
 
-export default FishTankFurn;
+export default NPSCorals;

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { storage, db, auth } from '../firebase-config';
+import { storage, db, auth } from './CoralFirebase-config';
 import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage';
 import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, where, getDoc,writeBatch } from 'firebase/firestore';
 import { v4 } from 'uuid';
 
-
-
-
-const Favia = () => {
+const Scoly = () => {
     const [imageUpload, setImageUpload] = useState(null);
     const [imageList, setImageList] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,8 +29,7 @@ const Favia = () => {
 
 
   // create new collection
- 
-
+  
 
 
     
@@ -48,7 +44,7 @@ const Favia = () => {
 
     const handleImageClick = async (image) => {
         try {
-            const docRef = doc(db, "favia", image.id);
+            const docRef = doc(db, "scolymia", image.id);
             const docSnapshot = await getDoc(docRef);
             if (docSnapshot.exists()) {
                 const imageData = docSnapshot.data();
@@ -100,7 +96,7 @@ const Favia = () => {
             const url = await getDownloadURL(snapshot.ref);
     
             // Initialize fields when creating a new document
-            const newDocRef = await addDoc(collection(db, "favia"), {
+            const newDocRef = await addDoc(collection(db, "scolymia"), {
                 url,
                 imageName,
                 description: imageDescription,
@@ -136,7 +132,7 @@ const Favia = () => {
 
     const getDocumentIdFromImageName = async (imageName) => {
         try {
-            const q = query(collection(db, "favia"), where("imageName", "==", imageName));
+            const q = query(collection(db, "scolymia"), where("imageName", "==", imageName));
             const querySnapshot = await getDocs(q);
             console.log(`Documents found for image name '${imageName}':`, querySnapshot.docs.length);
             querySnapshot.forEach(doc => console.log(doc.id, doc.data()));
@@ -170,7 +166,7 @@ const Favia = () => {
             await deleteObject(imageRef);
     
                 if (!isOrphan) {
-                    const docRef = doc(db, "favia", imageId);
+                    const docRef = doc(db, "scolymia", imageId);
                     await deleteDoc(docRef);
                 }
     
@@ -198,7 +194,7 @@ const Favia = () => {
     
         try {
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "favia", imageId);
+            const docRef = doc(db, "scolymia", imageId);
             await updateDoc(docRef, {
                 description: description,
                 aquascapeType: aquascapeType,
@@ -222,7 +218,7 @@ const Favia = () => {
                 return image;
             }));
             try {
-                const docRef = doc(db, "favia", imageId);
+                const docRef = doc(db, "scolymia", imageId);
                 const docSnapshot = await getDoc(docRef);
                 if (docSnapshot.exists()) {
                     const imageData = docSnapshot.data();
@@ -352,8 +348,8 @@ const Favia = () => {
 
     const fetchImages = async () => {
         try {
-            const faviaCollection = collection(db, "favia");
-            const descriptionDocs = await getDocs(faviaCollection);
+            const scolymiaCollection = collection(db, "scolymia");
+            const descriptionDocs = await getDocs(scolymiaCollection);
     
             let images = [];
             for (const doc of descriptionDocs.docs) {
@@ -438,7 +434,7 @@ const Favia = () => {
         try {
             // Use the state for the current user's email, fallback to 'Unknown' if not available
             const userEmail = currentUser ? currentUser.email || 'Unknown' : 'Unknown';
-            const docRef = doc(db, "favia", id);
+            const docRef = doc(db, "scolymia", id);
             await updateDoc(docRef, {
                 description,
                 lastEditedBy: userEmail, // Use email instead of displayName
@@ -459,8 +455,10 @@ const Favia = () => {
     };
     
     return (
-        <>
-   
+        <div className="page-main-box">
+      <div className="page-inputbox">
+        <div className="page-input-boxes">
+        
         
         <input 
                 type="text" 
@@ -472,31 +470,35 @@ const Favia = () => {
                 value={imageAquascapeType}
                 onChange={handleAquascapeTypeInput}
             />
-            <input 
-                type="text" 
-                id="descriptionInput"  // Adding an id attribute
-                name="description"     // Adding a name attribute
-                className="description-input"
-                placeholder="Enter image description (max 255 characters)" 
-                maxLength="255"
-                value={imageDescription}
-                onChange={handleDescriptionInput}
-            />
+            <textarea
+            id="descriptionInput"
+            name="description"
+            className="description-input"
+            placeholder="Enter image description (max 300 characters)"
+            maxLength="255"
+            rows="4" // Sets the initial visible number of lines
+            onChange={handleDescriptionInput}
+            value={imageDescription}
+          ></textarea>
+          </div>
+        <div className="page-input-box2">
             <input 
             type="file" 
             id="imageUpload"       // Existing id attribute
-            name="imageUpload"     // Adding a name attribute 
+            name="imageUpload"  
+            className="file-box"   // Adding a name attribute 
             value={fileInputValue}
             onChange={handleFileInputChange}
              />
-            <button className="upload-btn" onClick={uploadImage}>Upload Image</button>
-            
+            <button className="page-btn-upload" onClick={uploadImage}>Upload Image</button>
+            </div>
+            </div>
 
-            <div className="images-list">
+            <div className="page-images-list">
             {currentImages.map((image, index) =>  (
-                    <div key={image.imageName} className="image-container">
-                        <img src={image.url} className="img-grid" onClick={() => handleImageClick(image)} />
-                        <button onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
+                    <div key={image.imageName} className="page-image-container">
+                        <img src={image.url} className="page-img-grid" onClick={() => handleImageClick(image)} />
+                        <button className="page-btn" onClick={() => deleteImage(image.id, image.imageName)}>Delete</button>
                         
                     </div>
                 ))}
@@ -529,8 +531,8 @@ const Favia = () => {
                     onClose={handleDismiss}
                 />
             )}
-        </>
+        </div>
     );
 };
 
-export default Favia;
+export default Scoly;

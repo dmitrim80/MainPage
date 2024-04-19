@@ -58,17 +58,17 @@ const Body = () => {
                   <header className="header-time">2024 — Present</header>
                   <div className="project-main-content">
                     <p>
-                        <img 
-                            src={bjlogo}
-                            className="project-img"
-                            alt="logo-blackjack"
-                        /> 
                         <span className="project-header">BlackJack Game</span>
                         <span 
                             id="project-arrow"
                             role="img"
                             aria-label="Link to project">
                         ↗</span>
+                        <img 
+                            src={bjlogo}
+                            className="project-img"
+                            alt="logo-blackjack"
+                        /> 
                     </p>  
                     <p className="project-description">
                     As part of my capstone project, I developed a fully-functional
@@ -106,7 +106,7 @@ const Body = () => {
               </li>
               </Link>
 
-              <Link className="project-link" to="/"> 
+              <Link className="project-link" to="/corals/"> 
               <li>
                 <div className="project-container">
                   <div className="overLay-project-container"></div>
@@ -149,15 +149,16 @@ const Body = () => {
                 </div>
               </li>
               </Link>
-              <Link className="project-link" to="/"> 
+              
+              <Link className="project-link" to="/bootstrap"> 
               <li>
                 <div className="project-container">
                   <div className="overLay-project-container"></div>
-                  <header className="header-time">July 2023 — Dec 2023</header>
+                  <header className="header-time">2024</header>
                   <div className="project-main-content">
                     <p id="project-head">
                         
-                        <span className="project-header">Casino Game</span>
+                        <span className="project-header">8 Sorting Algorithms</span>
                         <span 
                             id="project-arrow"
                             role="img"
@@ -165,27 +166,76 @@ const Body = () => {
                         ↗</span>
                     </p>  
                     <p className="project-description">
-                    Dive into the sleek world of app development with our Swift-based casino game! Enjoy smooth, intuitive gameplay on your iOS device, featuring rich graphics and seamless performance. Perfect for gamers looking to experience top-tier casino action on the go.
+                    Discover the essentials of sorting with "8 Must-Know Sorting Algorithms," a dynamic educational tool built using JavaScript, Bootstrap, and React. This interactive webpage showcases the differences and efficiencies of various algorithms through engaging visuals and clear explanations. Whether you're a novice or a practiced coder, this project offers a practical look at algorithmic sorting, demonstrating each method's unique characteristics in an accessible format powered by modern web technologies.
                     </p>
+                    
 
+ 
                     <ul
                       className="skill-elements"
                       aria-label="Technologies used"
                     >
                       <li>
-                        <div className="skill-e">Swift</div>
+                        <div className="skill-e">React</div>
                       </li>
                       <li>
-                        <div className="skill-e">Firebase</div>
+                        <div className="skill-e">Bootstrap</div>
                       </li>
                       <li>
-                        <div className="skill-e">Firestore</div>
+                        <div className="skill-e">JavaScript</div>
                       </li>
                     </ul>
                   </div>
                 </div>
               </li>
               </Link>
+
+              <a className="project-link" href='../Corals_Page/1000gal.html' target="_blank">
+
+              <div className="project-link"> 
+              
+              <li>
+                <div className="project-container">
+                  <div className="overLay-project-container"></div>
+                  <header className="header-time">2018-2022</header>
+                  <div className="project-main-content">
+                    <p id="project-head">
+
+                    
+                        <span className="project-header">1000gal Project</span>
+                        
+                        <span 
+                            id="project-arrow"
+                            role="img"
+                            aria-label="Link to project">
+                        ↗</span>
+                    </p>  
+                    <p className="project-description">
+                    Explore the comprehensive journey of setting up and maintaining a 1000-gallon aquarium, documented from 2018 to 2022. This project delves into the intricacies of aquatic design, ecosystem balance, and the technical challenges faced during the creation and upkeep of a large-scale aquarium. Access detailed insights and visual documentation by visiting the dedicated project page.
+                  </p>
+
+                    
+
+ 
+                    <ul
+                      className="skill-elements"
+                      aria-label="Technologies used"
+                    >
+                      <li>
+                        <div className="skill-e">React</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">Bootstrap</div>
+                      </li>
+                      <li>
+                        <div className="skill-e">JavaScript</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              </div></a>
+
             </ol>
           </section>
 
@@ -215,6 +265,8 @@ const Body = () => {
                 dmitri.m80@gmail.com
               </a>
             </div>
+            
+           
           </section>
         </div>
       </div>

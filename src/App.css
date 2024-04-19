@@ -1,10 +1,10 @@
-/* css
+css
 * {
   box-sizing: border-box;
 }
-.box {
-  background-color: aqua;
-  border: 1px solid blue;
-  min-height: 50px;
-  font-size: 2rem;
-} */
+body {
+  background-color: var(--clr-neutral-900);
+  font-size: var(--fs-400);
+  color:var(--clr-neutral-100);
+  font-family: 'Inter','Inter-Medium', sans-serif;
+}
