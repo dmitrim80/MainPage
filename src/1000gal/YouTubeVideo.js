@@ -5,20 +5,22 @@ const YouTubeVideo = ({ videoId }) => {
 
   return (
 
-    <div 
-        className="youtube-video-container" 
-        style={{ 
-            overflow: 'hidden', 
-            paddingBottom: '56.25%', 
-            position: 'relative', 
-            height: 0 }}>
-
+    <div className="youtube-video-container" >
       <iframe
         src={src}
         frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; 
+        autoplay; 
+        clipboard-write; 
+        encrypted-media; 
+        gyroscope; 
+        picture-in-picture"
         allowFullScreen
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        style={{ position: 'absolute', 
+        top: 0, 
+        left: 0, 
+        width: '100%', 
+        height: '100%' }}
         title="YouTube video player"
       />
     </div>

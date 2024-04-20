@@ -1,10 +1,238 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./bootstrap_page.css";
 const Main = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
+
+  const codeStringHeapSort = `#Heap Sort Algorithm
+
+      def createHeap(data, length, index):
+
+      largest = index
+      left = 2 * index + 1
+      right = 2 * index + 2
+
+      if left < length and data[index] < data[left]:
+      largest = left
+
+      if right < length and data[largest] < data[right]:
+      largest = right
+
+      if largest != index:
+      data[index], data[largest] = data[largest], data[index]
+      createHeap(data, length, largest)
+
+      def heapSort(data):
+      length = len(data)
+
+      #We build max heap
+      for index in range(length, 0, -1):
+      createHeap(data, length, index)
+
+      for index in range(length -1, 0, -1):
+      data[index], data[0] = data[0], data[index]
+
+      createHeap(data, index, 0)
+
+      print(data)`.trim();
+  const codeStringMergeSort = `#Merge Sort Algorithm
+
+      def mergeSort(data):
+      """This function determines whether the list is broken
+      into individual parts"""
+
+      if len(data) < 2:
+      return data
+
+      middle = len(data)//2
+
+      # We break the list in two parts
+      left = mergeSort(data[:middle])
+      right = mergeSort(data[middle:])
+
+      # Merge the two sorted parts into a larger piece.
+
+      print("The left side is: ", left)
+      print("The right side is: ", right)
+
+      merged = merge(left, right)
+
+      print("Merged ", merged)
+      return merged
+      def merge(left, right):
+      """When left side/right side is empty, 
+      It means that this is an individual item and is already sorted."""
+
+      #We make sure the right/left side is not empty
+      #meaning that it's an individual item and it's already sorted.
+      if not len(left):
+      return left
+
+      if not len(right):
+      return right
+
+      result = []
+      leftIndex = 0
+      rightIndex = 0
+      totalLen = len(left) + len(right)
+
+      #
+      while (len(result) < totalLen):
+
+      #Perform the required comparisons and merge the two parts
+
+      if left[leftIndex] < right[rightIndex]:
+      result.append(left[leftIndex])
+      leftIndex += 1
+      else:
+      result.append(right[rightIndex])
+      rightIndex += 1
+
+      if leftIndex == len(left) or rightIndex == len(right):
+      result.extend(left[leftIndex:] or right[rightIndex:])
+
+      break
+
+      return result`.trim();
+  const codeStringQuickSort = `#Quick Sort Algorithm
+
+
+  def quickSort(data, left, right):
+      if right<= left:
+          return 
+      else:
+          pivot = partition(data, left, right)
+          quickSort(data, left, pivot - 1)
+          quickSort(data, pivot + 1, right)
+  
+      return data
+  
+  def partition(data, left, right):
+      """This function chooses a pivot point that dertermines the left and right side of the sort"""
+      pivot = data[left]
+      leftIndex = left + 1
+      rightIndex = right
+  
+      while True:
+          while leftIndex <= rightIndex and data[leftIndex] <= pivot:
+              leftIndex += 1
+          while rightIndex >= leftIndex and data[rightIndex] >= pivot:
+              rightIndex -= 1
+          if rightIndex <= leftIndex:
+              break
+          data[leftIndex], data[rightIndex] = data[rightIndex], data [leftIndex]
+          print(data)
+  
+      data[left], data[rightIndex] = data[rightIndex], data[left]
+      print(data)
+  
+      return rightIndex`.trim();
+  const codeStringInsertionSort = `#Insertion Sort Algorithm
+
+  def insertionSort(data):
+  
+      for scanIndex in range(1, len(data)):
+          tmp = data[scanIndex]
+  
+          minIndex = scanIndex
+  
+          while minIndex > 0 and tmp < data[minIndex - 1]:
+              data[minIndex] = data[minIndex - 1]
+              minIndex -= 1
+  
+          data[minIndex] = tmp
+  
+          print(data)`.trim();
+
+  const codeStringSelectionSort = `#Selection Sort Algorithm
+
+  def selectionSort(data):
+  
+      for scanIndex in range(0, len(data)):
+  
+          minIndex = scanIndex
+  
+          for compIndex in range(scanIndex + 1, len(data)):
+              if data[compIndex] < data[minIndex]:
+                  minIndex = compIndex
+  
+          if minIndex != scanIndex:
+              data[scanIndex], data[minIndex] = data[minIndex], data[scanIndex]
+  
+              print(data)`.trim();
+
+  const codeStringBubbleSort = `#Bubble Sort Algorithm
+
+  def bubbleSort(data):
+      lenght = len(data)
+  
+      for iIndex in range(lenght):
+          swapped = False
+  
+          for jIndex in range(0, lenght - iIndex - 1):
+  
+              if data[jIndex] > data[jIndex + 1]:
+                  data[jIndex], data[jIndex + 1] = data[jIndex + 1], data[jIndex]
+                  swapped = True
+  
+          if swapped == False:
+              break
+  
+      print(data)`.trim();
+  const codeStringShellSort = `
+  #Shell Sort Algorithm
+
+def shellSort(data, length):
+
+    gap = length//2
+
+    while gap > 0:
+        for iIndex in range(gap, length):
+
+            temp = data[iIndex]
+
+            jIndex = iIndex
+
+            while jIndex >= gap and data[jIndex - gap] > temp:
+                data[jIndex] = data[jIndex - gap]
+
+                jIndex -= gap
+
+            data[jIndex] = temp
+
+        gap //= 2
+
+    print(data)`.trim();
+
+  const codeStringBucketSort = `
+#Bucket Sort Algorithm
+
+def bucketSort(data):
+    bucket = []
+
+    for iIndex in range(len(data)):
+        bucket.append([])
+
+    for jIndex in data:
+        index_bucket = int(10 * jIndex)
+        bucket[index_bucket].append(jIndex)
+        print(bucket)
+
+    for iIndex in range(len(data)):
+        # I used the built-in method sorted() to sort the array.
+        bucket[iIndex] = sorted(bucket[iIndex])
+
+        kIndex = 0
+
+        for iIndex in range(len(data)):
+
+            for jIndex in range(len(bucket[iIndex])):
+                data[kIndex] = bucket[iIndex][jIndex]
+                kIndex += 1
+
+    print(data)`.trim();
 
   // Function to handle accordion toggle
   const toggleAccordion = (id) => {
@@ -17,21 +245,21 @@ const Main = () => {
   return (
     <>
       <Header />
-  
 
-      <h1 className="head-h1" red>
+      <h1 className="head-h1" id="head-h1"red>
         8 must-know sorting algorithms
       </h1>
 
       <div className="accordion" id="accordionExample">
-        
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseOne' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseOne" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseOne')}
-              aria-expanded={openAccordion === 'collapseOne'}
+              onClick={() => toggleAccordion("collapseOne")}
+              aria-expanded={openAccordion === "collapseOne"}
               aria-controls="collapseOne"
             >
               Bubble Sort
@@ -39,7 +267,9 @@ const Main = () => {
           </h2>
           <div
             id="collapseOne"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseOne' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseOne" ? "show" : ""
+            }`}
             aria-labelledby="headingOne"
           >
             <div className="accordion-body">
@@ -59,36 +289,23 @@ const Main = () => {
                   <li>the complexity doesn't matter.</li>
                 </ul>
               </p>
-              <code>{`#Bubble Sort Algorithm
-
-def bubbleSort(data):
-    lenght = len(data)
-
-    for iIndex in range(lenght):
-        swapped = False
-
-        for jIndex in range(0, lenght - iIndex - 1):
-
-            if data[jIndex] > data[jIndex + 1]:
-                data[jIndex], data[jIndex + 1] = data[jIndex + 1], data[jIndex]
-                swapped = True
-
-        if swapped == False:
-            break
-
-    print(data)`}</code>
+              <pre>
+                <code>{codeStringBubbleSort}</code>
+              </pre>
               ,
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingTwo">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseTwo' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseTwo" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseTwo')}
-              aria-expanded={openAccordion === 'collapseTwo'}
+              onClick={() => toggleAccordion("collapseTwo")}
+              aria-expanded={openAccordion === "collapseTwo"}
               aria-controls="collapseTwo"
             >
               Selection Sort
@@ -96,7 +313,9 @@ def bubbleSort(data):
           </h2>
           <div
             id="collapseTwo"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseTwo' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseTwo" ? "show" : ""
+            }`}
             aria-labelledby="headingTwo"
           >
             <div className="accordion-body">
@@ -110,22 +329,9 @@ def bubbleSort(data):
               the front of the list (ensuring that the item is in its correct
               location) or looks for the largest item and places it in the back
               of the list.
-              <code>{`#Selection Sort Algorithm
-
-def selectionSort(data):
-
-    for scanIndex in range(0, len(data)):
-
-        minIndex = scanIndex
-
-        for compIndex in range(scanIndex + 1, len(data)):
-            if data[compIndex] < data[minIndex]:
-                minIndex = compIndex
-
-        if minIndex != scanIndex:
-            data[scanIndex], data[minIndex] = data[minIndex], data[scanIndex]
-
-            print(data)`}</code>
+              <pre>
+                <code>{codeStringSelectionSort}</code>
+              </pre>
               Selection Sort has the same complexities as Bubble Sort. Selection
               Sort is used when:
               <ul>
@@ -136,14 +342,16 @@ def selectionSort(data):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingThree">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseThree' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseThree" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseThree')}
-              aria-expanded={openAccordion === 'collapseThree'}
+              onClick={() => toggleAccordion("collapseThree")}
+              aria-expanded={openAccordion === "collapseThree"}
               aria-controls="collapseThree"
             >
               Insertion Sort
@@ -151,7 +359,9 @@ def selectionSort(data):
           </h2>
           <div
             id="collapseThree"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseThree' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseThree" ? "show" : ""
+            }`}
             aria-labelledby="headingThree"
           >
             <div className="accordion-body">
@@ -166,22 +376,9 @@ def selectionSort(data):
                 checks new items against the sorted items and inserts the new
                 item into the right position in the list. Example :
               </p>
-              <code>{`#Insertion Sort Algorithm
-
-def insertionSort(data):
-
-    for scanIndex in range(1, len(data)):
-        tmp = data[scanIndex]
-
-        minIndex = scanIndex
-
-        while minIndex > 0 and tmp < data[minIndex - 1]:
-            data[minIndex] = data[minIndex - 1]
-            minIndex -= 1
-
-        data[minIndex] = tmp
-
-        print(data)`}</code>
+              <pre>
+                <code>{codeStringInsertionSort}</code>
+              </pre>
               <ul>
                 <li>
                   Insertion Sort has a worst and average complexity case of
@@ -200,14 +397,16 @@ def insertionSort(data):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingFour">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseFour' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseFour" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseFour')}
-              aria-expanded={openAccordion === 'collapseFour'}
+              onClick={() => toggleAccordion("collapseFour")}
+              aria-expanded={openAccordion === "collapseFour"}
               aria-controls="collapseFour"
             >
               QuickSort
@@ -215,7 +414,9 @@ def insertionSort(data):
           </h2>
           <div
             id="collapseFour"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseFour' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseFour" ? "show" : ""
+            }`}
             aria-labelledby="headingFour"
           >
             <div className="accordion-body">
@@ -231,39 +432,9 @@ def insertionSort(data):
                 pivot. Then we sort the two sub-arrays and repeat the process
                 again.
               </p>
-              <code>{`#Quick Sort Algorithm
-
-
-def quickSort(data, left, right):
-    if right<= left:
-        return 
-    else:
-        pivot = partition(data, left, right)
-        quickSort(data, left, pivot - 1)
-        quickSort(data, pivot + 1, right)
-
-    return data
-
-def partition(data, left, right):
-    """This function chooses a pivot point that dertermines the left and right side of the sort"""
-    pivot = data[left]
-    leftIndex = left + 1
-    rightIndex = right
-
-    while True:
-        while leftIndex <= rightIndex and data[leftIndex] <= pivot:
-            leftIndex += 1
-        while rightIndex >= leftIndex and data[rightIndex] >= pivot:
-            rightIndex -= 1
-        if rightIndex <= leftIndex:
-            break
-        data[leftIndex], data[rightIndex] = data[rightIndex], data [leftIndex]
-        print(data)
-
-    data[left], data[rightIndex] = data[rightIndex], data[left]
-    print(data)
-
-    return rightIndex`}</code>
+              <pre>
+                <code>{codeStringQuickSort}</code>
+              </pre>
               <ul>
                 <li>
                   QuickSort has worst-case complexity of O(n2). It occurs when
@@ -283,14 +454,16 @@ def partition(data, left, right):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingFive">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseFive' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseFive" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseFive')}
-              aria-expanded={openAccordion === 'collapseFive'}
+              onClick={() => toggleAccordion("collapseFive")}
+              aria-expanded={openAccordion === "collapseFive"}
               aria-controls="collapseFive"
             >
               MergeSort
@@ -298,7 +471,9 @@ def partition(data, left, right):
           </h2>
           <div
             id="collapseFive"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseFive' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseFive" ? "show" : ""
+            }`}
             aria-labelledby="headingFive"
           >
             <div className="accordion-body">
@@ -318,67 +493,9 @@ def partition(data, left, right):
                 adjacent list to sort and merge the two adjacent lists. Finally,
                 all the elements are sorted and merged.
               </p>
-              <code>
-                {`#Merge Sort Algorithm
-
-def mergeSort(data):
-    """This function determines whether the list is broken
-        into individual parts"""
-
-    if len(data) < 2:
-        return data
-
-    middle = len(data)//2
-
-    # We break the list in two parts
-    left = mergeSort(data[:middle])
-    right = mergeSort(data[middle:])
-
-    # Merge the two sorted parts into a larger piece.
-
-    print("The left side is: ", left)
-    print("The right side is: ", right)
-
-    merged = merge(left, right)
-
-    print("Merged ", merged)
-    return merged
-def merge(left, right):
-    """When left side/right side is empty, 
-    It means that this is an individual item and is already sorted."""
-
-    #We make sure the right/left side is not empty
-    #meaning that it's an individual item and it's already sorted.
-    if not len(left):
-        return left
-
-    if not len(right):
-        return right
-
-    result = []
-    leftIndex = 0
-    rightIndex = 0
-    totalLen = len(left) + len(right)
-
-    #
-    while (len(result) < totalLen):
-
-        #Perform the required comparisons and merge the two parts
-
-        if left[leftIndex] < right[rightIndex]:
-            result.append(left[leftIndex])
-            leftIndex += 1
-        else:
-            result.append(right[rightIndex])
-            rightIndex += 1
-
-        if leftIndex == len(left) or rightIndex == len(right):
-            result.extend(left[leftIndex:] or right[rightIndex:])
-
-            break
-
-    return result`}
-              </code>
+              <pre>
+                <code>{codeStringMergeSort}</code>
+              </pre>
               <p>
                 MergeSort has worst-case and average-case complexity of
                 O(n*log(n)) which makes it fastest than some of the other
@@ -387,14 +504,16 @@ def merge(left, right):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingSix">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseSix' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseSix" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseSix')}
-              aria-expanded={openAccordion === 'collapseSix'}
+              onClick={() => toggleAccordion("collapseSix")}
+              aria-expanded={openAccordion === "collapseSix"}
               aria-controls="collapseSix"
             >
               Bucket Sort
@@ -402,7 +521,9 @@ def merge(left, right):
           </h2>
           <div
             id="collapseSix"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseSix' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseSix" ? "show" : ""
+            }`}
             aria-labelledby="headingSix"
           >
             <div className="accordion-body">
@@ -417,34 +538,9 @@ def merge(left, right):
                 elements of buckets are sorted. Finally, the elements are
                 gathered in order.
               </p>
-              <code>
-                {`#Bucket Sort Algorithm
-
-def bucketSort(data):
-    bucket = []
-
-    for iIndex in range(len(data)):
-        bucket.append([])
-
-    for jIndex in data:
-        index_bucket = int(10 * jIndex)
-        bucket[index_bucket].append(jIndex)
-        print(bucket)
-
-    for iIndex in range(len(data)):
-#I used the built-in method sorted() to sort the array. 
-        bucket[iIndex] = sorted(bucket[iIndex])
-
-        kIndex = 0
-
-        for iIndex in range(len(data)):
-
-            for jIndex in range(len(bucket[iIndex])):
-                data\[kIndex] = bucket[iIndex\][jIndex]
-                kIndex += 1
-
-    print(data)`}
-              </code>
+              <pre>
+                <code>{codeStringBucketSort}</code>
+              </pre>
               <p>
                 Bucket Sort algorithm has the worst-case complexity of O(n2). It
                 occurs when elements in the same range are put in the same
@@ -470,14 +566,16 @@ def bucketSort(data):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingSeven">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseSeven' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseSeven" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseSeven')}
-              aria-expanded={openAccordion === 'collapseSeven'}
+              onClick={() => toggleAccordion("collapseSeven")}
+              aria-expanded={openAccordion === "collapseSeven"}
               aria-controls="collapseSeven"
             >
               Shell Sort
@@ -485,7 +583,9 @@ def bucketSort(data):
           </h2>
           <div
             id="collapseSeven"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseSeven' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseSeven" ? "show" : ""
+            }`}
             aria-labelledby="headingSeven"
           >
             <div className="accordion-body">
@@ -497,31 +597,9 @@ def bucketSort(data):
                 of the shell sort depends on the type of sequence used for a
                 given input array.
               </p>{" "}
-              <code>
-                {`#Shell Sort Algorithm
-
-def shellSort(data, length):
-
-    gap = length//2
-
-    while gap > 0:
-        for iIndex in range(gap, length):
-
-            temp = data[iIndex]
-
-            jIndex = iIndex
-
-            while jIndex >= gap and data[jIndex - gap] > temp:
-                data[jIndex] = data[jIndex - gap]
-
-                jIndex -= gap
-
-            data[jIndex] = temp
-
-        gap //= 2
-
-    print(data)`}
-              </code>
+              <pre>
+                <code>{codeStringShellSort}</code>
+              </pre>
               <ul>
                 <li>
                   Shell Sort has worst-case complexity less or equal than O(n2).
@@ -539,14 +617,16 @@ def shellSort(data, length):
             </div>
           </div>
         </div>
-        
+
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingEight">
             <button
-              className={`accordion-button ${openAccordion !== 'collapseEight' ? 'collapsed' : ''}`}
+              className={`accordion-button ${
+                openAccordion !== "collapseEight" ? "collapsed" : ""
+              }`}
               type="button"
-              onClick={() => toggleAccordion('collapseEight')}
-              aria-expanded={openAccordion === 'collapseEight'}
+              onClick={() => toggleAccordion("collapseEight")}
+              aria-expanded={openAccordion === "collapseEight"}
               aria-controls="collapseEight"
             >
               Heap Sort
@@ -554,7 +634,9 @@ def shellSort(data, length):
           </h2>
           <div
             id="collapseEight"
-            className={`accordion-collapse collapse ${openAccordion === 'collapseEight' ? 'show' : ''}`}
+            className={`accordion-collapse collapse ${
+              openAccordion === "collapseEight" ? "show" : ""
+            }`}
             aria-labelledby="headingEight"
           >
             <div className="accordion-body">
@@ -580,39 +662,9 @@ def shellSort(data, length):
                 heapify the binary tree again to have the greater value at the
                 top again.
               </p>
-              <code>
-                {`#Heap Sort Algorithm
-
-def createHeap(data, length, index):
-
-    largest = index
-    left = 2 * index + 1
-    right = 2 * index + 2
-
-    if left < length and data[index] < data[left]:
-        largest = left
-
-    if right < length and data[largest] < data[right]:
-        largest = right
-
-    if largest != index:
-        data[index], data[largest] = data[largest], data[index]
-        createHeap(data, length, largest)
-
-def heapSort(data):
-    length = len(data)
-
-    #We build max heap
-    for index in range(length, 0, -1):
-        createHeap(data, length, index)
-
-    for index in range(length -1, 0, -1):
-        data[index], data[0] = data[0], data[index]
-
-        createHeap(data, index, 0)
-
-    print(data)`}
-              </code>
+              <pre>
+                <code>{codeStringHeapSort}</code>
+              </pre>
               <p>
                 Heap Sort has O(n*log(n)) time complexities for all the cases (
                 best case, average case, and worst case) making it one of the

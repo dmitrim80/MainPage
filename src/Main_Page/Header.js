@@ -1,11 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import imagepath1 from "../assets/images/codepen.svg";
-import imagepath2 from "../assets/images/linkedin.svg";
-import imagepath3 from "../assets/images/new-twitter-logo.svg";
-import imagepath4 from "../assets/images/FacebookIcon.svg";
-import imagepath5 from "../assets/images/icons8-instagram.svg";
-import imagepath6 from "../assets/images/GitHubIcon.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faSquareFacebook } from "@fortawesome/free-brands-svg-icons";

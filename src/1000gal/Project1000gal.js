@@ -450,9 +450,9 @@ import YouTubeVideo from "./YouTubeVideo";
 
 const Project1000gal = () => {
   return (
-    <>
+    <div className="main-container-proj1000">
       <Header />
-      <div className="pages">
+      <div className="pages" id="page">
         Page1
         <br />
         Location Dallas Nov 8, 2018 Hi Folks, I want to introduce myself first.
@@ -498,7 +498,7 @@ const Project1000gal = () => {
         <br />
         And so this journey begins.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page 2
         <br />
         Dallas • Nov 8, 2018 • • #3 The biggest challenge was to safely move
@@ -526,12 +526,12 @@ const Project1000gal = () => {
         <img id="picture2_1" src={page2_8} alt="pic2" />
         <img id="picture2_9" src={page2_9} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page3
         <br /> • Nov 8, 2018 Here is a catch of future fishroom and display tank
         <img id="picture3_1" src={page3_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page4
         <br /> • Nov 9, 2018 Here s enderg60 said: You will want a MUCH larger
         mixing station. I have two 200 gallon tanks, one for fresh, one for
@@ -543,7 +543,7 @@ const Project1000gal = () => {
         storage with helping of water changes. Total maximum water changes could
         be 270 gallons at a time.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page5 <br />• Nov 9, 2018 Here are some more pictures of the progress
         being made... First what we did was put in french doors in place of
         windows for the tank to get in . Then we ran water lines and put in
@@ -551,13 +551,13 @@ const Project1000gal = () => {
         <img id="picture5_1" src={page5_1} alt="pic2" />
         <img id="picture5_2" src={page5_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page6
         <br /> • Nov 9, 2018 Here is a picture of 100gal QT tank I needed to set
         up right away for my fish and corals. Its on wheels!
         <img id="picture6_1" src={page6_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page7
         <br /> • Nov 9, 2018 July 17th, moving day! Chris & Raj with Team MRC
         came out to get the tank out of the house. Unfortunately we didn't have
@@ -571,7 +571,7 @@ const Project1000gal = () => {
         <img id="picture7_4" src={page7_4} alt="pic2" />
         <img id="picture7_5" src={page7_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page8 <br />• Nov 9, 2018 Here we are getting sump out, it's around 389
         gallons water volume. Custom I-sump, very heavy about 500 lbs. We
         finally got it all out, Raj & Tim in the picture. Both tank and sump
@@ -581,7 +581,7 @@ const Project1000gal = () => {
         <img id="picture8_2" src={page8_2} alt="pic2" />
         <img id="picture8_3" src={page8_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page9 <br />• Nov 9, 2018 Moving tank stand Stand is in and basement
         insulation is done. I also had to put in a temporary AC unit,
         temperature was getting too hot. HVAC system will be installed later on.
@@ -593,7 +593,7 @@ const Project1000gal = () => {
         <img id="picture9_4" src={page9_4} alt="pic2" />
         <img id="picture9_5" src={page9_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page10
         <br /> July 25th Moving Day! Second attempt, we have man power this
         time. Very exciting and nerves ! Here is a link to the video about 30
@@ -603,13 +603,13 @@ const Project1000gal = () => {
         <img id="picture10_3" src={page10_3} alt="pic2" />
         <br />
         <YouTubeVideo videoId="sMNxVji34Yk" />
-        <br />
+         <br />
         Nov 9, 2018 •
         <br />
         <YouTubeVideo videoId="S4mgkfSsfnI?si=WtArFuJqBXJmAJ2k" />
         <br />
       </div>
-      <div className="pages">
+      {/*<div className="pages" id="page">
         page11
         <br /> • Dec 20, 2018
         <br /> • • Add bookmark • #29 Here are some more videos of fish tank
@@ -624,8 +624,8 @@ const Project1000gal = () => {
         <YouTubeVideo videoId="CaJ9QdN4GSE" />
         <br />
       </div>
-      <div className="pages">page12 ADD DRAMA, tank broke! ADD VIDEO LINK</div>
-      <div className="pages">
+      <div className="pages" id="page">page12 ADD DRAMA, tank broke! ADD VIDEO LINK</div>
+      <div className="pages" id="page">
         page13 <br />• Dec 20, 2018 • • Add bookmark • #30 Here are few videos
         of tank being delivered. I will share build out of the basement next.
         Again, big thanks to Raj and Team MRC for making it happen and
@@ -642,7 +642,7 @@ const Project1000gal = () => {
         <YouTubeVideo videoId="v7Ni_2xlo8E" /> <br />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page14
         <br /> • Dec 20, 2018 • • Add bookmark • #31 After we finished
         electrical, I've installed Air Exchanger ( Tjernlund X2D Model Products
@@ -657,7 +657,7 @@ const Project1000gal = () => {
         <img id="picture14_5" src={page14_5} alt="pic2" />
         <img id="picture14_6" src={page14_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page15 <br />• Dec 20, 2018 • • Add bookmark • #35 Hard part during
         putting up drywall was moving a 100 gallon tank around with 50 gallon
         sump around and out of the way. We actually used stand on wheels for
@@ -669,7 +669,7 @@ const Project1000gal = () => {
         <img id="picture15_5" src={page15_5} alt="pic2" />
         <img id="picture15_7" src={page15_7} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page16
         <br /> Dallas • Dec 20, 2018 • • Add bookmark • #36 Here we have
         building out walls in the fish room.
@@ -684,7 +684,7 @@ const Project1000gal = () => {
         <img id="picture16_9" src={page16_9} alt="pic2" />
         <img id="picture16_10" src={page16_10} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page17 <br />• Dec 20, 2018 • • Add bookmark • #37 Two weeks ago I have
         filled up display tank with water to let it sit and settle in. After
         about 4 hours, it was just about filled up. The plan is as follows: 1.
@@ -694,7 +694,7 @@ const Project1000gal = () => {
         <img id="picture17_2" src={page17_2} alt="pic2" />
         <img id="picture17_3" src={page17_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page18
         <br /> • Dec 20, 2018 • • Add bookmark • #38 Few days ago I was able to
         relocate my 100 and 60 gal tanks into the fish room. I will be replacing
@@ -708,7 +708,7 @@ const Project1000gal = () => {
         <img id="picture18_4" src={page18_4} alt="pic2" />
         <img id="picture18_5" src={page18_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page19 <br />• Dec 24, 2018 • • Add bookmark • #40 anit77 said:
         Someone's even busy! How have you dealt with the dust from the mud work
         on the drywall? Dust is a bit of an issue during work and when finishing
@@ -724,7 +724,7 @@ const Project1000gal = () => {
         been my priorities. Carbon helps too During next few days I’m planning
         to relocate 100 gal on the newly-built stand. 1000 gal DT in works
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page20
         <br /> • Jan 6, 2019 • • Add bookmark • #42 Getting ready to paint above
         the tank then plumbing.
@@ -732,7 +732,7 @@ const Project1000gal = () => {
         <img id="picture20_2" src={page20_2} alt="pic2" />
         <img id="picture20_3" src={page20_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page21
         <br /> • Jan 6, 2019 • • Add bookmark • #44 I’ve made some adjustment to
         fish room, build a new stand for 100 gallon tank and setup hospital tank
@@ -742,13 +742,13 @@ const Project1000gal = () => {
         <img id="picture21_3" src={page21_3} alt="pic2" />
         <img id="picture21_4" src={page21_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page22
         <br /> • Jan 24, 2019 • • Add bookmark • #47 Some more pipes came in
         today. Getting ready for some serious plumbing work
         <img id="picture22_1" src={page22_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page23 <br />• Jan 29, 2019 • • Add bookmark • #49 Day by day slowly
         making progress. After busting two bulkheads (overtightening them)
         finally finished bottom plumbing part of the sump. Also moved UV filter
@@ -757,7 +757,7 @@ const Project1000gal = () => {
         <img id="picture23_2" src={page23_2} alt="pic2" />
         <img id="picture23_3" src={page23_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page24 <br />• Feb 15, 2019 • • Add bookmark • #50 Plumbing project
         continues, more fittings came in today! I also made lots of progress
         with creating main manifold (mostly 2” fittings) I can now see finish
@@ -767,21 +767,21 @@ const Project1000gal = () => {
         <img id="picture24_2" src={page24_2} alt="pic2" />
         <img id="picture24_3" src={page24_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page25 <br />• Feb 15, 2019 • • Add bookmark • #51 Oh I just got this
         today. Hannah salinity tester, so easy to use and super convenient to
         test water, I recommend it!
         <img id="picture25_1" src={page25_1} alt="pic2" />
         <img id="picture25_2" src={page25_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page26
         <br /> • Feb 15, 2019 • • Add bookmark • #52 By the way, this has been
         the greatest plumbing tool for this project. Can’t imagine doing all
         these cuts manually...
         <img id="picture26_1" src={page26_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page27 <br />• Feb 22, 2019 • • Add bookmark • #53 Doing overflow
         plumbing tonight. Here are some more pictures of progress Drain consists
         of 4x 1 1/2 pipes and 6x 1” which I will connect to two 1 1/2” pipes The
@@ -792,7 +792,7 @@ const Project1000gal = () => {
         <img id="picture27_3" src={page27_3} alt="pic2" />
         <img id="picture27_4" src={page27_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page28 <br />• Feb 24, 2019 One side of the drain plumbing completed.
         I’m going to try and finish other side today and then work on the
         return.
@@ -800,7 +800,7 @@ const Project1000gal = () => {
         <img id="picture28_2" src={page28_2} alt="pic2" />
         <img id="picture28_3" src={page28_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page29 <br />• Feb 27, 2019 • • Add bookmark • #55 Both sides drains are
         now completed. When doing test water runs I realized that I put bulkhead
         seals backwards and he to redo it. Everything seems to be working well,
@@ -812,7 +812,7 @@ const Project1000gal = () => {
         <img id="picture29_3" src={page29_3} alt="pic2" />
       </div>
 
-      <div className="pages">
+      <div className="pages" id="page">
         page30 <br />• Mar 2, 2019 • • Add bookmark • #56 Here is an update:
         After finishing plumbing first pump, I found couple small leaks which
         could not be easily fixed. I ended up cutting off some pipes and redoing
@@ -838,7 +838,7 @@ const Project1000gal = () => {
         <img id="picture30_2" src={page30_2} alt="pic2" />
         <img id="picture30_3" src={page30_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page31 <br />• Mar 4, 2019 • • Add bookmark • #57 I just finished main
         plumbing, both pumps in action. About 12k gal/ hr and drain holding it
         down. I’m planning to record a quick video of that.
@@ -846,7 +846,7 @@ const Project1000gal = () => {
         <br />
         <img id="picture31_1" src={page31_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page32
         <br /> • Mar 8, 2019 • • Add bookmark • #60 I had a bit of a issue with
         leak overnight. Water was dripping from one of the bulkheads of the
@@ -857,7 +857,7 @@ const Project1000gal = () => {
         I’m planning to patch it up this Sunday
         <img id="picture32_1" src={page32_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page33
         <br /> • Mar 12, 2019 Found out what cause the leak, I’ll be using
         sealent paste from now on... Collink91 Active Member Supporting Messages
@@ -870,14 +870,14 @@ const Project1000gal = () => {
         draining purpose
         <img id="picture33_1" src={page33_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page34 <br />• Mar 12, 2019 • • Add bookmark • #66 I had to redo some
         more plumbing on return today for canopy and cabinets to fit without
         building drop down sealing. Here is a picture before and after
         <img id="picture34_1" src={page34_1} alt="pic2" />
         <img id="picture34_2" src={page34_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page35
         <br /> • Mar 17, 2019 • • Add bookmark • #68 I picked up some more frags
         today from our monthly meeting. Here some quick shots of new addition to
@@ -894,7 +894,7 @@ const Project1000gal = () => {
         <img id="picture35_9" src={page35_9} alt="pic2" />
         <img id="picture35_10" src={page35_10} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page36
         <br /> • Mar 22, 2019 • Friday night updated ! 1st of all I’m
         celebrating departure of my old boss with 4 beers (Gotta love to see bad
@@ -906,7 +906,7 @@ const Project1000gal = () => {
         week) 4. Aquascape 5. Mount lights (10 gen 4 radions)
         <img id="picture36_1" src={page36_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page37 <br />• Apr 5, 2019 • • Add bookmark • #71 Last few days I’ve
         been making progress on plumbing. Yesterday I have finished connecting
         100gal water changing tank and 75 gal refugium to the main system. Also
@@ -923,7 +923,7 @@ const Project1000gal = () => {
         <img id="picture37_6" src={page37_6} alt="pic2" />
         <img id="picture37_7" src={page37_7} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page38 <br />• Apr 7, 2019 • • Add bookmark • #74 I’ve got a new fish
         today. I keep him in a Tony holding tank for now, fish seems to be
         healthy and already picking at some algae Here is a link to live stream
@@ -933,7 +933,7 @@ const Project1000gal = () => {
         the gallon? lol I understand that when it comes to plumbing, there is no
         such thing as too much 1000 gal DT in works Quote Reply
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page39
         <br /> • Apr 7, 2019 • • Add bookmark • #77 myaquariumpro said: I
         understand that when it comes to plumbing, there is no such thing as too
@@ -942,22 +942,22 @@ const Project1000gal = () => {
         <img id="picture39_2" src={page39_2} alt="pic2" />
         <img id="picture39_3" src={page39_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page40 <br />• Apr 15, 2019 • • Add bookmark • #79 Day 1 canopy /
         cabinets built, work in progress
         <img id="picture40_1" src={page40_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page41
         <br /> • Apr 16, 2019 Day 2 work in progress...
         <img id="picture41_1" src={page41_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page42 <br />• Apr 17, 2019 • • Add bookmark • #85 Day 3 update, painted
         cabinets, doors will go in next
         <img id="picture42_1" src={page42_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page43
         <br /> Dallas • Apr 23, 2019 I just finished 11 days of bleaching this
         dead rock. About 600lbs of it, now I need to dry it out and then give it
@@ -991,7 +991,7 @@ const Project1000gal = () => {
         <img id="picture43_1" src={page43_1} alt="pic2" />
         <img id="picture43_2" src={page43_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page44 <br />• Apr 24, 2019 • • Add bookmark • #91 Mounting lights is a
         challenge here. Being 6’2” tall and holding up these 130” rails and
         screwing them up in tight space is a task I’m taking my time with
@@ -999,7 +999,7 @@ const Project1000gal = () => {
         <img id="picture44_1" src={page44_1} alt="pic2" />
         <img id="picture44_2" src={page44_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page45
         <br /> • Apr 24, 2019 • • Add bookmark • #92 Over the weekend I have
         visited Camden Aquarium in New Jersey with my daughter. Lots of fun!
@@ -1008,7 +1008,7 @@ const Project1000gal = () => {
         <img id="picture45_3" src={page45_3} alt="pic2" />
         <img id="picture45_4" src={page45_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page46 <br />• Apr 24, 2019 Round two, rinsing off bleached rock with
         freshwater
         <img id="picture46_1" src={page46_1} alt="pic2" />
@@ -1016,13 +1016,13 @@ const Project1000gal = () => {
         <img id="picture46_3" src={page46_3} alt="pic2" />
         <img id="picture46_4" src={page46_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page47
         <br /> • Apr 26, 2019 Cabinet work is done. Just finished first coat of
         paint.
         <img id="picture47_1" src={page47_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page48
         <br /> • May 6, 2019 • • Add bookmark • #104 Few updates: 1st. I had to
         redo some plumbing for skimmer and uv. I have connected both together
@@ -1044,7 +1044,7 @@ const Project1000gal = () => {
         <img id="picture48_5" src={page48_5} alt="pic2" />
         <img id="picture48_6" src={page48_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page49
         <br /> • May 11, 2019 • • Add bookmark • #105 Tank update: I’ve beeb
         working on couple of things. Still doing aquascaping work with rock. I
@@ -1056,7 +1056,7 @@ const Project1000gal = () => {
         module but don’t want to use it. Once WXM set up it should all work my
         easier. I will try to pair it all tonight.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page50 <br />• May 12, 2019 • • Add bookmark • #106 Here are some
         pictures as I’m working on aquascape today:
         <img id="picture50_1" src={page50_1} alt="pic2" />
@@ -1078,7 +1078,7 @@ const Project1000gal = () => {
         <img id="picture50_17" src={page50_17} alt="pic2" />
         <img id="picture50_18" src={page50_18} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page51 <br />• May 12, 2019 • • Add bookmark • #108 water going in
         tonight...
         <img id="picture51_1" src={page51_1} alt="pic2" />
@@ -1088,7 +1088,7 @@ const Project1000gal = () => {
         <img id="picture51_5" src={page51_5} alt="pic2" />
         <img id="picture51_6" src={page51_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page52
         <br /> • May 14, 2019 Day 3 filling up the tank. I’m thinking 2-3 more
         days until it’s filled up. Water volume after rock mass taken out is
@@ -1100,7 +1100,7 @@ const Project1000gal = () => {
         maybe 3-4 more days of making water.
         <img id="picture52_1" src={page52_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page53
         <br /> ichthyoid Trustee Staff member Supporting Messages 4,297 Reaction
         score 2,436 Location Cherokee • May 18, 2019 • • Add bookmark • #113
@@ -1114,7 +1114,7 @@ const Project1000gal = () => {
         <img id="picture53_3" src={page53_3} alt="pic2" />
         <img id="picture53_4" src={page53_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page54
         <br /> Dallas • May 24, 2019 • • Add bookmark • #116 Fish are in ! 1st
         round of fish about 30 in total. Few tangs / clowns/ chromes I added 4
@@ -1128,19 +1128,19 @@ const Project1000gal = () => {
         <img id="picture54_7" src={page54_7} alt="pic2" />
         <img id="picture54_8" src={page54_8} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page55
         <br /> • May 24, 2019
         <YouTubeVideo videoId="4sF5DoBUByM" />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page56
         <br /> • May 28, 2019 • • Add bookmark • #119 Diatoms stages, soon I’ll
         need lots of clean up crew.
         <img id="picture56_1" src={page56_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page57
         <br /> • Jun 8, 2019 • • Add bookmark • #121 Update on the tank. I’ve
         added 100 mexican turbo snails and they took care of most diatoms
@@ -1154,7 +1154,7 @@ const Project1000gal = () => {
         yellow tangs waiting to go through quarantine period before adding them
         to main display. More fishes to come.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page58 <br />• Jun 29, 2019 • • Add bookmark • #122 A few updates: 1st.
         Ive added 55gallon barrel for ATO. The water evaporation rate is about
         10 gallons per day. 2nd I’ve built stand an additional stand for frag
@@ -1176,13 +1176,13 @@ const Project1000gal = () => {
         <img id="picture58_5" src={page58_5} alt="pic2" />
         <img id="picture58_6" src={page58_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page59
         <br /> • Jul 1, 2019 <br />
         <YouTubeVideo videoId="4du6EwAH4t8" />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page60 <br />• Jul 21, 2019 • • Add bookmark • #129 anit77 said: Damn
         that's a lot of fish! How many more are you planning? Currently it’s
         about 70-80 fish in the tank. I may add few more big fish in a little
@@ -1230,7 +1230,7 @@ const Project1000gal = () => {
         <img id="picture60_12" src={page60_12} alt="pic2" />
         <img id="picture60_13" src={page60_13} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page61
         <br />
         Adam Trustee Staff member Sponsor Supporting Messages 4,817 Reaction
@@ -1277,7 +1277,7 @@ const Project1000gal = () => {
         <img id="picture61_14" src={page61_14} alt="pic2" />
         <img id="picture61_15" src={page61_15} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page62 <br />• Jul 24, 2019 • • Add bookmark • #138 Triton results are
         in I have corrective dosing for I and B elements 530 ml each. Tomorrow
         I’ll do one more recommended dosage. The rest of the elements, gotta
@@ -1286,7 +1286,7 @@ const Project1000gal = () => {
         <YouTubeVideo videoId="ns7mk6GaXn0" />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page63 <br />• Jul 31, 2019 • • Add bookmark • #144 Happy Wednesday !
         Wanted to share this live view of the tank. Dmitri Well-Known Member
         Market Messages 645 Reaction score 617 Location Dallas • Aug 7, 2019 • •
@@ -1299,7 +1299,7 @@ const Project1000gal = () => {
         work and just relaxing. Thank you, still lots of work to be done. But
         I’m definitely hosting party in 2024
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page64 <br />• Aug 11, 2019 • • Add bookmark • #150 Here are some shots
         from yesterday.. I mounted few more corals here and there Please excuse
         my poor photographer skills I have Bennett dosing 2 table spoons per day
@@ -1340,7 +1340,7 @@ const Project1000gal = () => {
         <img id="picture64_21" src={page64_21} alt="pic2" />
         <img id="picture64_22" src={page64_22} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page65
         <br /> Dallas • Aug 18, 2019 • • Add bookmark • #154 So my goldflake
         angel got a taste for holiberries zoas and are them all within two days.
@@ -1353,7 +1353,7 @@ const Project1000gal = () => {
         <img id="picture65_2" src={page65_2} alt="pic2" />
         <img id="picture65_3" src={page65_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page66
         <br /> • Aug 23, 2019 • • Add bookmark • #156 I have added hammer and
         torch corals to the right side of the tank. Good flow in that area for
@@ -1370,7 +1370,7 @@ const Project1000gal = () => {
         alkalinity, along with other bacteria growth. Tank is growing and eating
         massively !
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page67
         <br /> • Aug 27, 2019 • • Add bookmark • #159 wildernet said: Pretty
         amazing. I really need to get out there to see it. Stop by anytime this
@@ -1382,7 +1382,7 @@ const Project1000gal = () => {
         and zoas today. Took me good 3-4 hours to catch him...
         <img id="picture67_1" src={page67_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page68 <br />• Aug 28, 2019 • • Add bookmark • #161 Here is what I’m
         planning to test for with reefbot. (8 vials for test reagents) RS -
         phosphates (2 vials) I’ll be testing phosphates once per day for a month
@@ -1395,7 +1395,7 @@ const Project1000gal = () => {
         once per week. Since I have elevated levels I’m not worried about it for
         a while... Current level is at 1530 ppm
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page69 <br />• Sep 1, 2019 • • Add bookmark • #162 So over the weekend I
         did some more plumbing work and now 100 gallons tank and 60 gallons cube
         both connected to one main system. Total water volume at about 1500
@@ -1411,7 +1411,7 @@ const Project1000gal = () => {
         <img id="picture69_2" src={page69_2} alt="pic2" />
         <img id="picture69_3" src={page69_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page70 <br />• Sep 8, 2019 • • Add bookmark • #163 So I’ve been having
         phosphates issues lately, lots of hair algae popping out in frag tank.
         So measurement had to be taken. I’ve tested water and nitrates were
@@ -1440,7 +1440,7 @@ const Project1000gal = () => {
         <img id="picture70_1" src={page70_1} alt="pic2" />
         <img id="picture70_2" src={page70_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page71 <br />• Sep 19, 2019 • • Add bookmark • #164 Happy Thursday
         evening folks! Wanted to give some updates here. First, I’m continue to
         monitor effects of lanthanum chloride as well a stump remover for which
@@ -1487,7 +1487,7 @@ const Project1000gal = () => {
         <img id="picture71_8" src={page71_8} alt="pic2" />
         <img id="picture71_9" src={page71_9} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page72
         <br /> Dallas • Sep 19, 2019 • • Add bookmark • #166 saltwaterwannabe
         said: Looking amazing Dmitri! I think you are making a lot of us quite
@@ -1498,7 +1498,7 @@ const Project1000gal = () => {
         <img id="picture72_1" src={page72_1} alt="pic2" />
         <img id="picture72_2" src={page72_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page73
         <br /> • Oct 6, 2019 • • Add bookmark • #167 So today I was ready to
         finish up tiles flooring. When I walked in the fish room, I’ve noticed
@@ -1524,7 +1524,7 @@ const Project1000gal = () => {
         <img id="picture73_5" src={page73_5} alt="pic2" />
         <img id="picture73_6" src={page73_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page74
         <br /> • Oct 7, 2019 • • Add bookmark • #168 Bubble king skimmer is
         ridiculously effective... I’ve been trying to raise my nitrates for
@@ -1632,13 +1632,13 @@ const Project1000gal = () => {
         <img id="picture74_2" src={page74_2} alt="pic2" />
         <img id="picture74_3" src={page74_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page75
         <br /> Dallas • Oct 11, 2019 • Happy Friday night! Just finished laying
         tiles floor. Up next, grout and trim for bases then painting. Things are
         coming along great! • <img id="picture75_1" src={page75_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page76
         <br /> • Oct 18, 2019 Just came back from work. 120 was full of water
         but none left.. so that’s what 120 gallons of water looks like on the
@@ -1653,13 +1653,13 @@ const Project1000gal = () => {
         <img id="picture76_5" src={page76_5} alt="pic2" />
         <img id="picture76_6" src={page76_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page77 <br />• Oct 29, 2019 • • Add bookmark • #177 Finally finished
         tiling basement and stairs, such a physically intense job... Here are
         some shots of the progress Up next grout work! Tile work started on
         September 15th! Yes I work at a snail speed
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page78
         <br /> • Nov 5, 2019 • • Add bookmark • #178 I’ve got a new toy today,
         Awair 2nd Edition It monitors CO2 ppm levels in the air as well as some
@@ -1671,7 +1671,7 @@ const Project1000gal = () => {
         <img id="picture78_1" src={page78_1} alt="pic2" />
         <img id="picture78_2" src={page78_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page79
         <br /> • Nov 8, 2019 • • Add bookmark • #179 Here are some shots from
         top I just took under 100% lights on, one year progress.
@@ -1681,7 +1681,7 @@ const Project1000gal = () => {
         <img id="picture79_4" src={page79_4} alt="pic2" />
         <img id="picture79_5" src={page79_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page80
         <br /> • Nov 12, 2019 • • Add bookmark • #180 So I have set up CO2
         scrubber to my skimmer and look at these results. 24 hours, going from
@@ -1690,7 +1690,7 @@ const Project1000gal = () => {
         outside, 450-500 Didn’t want to waste media if levels were high.
         <img id="picture80_1" src={page80_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page81
         <br /> • Dec 10, 2019 • • Add bookmark • #181 Playing with some
         different light settings for pictures. Here are some to share
@@ -1698,7 +1698,7 @@ const Project1000gal = () => {
         <img id="picture81_2" src={page81_2} alt="pic2" />
         <img id="picture81_3" src={page81_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page82
         <br /> Dallas • Dec 15, 2019 • • Add bookmark • #182 I had a few upgrade
         over last few weeks that I wanted to share. First Tank just turned 7
@@ -1730,7 +1730,7 @@ const Project1000gal = () => {
         <img id="picture82_8" src={page82_8} alt="pic2" />
         <img id="picture82_9" src={page82_9} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page83 <br />
         Dallas • Dec 29, 2019 • • Add bookmark • #183 Yesterday I was cleaning
         but cup with automatic wash down. The process is I turn on freshwater
@@ -1748,7 +1748,7 @@ const Project1000gal = () => {
         <img id="picture83_2" src={page83_2} alt="pic2" />
         <img id="picture83_3" src={page83_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page84 <br />• Jan 7, 2020 • • Add bookmark • #184 Here is a quick video
         with my iphone, 7 months update
         https://www.youtube.com/watch?v=uBg-XmH6lRs Small update, two days ago I
@@ -1759,7 +1759,7 @@ const Project1000gal = () => {
         <img id="picture84_1" src={page84_1} alt="pic2" />
         <img id="picture84_2" src={page84_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page85 <br />• Jan 9, 2020 • • Add bookmark • #186 Here is my feeding
         routine: I have automatic feeder doing hourly pellets 8 times a day,
         every hour and a half from 9 am. (I’m thinking adding another one to do
@@ -1773,7 +1773,7 @@ const Project1000gal = () => {
         <br />
         <img id="picture85_1" src={page85_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page86
         <br /> • Jan 11, 2020 • • Add bookmark • #187 Absolutely amazing! Love
         this tank and what a wonderful job you’ve done! Like Quote Reply Report
@@ -1789,7 +1789,7 @@ const Project1000gal = () => {
         of them, too many bubble tips and even rainbow one split in the main
         display. (I’m keeping a close eye on it)
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page87 <br />• Jan 20, 2020 • • Add bookmark • #189 Here is a small
         update and question for anyone who may know: I have recently changed
         media in calcium reactor. I’m using 3x 1gal CaribSea -ARM REACTOR MEDIA
@@ -1819,7 +1819,7 @@ const Project1000gal = () => {
         now.
         <img id="picture87_1" src={page87_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page88
         <br /> • Jan 21, 2020 • • Add bookmark • #192 After reading Rustys
         horror story of tank crash, I went ahead and purchase hydro wizard ecm
@@ -1836,7 +1836,7 @@ const Project1000gal = () => {
         10 gallons per hour. I will test it tomorrow.
         <img id="picture88_1" src={page88_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page89 <br />• Jan 22, 2020 • • Add bookmark • #198 anit77 said: I think
         that flow rate is crazy high! Is the reactor able to get the pH in range
         with that much flow running through it? See what I just said in this
@@ -1876,7 +1876,7 @@ const Project1000gal = () => {
         possibly a version of it, when my new system is ready.
         <img id="picture89_1" src={page89_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page90
         <br /> Dallas • Feb 13, 2020 • • Add bookmark • #200 I’ve got some
         updates to share. 1st I have installed kalkwasser reactor and doing
@@ -1899,7 +1899,7 @@ const Project1000gal = () => {
         <img id="picture90_2" src={page90_2} alt="pic2" />
         <img id="picture90_3" src={page90_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page91
         <br /> • Feb 19, 2020 • • Add bookmark • #202 anit77 said: I think you
         like the results you'll see from kalk. Interested to hear how things
@@ -1920,13 +1920,13 @@ const Project1000gal = () => {
         <img id="picture91_7" src={page91_7} alt="pic2" />
         <img id="picture91_8" src={page91_8} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page92
         <br /> • Feb 23, 2020 My new pet <br />
         <YouTubeVideo videoId="hP9WXrbAg-g" />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page93 <br />• Mar 8, 2020 • • Add bookmark • #205 Here is an update:
         Still working on trimming the ceiling in the basement, should be
         finished tomorrow sometime then painting... A bit more trim left to do
@@ -1946,7 +1946,7 @@ const Project1000gal = () => {
         <img id="picture93_6" src={page93_6} alt="pic2" />
         <img id="picture93_7" src={page93_7} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page94
         <br /> • Mar 19, 2020 • • Add bookmark • #207 Here is some more pics of
         ceiling progress. Need to finish caulking and paint. • Mar 19, 2020 • •
@@ -1962,7 +1962,7 @@ const Project1000gal = () => {
         <img id="picture94_3" src={page94_3} alt="pic2" />
         <img id="picture94_4" src={page94_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page95 <br />• Apr 3, 2020 • • Add bookmark • #213 Small update: Had a
         near disaster happened today I was monitoring my calcium pro for calcium
         reactor and noticed something unusual happening. 24hr chart I came to
@@ -1995,7 +1995,7 @@ const Project1000gal = () => {
         <img id="picture95_1" src={page95_1} alt="pic2" />
         <img id="picture95_2" src={page95_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page96
         <br /> • Apr 27, 2020 • • Add bookmark • #215 Jonsmiff said: Man I just
         joined ARC forums today and I've spent about 2 hours reading this
@@ -2003,7 +2003,7 @@ const Project1000gal = () => {
         Thank you, I appreciate it ! Tank is approaching 1 year mark, May 12th.
         I’ll be doing update soon.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page97
         <br /> • May 19, 2020 • • Add bookmark • #216 My tank turned 1 year old
         on May 12th. I’ve got a new pet, blue linckia starfish. Got it to see if
@@ -2014,13 +2014,13 @@ const Project1000gal = () => {
         <img id="picture97_3" src={page97_3} alt="pic2" />
         <img id="picture97_4" src={page97_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page98 <br />• Jun 8, 2020 • • Add bookmark • #218 Getting ready to
         connect GFO reactor. I bought my GFO hC from saltwater aquarium. 7lbs.
         <img id="picture98_1" src={page98_1} alt="pic2" />
         <img id="picture98_2" src={page98_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page99 <br />• Jun 10, 2020 • • Add bookmark • #220 AG36 said: Newish
         member. Following this thread is inspiring. Really an amazing journey. I
         totally get the bare bottom tank. Really just makes perfect sense.
@@ -2078,11 +2078,11 @@ const Project1000gal = () => {
         far, when I get to desired .06 or lower levels I will send off icp test
         to see how everything else is.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page100 <br />• Jun 19, 2020 Happy Friday! Quick video of me feeding the
         tank, 14months running! https://www.youtube.com/watch?v=bTL0e0YUl58
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page101 <br />I am getting ready to add another reactor with this
         product Purit by Brightwell. I heard good things about it! I found my
         starfish today near anemones.. I wonder if it gets hurt by them stinging
@@ -2090,7 +2090,7 @@ const Project1000gal = () => {
         <img id="picture101_1" src={page101_1} alt="pic2" />
         <img id="picture101_2" src={page101_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page102
         <br /> • Jul 9, 2020 • • Add bookmark • #227 Adam said: Isn't Purit more
         for when you think there's a contaminate and not for continuous use? I
@@ -2107,7 +2107,7 @@ const Project1000gal = () => {
         to raise it up to 10ppm Phosphates 0.02-0.04Ppm Magnesium 1360ppm (I’ll
         be dosing a bit extra today to get it upto 1400 or so) cal- 480ppm
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page103
         <br /> • Jul 15, 2020 • • Add bookmark • #229 I took some pictures of
         corals from top this evening. Want to share with you guys: Little bit of
@@ -2142,7 +2142,7 @@ const Project1000gal = () => {
         <img id="picture103_13" src={page103_13} alt="pic2" />
         <img id="picture103_14" src={page103_14} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page104
         <br /> • Jul 16, 2020 • • Add bookmark • #234 Adam said: Everything is
         looking good! Are you planning on bumping up the Alk at all and possibly
@@ -2157,7 +2157,7 @@ const Project1000gal = () => {
         went out again, this time motor that moves syringe up and down stopped
         working. I need to figure this out soon before warranty rans out
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page105
         <br /> Dallas • Aug 2, 2020 • • Add bookmark • #236 Few updates: Lowered
         lights from 18” to 12” over the water and added 4 x 48” Orphek OR3 bars.
@@ -2172,14 +2172,14 @@ const Project1000gal = () => {
         <img id="picture105_5" src={page105_5} alt="pic2" />
         <img id="picture105_6" src={page105_6} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page106 <br />• Aug 8, 2020 • • Add bookmark • #237 I’ve added about
         70lbs of rock to an aquascape. That was diving experience .... That big
         section in the back mid section of the picture. I’m getting about
         350-600 par around there. Planted lots of frags
         <img id="picture106_1" src={page106_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page107
         <br /> • Aug 12, 2020 • • Add bookmark • #240 scottw said: How are you
         liking the OR3 bars? I have heard some great things about them? Tank is
@@ -2196,7 +2196,7 @@ const Project1000gal = () => {
         getting it under control. I’ve sent off icp yesterday, can’t wait for
         results.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page108
         <br /> • Aug 20, 2020 • • Add bookmark • #242 I’ve increase dosage of
         lanthanum to 80ml per day. Last phosphates reading was done yesterday
@@ -2233,7 +2233,7 @@ const Project1000gal = () => {
         <img id="picture108_8" src={page108_8} alt="pic2" />
         <img id="picture108_9" src={page108_9} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page109 <br />• Aug 23, 2020 • • Add bookmark • #245 This week I’m on
         vacation and planning to add another section to aquascape. Small bridge,
         that will connect two sections and anothe bridge to the middle of it. It
@@ -2243,7 +2243,7 @@ const Project1000gal = () => {
         <img id="picture109_2" src={page109_2} alt="pic2" />
         <img id="picture109_3" src={page109_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page110
         <br /> • Aug 24, 2020 • • Add bookmark • #246 I got lazy and have not
         tested alkalinity in 7 days. Yesterday I tested and it dropped to 6.1
@@ -2261,7 +2261,7 @@ const Project1000gal = () => {
         be changing calcium reactor media to triton media, I wonder if it will
         give me boost to alkalinity.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page111 <br />• Aug 27, 2020 • • Add bookmark • #248 I hope these little
         guys don’t change their eating habits to acros... Dmitri Well-Known
         Member Market Messages 645 Reaction score 617 Location Dallas • Aug 27,
@@ -2272,7 +2272,7 @@ const Project1000gal = () => {
         <img id="picture111_2" src={page111_2} alt="pic2" />
         <img id="picture111_3" src={page111_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page112
         <br /> • Aug 30, 2020 • • Add bookmark • #250 I found a good way to keep
         Purple stylo from growing out of control. Just put two heavy rocks on
@@ -2283,7 +2283,7 @@ const Project1000gal = () => {
         whole and pull the trigger on harlequins
         <img id="picture112_1" src={page112_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page113 <br />• Sep 13, 2020 • • Add bookmark • #254 civics14 said:
         Oh... thats risky. Not sure I would risk it if they aren’t bothering
         anything. I actually wanted more asterinas cause I always wanted
@@ -2308,7 +2308,7 @@ const Project1000gal = () => {
         <img id="picture113_3" src={page113_3} alt="pic2" />
         <img id="picture113_4" src={page113_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page114
         <br /> • Sep 23, 2020 I’m not sure how this happened but I suspect it
         pencil urchin had something to do with it... The rock that this garf
@@ -2360,7 +2360,7 @@ const Project1000gal = () => {
         do some more research and planning.
         <img id="picture114_1" src={page114_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page115
         <br /> • Sep 27, 2020 • • Add bookmark • #280 So I’ve ordered a few
         things to get these phosphates under control.... First my refugium
@@ -2372,7 +2372,7 @@ const Project1000gal = () => {
         dosing lanthanum manually but I want set up drip system of lanthanum
         right into skimmer. Still figuring out logistics of that.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page116 <br />• Oct 9, 2020 • • Add bookmark • #286 That moment when
         your phosphates test below .1ppm Dmitri Well-Known Member Market
         Messages 645 Reaction score 617 Location Dallas • Oct 9, 2020 • • Add
@@ -2389,7 +2389,7 @@ const Project1000gal = () => {
         <img id="picture116_4" src={page116_4} alt="pic2" />
         <img id="picture116_5" src={page116_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page117 <br />
         Dallas • Oct 11, 2020 • • Add bookmark • #290 york1 said: So is it one
         shot for the tank one shot for you? Glad to see things are working out
@@ -2399,13 +2399,13 @@ const Project1000gal = () => {
         <img id="picture117_3" src={page117_3} alt="pic2" />
         <img id="picture117_4" src={page117_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page118 <br />• Oct 17, 2020 First day in a while, no algae on the glass
         to clean off...
         <img id="picture118_1" src={page118_1} alt="pic2" />
       </div>
 
-      <div className="pages">
+      <div className="pages" id="page">
         page119
         <br /> • Nov 11, 2020 • • Add bookmark • #292 For the last couple of
         months I’ve been battling phosphates issue and forgot about nitrates. My
@@ -2455,7 +2455,7 @@ const Project1000gal = () => {
         <img id="picture119_6" src={page119_6} alt="pic2" />
         <img id="picture119_7" src={page119_7} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page120 <br />• Nov 20, 2020 • • Add bookmark • #293 Things are starting
         to pick up, I did a few water tests today Phosphates .02ppm 1st test
         0.03ppm 2nd test Not use to number that low, had to verify it nitrates
@@ -2468,7 +2468,7 @@ const Project1000gal = () => {
         <YouTubeVideo videoId="J3YTc4C-wms" />
         <br />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page121
         <br /> • Nov 24, 2020 Adam said: Yup, 9 days to drop 1400 gallons 10ppm
         I'd bet in the next 9 days it'll be closer to 20. You may bottom out PO4
@@ -2477,7 +2477,7 @@ const Project1000gal = () => {
         bring down nitrates.
         <img id="picture121_1" src={page121_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page122
         <br /> • Nov 25, 2020 • • Add bookmark • #298 enderg60 said: Just some
         experiance notes, careful with the vodka amounts. I was chasing lowing
@@ -2497,7 +2497,7 @@ const Project1000gal = () => {
         phosphates at the moment. However if I let my phosphates go just a
         little bit, because of high nitrates algae grows crazy all over.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page123 <br />• Nov 27, 2020 • • Add bookmark • #299 I found this method
         of two pvc pipes and rubber band holding 4 sheets of nori most simple
         and effective to feed big fish.
@@ -2508,7 +2508,7 @@ const Project1000gal = () => {
         The amount of tangs in that tank!!!! So jealous Thanks, they just love
         eating all that nori... 4 sheet gone in less than one hour.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page124 <br />• Dec 13, 2020 • • Add bookmark • #304 jman930 said:
         @Dmitri one day I’d love a video tour of the fish room. Seeing how
         things are plumbed will help others to get ideas! One day I’ll get to do
@@ -2528,7 +2528,7 @@ const Project1000gal = () => {
         (weekly, going to retest tomorrow) Nitrates - ...
         <img id="picture124_1" src={page124_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page125 <br />• Jan 8, 2021 • • Add bookmark • #307 Happy 2021 Everyone!
         Here is what I’m planning for this year. 1. I need to redo aquascape on
         my tank. What I would like is to create a floating reef with nothing
@@ -2558,7 +2558,7 @@ const Project1000gal = () => {
         <img id="picture125_2" src={page125_2} alt="pic2" />
         <img id="picture125_3" src={page125_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page126
         <br /> • Mar 7, 2021 Just added new skimmer! Dmitri Well-Known Member
         Market Messages 645 Reaction score 617 Location Dallas • Mar 7, 2021 • •
@@ -2567,7 +2567,7 @@ const Project1000gal = () => {
         <img id="picture126_1" src={page126_1} alt="pic2" />
         <img id="picture126_2" src={page126_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page127
         <br /> • Mar 7, 2021 • • Add bookmark • #319 Well I just had a true
         disaster happened with tank. One of the unions started to leak so I
@@ -2594,7 +2594,7 @@ const Project1000gal = () => {
         <img id="picture127_2" src={page127_2} alt="pic2" />
         <img id="picture127_1" src={page127_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page128 <br />• Mar 20, 2021 • • Add bookmark • #322 I’ve been planning
         to redo aquascape but first I’m going to test how it will turn out on
         the 60 cube. Been doing some sketching today, here is what I’m thinking
@@ -2602,7 +2602,7 @@ const Project1000gal = () => {
         <img id="picture128_1" src={page128_1} alt="pic2" />
         <img id="picture128_2" src={page128_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page129 <br />• Mar 30, 2021 • • Add bookmark • #323 Got my new water
         tank delivered today Dmitri Well-Known Member Market Messages 645
         Reaction score 617 Location Dallas • Mar 30, 2021 • • Add bookmark •
@@ -2627,7 +2627,7 @@ const Project1000gal = () => {
         <img id="picture129_1" src={page129_1} alt="pic2" />
         <img id="picture129_2" src={page129_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page130 <br />• Apr 2, 2021 • • Add bookmark • #334 tkallday said: When
         are tickets available? Haha maybe we will do video soon, once I finish
         reacaping the tank... Thanks for tagging along! Dmitri Well-Known Member
@@ -2640,7 +2640,7 @@ const Project1000gal = () => {
         <img id="picture130_4" src={page130_4} alt="pic2" />
         <img id="picture130_5" src={page130_5} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page131
         <br /> Dallas • Apr 10, 2021 • • Add bookmark • #337 So little bit of
         progress here. I did glue both sides to 90 elbow pvc, however it did not
@@ -2692,7 +2692,7 @@ const Project1000gal = () => {
         <img id="picture131_11" src={page131_11} alt="pic2" />
         <img id="picture131_12" src={page131_12} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page132
         <br /> • Apr 17, 2021 • • Add bookmark • #347 90gDreams said: FTS: Holy
         smokes that looks awesome, can't wait to see it when those frags grow
@@ -2736,7 +2736,7 @@ const Project1000gal = () => {
         <img id="picture132_2" src={page132_2} alt="pic2" />
         <img id="picture132_3" src={page132_3} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page133 <br />• May 6, 2021 • • Add bookmark • #356 Cook said: I just
         want to say that when I had the opportunity to stand in front of
         Dmitri's tank, I didn't notice the plumbing for some reason. What a
@@ -2781,7 +2781,7 @@ const Project1000gal = () => {
         <img id="picture133_1" src={page133_1} alt="pic2" />
         <img id="picture133_2" src={page133_2} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page134
         <br /> • May 7, 2021 • • Add bookmark • #361 Lesson learned here. I’m
         going to double up on my tank equipment redundancy. Everything seems to
@@ -2795,7 +2795,7 @@ const Project1000gal = () => {
         on to see how many corals were lost.
         <img id="picture134_1" src={page134_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page135
         <br /> • May 12, 2021 • • Add bookmark • #364 Cook said: What's the news
         on your corals? Everything seems to be doing well. Since alk dropped I’m
@@ -2803,7 +2803,7 @@ const Project1000gal = () => {
         just enough days not to cause critical damage. ATO also had about 1/2 of
         a day left of water so there goes that.
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page136
         <br /> • May 24, 2021 • • Add bookmark • #365 I found an interesting
         pattern in orp reading: In the morning 9am two auto feeders turn on,
@@ -2821,14 +2821,14 @@ const Project1000gal = () => {
         something unusual will happen it may show up in the reading
         <img id="picture136_1" src={page136_1} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page137
         <br /> • Jun 12, 2021 • • Add bookmark • #367 smoothie said: Great job!
         That powder blue looks too happy! Ya my powder is super happy, had him
         for little over 2 years now. I was thinking of adding 2-3 more but
         decided to go different rout. Thanks for tagging along!
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page138
         <br /> • Jun 15, 2021 • • Add bookmark • #368 Yearly diy reef chili food
         is made! It’s so messed and the smell… ahhh glad it’s only once a year…
@@ -2845,7 +2845,7 @@ const Project1000gal = () => {
         <img id="picture138_3" src={page138_3} alt="pic2" />
         <img id="picture138_4" src={page138_4} alt="pic2" />
       </div>
-      <div className="pages">
+      <div className="pages" id="page">
         page139
         <br /> • Jun 16, 2021 • • Add bookmark • #371 Adam said: That repair
         doesn't look fun. I'd talk to @skriz to see if it can be done in place.
@@ -2911,15 +2911,16 @@ const Project1000gal = () => {
         <img id="picture139_10" src={page139_10} alt="pic2" />
         <img id="picture139_11" src={page139_11} alt="pic2" />
         <img id="picture139_12" src={page139_12} alt="pic2" />
-      </div>
-      <div className="pages">
+      </div> */}
+      <div className="pages" id="page">
         page140
         <br /> • May 1, 2022 • • Add bookmark • #387 I am sad to say that due to
         major life changes and future relocation I will shutting down this
         system. Everything will be going for sale...
       </div>
       <Footer />
-    </>
+  </div>
+
   );
 };
 
