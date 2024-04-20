@@ -190,9 +190,9 @@ const Body = () => {
               </li>
               </Link>
 
-              <a className="project-link" href='../Corals_Page/1000gal.html' target="_blank">
-
-              <div className="project-link"> 
+              <Link className="project-link" to="/1000gal"> 
+              
+              
               
               <li>
                 <div className="project-container">
@@ -234,7 +234,7 @@ const Body = () => {
                   </div>
                 </div>
               </li>
-              </div></a>
+              </Link>
 
             </ol>
           </section>
