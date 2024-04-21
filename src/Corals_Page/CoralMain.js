@@ -54,7 +54,7 @@ const Coral_Main = () => {
       console.log("Current Path Segment:", pathSegment);
   
       const allowedPathsAuthenticated = ["homepage", "index", "scoly", "chalice", "signup","monti","mushroom","nps","zoas","acro","favia","fishtank","aquascape"];
-      const allowedPathsUnauthenticated = ["index", "signup"];
+      const allowedPathsUnauthenticated = ["index", "signup","homepage", "index", "scoly", "chalice", "signup","monti","mushroom","nps","zoas","acro","favia","fishtank","aquascape"];
   
       if (!user && !allowedPathsUnauthenticated.includes(pathSegment)) {
         console.log("Unauthorized access - redirecting to index");
@@ -79,9 +79,9 @@ const Coral_Main = () => {
         onNavigate={navigate}
       />
       <Routes>
-        <Route path="index" element={<CoralIndex />} />
-        
-        <Route path="homepage" element={user ? <CoralHomepage /> : <Navigate replace to="/corals/index" />} />
+        <Route path="index" element={<CoralHomepage />} />
+        <Route path="homepage" element={<CoralHomepage />} />
+        {/* <Route path="homepage" element={user ? <CoralHomepage /> : <Navigate replace to="/corals/index" />} /> */}
         <Route path="acro" element={user ? <CoralAcro /> : <Navigate replace to="/corals/index" />} />
         <Route path="favia" element={user ? <CoralFavia /> : <Navigate replace to="/corals/index" />} />
         <Route path="chalice" element={user ? <CoralChalice /> : <Navigate replace to="/corals/index" />} />

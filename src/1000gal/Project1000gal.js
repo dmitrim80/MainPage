@@ -453,7 +453,7 @@ const Project1000gal = () => {
     <div className="main-container-proj1000">
       <Header />
       <div className="pages" id="page">
-        Page1
+        page1
         <br />
         Location Dallas Nov 8, 2018 Hi Folks, I want to introduce myself first.
         My name is Dmitri and I’ve been in a hobby for about
@@ -498,7 +498,7 @@ const Project1000gal = () => {
         And so this journey begins.
       </div>
       <div className="pages" id="page">
-        page 2
+        page2
         <br />
         Dallas • Nov 8, 2018 • • #3 The biggest challenge was to safely move
         this tank from the owners house to my new house. 2500 lbs glass tank
