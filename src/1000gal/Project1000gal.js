@@ -456,10 +456,9 @@ const Project1000gal = () => {
         Page1
         <br />
         Location Dallas Nov 8, 2018 Hi Folks, I want to introduce myself first.
-        My name is Dmitri and I’m a reefoholic I’ve been in a hobby for about
+        My name is Dmitri and I’ve been in a hobby for about
         two years, started with a 14gal biocube some basic soft corals a pair of
-        clown fish and a goby. I quickly upgraded to more and bigger tanks,
-        needless to say, I was well hooked into this hobby.
+        clown fish and a goby. I quickly upgraded to more and bigger tanks (60gal,120gal to 155gal) needless to say, I was well hooked into this hobby.
         <br />
         Six months into it I’ve upgraded to RSM 650S all in one system. That
         tank was a pure joy, fantastic great size and superior quality. Looking
@@ -483,7 +482,7 @@ const Project1000gal = () => {
         However, opportunity came and I was very fortunate to have purchase tank
         from a local member along with most of his major filtration system. This
         happened while I was still scouting for a new house. Finally in the
-        middle of July we purchase a house and tank was ready to be moved.{" "}
+        middle of July we purchase a house and tank was ready to be moved.
         <br />
         1000 gallon display tank <br />
         Dimensions: 130x59x31 <br />
