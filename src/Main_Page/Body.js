@@ -51,7 +51,7 @@ const Body = () => {
             
             <ol className="projects-list">
             
-            <Link className="project-link" to="/blackjack"> 
+            <a href="https://www.dmitricode.com" className="project-link"> 
               <li>
                 <div className="project-container">
                   <div className="overLay-project-container"></div>
@@ -104,7 +104,7 @@ const Body = () => {
                   </div>
                 </div>
               </li>
-              </Link>
+              </a>
 
               <Link className="project-link" to="/corals/"> 
               <li>
