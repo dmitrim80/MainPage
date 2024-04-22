@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bjlogo from "../BlackJack/images/logo-blackjack.png";
+import bjlogo from "../assets/images/logo-blackjack.png";
 
 const Body = () => {
   return (
@@ -51,7 +51,7 @@ const Body = () => {
             
             <ol className="projects-list">
             
-            <a href="https://www.dmitricode.com" className="project-link"> 
+            <a href="https://www.dmitricode.com" className="project-link" > 
               <li>
                 <div className="project-container">
                   <div className="overLay-project-container"></div>
