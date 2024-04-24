@@ -24,7 +24,7 @@ const Header = ({ activeLink, setActiveLink }) => {
           </div>
           <div className="textbox-h5">
             <h5 className="header-h5">
-              <b>Junior Software Engineer</b>
+              <b>Software Engineer</b>
             </h5>
           </div>
           <div className="textbox-p1">
