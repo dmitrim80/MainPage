@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import bjlogo from "../assets/images/logo-blackjack.png";
-
+import resume from "../assets/Dmitri Morozov - resume.pdf";
 const Body = () => {
   return (
     <>
@@ -9,14 +9,14 @@ const Body = () => {
         <div className="more-pages">
           <section id="about">
             <p className="header-p">
-            With a Bachelor of Science in Computer Science, my academic and
-            internship experiences have equipped me with a solid foundation in
-            software development, data structures, and algorithms. I am eager to
-            apply my knowledge and skills in a professional setting as an
-            Entry-Level Software Engineer, crafting solutions that make a
-            difference.
+              With a Bachelor of Science in Computer Science, my academic and
+              internship experiences have equipped me with a solid foundation in
+              software development, data structures, and algorithms. I am eager
+              to apply my knowledge and skills in a professional setting as an
+              Entry-Level Software Engineer, crafting solutions that make a
+              difference.
             </p>
-            
+
             <div className="headline-box">About Me</div>
             <div>
               As a graduate with a passion for software engineering, I have
@@ -48,192 +48,240 @@ const Body = () => {
           </section>
 
           <section id="projects">
-            
             <ol className="projects-list">
-            
-            <a href="https://www.dmitricode.com" className="project-link" > 
-              <li>
-                <div className="project-container">
-                  <div className="overLay-project-container"></div>
-                  <header className="header-time">2024 — Present</header>
-                  <div className="project-main-content">
-                    <p>
+              <a href="https://www.dmitricode.com" className="project-link">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2024 — Present</header>
+                    <div className="project-main-content">
+                      <p>
                         <span className="project-header">BlackJack Game</span>
-                        <span 
-                            id="project-arrow"
-                            role="img"
-                            aria-label="Link to project">
-                        ↗</span>
-                        <img 
-                            src={bjlogo}
-                            className="project-img"
-                            alt="logo-blackjack"
-                        /> 
-                    </p>  
-                    <p className="project-description">
-                    As part of my capstone project, I developed a fully-functional
-                BlackJack game. This project allowed me to apply and showcase my
-                proficiency in JavaScript, HTML, and CSS, creating a game that
-                is not only enjoyable but also visually appealing and
-                accessible. Responsibilities included: Designing and
-                implementing game logic to ensure a seamless and engaging user
-                experience. Utilizing React for the UI to create a dynamic and
-                responsive design. Ensuring the application's performance and
-                security using Firebase as a backend service. Collaborating with
-                peers for code reviews and optimizations, emphasizing clean,
-                maintainable code.
-                    </p>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                        <img
+                          src={bjlogo}
+                          className="project-img"
+                          alt="logo-blackjack"
+                        />
+                      </p>
+                      <p className="project-description">
+                        As part of my capstone project, I developed a
+                        fully-functional BlackJack game. This project allowed me
+                        to apply and showcase my proficiency in JavaScript,
+                        HTML, and CSS, creating a game that is not only
+                        enjoyable but also visually appealing and accessible.
+                        Responsibilities included: Designing and implementing
+                        game logic to ensure a seamless and engaging user
+                        experience. Utilizing React for the UI to create a
+                        dynamic and responsive design. Ensuring the
+                        application's performance and security using Firebase as
+                        a backend service. Collaborating with peers for code
+                        reviews and optimizations, emphasizing clean,
+                        maintainable code.
+                      </p>
 
-                    <ul
-                      className="skill-elements"
-                      aria-label="Technologies used"
-                    >
-                      <li>
-                        <div className="skill-e">JavaScript</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">React</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">CSS</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">HTML</div>
-                      </li>
-                    </ul>
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">React</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">CSS</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">HTML</div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
               </a>
 
-              <Link className="project-link" to="/corals/"> 
-              <li>
-                <div className="project-container">
-                  <div className="overLay-project-container"></div>
-                  <header className="header-time">2023 — Present</header>
-                  <div className="project-main-content">
-                  <p id="project-head">
-                        
-                        <span className="project-header">Coral Database Website</span>
-                        <span 
-                            id="project-arrow"
-                            role="img"
-                            aria-label="Link to project">
-                        ↗</span>
-                    </p>  
-                    <p className="project-description">
-                    Developed a vibrant website designed for marine-life enthusiasts to share and explore images of diverse coral species. This platform utilizes Google's robust database services for secure image storage, complete with user authentication to ensure privacy and safety. Users can upload and download images, update descriptions, curate personal favorites, and share their discoveries with the community. The project is actively evolving, with ongoing enhancements to enrich user experience and interaction.
-                    </p>
+              <Link className="project-link" to="/corals/">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2023 — Present</header>
+                    <div className="project-main-content">
+                      <p id="project-head">
+                        <span className="project-header">
+                          Coral Database Website
+                        </span>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                      </p>
+                      <p className="project-description">
+                        Developed a vibrant website designed for marine-life
+                        enthusiasts to share and explore images of diverse coral
+                        species. This platform utilizes Google's robust database
+                        services for secure image storage, complete with user
+                        authentication to ensure privacy and safety. Users can
+                        upload and download images, update descriptions, curate
+                        personal favorites, and share their discoveries with the
+                        community. The project is actively evolving, with
+                        ongoing enhancements to enrich user experience and
+                        interaction.
+                      </p>
 
-                    <ul
-                      className="skill-elements"
-                      aria-label="Technologies used"
-                    >
-                      <li>
-                        <div className="skill-e">JavaScript</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">React</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">CSS</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">HTML</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">Firebase</div>
-                      </li>
-                    </ul>
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">React</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">CSS</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">HTML</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">Firebase</div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </li>
-              </Link>
-              
-              <Link className="project-link" to="/bootstrap"> 
-              <li>
-                <div className="project-container">
-                  <div className="overLay-project-container"></div>
-                  <header className="header-time">2024</header>
-                  <div className="project-main-content">
-                    <p id="project-head">
-                        
-                        <span className="project-header">8 Sorting Algorithms</span>
-                        <span 
-                            id="project-arrow"
-                            role="img"
-                            aria-label="Link to project">
-                        ↗</span>
-                    </p>  
-                    <p className="project-description">
-                    Discover the essentials of sorting with "8 Must-Know Sorting Algorithms," a dynamic educational tool built using JavaScript, Bootstrap, and React. This interactive webpage showcases the differences and efficiencies of various algorithms through engaging visuals and clear explanations. Whether you're a novice or a practiced coder, this project offers a practical look at algorithmic sorting, demonstrating each method's unique characteristics in an accessible format powered by modern web technologies.
-                    </p>
-                    
-
- 
-                    <ul
-                      className="skill-elements"
-                      aria-label="Technologies used"
-                    >
-                      <li>
-                        <div className="skill-e">React</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">Bootstrap</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">JavaScript</div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
+                </li>
               </Link>
 
-              <a href="https://1000gal.dmitrimorozov.com" className="project-link"> 
-              <li>
-                <div className="project-container">
-                  <div className="overLay-project-container"></div>
-                  <header className="header-time">2018-2022</header>
-                  <div className="project-main-content">
-                    <p id="project-head">
+              <Link className="project-link" to="/bootstrap">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2024</header>
+                    <div className="project-main-content">
+                      <p id="project-head">
+                        <span className="project-header">
+                          8 Sorting Algorithms
+                        </span>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                      </p>
+                      <p className="project-description">
+                        Discover the essentials of sorting with "8 Must-Know
+                        Sorting Algorithms," a dynamic educational tool built
+                        using JavaScript, Bootstrap, and React. This interactive
+                        webpage showcases the differences and efficiencies of
+                        various algorithms through engaging visuals and clear
+                        explanations. Whether you're a novice or a practiced
+                        coder, this project offers a practical look at
+                        algorithmic sorting, demonstrating each method's unique
+                        characteristics in an accessible format powered by
+                        modern web technologies.
+                      </p>
 
-                    
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">React</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">Bootstrap</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </Link>
+
+              <a
+                href="https://1000gal.dmitrimorozov.com"
+                className="project-link"
+              >
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2018-2022</header>
+                    <div className="project-main-content">
+                      <p id="project-head">
                         <span className="project-header">1000gal Project</span>
-                        
-                        <span 
-                            id="project-arrow"
-                            role="img"
-                            aria-label="Link to project">
-                        ↗</span>
-                    </p>  
-                    <p className="project-description">
-                    Explore the comprehensive journey of setting up and maintaining a 1000-gallon aquarium, documented from 2018 to 2022. This project delves into the intricacies of aquatic design, ecosystem balance, and the technical challenges faced during the creation and upkeep of a large-scale aquarium. Access detailed insights and visual documentation by visiting the dedicated project page.
-                  </p>
 
-                    
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                      </p>
+                      <p className="project-description">
+                        Explore the comprehensive journey of setting up and
+                        maintaining a 1000-gallon aquarium, documented from 2018
+                        to 2022. This project delves into the intricacies of
+                        aquatic design, ecosystem balance, and the technical
+                        challenges faced during the creation and upkeep of a
+                        large-scale aquarium. Access detailed insights and
+                        visual documentation by visiting the dedicated project
+                        page.
+                      </p>
 
- 
-                    <ul
-                      className="skill-elements"
-                      aria-label="Technologies used"
-                    >
-                      <li>
-                        <div className="skill-e">React</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">Bootstrap</div>
-                      </li>
-                      <li>
-                        <div className="skill-e">JavaScript</div>
-                      </li>
-                    </ul>
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">React</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">Bootstrap</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
               </a>
-
             </ol>
+
+            <a href={resume} className="project-link">
+              <div className="project-container">
+                <div className="overLay-project-container"></div>
+                <div className="project-main-content">
+                  <p className="resume"id="project-head">
+                    <span className="project-header">View Full Resume</span>
+                    <span
+                      id="project-arrow"
+                      role="img"
+                      aria-label="Link to project"
+                    >
+                      ↗
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </a>
           </section>
 
           <section id="personal">
@@ -253,8 +301,9 @@ const Body = () => {
           <section id="contact">
             <div className="headline-box">Contact</div>
             <div className="bottom-contact-box">
-            Designed and coded in Visual Studio Code by yours truly. Built with React and CSS. All text is set in the Inter font.
-            You can reach out to me at{" "}
+              Designed and coded in Visual Studio Code by yours truly. Built
+              with React and CSS. All text is set in the Inter font. You can
+              reach out to me at{" "}
               <a
                 href="mailto:dmitri.m80@gmail.com"
                 className="bottom-email-link"
@@ -262,8 +311,6 @@ const Body = () => {
                 dmitri.m80@gmail.com
               </a>
             </div>
-            
-           
           </section>
         </div>
       </div>

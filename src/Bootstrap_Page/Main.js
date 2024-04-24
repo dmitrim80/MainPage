@@ -130,6 +130,7 @@ const Main = () => {
   
       return rightIndex`.trim();
   const codeStringInsertionSort = `#Insertion Sort Algorithm
+  Python:
 
   def insertionSort(data):
   
@@ -144,9 +145,26 @@ const Main = () => {
   
           data[minIndex] = tmp
   
-          print(data)`.trim();
+          print(data)
+          
+          JavaScript:
+          function insertionSort(data) {
+            for (let scanIndex = 1; scanIndex < data.length; scanIndex++) {
+                let tmp = data[scanIndex];
+                let minIndex = scanIndex;
+        
+                while (minIndex > 0 && tmp < data[minIndex - 1]) {
+                    data[minIndex] = data[minIndex - 1];
+                    minIndex -= 1;
+                }
+        
+                data[minIndex] = tmp;
+                console.log(data);
+            }
+        }`.trim();
 
   const codeStringSelectionSort = `#Selection Sort Algorithm
+Python:
 
   def selectionSort(data):
   
@@ -161,9 +179,33 @@ const Main = () => {
           if minIndex != scanIndex:
               data[scanIndex], data[minIndex] = data[minIndex], data[scanIndex]
   
-              print(data)`.trim();
+              print(data)
+              
+              
+              JavaScript:
+              function selectionSort(data) {
+                for (let scanIndex = 0; scanIndex < data.length; scanIndex++) {
+                    let minIndex = scanIndex;
+            
+                    for (let compIndex = scanIndex + 1; compIndex < data.length; compIndex++) {
+                        if (data[compIndex] < data[minIndex]) {
+                            minIndex = compIndex;
+                        }
+                    }
+            
+                    if (minIndex !== scanIndex) {
+                        // Swap the elements
+                        let temp = data[scanIndex];
+                        data[scanIndex] = data[minIndex];
+                        data[minIndex] = temp;
+            
+                        console.log(data);
+                    }
+                }
+            }`.trim();
 
   const codeStringBubbleSort = `#Bubble Sort Algorithm
+Python:
 
   def bubbleSort(data):
       lenght = len(data)
@@ -180,7 +222,35 @@ const Main = () => {
           if swapped == False:
               break
   
-      print(data)`.trim();
+      print(data)
+      
+      JavaScript:
+      function bubbleSort(data) {
+        let length = data.length;
+    
+        for (let iIndex = 0; iIndex < length; iIndex++) {
+            let swapped = false;
+    
+            for (let jIndex = 0; jIndex < length - iIndex - 1; jIndex++) {
+    
+                if (data[jIndex] > data[jIndex + 1]) {
+                    // Swap the elements
+                    let temp = data[jIndex];
+                    data[jIndex] = data[jIndex + 1];
+                    data[jIndex + 1] = temp;
+                    swapped = true;
+                }
+            }
+    
+            // If no two elements were swapped by inner loop, then break
+            if (!swapped) {
+                break;
+            }
+        }
+    
+        console.log(data);
+    }
+      `.trim();
   const codeStringShellSort = `
   #Shell Sort Algorithm
 

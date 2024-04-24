@@ -455,6 +455,9 @@ body div{
 #project-head{
   margin-top: 1rem;
 }
+.resume{
+  margin-left: .75rem;
+}
 .project-container #project-arrow{
   display: inline-block;
   transform: translateY(.25rem);
