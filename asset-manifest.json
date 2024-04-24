@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.d6f52445.chunk.css",
-    "main.js": "/static/js/main.4f3572c7.chunk.js",
-    "main.js.map": "/static/js/main.4f3572c7.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0ba10fdb.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0ba10fdb.js.map",
+    "main.css": "/static/css/main.15b94604.chunk.css",
+    "main.js": "/static/js/main.022665bf.chunk.js",
+    "main.js.map": "/static/js/main.022665bf.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.c2d1f363.js",
+    "runtime-main.js.map": "/static/js/runtime-main.c2d1f363.js.map",
     "static/css/2.98036eff.chunk.css": "/static/css/2.98036eff.chunk.css",
-    "static/js/2.fa76010f.chunk.js": "/static/js/2.fa76010f.chunk.js",
-    "static/js/2.fa76010f.chunk.js.map": "/static/js/2.fa76010f.chunk.js.map",
-    "static/js/3.9545e559.chunk.js": "/static/js/3.9545e559.chunk.js",
-    "static/js/3.9545e559.chunk.js.map": "/static/js/3.9545e559.chunk.js.map",
+    "static/js/2.0345dfac.chunk.js": "/static/js/2.0345dfac.chunk.js",
+    "static/js/2.0345dfac.chunk.js.map": "/static/js/2.0345dfac.chunk.js.map",
+    "static/js/3.ae03fcda.chunk.js": "/static/js/3.ae03fcda.chunk.js",
+    "static/js/3.ae03fcda.chunk.js.map": "/static/js/3.ae03fcda.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.c587c5dce2e2e107615e19346d36995a.js": "/precache-manifest.c587c5dce2e2e107615e19346d36995a.js",
+    "precache-manifest.90639a7a3772efe968240c60b0e21c2f.js": "/precache-manifest.90639a7a3772efe968240c60b0e21c2f.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.98036eff.chunk.css.map": "/static/css/2.98036eff.chunk.css.map",
-    "static/css/main.d6f52445.chunk.css.map": "/static/css/main.d6f52445.chunk.css.map",
-    "static/js/2.fa76010f.chunk.js.LICENSE.txt": "/static/js/2.fa76010f.chunk.js.LICENSE.txt",
+    "static/css/main.15b94604.chunk.css.map": "/static/css/main.15b94604.chunk.css.map",
+    "static/js/2.0345dfac.chunk.js.LICENSE.txt": "/static/js/2.0345dfac.chunk.js.LICENSE.txt",
     "static/media/Acro.jpeg": "/static/media/Acro.5e77d049.jpeg",
     "static/media/AquascapeIdeas.jpeg": "/static/media/AquascapeIdeas.be054d11.jpeg",
     "static/media/Chalice.jpeg": "/static/media/Chalice.6d9e08dd.jpeg",
+    "static/media/Dmitri Morozov - resume.pdf": "/static/media/Dmitri Morozov - resume.8c6fcbd4.pdf",
     "static/media/Favia.jpeg": "/static/media/Favia.220fc1e1.jpeg",
     "static/media/FishTank.jpeg": "/static/media/FishTank.2a71652a.jpeg",
     "static/media/Monti.jpeg": "/static/media/Monti.b6db1706.jpeg",
@@ -30,10 +31,10 @@
     "static/media/logo-blackjack.png": "/static/media/logo-blackjack.96aa3714.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0ba10fdb.js",
+    "static/js/runtime-main.c2d1f363.js",
     "static/css/2.98036eff.chunk.css",
-    "static/js/2.fa76010f.chunk.js",
-    "static/css/main.d6f52445.chunk.css",
-    "static/js/main.4f3572c7.chunk.js"
+    "static/js/2.0345dfac.chunk.js",
+    "static/css/main.15b94604.chunk.css",
+    "static/js/main.022665bf.chunk.js"
   ]
 }
