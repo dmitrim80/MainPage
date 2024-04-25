@@ -583,3 +583,6 @@ line-height: 1.25rem;
   font-size: var(--fs-350);
   cursor: pointer;
 }
+.viewip{
+  margin-left: 1rem;
+}

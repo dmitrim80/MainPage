@@ -269,7 +269,7 @@ const Body = () => {
               <div className="project-container">
                 <div className="overLay-project-container"></div>
                 <div className="project-main-content">
-                  <p className="resume"id="project-head">
+                  <p className="resume" id="project-head">
                     <span className="project-header">View Full Resume</span>
                     <span
                       id="project-arrow"
@@ -312,6 +312,8 @@ const Body = () => {
               </a>
             </div>
           </section>
+
+          <Link className="viewip"to="/viewip">View IPs</Link>
         </div>
       </div>
     </>
