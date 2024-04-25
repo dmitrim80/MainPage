@@ -57,10 +57,12 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(data => {
-        const ipData = localStorage.getItem('visitorIPs') ? JSON.parse(localStorage.getItem('visitorIPs')) : {};
+    fetch("https://api.ipify.org?format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        const ipData = localStorage.getItem("visitorIPs")
+          ? JSON.parse(localStorage.getItem("visitorIPs"))
+          : {};
         // Increment the counter for the IP address or initialize it if new
         if (ipData[data.ip]) {
           ipData[data.ip].count += 1;
@@ -69,13 +71,12 @@ const Main = () => {
           ipData[data.ip] = {
             count: 1,
             firstVisit: new Date().toISOString(),
-            lastVisit: new Date().toISOString()
+            lastVisit: new Date().toISOString(),
           };
         }
-        localStorage.setItem('visitorIPs', JSON.stringify(ipData));
-        console.log("IP Address stored:", data.ip, "Visit count:", ipData[data.ip].count);
+        localStorage.setItem("visitorIPs", JSON.stringify(ipData));
       })
-      .catch(error => console.error("Error fetching IP:", error));
+      .catch((error) => console.error("Error fetching IP:", error));
   }, []);
 
   return (
