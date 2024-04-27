@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Body from "./Body";
 import { debounce } from "./Utilities";
+
 import "./main.css";
 
 const Main = () => {

@@ -108,7 +108,9 @@ const Body = () => {
                 </li>
               </a>
 
-              <Link className="project-link" to="/corals/">
+              
+              
+              <a href="https://corals.dmitrimorozov.com" className="project-link">
                 <li>
                   <div className="project-container">
                     <div className="overLay-project-container"></div>
@@ -162,7 +164,7 @@ const Body = () => {
                     </div>
                   </div>
                 </li>
-              </Link>
+              </a>
 
               <Link className="project-link" to="/bootstrap">
                 <li>
