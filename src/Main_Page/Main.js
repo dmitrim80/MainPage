@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Body from "./Body";
 import { debounce } from "./Utilities";
+import { db } from "./firebaseConfig";
+import { doc,getDoc, setDoc, updateDoc, increment } from "firebase/firestore";
 
 import "./main.css";
 
@@ -58,27 +60,38 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
+    // Example IP fetch and update logic
     fetch("https://api.ipify.org?format=json")
-      .then((response) => response.json())
-      .then((data) => {
-        const ipData = localStorage.getItem("visitorIPs")
-          ? JSON.parse(localStorage.getItem("visitorIPs"))
-          : {};
-        // Increment the counter for the IP address or initialize it if new
-        if (ipData[data.ip]) {
-          ipData[data.ip].count += 1;
-          ipData[data.ip].lastVisit = new Date().toISOString();
-        } else {
-          ipData[data.ip] = {
-            count: 1,
-            firstVisit: new Date().toISOString(),
-            lastVisit: new Date().toISOString(),
-          };
-        }
-        localStorage.setItem("visitorIPs", JSON.stringify(ipData));
-      })
-      .catch((error) => console.error("Error fetching IP:", error));
-  }, []);
+        .then(response => response.json())
+        .then(async (data) => {
+            const ip = data.ip; // Assuming the IP address is retrieved correctly
+            const ipRef = doc(db, "visitorIPs", ip);
+
+            // Attempt to get the document
+            const docSnap = await getDoc(ipRef);
+            if (docSnap.exists()) {
+                // Document exists, update it
+                updateDoc(ipRef, {
+                    visits: increment(1),
+                    lastVisit: new Date()
+                })
+                .then(() => console.log("Document successfully updated"))
+                .catch(error => {
+                    console.error("Error updating document: ", error);
+                    alert("Failed to update data: Insufficient permissions.");
+                });
+            } else {
+                // Document does not exist, create it
+                setDoc(ipRef, {
+                    ip: ip,
+                    visits: 1,
+                    firstVisit: new Date(),
+                    lastVisit: new Date()
+                });
+            }
+        })
+        .catch(error => console.error("Error fetching IP:", error));
+}, []);
 
   return (
     <>
