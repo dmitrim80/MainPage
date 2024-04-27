@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/static/css/main.a69e514b.chunk.css",
-    "main.js": "/static/js/main.24065d08.chunk.js",
-    "main.js.map": "/static/js/main.24065d08.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.df5ff09f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.df5ff09f.js.map",
+    "main.js": "/static/js/main.fa0bde70.chunk.js",
+    "main.js.map": "/static/js/main.fa0bde70.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.93c55cc1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.93c55cc1.js.map",
     "static/css/2.98036eff.chunk.css": "/static/css/2.98036eff.chunk.css",
-    "static/js/2.f513e78d.chunk.js": "/static/js/2.f513e78d.chunk.js",
-    "static/js/2.f513e78d.chunk.js.map": "/static/js/2.f513e78d.chunk.js.map",
-    "static/js/3.248e9dee.chunk.js": "/static/js/3.248e9dee.chunk.js",
-    "static/js/3.248e9dee.chunk.js.map": "/static/js/3.248e9dee.chunk.js.map",
+    "static/js/2.0a2be9bc.chunk.js": "/static/js/2.0a2be9bc.chunk.js",
+    "static/js/2.0a2be9bc.chunk.js.map": "/static/js/2.0a2be9bc.chunk.js.map",
+    "static/js/3.43207ac8.chunk.js": "/static/js/3.43207ac8.chunk.js",
+    "static/js/3.43207ac8.chunk.js.map": "/static/js/3.43207ac8.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.3f2ef94ca2d3e8b05f102db8d5b74266.js": "/precache-manifest.3f2ef94ca2d3e8b05f102db8d5b74266.js",
+    "precache-manifest.dca29e03a4440795a2aa32406dbb8bb5.js": "/precache-manifest.dca29e03a4440795a2aa32406dbb8bb5.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.98036eff.chunk.css.map": "/static/css/2.98036eff.chunk.css.map",
     "static/css/main.a69e514b.chunk.css.map": "/static/css/main.a69e514b.chunk.css.map",
-    "static/js/2.f513e78d.chunk.js.LICENSE.txt": "/static/js/2.f513e78d.chunk.js.LICENSE.txt",
+    "static/js/2.0a2be9bc.chunk.js.LICENSE.txt": "/static/js/2.0a2be9bc.chunk.js.LICENSE.txt",
     "static/media/Dmitri Morozov - resume.pdf": "/static/media/Dmitri Morozov - resume.8c6fcbd4.pdf",
     "static/media/main.css": "/static/media/RasmusAndersson-Inter-Regular.abc87106.ttf",
     "static/media/logo-blackjack.png": "/static/media/logo-blackjack.96aa3714.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.df5ff09f.js",
+    "static/js/runtime-main.93c55cc1.js",
     "static/css/2.98036eff.chunk.css",
-    "static/js/2.f513e78d.chunk.js",
+    "static/js/2.0a2be9bc.chunk.js",
     "static/css/main.a69e514b.chunk.css",
-    "static/js/main.24065d08.chunk.js"
+    "static/js/main.fa0bde70.chunk.js"
   ]
 }
