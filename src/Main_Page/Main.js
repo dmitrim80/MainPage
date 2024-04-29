@@ -13,7 +13,6 @@ const Main = () => {
     x: -200,
     y: -200,
   });
-
   useEffect(() => {
     // The handleScroll function that you want to debounce
     const handleScroll = () => {
