@@ -3,7 +3,7 @@ import Header from "./Header";
 import Body from "./Body";
 import { debounce } from "./Utilities";
 import { db } from "./firebaseConfig";
-import { setDoc, serverTimestamp, doc } from "firebase/firestore";
+import { serverTimestamp, collection,addDoc } from "firebase/firestore";
 
 import "./main.css";
 
@@ -59,7 +59,6 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    // Store visit information when the component mounts
     const storeVisit = async () => {
       try {
         const response = await fetch("https://api.ipify.org?format=json");
@@ -67,22 +66,19 @@ const Main = () => {
         if (!ip) {
           return;
         }
-  
-        // Reference to the document where you want to store the visit data
-        const visitDocRef = doc(db, "visitorVisits", "visitData");
-  
-        // Add the visit information to the database
+
+        const visitsCollectionRef = collection(db, "ip_visits");
+
         const visitData = {
           ip: ip.trim(),
           timestamp: serverTimestamp(),
         };
-        await setDoc(visitDocRef, visitData);
-        
+        await addDoc(visitsCollectionRef, visitData);
       } catch (error) {
-        return;
+        console.error("Error ", error);
       }
     };
-  
+
     storeVisit();
   }, []);
 
