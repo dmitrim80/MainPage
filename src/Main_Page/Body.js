@@ -314,8 +314,6 @@ const Body = () => {
               </a>
             </div>
           </section>
-
-          <Link className="viewip"to="/viewip">View IPs</Link>
         </div>
       </div>
     </>

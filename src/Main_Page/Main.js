@@ -3,7 +3,7 @@ import Header from "./Header";
 import Body from "./Body";
 import { debounce } from "./Utilities";
 import { db } from "./firebaseConfig";
-import { doc,getDoc, setDoc, updateDoc, increment } from "firebase/firestore";
+import { setDoc, serverTimestamp, doc } from "firebase/firestore";
 
 import "./main.css";
 
@@ -60,38 +60,32 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    // Example IP fetch and update logic
-    fetch("https://api.ipify.org?format=json")
-        .then(response => response.json())
-        .then(async (data) => {
-            const ip = data.ip; // Assuming the IP address is retrieved correctly
-            const ipRef = doc(db, "visitorIPs", ip);
-
-            // Attempt to get the document
-            const docSnap = await getDoc(ipRef);
-            if (docSnap.exists()) {
-                // Document exists, update it
-                updateDoc(ipRef, {
-                    visits: increment(1),
-                    lastVisit: new Date()
-                })
-                .then(() => console.log("Document successfully updated"))
-                .catch(error => {
-                    console.error("Error updating document: ", error);
-                    alert("Failed to update data: Insufficient permissions.");
-                });
-            } else {
-                // Document does not exist, create it
-                setDoc(ipRef, {
-                    ip: ip,
-                    visits: 1,
-                    firstVisit: new Date(),
-                    lastVisit: new Date()
-                });
-            }
-        })
-        .catch(error => console.error("Error fetching IP:", error));
-}, []);
+    // Store visit information when the component mounts
+    const storeVisit = async () => {
+      try {
+        const response = await fetch("https://api.ipify.org?format=json");
+        const { ip } = await response.json();
+        if (!ip) {
+          return;
+        }
+  
+        // Reference to the document where you want to store the visit data
+        const visitDocRef = doc(db, "visitorVisits", "visitData");
+  
+        // Add the visit information to the database
+        const visitData = {
+          ip: ip.trim(),
+          timestamp: serverTimestamp(),
+        };
+        await setDoc(visitDocRef, visitData);
+        
+      } catch (error) {
+        return;
+      }
+    };
+  
+    storeVisit();
+  }, []);
 
   return (
     <>
