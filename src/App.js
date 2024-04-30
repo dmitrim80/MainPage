@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import Login from './DigitalBC/Login';
+import Option1 from './DigitalBC/Option1';
+import Option2 from './DigitalBC/Option2';
+import Option3 from './DigitalBC/Option3';
+import Option4 from './DigitalBC/Option4';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.....!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login/>
+      {/* <Option1/>
+      <Option2/>
+      <Option3/>
+      <Option4/> */}
     </div>
   );
 }
