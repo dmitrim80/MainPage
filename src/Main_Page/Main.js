@@ -10,6 +10,7 @@ import "./main.css";
 const Main = () => {
   const [activeLink, setActiveLink] = useState("about");
   const [spotlightPosition, setSpotlightPosition] = useState({
+    
     x: -200,
     y: -200,
   });
