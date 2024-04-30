@@ -107,9 +107,60 @@ const Body = () => {
                 </li>
               </a>
 
-              
-              
-              <a href="https://corals.dmitrimorozov.com" className="project-link">
+              <a href="https://v1.dmitrimorozov.com" className="project-link">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2024</header>
+                    <div className="project-main-content">
+                      <p id="project-head">
+                        <span className="project-header">
+                          8 Sorting Algorithms
+                        </span>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                      </p>
+                      <p className="project-description">
+                        Discover the essentials of sorting with "8 Must-Know
+                        Sorting Algorithms," a dynamic educational tool built
+                        using JavaScript, Bootstrap, and React. This interactive
+                        webpage showcases the differences and efficiencies of
+                        various algorithms through engaging visuals and clear
+                        explanations. Whether you're a novice or a practiced
+                        coder, this project offers a practical look at
+                        algorithmic sorting, demonstrating each method's unique
+                        characteristics in an accessible format powered by
+                        modern web technologies.
+                      </p>
+
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">React</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">Bootstrap</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </a>
+
+              <a
+                href="https://corals.dmitrimorozov.com"
+                className="project-link"
+              >
                 <li>
                   <div className="project-container">
                     <div className="overLay-project-container"></div>
@@ -165,19 +216,17 @@ const Body = () => {
                 </li>
               </a>
 
-              <a
-                href="https://v1.dmitrimorozov.com"
-                className="project-link"
-              >
+              <a href="https://v2.dmitrimorozov.com/" className="project-link">
                 <li>
                   <div className="project-container">
                     <div className="overLay-project-container"></div>
-                    <header className="header-time">2024</header>
+                    <header className="header-time">2023</header>
                     <div className="project-main-content">
                       <p id="project-head">
                         <span className="project-header">
-                          8 Sorting Algorithms
+                          Digital Business Card - Figma
                         </span>
+
                         <span
                           id="project-arrow"
                           role="img"
@@ -187,16 +236,7 @@ const Body = () => {
                         </span>
                       </p>
                       <p className="project-description">
-                        Discover the essentials of sorting with "8 Must-Know
-                        Sorting Algorithms," a dynamic educational tool built
-                        using JavaScript, Bootstrap, and React. This interactive
-                        webpage showcases the differences and efficiencies of
-                        various algorithms through engaging visuals and clear
-                        explanations. Whether you're a novice or a practiced
-                        coder, this project offers a practical look at
-                        algorithmic sorting, demonstrating each method's unique
-                        characteristics in an accessible format powered by
-                        modern web technologies.
+                        Digital Busines Card
                       </p>
 
                       <ul
@@ -207,10 +247,13 @@ const Body = () => {
                           <div className="skill-e">React</div>
                         </li>
                         <li>
-                          <div className="skill-e">Bootstrap</div>
+                          <div className="skill-e">Figma</div>
                         </li>
                         <li>
                           <div className="skill-e">JavaScript</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">CSS</div>
                         </li>
                       </ul>
                     </div>
