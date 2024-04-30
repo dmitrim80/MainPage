@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import bjlogo from "../assets/images/logo-blackjack.png";
 import resume from "../assets/Dmitri Morozov - resume.pdf";
 const Body = () => {
@@ -166,7 +165,10 @@ const Body = () => {
                 </li>
               </a>
 
-              <Link className="project-link" to="/bootstrap">
+              <a
+                href="https://v1.dmitrimorozov.com"
+                className="project-link"
+              >
                 <li>
                   <div className="project-container">
                     <div className="overLay-project-container"></div>
@@ -214,7 +216,7 @@ const Body = () => {
                     </div>
                   </div>
                 </li>
-              </Link>
+              </a>
 
               <a
                 href="https://1000gal.dmitrimorozov.com"
