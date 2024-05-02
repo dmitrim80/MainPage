@@ -1,6 +1,7 @@
 import React from "react";
 import bjlogo from "../assets/images/logo-blackjack.png";
 import resume from "../assets/Dmitri Morozov - resume.pdf";
+import { Link } from "react-router-dom";
 const Body = () => {
   return (
     <>
@@ -358,6 +359,11 @@ const Body = () => {
                 dmitri.m80@gmail.com
               </a>
             </div>
+            {/* <div>
+              <Link to="/viewip">
+                view IP
+              </Link>
+            </div> */}
           </section>
         </div>
       </div>
