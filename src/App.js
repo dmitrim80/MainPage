@@ -12,6 +12,7 @@ export default function App() {
       <Routes>
         <Route path="/viewip" element={<ViewIP />} />
         <Route path="/" element={<Main />} />
+        
       </Routes>
     </BrowserRouter>
   );
