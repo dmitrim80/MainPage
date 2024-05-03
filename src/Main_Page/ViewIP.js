@@ -5,9 +5,15 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  where,
+  deleteDoc,
+  query,
+  doc,
+} from "firebase/firestore";
 import { auth, db } from "./firebaseConfig.js";
-import axios from "axios";
 
 const ViewIP = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -17,6 +23,23 @@ const ViewIP = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [ipDetails, setIpDetails] = useState({});
+  const [referenceToIP, setReferenceToIP] = useState("");
+
+  async function deleteIP(ip) {
+    const queryInactive = query(
+      collection(db, "ip_visits"),
+      where("ip", "==", ip)
+    );
+
+    try {
+      const querySnapshot = await getDocs(queryInactive);
+      querySnapshot.forEach(async (doc) => {
+        await deleteDoc(doc.ref);
+      });
+    } catch (error) {
+      console.error("Error removing document: ", error);
+    }
+  }
 
   const getData = async () => {
     setLoading(true);
@@ -52,22 +75,6 @@ const ViewIP = () => {
     }
     return grouped;
   };
-  
-  const getIPDetails = async (ip) => {
-    try {
-      const response = await axios.get(`https://ipinfo.io/${ip}/json?token=<YourTokenHere>`);
-      setIpDetails(prevDetails => ({
-        ...prevDetails,
-        [ip]: response.data
-      }));
-    } catch (error) {
-      console.error(error);
-      setIpDetails(prevDetails => ({
-        ...prevDetails,
-        [ip]: { error: "Failed to fetch data" }
-      }));
-    }
-  };
 
   const renderGroupedData = () => {
     const grouped = groupedByIP();
@@ -77,15 +84,7 @@ const ViewIP = () => {
         <div key={key}>
           <div className="ip-description-row">
             <h5>IP: {key}</h5>
-            <button onClick={()=>getIPDetails(key)}>description</button>
-
-            {ipDetails[key] && (
-            <div>
-              <p>Location: {ipDetails[key].city}, {ipDetails[key].country}</p>
-              <p>ISP: {ipDetails[key].org}</p>
-            </div>
-          )}
-
+            <button onClick={() => deleteIP(key)}>Delete</button>
           </div>
           {value.map((item) => (
             <p className="ip-data-p" key={item.id}>
@@ -97,9 +96,6 @@ const ViewIP = () => {
     });
     return elements;
   };
-
-  
-  
 
   const login = async () => {
     try {
