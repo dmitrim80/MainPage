@@ -586,3 +586,16 @@ line-height: 1.25rem;
 .viewip{
   margin-left: 1rem;
 }
+.h4-login-msg{
+  color: red;
+}
+.ip-data-p{
+  font-size: x-small;
+  padding: 0;
+  margin-left: 1rem; 
+  margin-top: 0;
+  line-height: .25rem;
+}
+.ip-description-row{
+  display: flex;
+}
