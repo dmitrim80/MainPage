@@ -88,7 +88,7 @@ const ViewIP = () => {
           </div>
           {value.map((item) => (
             <p className="ip-data-p" key={item.id}>
-              Time: {Date(item.timestamp)}
+              Time: {item.timestamp.toDate().toLocaleString()}
             </p>
           ))}
         </div>
