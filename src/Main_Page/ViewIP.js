@@ -12,8 +12,11 @@ import {
   deleteDoc,
   query,
   doc,
+  addDoc,
+  updateDoc
 } from "firebase/firestore";
 import { auth, db } from "./firebaseConfig.js";
+import axios from "axios";
 
 const ViewIP = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -24,6 +27,38 @@ const ViewIP = () => {
   const [loading, setLoading] = useState(false);
   const [ipDetails, setIpDetails] = useState({});
   const [referenceToIP, setReferenceToIP] = useState("");
+
+  const saveIPDetailsToDB = async (ipDetails) => {
+    const visitTime = new Date(); // Current time of the visit
+    try {
+        const docRef = await addDoc(collection(db, "ip_visits"), {
+            ip: ipDetails.ip,
+            hostname: ipDetails.hostname,
+            city: ipDetails.city,
+            region: ipDetails.region,
+            country: ipDetails.country,
+            loc: ipDetails.loc,
+            org: ipDetails.org,
+            postal: ipDetails.postal,
+            timezone: ipDetails.timezone,
+            visits: [visitTime] // Initialize with the current visit time
+        });
+        console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+        console.error("Error adding document: ", e);
+    }
+};
+
+const updateVisitTimestamps = async (ip, visitTime) => {
+  const ipDocsQuery = query(collection(db, "ip_visits"), where("ip", "==", ip));
+  const querySnapshot = await getDocs(ipDocsQuery);
+
+  querySnapshot.forEach(async (doc) => {
+      const visitsArray = doc.data().visits || [];
+      visitsArray.push(visitTime);
+      await updateDoc(doc.ref, { visits: visitsArray });
+  });
+};
 
   async function deleteIP(ip) {
     const queryInactive = query(
@@ -40,6 +75,26 @@ const ViewIP = () => {
       console.error("Error removing document: ", error);
     }
   }
+
+  const getIPDetails = async (ip) => {
+    const token = "d8d81202c96c4f";
+    try {
+      const response = await fetch(
+        `https://ipinfo.io/${ip}/json?token=${token}`
+      );
+      const data = await response.json();
+      setIpDetails((prevDetails) => ({
+        ...prevDetails,
+        [ip]: data,
+      }));
+    } catch (error) {
+      console.error("Error fetching IP details:", error);
+      setIpDetails((prevDetails) => ({
+        ...prevDetails,
+        [ip]: { error: "Failed to fetch data" },
+      }));
+    }
+  };
 
   const getData = async () => {
     setLoading(true);
@@ -85,12 +140,34 @@ const ViewIP = () => {
           <div className="ip-description-row">
             <h5>IP: {key}</h5>
             <button onClick={() => deleteIP(key)}>Delete</button>
+            <button onClick={() => getIPDetails(key)}>IP Details</button>
           </div>
-          {value.map((item) => (
-            <p className="ip-data-p" key={item.id}>
-              Time: {item.timestamp.toDate().toLocaleString()}
-            </p>
-          ))}
+          <div className="ip-details-box">
+            <div className="ip-time-details-box">
+              {value.map((item) => (
+                <div className="ip-data-p" key={item.id}>
+                  <p>Time: {item.timestamp ? (item.timestamp.toDate ? item.timestamp.toDate().toLocaleString() : 'Invalid timestamp format') : 'No timestamp'}</p>
+                </div>
+              ))}
+            </div>
+            {ipDetails[key] && (
+              <div className="ip-info">
+                <p>Hostname: {ipDetails[key].hostname}</p>
+                <p>
+                  Location: {ipDetails[key].city},
+                  {ipDetails[key].region},
+                  {ipDetails[key].country},
+                  {ipDetails[key].loc}
+                </p>
+                <p>
+                  ISP:{" "}
+                  {`${ipDetails[key].org},
+                    zip: ${ipDetails[key].postal},
+                    timezone: ${ipDetails[key].timezone}`}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       );
     });
