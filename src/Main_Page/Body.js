@@ -1,6 +1,7 @@
 import React from "react";
 import bjlogo from "../assets/images/logo-blackjack.png";
 import resume from "../assets/Dmitri Morozov - resume.pdf";
+import myfishtanklogo from "../images/logo-myfishtank-nobg.png";
 // import { Link } from "react-router-dom";
 const Body = () => {
   return (
@@ -49,6 +50,53 @@ const Body = () => {
 
           <section id="projects">
             <ol className="projects-list">
+            <a href="https://my-fishtank.com" className="project-link">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2024 - May</header>
+                    <div className="project-main-content">
+                      <p>
+                        <span className="project-header">My-FishTank.com</span>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                        <img
+                          src={myfishtanklogo}
+                          className="project-img"
+                          alt="logo-myfishtank"
+                        />
+                      </p>
+                      <p className="project-description">
+                      As part of my recent project, I developed My FishTank, a WordPress-based e-commerce website specializing in marine supplies and corals. This project involved creating a visually appealing and user-friendly interface, integrating essential features like secure payment gateways and user account management, and optimizing for performance and security. Additionally, I developed detailed product descriptions and care guides to enhance SEO and user engagement. Through this project, I refined my skills in WordPress development, e-commerce solutions, and web design, delivering a professional and efficient platform for marine enthusiasts.
+                      </p>
+
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">WordPress</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">CSS</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">HTML</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </a>
+
               <a href="https://www.dmitricode.com" className="project-link">
                 <li>
                   <div className="project-container">
