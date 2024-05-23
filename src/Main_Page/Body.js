@@ -1,6 +1,6 @@
 import React from "react";
 import bjlogo from "../assets/images/logo-blackjack.png";
-import resume from "../assets/Dmitri Morozov - resume.pdf";
+import resume from "../assets/Dmitri Morozov - resume0523.pdf";
 import myfishtanklogo from "../images/logo-myfishtank-nobg.png";
 // import { Link } from "react-router-dom";
 const Body = () => {
@@ -50,7 +50,7 @@ const Body = () => {
 
           <section id="projects">
             <ol className="projects-list">
-            <a href="https://my-fishtank.com" className="project-link">
+              <a href="https://my-fishtank.com" className="project-link">
                 <li>
                   <div className="project-container">
                     <div className="overLay-project-container"></div>
@@ -72,7 +72,19 @@ const Body = () => {
                         />
                       </p>
                       <p className="project-description">
-                      As part of my recent project, I developed My FishTank, a WordPress-based e-commerce website specializing in marine supplies and corals. This project involved creating a visually appealing and user-friendly interface, integrating essential features like secure payment gateways and user account management, and optimizing for performance and security. Additionally, I developed detailed product descriptions and care guides to enhance SEO and user engagement. Through this project, I refined my skills in WordPress development, e-commerce solutions, and web design, delivering a professional and efficient platform for marine enthusiasts.
+                        As part of my recent project, I developed My FishTank, a
+                        WordPress-based e-commerce website specializing in
+                        marine supplies and corals. This project involved
+                        creating a visually appealing and user-friendly
+                        interface, integrating essential features like secure
+                        payment gateways and user account management, and
+                        optimizing for performance and security. Additionally, I
+                        developed detailed product descriptions and care guides
+                        to enhance SEO and user engagement. Through this
+                        project, I refined my skills in WordPress development,
+                        e-commerce solutions, and web design, delivering a
+                        professional and efficient platform for marine
+                        enthusiasts.
                       </p>
 
                       <ul
