@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/static/css/main.c8282d0a.css",
-    "main.js": "/static/js/main.f1c7a1b2.js",
+    "main.js": "/static/js/main.58e11047.js",
     "static/js/453.51a77613.chunk.js": "/static/js/453.51a77613.chunk.js",
     "static/media/logo-myfishtank-nobg.png": "/static/media/logo-myfishtank-nobg.65af93b8bc2f5b2f79ca.png",
     "static/media/RasmusAndersson-Inter-Regular.ttf": "/static/media/RasmusAndersson-Inter-Regular.8427860ac8bc5bb4b008.ttf",
     "static/media/RasmusAndersson-Inter-Bold.otf": "/static/media/RasmusAndersson-Inter-Bold.4852edfcf88cee219c54.otf",
     "static/media/RasmusAndersson-Inter-Medium.otf": "/static/media/RasmusAndersson-Inter-Medium.ddf01184de7cd1ba5380.otf",
-    "static/media/Dmitri Morozov - resume.pdf": "/static/media/Dmitri Morozov - resume.1c2f385a6d0beb99f50e.pdf",
+    "static/media/Dmitri Morozov - resume0523.pdf": "/static/media/Dmitri Morozov - resume0523.0bfb9eee16f16e92d2b0.pdf",
     "static/media/logo-blackjack.png": "/static/media/logo-blackjack.7e28ceaf15d138b73461.png",
     "index.html": "/index.html",
     "main.c8282d0a.css.map": "/static/css/main.c8282d0a.css.map",
-    "main.f1c7a1b2.js.map": "/static/js/main.f1c7a1b2.js.map",
+    "main.58e11047.js.map": "/static/js/main.58e11047.js.map",
     "453.51a77613.chunk.js.map": "/static/js/453.51a77613.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c8282d0a.css",
-    "static/js/main.f1c7a1b2.js"
+    "static/js/main.58e11047.js"
   ]
 }
