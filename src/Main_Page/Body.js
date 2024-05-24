@@ -1,7 +1,8 @@
 import React from "react";
 import bjlogo from "../assets/images/logo-blackjack.png";
-import resume from "../assets/Dmitri Morozov - resume0523.pdf";
+import resume from "../assets/Dmitri Morozov - resume0524.pdf";
 import myfishtanklogo from "../images/logo-myfishtank-nobg.png";
+import cprlogo from "../images/CHCPR-logo-dark-512.png";
 // import { Link } from "react-router-dom";
 const Body = () => {
   return (
@@ -20,17 +21,7 @@ const Body = () => {
 
             <div className="headline-box">About Me</div>
             <div>
-              As a graduate with a passion for software engineering, I have
-              always been fascinated by the ability of code to solve complex
-              problems and create impactful digital experiences. My journey in
-              computer science has been marked by a relentless pursuit of
-              knowledge, from mastering programming languages to understanding
-              the nuances of user-centric design. Outside the classroom and
-              coding environment, I'm an avid sports fan, music and theater
-              lover, and an enthusiast of marine biology and aquatic life. These
-              diverse interests have shaped my approach to problem-solving,
-              fostering a unique blend of creativity, persistence, and attention
-              to detail.
+            As a passionate software engineering graduate, I am fascinated by the power of code to solve complex problems and create impactful digital experiences. My computer science journey is focused on mastering programming languages and user-centric design. Outside of coding, I'm an avid sports fan, and marine biology enthusiast, music and theater lover. These interests shape my creative, persistent, and detail-oriented approach to problem-solving.
             </div>
           </section>
 
@@ -50,6 +41,63 @@ const Body = () => {
 
           <section id="projects">
             <ol className="projects-list">
+              <a href="https://cherryhillcpr.com" className="project-link">
+                <li>
+                  <div className="project-container">
+                    <div className="overLay-project-container"></div>
+                    <header className="header-time">2024 - May</header>
+                    <div className="project-main-content">
+                      <p>
+                        <span className="project-header">
+                          cherryhillcpr.com
+                        </span>
+                        <span
+                          id="project-arrow"
+                          role="img"
+                          aria-label="Link to project"
+                        >
+                          ↗
+                        </span>
+                        <img
+                          src={cprlogo}
+                          className="project-img"
+                          alt="logo-myfishtank"
+                        />
+                      </p>
+                      <p className="project-description">
+                        I developed cherryhillcpr.com, a modern and accessible
+                        website for a CPR training service. This project
+                        involved creating a clean and professional interface,
+                        integrating essential features like course scheduling
+                        and secure payment options, and optimizing for both
+                        performance and security. The design focused on
+                        user-friendliness and clear navigation to ensure an
+                        optimal user experience. Through this project, I
+                        enhanced my skills in web development, user interface
+                        design, and e-commerce solutions.
+                      </p>
+
+                      <ul
+                        className="skill-elements"
+                        aria-label="Technologies used"
+                      >
+                        <li>
+                          <div className="skill-e">JavaScript</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">WordPress</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">CSS</div>
+                        </li>
+                        <li>
+                          <div className="skill-e">HTML</div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              </a>
               <a href="https://my-fishtank.com" className="project-link">
                 <li>
                   <div className="project-container">
@@ -72,19 +120,18 @@ const Body = () => {
                         />
                       </p>
                       <p className="project-description">
-                        As part of my recent project, I developed My FishTank, a
-                        WordPress-based e-commerce website specializing in
-                        marine supplies and corals. This project involved
-                        creating a visually appealing and user-friendly
-                        interface, integrating essential features like secure
-                        payment gateways and user account management, and
-                        optimizing for performance and security. Additionally, I
-                        developed detailed product descriptions and care guides
-                        to enhance SEO and user engagement. Through this
-                        project, I refined my skills in WordPress development,
-                        e-commerce solutions, and web design, delivering a
-                        professional and efficient platform for marine
-                        enthusiasts.
+                        I developed my-fishtank.com, a WordPress-based
+                        e-commerce website specializing in marine supplies and
+                        corals. This project involved creating a visually
+                        appealing and user-friendly interface, integrating
+                        essential features like secure payment gateways and user
+                        account management, and optimizing for performance and
+                        security. Additionally, I developed detailed product
+                        descriptions and care guides to enhance SEO and user
+                        engagement. Through this project, I refined my skills in
+                        WordPress development, e-commerce solutions, and web
+                        design, delivering a professional and efficient platform
+                        for marine enthusiasts.
                       </p>
 
                       <ul
@@ -131,19 +178,16 @@ const Body = () => {
                         />
                       </p>
                       <p className="project-description">
-                        As part of my capstone project, I developed a
-                        fully-functional BlackJack game. This project allowed me
-                        to apply and showcase my proficiency in JavaScript,
-                        HTML, and CSS, creating a game that is not only
-                        enjoyable but also visually appealing and accessible.
-                        Responsibilities included: Designing and implementing
-                        game logic to ensure a seamless and engaging user
-                        experience. Utilizing React for the UI to create a
-                        dynamic and responsive design. Ensuring the
-                        application's performance and security using Firebase as
-                        a backend service. Collaborating with peers for code
-                        reviews and optimizations, emphasizing clean,
-                        maintainable code.
+                        I developed a fully-functional BlackJack game,
+                        leveraging my expertise in JavaScript, HTML, and CSS.
+                        This project showcased my ability to create an engaging
+                        and visually appealing game. Key responsibilities
+                        included designing and implementing game logic for a
+                        seamless user experience, using React for a dynamic and
+                        responsive UI, and ensuring performance and security
+                        with Firebase as the backend service. I also
+                        collaborated with peers for code reviews and
+                        optimizations, emphasizing clean and maintainable code.
                       </p>
 
                       <ul
