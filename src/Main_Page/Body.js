@@ -1,8 +1,8 @@
 import React from "react";
 import bjlogo from "../assets/images/logo-blackjack.png";
 import resume from "../assets/Dmitri Morozov - resume0524.pdf";
-import myfishtanklogo from "../images/logo-myfishtank-nobg.png";
-import cprlogo from "../images/CHCPR-logo-dark-512.png";
+import myfishtanklogo from "../assets/images/logo-myfishtank-85w.png";
+import cprlogo from "../assets/images/CHCPR-logo-dark-85w.png";
 // import { Link } from "react-router-dom";
 const Body = () => {
   return (
