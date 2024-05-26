@@ -1,5 +1,5 @@
 import React from "react";
-import bjlogo from "../assets/images/logo-blackjack.png";
+import bjlogo from "../assets/images/logo-blackjack-85w.png";
 import resume from "../assets/Dmitri Morozov - resume0524.pdf";
 import myfishtanklogo from "../assets/images/logo-myfishtank-85w.png";
 import cprlogo from "../assets/images/CHCPR-logo-dark-85w.png";
