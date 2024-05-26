@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./Main_Page/main.css";
 import ViewIP from "./Main_Page/ViewIP";
+import Archive from "./Main_Page/Archive";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/viewip" element={<ViewIP />} />
         <Route path="/" element={<Main />} />
-        <Route path="/archive" element={<div>Archive</div>} />
+        <Route path="/archive" element={<Archive />} />
       </Routes>
     </BrowserRouter>
   );

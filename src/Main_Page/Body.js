@@ -11,10 +11,16 @@ const Body = () => {
         <div className="more-pages">
           <section id="about">
             <p className="header-p">
-            With a Bachelor of Science in Computer Science, my academic and internship experiences have given me a strong foundation in software development, data structures, and algorithms. I am eager to apply my skills as an Entry-Level Software Engineer, crafting impactful solutions.
+              With a Bachelor of Science in Computer Science, my academic and
+              internship experiences have given me a strong foundation in
+              software development, data structures, and algorithms. I am eager
+              to apply my skills as an Entry-Level Software Engineer, crafting
+              impactful solutions.
             </p>
 
-            <div className="headline-box" loading="lazy">About Me</div>
+            <div className="headline-box" loading="lazy">
+              About Me
+            </div>
             <div>
               As a passionate software engineering graduate, I am fascinated by
               the power of code to solve complex problems and create impactful
@@ -424,6 +430,26 @@ const Body = () => {
                 <div className="project-main-content">
                   <p className="resume" id="project-head">
                     <span className="project-header">View Full Resume</span>
+                    <span
+                      id="project-arrow"
+                      role="img"
+                      aria-label="Link to project"
+                    >
+                      ↗
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a href="/archive" className="project-link">
+              <div className="project-container">
+                <div className="overLay-project-container"></div>
+                <div className="project-main-content">
+                  <p className="resume" id="project-head">
+                    <span className="project-header">
+                      View Full Projects Archive
+                    </span>
                     <span
                       id="project-arrow"
                       role="img"
