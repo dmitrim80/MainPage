@@ -11,17 +11,18 @@ const Body = () => {
         <div className="more-pages">
           <section id="about">
             <p className="header-p">
-              With a Bachelor of Science in Computer Science, my academic and
-              internship experiences have equipped me with a solid foundation in
-              software development, data structures, and algorithms. I am eager
-              to apply my knowledge and skills in a professional setting as an
-              Entry-Level Software Engineer, crafting solutions that make a
-              difference.
+            With a Bachelor of Science in Computer Science, my academic and internship experiences have given me a strong foundation in software development, data structures, and algorithms. I am eager to apply my skills as an Entry-Level Software Engineer, crafting impactful solutions.
             </p>
 
-            <div className="headline-box">About Me</div>
+            <div className="headline-box" loading="lazy">About Me</div>
             <div>
-            As a passionate software engineering graduate, I am fascinated by the power of code to solve complex problems and create impactful digital experiences. My computer science journey is focused on mastering programming languages and user-centric design. Outside of coding, I'm an avid sports fan, and marine biology enthusiast, music and theater lover. These interests shape my creative, persistent, and detail-oriented approach to problem-solving.
+              As a passionate software engineering graduate, I am fascinated by
+              the power of code to solve complex problems and create impactful
+              digital experiences. My computer science journey is focused on
+              mastering programming languages and user-centric design. Outside
+              of coding, I'm an avid sports fan, and marine biology enthusiast,
+              music and theater lover. These interests shape my creative,
+              persistent, and detail-oriented approach to problem-solving.
             </div>
           </section>
 
