@@ -6,6 +6,7 @@ import { faSquareInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import pImg from "../assets/images/profile2-med.png";
 
 const Header = ({ activeLink, setActiveLink }) => {
   const handleLinkClick = (e, linkName) => {
@@ -18,13 +19,16 @@ const Header = ({ activeLink, setActiveLink }) => {
       <div className="header-container">
         <div className="page1">
           <div className="header-box">
-            <h1 className="header-h1">
+          <img src={pImg} alt="Dmitri Morozov" className="profile-img"/>
+            <h3 className="header-h3">
               <b>Dmitri Morozov</b>
-            </h1>
+            </h3>
           </div>
           <div className="textbox-h5">
             <h5 className="header-h5">
-              <b>Software Engineer</b>
+              
+              Software Engineer
+              
             </h5>
           </div>
           <div className="textbox-p1">
@@ -58,8 +62,10 @@ const Header = ({ activeLink, setActiveLink }) => {
               >
                 PROJECTS
               </a>
+              
             </div>
             <div className="header-links"></div>
+            
           </div>
 
           <div className="social-icons-box">
@@ -82,6 +88,7 @@ const Header = ({ activeLink, setActiveLink }) => {
               <a href="http://www.facebook.com/dmitrim80">
                 <FontAwesomeIcon icon={faSquareFacebook} />
               </a>
+              
             </div>
           </div>
         </div>
