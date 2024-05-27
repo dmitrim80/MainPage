@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Body from "./Body";
+import Archive from "./Archive";
 import { debounce } from "./Utilities";
 import { db } from "./firebaseConfig";
-import { serverTimestamp, collection,addDoc } from "firebase/firestore";
+import { serverTimestamp, collection, addDoc } from "firebase/firestore";
 
 import "./main.css";
 
 const Main = () => {
   const [activeLink, setActiveLink] = useState("about");
   const [spotlightPosition, setSpotlightPosition] = useState({
-    
     x: -200,
     y: -200,
   });
   useEffect(() => {
     // The handleScroll function that you want to debounce
     const handleScroll = () => {
-      const sections = ["about", "interests", "projects"]; // Update with your section IDs
+      const sections = ["about", "interests", "projects", "archive"]; // Update with your section IDs
       let currentActiveLink = "";
       const scrollPosition = window.scrollY;
 
@@ -26,7 +26,6 @@ const Main = () => {
         if (sectionEl) {
           const sectionTop = sectionEl.offsetTop;
           const sectionHeight = sectionEl.offsetHeight;
-          // Check if the section is at least halfway in view
           if (
             scrollPosition >= sectionTop - sectionHeight / 2 &&
             scrollPosition < sectionTop + sectionHeight / 2
@@ -111,7 +110,7 @@ const Main = () => {
         <div className="spacer"></div>
 
         <section className="body-wrapper">
-          <Body />
+          {activeLink === "archive" ? <Archive /> : <Body />}
         </section>
       </main>
     </>

@@ -1,69 +1,80 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import "./archive.css";
+import "./main.css";
 const Archive = () => {
+  const [spotlightPosition, setSpotlightPosition] = useState({
+    x: -200,
+    y: -200,
+  });
+
+  useEffect(() => {
+    const updateSpotlightPosition = (e) => {
+      setSpotlightPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", updateSpotlightPosition);
+
+    return () => {
+      window.removeEventListener("mousemove", updateSpotlightPosition);
+    };
+  }, []);
+
   return (
     <>
-      <section id="projects">
-            <ol className="projects-list">
-              <a href="https://cherryhillcpr.com" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2024 - May</header>
-                    <div className="project-main-content">
-                      <p>
-                        <span className="project-header">
-                          cherryhillcpr.com
-                        </span>
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                        {/* <img
-                          src={cprlogo}
-                          className="project-img"
-                          alt="logo-myfishtank"
-                        /> */}
-                      </p>
-                      <p className="project-description">
-                        I developed cherryhillcpr.com, a modern and accessible
-                        website for a CPR training service. This project
-                        involved creating a clean and professional interface,
-                        integrating essential features like course scheduling
-                        and secure payment options, and optimizing for both
-                        performance and security. The design focused on
-                        user-friendliness and clear navigation to ensure an
-                        optimal user experience. Through this project, I
-                        enhanced my skills in web development, user interface
-                        design, and e-commerce solutions.
-                      </p>
+      <div className="archive-container m-5">
+        <div
+          className="overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `radial-gradient(circle 100px at 
+                ${spotlightPosition.x}px 
+                ${spotlightPosition.y}px, 
+                rgba(255,255,255,0.055) 0%,
+                rgba(0,0,0,0.2) 700%)`,
+            pointerEvents: "none",
+            zIndex: 9999,
+          }}
+        ></div>
+        <a href="/" className="project-link">
+          <span
+            id="project-arrow-archive"
+            role="img"
+            aria-label="Link to project"
+          >
+            ←
+          </span>
+          <span className="project-header-archive">Dmitri Morozov</span>
+        </a>
+        <h1>All Projects:</h1>
 
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">WordPress</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">HTML</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-              </ol>
-              </section>
+        <section className="archive-section">
+          <div className="archive-row-header">
+            <div className="archive-row-element">Year</div>
+            <div className="archive-row-element">Project</div>
+            <div className="archive-row-element">Made at</div>
+            <div className="archive-row-element">Build with</div>
+            <div className="archive-row-element">Link</div>
+          </div>
+
+          {Array.from({ length: 15 }).map((_, index) => (
+            <div className="archive-row" key={index}>
+              <div className="archive-row-element">2021</div>
+              <div className="archive-row-element">Project {index + 1}</div>
+              <div className="archive-row-element">Company</div>
+              <div className="archive-row-element">Tech</div>
+              <div className="archive-row-element">
+                <a href="/" className="archive-link">
+                  Link
+                </a>
+              </div>
+            </div>
+          ))}
+        </section>
+      </div>
     </>
   );
 };
