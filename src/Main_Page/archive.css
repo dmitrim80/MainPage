@@ -1,21 +1,50 @@
 
 .archive-container{
     max-width: 1200px;
+    margin-top: 5rem;
+    margin-left: 7rem;
   }
+.archive-container h1{
+  color: var(--clr-neutral-200);
+  font-weight: bold;
+}
+.archive-row-header > div{
+  color: var(--clr-neutral-200);
+  font-size: var(--fs-350);
+  
+}
+.archive-row > div{
+  font-size: var(--fs-350);
+}
   .archive-container .project-header-archive{
     text-decoration: none;
     color: var(--clr-primary-500);
   }
   .archive-container #project-arrow-archive{
     display: inline-block;
-    transform: translateX(-0.25rem);
+    transform: translateX(-0.15rem);
     transition: all .3s ease;
     color: var(--clr-primary-500);
   }
   .archive-container:hover #project-arrow-archive{
     display: inline-block;
     color: var(--clr-primary-500);
-    transform: translateX(-.5rem);
+    transform: translateX(-.6rem);
+  }
+  .archive-container #project-arrow2-archive{
+    display: inline-block;
+    transform: translateY(-0.25rem);
+    transition: all .3s ease;
+    color: var(--clr-primary-500);
+  }
+  .archive-container .archive-row-element a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+  }
+  .archive-container .archive-row-element a:hover #project-arrow2-archive {
+    transform: translateX(0.5rem) translateY(-0.5rem);
   }
   .archive-section{
     display: grid;
@@ -24,24 +53,35 @@
   
   .archive-row-header{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 10rem 15rem 9rem auto 18rem;
     position: -webkit-sticky;
     position: sticky;
     background-color: var(--clr-neutral-900);
     opacity: 0.9;
     top: 0;
     font-weight: bold;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid hsla(0, 0%, 80%, 0.15);
     padding: 10px 0;
   }
   
   .archive-row{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    border-bottom: 1px solid #ccc;
+    grid-template-columns: 10rem 15rem 9rem auto 18rem;
+    border-bottom: 1px solid hsla(0, 0%, 80%, 0.15);
     padding: 10px 0;
   }
   .archive-row:last-child {
     border-bottom: none; 
   }
   
+.archive-row-element .skill-e{
+  margin-right: .5rem;
+}
+.archive-row-element-title{
+  color: var(--clr-neutral-200);
+  font-size: var(--fs-400) !important;
+}
+.archive-row-element a:hover .project-archive-url{
+  color: var(--clr-primary-500);
+  text-decoration: none;
+}

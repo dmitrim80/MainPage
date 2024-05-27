@@ -4,7 +4,7 @@
   --clr-primary-400: hsl(9, 100%, 64%);
   --clr-primary-300: hsl(177, 48%, 44%);
   --clr-neutral-900: #0F172A;
-  --clr-neutral-200: #E2E8F0;
+  --clr-neutral-200: #f5f2f2;
   --clr-neutral-100: hsl(215, 20%, 65%);
 
   --ff-med: 'Inter-Medium',sans-serif;
@@ -526,10 +526,12 @@ line-height: 1.25rem;
 }
 .skill-e{
   padding: .25rem;
+  padding-left: .75rem;
+  padding-right: .75rem;
   text-align: left;
   border-radius: 12px;
   line-height: 20px;
-  background-color: #18514e;
+  background-color: hsla(177, 54%, 21%, 0.5);
   font-size: var(--fs-300);
   font-family: var(--ff-med);
   color:var(--clr-primary-500);

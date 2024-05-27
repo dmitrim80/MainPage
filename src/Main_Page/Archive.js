@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./archive.css";
 import "./main.css";
+import projectsData from "./projectsData";
+
 const Archive = () => {
   const [spotlightPosition, setSpotlightPosition] = useState({
-    x: -200,
-    y: -200,
+    x: -2,
+    y: -2,
   });
 
   useEffect(() => {
@@ -21,7 +23,7 @@ const Archive = () => {
 
   return (
     <>
-      <div className="archive-container m-5">
+      <div className="archive-container">
         <div
           className="overlay"
           style={{
@@ -49,30 +51,42 @@ const Archive = () => {
           </span>
           <span className="project-header-archive">Dmitri Morozov</span>
         </a>
-        <h1>All Projects:</h1>
+        <h1>All Projects</h1>
 
         <section className="archive-section">
           <div className="archive-row-header">
-            <div className="archive-row-element">Year</div>
-            <div className="archive-row-element">Project</div>
-            <div className="archive-row-element">Made at</div>
-            <div className="archive-row-element">Build with</div>
-            <div className="archive-row-element">Link</div>
+            <div className="archive-row-element-date">Date</div>
+            <div className="archive-row-element-title">Project</div>
+            <div className="archive-row-element-madeAt">Made at</div>
+            <div className="archive-row-element-builtWith">Built with</div>
+            <div className="archive-row-element-link">Link</div>
           </div>
-
-          {Array.from({ length: 15 }).map((_, index) => (
+          {projectsData.map((project, index) => ( 
             <div className="archive-row" key={index}>
-              <div className="archive-row-element">2021</div>
-              <div className="archive-row-element">Project {index + 1}</div>
-              <div className="archive-row-element">Company</div>
-              <div className="archive-row-element">Tech</div>
-              <div className="archive-row-element">
-                <a href="/" className="archive-link">
-                  Link
-                </a>
-              </div>
+            <div className="archive-row-element-date">{project.date}</div>
+            <div className="archive-row-element-title">{project.title}</div>
+            <div className="archive-row-element">{project.madeAt}</div>
+            <div className="archive-row-element">
+              {project.builtWith.split(",").map((skill, i) => (
+                <span key={i} className="skill-e">{skill.trim()}</span>
+              ))}
             </div>
+            <div className="archive-row-element">
+            <a href={project.url} className="project-link">
+              <span className="project-archive-url">{project.url}</span>
+              <span
+                id="project-arrow2-archive"
+                role="img"
+                aria-label="Link to project"
+              >
+                ↗
+              </span>
+            </a>
+            </div>
+          </div>
           ))}
+            
+
         </section>
       </div>
     </>
