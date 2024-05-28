@@ -8,16 +8,21 @@ const Archive = () => {
     x: -2,
     y: -2,
   });
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
+  
 
   useEffect(() => {
     const updateSpotlightPosition = (e) => {
       setSpotlightPosition({ x: e.clientX, y: e.clientY });
     };
-
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 639);
+    };
     window.addEventListener("mousemove", updateSpotlightPosition);
-
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("mousemove", updateSpotlightPosition);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -63,26 +68,41 @@ const Archive = () => {
           </div>
           {projectsData.map((project, index) => ( 
             <div className="archive-row" key={index}>
-            <div className="archive-row-element-date">{project.date}</div>
-            <div className="archive-row-element-title">{project.title}</div>
-            <div className="archive-row-element">{project.madeAt}</div>
-            <div className="archive-row-element">
-              {project.builtWith.split(",").map((skill, i) => (
-                <span key={i} className="skill-e">{skill.trim()}</span>
-              ))}
-            </div>
-            <div className="archive-row-element">
-            <a href={project.url} className="project-link">
-              <span className="project-archive-url">{project.url}</span>
-              <span
-                id="project-arrow2-archive"
-                role="img"
-                aria-label="Link to project"
-              >
-                ↗
-              </span>
-            </a>
-            </div>
+              <div className="archive-row-element-date">{project.date}</div>
+              <div className="archive-row-element-title">
+              {isMobile ? (
+                  <a href={project.url} className="project-link" key={index}>{project.title} 
+                  <span
+                  id="project-arrow2-archive"
+                  role="img"
+                  aria-label="Link to project"
+                >
+                  ↗
+                </span>
+                  </a>
+                ) : (
+                  project.title
+                )}
+              </div>
+              <div className="archive-row-element-madeAt">{project.madeAt}</div>
+              <div className="archive-row-element-builtWith">
+                {project.builtWith.split(",").map((skill, i) => (
+                  <span key={i} className="skill-e">{skill.trim()}</span>
+                ))}
+              </div>
+              
+              <div className="archive-row-element-link">
+              <a href={project.url} className="project-link">
+                <span className="project-archive-url">{project.url}</span>
+                <span
+                  id="project-arrow2-archive"
+                  role="img"
+                  aria-label="Link to project"
+                >
+                  ↗
+                </span>
+              </a>
+              </div>
           </div>
           ))}
             
