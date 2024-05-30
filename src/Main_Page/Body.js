@@ -1,9 +1,7 @@
 import React from "react";
-import bjlogo from "../assets/images/logo-blackjack-85w.png";
 import resume from "../assets/Dmitri Morozov - resume0524.pdf";
-import myfishtanklogo from "../assets/images/logo-myfishtank-85w.png";
-import cprlogo from "../assets/images/CHCPR-logo-dark-85w.png";
-// import projectsData from "./projectsData";
+import projectsData from "./projectsData";
+
 
 const Body = () => {
   return (
@@ -49,380 +47,50 @@ const Body = () => {
 
           <section id="projects">
             <ol className="projects-list">
-              <a href="https://cherryhillcpr.com" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2024 - May</header>
-                    <div className="project-main-content">
-                      <p>
-                        <span className="project-header">
-                          cherryhillcpr.com
-                        </span>
-                        <span
+            {projectsData.map((project, index) => ( 
+              
+              <a href={project.url} className="project-link" key={index}>
+              <li>
+                <div className="project-container">
+                  <div className="overLay-project-container"></div>
+                  <header className="header-time">{project.date}</header>
+                  <div className="project-main-content">
+                    <p className="project-title-img">
+                      <span className="project-header">
+                        {project.title}
+                          <span
                           id="project-arrow"
                           role="img"
                           aria-label="Link to project"
-                        >
+                          >
                           ↗
-                        </span>
-                        <img
-                          src={cprlogo}
-                          className="project-img"
-                          alt="logo-myfishtank"
-                        />
-                      </p>
-                      <p className="project-description">
-                        I developed cherryhillcpr.com, a modern and accessible
-                        website for a CPR training service. This project
-                        involved creating a clean and professional interface,
-                        integrating essential features like course scheduling
-                        and secure payment options, and optimizing for both
-                        performance and security. The design focused on
-                        user-friendliness and clear navigation to ensure an
-                        optimal user experience. Through this project, I
-                        enhanced my skills in web development, user interface
-                        design, and e-commerce solutions.
-                      </p>
+                          </span>
+                      </span>
+                      
+                      <img
+                        src={project.logo}
+                        className="project-img"
+                        alt="logo-project"
+                      />
+                    </p>
+                    <p className="project-description">
+                      {project.description}
+                    </p>
 
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">WordPress</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">HTML</div>
-                        </li>
-                      </ul>
-                    </div>
+                    <ul
+                      className="skill-elements"
+                      aria-label="Technologies used"
+                    >{project.builtWith.split(",").map((skill, i) => (
+                      <li key={i}>
+                        <div className="skill-e">{skill.trim()}</div>
+                      </li>                    
+                    ))}
+                    </ul>
                   </div>
-                </li>
-              </a>
-              <a href="https://my-fishtank.com" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2024 - May</header>
-                    <div className="project-main-content">
-                      <p>
-                        <span className="project-header">My-FishTank.com</span>
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                        <img
-                          src={myfishtanklogo}
-                          className="project-img"
-                          alt="logo-myfishtank"
-                        />
-                      </p>
-                      <p className="project-description">
-                        I developed my-fishtank.com, a WordPress-based
-                        e-commerce website specializing in marine supplies and
-                        corals. This project involved creating a visually
-                        appealing and user-friendly interface, integrating
-                        essential features like secure payment gateways and user
-                        account management, and optimizing for performance and
-                        security. Additionally, I developed detailed product
-                        descriptions and care guides to enhance SEO and user
-                        engagement. Through this project, I refined my skills in
-                        WordPress development, e-commerce solutions, and web
-                        design, delivering a professional and efficient platform
-                        for marine enthusiasts.
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">WordPress</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">HTML</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-
-              <a href="https://www.dmitricode.com" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2024 — Present</header>
-                    <div className="project-main-content">
-                      <p>
-                        <span className="project-header">BlackJack Game</span>
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                        <img
-                          src={bjlogo}
-                          className="project-img"
-                          alt="logo-blackjack"
-                        />
-                      </p>
-                      <p className="project-description">
-                        I developed a fully-functional BlackJack game,
-                        leveraging my expertise in JavaScript, HTML, and CSS.
-                        This project showcased my ability to create an engaging
-                        and visually appealing game. Key responsibilities
-                        included designing and implementing game logic for a
-                        seamless user experience, using React for a dynamic and
-                        responsive UI, and ensuring performance and security
-                        with Firebase as the backend service. I also
-                        collaborated with peers for code reviews and
-                        optimizations, emphasizing clean and maintainable code.
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">React</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">HTML</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-
-              <a href="https://v1.dmitrimorozov.com" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2024</header>
-                    <div className="project-main-content">
-                      <p id="project-head">
-                        <span className="project-header">
-                          8 Sorting Algorithms
-                        </span>
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                      </p>
-                      <p className="project-description">
-                        Discover the essentials of sorting with "8 Must-Know
-                        Sorting Algorithms," a dynamic educational tool built
-                        using JavaScript, Bootstrap, and React. This interactive
-                        webpage showcases the differences and efficiencies of
-                        various algorithms through engaging visuals and clear
-                        explanations. Whether you're a novice or a practiced
-                        coder, this project offers a practical look at
-                        algorithmic sorting, demonstrating each method's unique
-                        characteristics in an accessible format powered by
-                        modern web technologies.
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">React</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">Bootstrap</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-
-              <a
-                href="https://corals.dmitrimorozov.com"
-                className="project-link"
-              >
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2023 — Present</header>
-                    <div className="project-main-content">
-                      <p id="project-head">
-                        <span className="project-header">
-                          Coral Database Website
-                        </span>
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                      </p>
-                      <p className="project-description">
-                        Developed a vibrant website designed for marine-life
-                        enthusiasts to share and explore images of diverse coral
-                        species. This platform utilizes Google's robust database
-                        services for secure image storage, complete with user
-                        authentication to ensure privacy and safety. Users can
-                        upload and download images, update descriptions, curate
-                        personal favorites, and share their discoveries with the
-                        community. The project is actively evolving, with
-                        ongoing enhancements to enrich user experience and
-                        interaction.
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">React</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">HTML</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">Firebase</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-
-              <a href="https://v2.dmitrimorozov.com/" className="project-link">
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2023</header>
-                    <div className="project-main-content">
-                      <p id="project-head">
-                        <span className="project-header">
-                          Digital Business Card - Figma
-                        </span>
-
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                      </p>
-                      <p className="project-description">
-                        Digital Busines Card
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">React</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">Figma</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">CSS</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
-
-              <a
-                href="https://1000gal.dmitrimorozov.com"
-                className="project-link"
-              >
-                <li>
-                  <div className="project-container">
-                    <div className="overLay-project-container"></div>
-                    <header className="header-time">2018-2022</header>
-                    <div className="project-main-content">
-                      <p id="project-head">
-                        <span className="project-header">1000gal Project</span>
-
-                        <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
-                        >
-                          ↗
-                        </span>
-                      </p>
-                      <p className="project-description">
-                        Explore the comprehensive journey of setting up and
-                        maintaining a 1000-gallon aquarium, documented from 2018
-                        to 2022. This project delves into the intricacies of
-                        aquatic design, ecosystem balance, and the technical
-                        challenges faced during the creation and upkeep of a
-                        large-scale aquarium. Access detailed insights and
-                        visual documentation by visiting the dedicated project
-                        page.
-                      </p>
-
-                      <ul
-                        className="skill-elements"
-                        aria-label="Technologies used"
-                      >
-                        <li>
-                          <div className="skill-e">React</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">Bootstrap</div>
-                        </li>
-                        <li>
-                          <div className="skill-e">JavaScript</div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </a>
+                </div>
+              </li>
+            </a>
+            ))}
             </ol>
 
             <a href={resume} className="project-link">

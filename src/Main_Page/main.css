@@ -523,10 +523,21 @@ body div{
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  min-width: 10rem;
-  font-size: var(--fs-300);
-  align-items: left;
-  justify-content: left;
+  width: 100%;
+  font-size: var(--fs-350);
+  justify-content: space-between;
+  
+}
+.project-title-img{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+  padding: .25rem;
+  
+}
+#project-arrow{
+ margin-left: .25rem;
 }
 .project-header a{
   text-decoration: none;
