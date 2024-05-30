@@ -1,6 +1,13 @@
 const projectsData = [
   {
     date: "2024-May",
+    title: "https://buenovisionairo.com",
+    madeAt: "Freelance",
+    builtWith: "JavaScript, HTML, CSS, WordPress",
+    url: "https://buenovisionairo.com",
+  },
+  {
+    date: "2024-May",
     title: "cherryhillcpr.com",
     madeAt: "Freelance",
     builtWith: "JavaScript, HTML, CSS, WordPress",
