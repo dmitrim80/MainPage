@@ -73,6 +73,7 @@ const Body = () => {
                                 src={project.logo}
                                 className="proj-logo"
                                 alt="logo-project"
+                                draggable="false"
                           />
                         </div>
                       </div>
