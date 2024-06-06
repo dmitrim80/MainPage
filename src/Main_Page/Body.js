@@ -1,5 +1,5 @@
 import React from "react";
-import resume from "../assets/Dmitri Morozov - resume0524.pdf";
+import resume from "../assets/dm-res-6-6.pdf";
 import projectsData from "./projectsData";
 
 
@@ -44,61 +44,62 @@ const Body = () => {
               experience.
             </div>
           </section>
+          <hr className="break-line"/>
 
           <section id="projects">
-            <ol className="projects-list">
             {projectsData.map((project, index) => ( 
-              
-              <a href={project.url} className="project-link" key={index}>
-              <li>
-                <div className="project-container">
+              <ol className="projects-list">
+                <a href={project.url} className="project-link" key={index}>
+                <li>
+                  <div className="project-container">
                   <div className="overLay-project-container"></div>
-                  <header className="header-time">{project.date}</header>
-                  <div className="project-main-content">
-                    <p className="project-title-img">
-                      <span className="project-header">
-                        {project.title}
+                    <div className="header-time">
+                      {project.date}
+                    </div>
+                    <div className="project-box">
+                      <div className="project-container-header-row">
+                        <div className="project-header">
+                          {project.title}
                           <span
-                          id="project-arrow"
-                          role="img"
-                          aria-label="Link to project"
+                            id="project-arrow"
+                            role="img"
+                            aria-label="Link to project"
                           >
-                          ↗
+                            ↗
                           </span>
-                      </span>
-                      
-                      <img
-                        src={project.logo}
-                        className="project-img"
-                        alt="logo-project"
-                      />
-                    </p>
-                    <p className="project-description">
-                      {project.description}
-                    </p>
-
-                    <ul
-                      className="skill-elements"
-                      aria-label="Technologies used"
-                    >{project.builtWith.split(",").map((skill, i) => (
-                      <li key={i}>
-                        <div className="skill-e">{skill.trim()}</div>
-                      </li>                    
-                    ))}
-                    </ul>
+                        </div>
+                        <div className="project-img">
+                          <img
+                                src={project.logo}
+                                className="proj-logo"
+                                alt="logo-project"
+                          />
+                        </div>
+                      </div>
+                      <div className="project-description">
+                        {project.description}
+                      </div>
+                      <div className="skill-elements">
+                        {project.builtWith.split(",").map((skill, i) => (
+                                <li key={i}>
+                                  <div className="skill-e">{skill.trim()}</div>
+                                </li>                    
+                          ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </li>
-            </a>
+                </li>
+                </a>
+              </ol>
             ))}
-            </ol>
+            
 
-            <a href={resume} className="project-link">
+            <a href={resume} className="project-link" target="_blank" rel="noopener noreferrer">
               <div className="project-container">
                 <div className="overLay-project-container"></div>
                 <div className="project-main-content">
                   <p className="resume" id="project-head">
-                    <span className="project-header">View Full Resume</span>
+                    <span className="project-header" id="resume">View Full Resume</span>
                     <span
                       id="project-arrow"
                       role="img"

@@ -5,7 +5,7 @@ const projectsData = [
     madeAt: "Freelance",
     builtWith: "JavaScript, HTML, CSS, WordPress",
     url: "https://buenovisionairo.com",
-    description: `I developed buenovisionairo.com, a modern and accessible
+    description: `I developed BuenoVisionairo.com, a modern and accessible
     website for a custom clothing sale service. This project
     involved creating a clean and professional interface,
     integrating essential features like product catalog
@@ -15,13 +15,13 @@ const projectsData = [
     optimal user experience. Through this project, I
     enhanced my skills in web development, user interface
     design, and e-commerce solutions.`,
-    logo: require("../assets/images/projects/blackjack/logo-blackjack-85w.png"),
+    logo: require("../assets/images/projects/bueno/logo3-200x.png"),
   },
   {
     date: "2024-May",
     title: "CherryHillCPR.com",
     madeAt: "Freelance",
-    builtWith: "JavaScript, HTML, CSS, WordPress",
+    builtWith: "JavaScript, WordPress, HTML, CSS ",
     url: "https://cherryhillcpr.com",
     description: `I developed cherryhillcpr.com, a modern and accessible
     website for a CPR training service. This project
@@ -33,7 +33,7 @@ const projectsData = [
     optimal user experience. Through this project, I
     enhanced my skills in web development, user interface
     design, and e-commerce solutions.`,
-    logo: require("../assets/images/projects/cherry-hill-cpr/CHCPR-logo-dark-512.png"),
+    logo: require("../assets/images/projects/cherry-hill-cpr/CHCPR-logo-200x.png"),
   },
   {
     date: "2024-May",
@@ -56,7 +56,7 @@ const projectsData = [
     logo: require("../assets/images/projects/my-fishtank/logo-myfishtank-85w.png"),
   },
   {
-    date: "2024-Present",
+    date: "2024-Pres",
     title: "BlackJack Web-Game",
     madeAt: "Portfolio Project",
     builtWith: "JavaScript, HTML, CSS, React",
@@ -71,10 +71,10 @@ const projectsData = [
     with Firebase as the backend service. I also
     collaborated with peers for code reviews and
     optimizations, emphasizing clean and maintainable code.`,
-    logo: require("../assets/images/projects/blackjack/logo-blackjack-85w.png"),
+    logo: require("../assets/images/projects/blackjack/logo1-200x.png"),
   },
   {
-    date: "2024-March",
+    date: "2024-Mar",
     title: "8 Sorting Algorithms",
     madeAt: "Portfolio Project",
     builtWith: "React, JavaScript, HTML, CSS, Bootstrap",
@@ -89,16 +89,16 @@ const projectsData = [
     algorithmic sorting, demonstrating each method's unique
     characteristics in an accessible format powered by
     modern web technologies.`,
-    logo: require('../assets/images/projects/sorting-algorithms/logo.png'),
+    logo: require("../assets/images/projects/sorting-algorithms/logo.png"),
   },
   {
-    date: "2023-December",
-    title: "Digital Business Card - Figma",
+    date: "2023-Dec",
+    title: "Biz Card - Figma",
     madeAt: "Portfolio Project",
     builtWith: "Figma, HTML, CSS, React",
     url: "https://v2.dmitrimorozov.com",
     description: `Digital Busines Card`,
-    logo: require('../assets/images/projects/figma-digital-bc/logo.png'),
+    logo: require("../assets/images/projects/figma-digital-bc/logo.png"),
   },
   {
     date: "2018-2022",
@@ -114,7 +114,7 @@ const projectsData = [
     large-scale aquarium. Access detailed insights and
     visual documentation by visiting the dedicated project
     page.`,
-    logo: require('../assets/images/projects/1000gal/logo-150x.png'),
+    logo: require("../assets/images/projects/1000gal/logo-150x.png"),
   },
 ];
 export default projectsData;

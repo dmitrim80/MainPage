@@ -1,0 +1,33 @@
+
+.viewip{
+    margin-left: 1rem;
+    }
+    .h4-login-msg{
+    color: red;
+    }
+    
+.ip-time-details-box{
+    display: flex;
+    flex-direction: column;
+    }
+    .ip-description-row{
+    display: flex;
+    }
+    .ip-data-p{
+    font-size: x-small;
+    padding: 0;
+    margin-left: 1rem; 
+    margin-top: 0;
+    line-height: .25rem;
+    display: flex;
+    flex-direction: column;
+    }
+    .ip-details-box{
+    display: flex;
+    }
+    .ip-info{
+    font-size: small;
+    margin-left: 1rem; 
+    margin-top: 1rem;
+    line-height: .25rem;
+    }

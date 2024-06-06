@@ -7,6 +7,7 @@ import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import pImg from "../assets/images/projects/main/profile2-med.png";
+import resume from "../assets/dm-res-6-6.pdf";
 
 const Header = ({ activeLink, setActiveLink }) => {
   const handleLinkClick = (e, linkName) => {
@@ -19,11 +20,12 @@ const Header = ({ activeLink, setActiveLink }) => {
       <div className="header-container">
         <div className="page1">
           <div className="header-box">
-          <img src={pImg} alt="Dmitri Morozov" className="profile-img"/>
+            <img src={pImg} alt="Dmitri Morozov" className="profile-img"/>
             <h3 className="header-h3">
               <b>Dmitri Morozov</b>
             </h3>
           </div>
+          
           <div className="textbox-h5">
             <h5 className="header-h5">
               
@@ -32,7 +34,7 @@ const Header = ({ activeLink, setActiveLink }) => {
             </h5>
           </div>
           <div className="textbox-p1">
-            I build pixel-perfect, engaging, and accessible digital experiences.
+          I create user-friendly digital experiences that are visually appealing, interactive, and inclusive.
           </div>
 
           <div className="local-links-box">
@@ -64,8 +66,14 @@ const Header = ({ activeLink, setActiveLink }) => {
               </a>
               
             </div>
-            <div className="header-links"></div>
-            
+            <div className="responsive-div">
+              <div className="header-links" id="header-link-projects">
+              <a href={resume} className="project-link" target="_blank" rel="noopener noreferrer">
+                  RESUME
+                </a>
+                
+              </div>
+            </div>
           </div>
 
           <div className="social-icons-box">
