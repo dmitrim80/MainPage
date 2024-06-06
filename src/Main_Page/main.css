@@ -1271,6 +1271,9 @@ letter-spacing: 1.2px;
 line-height: 1rem;
 margin-bottom: .5rem;
 }
+.social-icons-box{
+  margin-top: -2rem;
+}
 .social-icons{
 margin-bottom: 0rem;
 }
