@@ -191,8 +191,8 @@ top: 0;
 right: 0;
 bottom: 0;
 left: 0;
-width: 105%;
-height: 105%;
+width: 100%;
+height: 100%;
 background-color: hsla(202, 57%, 71%, 0.1);
 border-radius: 12px;
 opacity: 0;
@@ -1299,6 +1299,7 @@ margin-left: 1rem;
 display: none;
 }
 /* Start of formating project element*/
+
 .project-container{
 display: flex;
 flex-direction: column;
@@ -1308,13 +1309,14 @@ transition: box-shadow 0.3s ease;
 margin-bottom: 1rem;
 padding: .5rem;
 margin-right: .25rem;
-min-width: 324px;
+min-width: 350px;
 flex-grow: 1;
 max-width:700px;
+margin-left: 0rem;
 }
 .header-time{
 margin-top: .25rem;
-margin-left: 1rem;
+margin-left: .5rem;
 min-width: 5rem;
 max-width: 5rem;
 width: 100%;
@@ -1328,6 +1330,13 @@ margin-bottom: .25rem;
 display: flex;
 width: 100%;
 justify-content: space-between;
+min-width: 20rem;
+}
+.project-box{
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem; 
+  padding: 0rem;
 }
 .project-header{
 margin-top: 2rem;
@@ -1348,16 +1357,16 @@ margin-bottom: .25rem;
 display: inline-block;
 cursor: pointer;
 transition: all 0.3s ease;
-margin-right: .75rem;
+margin-right: 0rem;
 }
 .project-img img{
 width: 4.5rem;
-margin-right: 1rem;
+margin-right: 2.5rem;
 }
 .project-description{
 margin-top: .25rem;
-margin-left: .5rem;
-margin-right: .5rem;
+margin-left: 0rem;
+margin-right: 0rem;
 }
 .skill-elements{
 display: flex;
@@ -1392,6 +1401,7 @@ display: inline-block;
 color: var(--clr-primary-500);
 transform: translateY(-1rem) translateX(.5rem);
 }
+
 /* End of formating project element*/
 
 /*BODY END*/
