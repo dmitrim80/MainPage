@@ -20,7 +20,11 @@ const Header = ({ activeLink, setActiveLink }) => {
       <div className="header-container">
         <div className="page1">
           <div className="header-box">
-            <img src={pImg} alt="Dmitri Morozov" className="profile-img"/>
+            <img src={pImg} 
+            alt="Dmitri Morozov" 
+            className="profile-img"
+            draggable="false"
+            />
             <h3 className="header-h3">
               <b>Dmitri Morozov</b>
             </h3>
