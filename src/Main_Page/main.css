@@ -989,12 +989,7 @@ margin-left: .75rem;
 
 /*TABLET VIEW START*/
 @media (max-width: 1023px) {
-/* .main-box {
-position: absolute;
-left: .25rem;
-right: .25rem;
-margin-top: .25rem;
-} */
+
 .header-container {
 display: flex;
 flex-direction: column;
@@ -1003,7 +998,7 @@ top: 0;
 width: 100%;
 flex-grow: 1;
 margin-left: 0rem; 
-margin-top: -4rem;
+margin-top: 1rem;
 }
 /*HEADER START*/
 .header-box{
