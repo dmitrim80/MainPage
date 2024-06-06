@@ -1218,6 +1218,7 @@ margin-top: .25rem;
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-top: -2rem;
 }
 .responsive-div{
 display: block;
@@ -1255,12 +1256,12 @@ line-height: 28px;
 color:var(--clr-neutral-200); 
 }
 .local-links-box{
-margin-top: 1.8rem;
+margin-top: 0rem;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
 width: 11rem;
-margin-bottom: 1rem;
+margin-bottom: 0rem;
 }
 .header-links{
 display: flex;
@@ -1268,7 +1269,7 @@ font-size: var(--fs-350);
 font-weight: bold;
 letter-spacing: 1.2px;
 line-height: 1rem;
-margin-bottom: 1rem;
+margin-bottom: .5rem;
 }
 .social-icons{
 margin-bottom: 0rem;
