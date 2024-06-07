@@ -15,6 +15,10 @@ const Header = ({ activeLink, setActiveLink }) => {
     setActiveLink(linkName);
     window.location.hash = linkName;
   };
+  const disableContextMenu = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <div className="header-container">
@@ -24,6 +28,7 @@ const Header = ({ activeLink, setActiveLink }) => {
             alt="Dmitri Morozov" 
             className="profile-img"
             draggable="false"
+            onContextMenu={disableContextMenu}
             />
             <h3 className="header-h3">
               <b>Dmitri Morozov</b>
