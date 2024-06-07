@@ -15,26 +15,30 @@ const Header = ({ activeLink, setActiveLink }) => {
     setActiveLink(linkName);
     window.location.hash = linkName;
   };
-  const disableContextMenu = (e) => {
+  const preventSave = (e) => {
     e.preventDefault();
+    e.stopPropagation();
   };
-  const disableTouchMenu = (e) => {
-    e.preventDefault();
-  };
-
 
   return (
     <>
       <div className="header-container">
         <div className="page1">
           <div className="header-box">
+          <div className="image-container" 
+          onContextMenu={preventSave} 
+          onTouchStart={preventSave} 
+          onMouseDown={preventSave}>
             <img src={pImg} 
             alt="Dmitri Morozov" 
             className="profile-img"
             draggable="false"
-            onContextMenu={disableContextMenu}
-            onTouchStart={disableTouchMenu}
             />
+            <div className="overlay" 
+            onContextMenu={preventSave} 
+            onTouchStart={preventSave} 
+            onMouseDown={preventSave}></div>
+            </div>
             <h3 className="header-h3">
               <b>Dmitri Morozov</b>
             </h3>
