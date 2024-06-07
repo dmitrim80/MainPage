@@ -18,6 +18,10 @@ const Header = ({ activeLink, setActiveLink }) => {
   const disableContextMenu = (e) => {
     e.preventDefault();
   };
+  const disableTouchMenu = (e) => {
+    e.preventDefault();
+  };
+
 
   return (
     <>
@@ -29,6 +33,7 @@ const Header = ({ activeLink, setActiveLink }) => {
             className="profile-img"
             draggable="false"
             onContextMenu={disableContextMenu}
+            onTouchStart={disableTouchMenu}
             />
             <h3 className="header-h3">
               <b>Dmitri Morozov</b>
