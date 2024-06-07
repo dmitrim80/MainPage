@@ -96,7 +96,7 @@ const Main = () => {
             background: `radial-gradient(circle 100px at 
                 ${spotlightPosition.x}px 
                 ${spotlightPosition.y}px, 
-                rgba(255,255,255,0.055) 0%,
+                rgba(4, 79, 226,0.09) 0%,
                 rgba(0,0,0,0.2) 700%)`,
             pointerEvents: "none", // Allow clicks to pass through
             zIndex: 9999,
