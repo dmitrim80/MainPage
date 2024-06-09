@@ -9,14 +9,16 @@ const Archive = () => {
     y: -2,
   });
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 639);
-  
-
+  const [isTablet, setIsTablet] = useState(window.innerWidth <= 1039);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1040);
   useEffect(() => {
     const updateSpotlightPosition = (e) => {
       setSpotlightPosition({ x: e.clientX, y: e.clientY });
     };
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 639);
+      setIsTablet(window.innerWidth <= 1039);
+      setIsDesktop(window.innerWidth >= 1040);
     };
     window.addEventListener("mousemove", updateSpotlightPosition);
     window.addEventListener("resize", handleResize);
@@ -40,7 +42,7 @@ const Archive = () => {
             background: `radial-gradient(circle 100px at 
                 ${spotlightPosition.x}px 
                 ${spotlightPosition.y}px, 
-                rgba(255,255,255,0.055) 0%,
+                rgba(4, 79, 226,0.09) 0%,
                 rgba(0,0,0,0.2) 700%)`,
             pointerEvents: "none",
             zIndex: 9999,
@@ -93,14 +95,19 @@ const Archive = () => {
               
               <div className="archive-row-element-link">
               <a href={project.url} className="project-link">
-                <span className="project-archive-url">{project.url}</span>
-                <span
+              {isTablet || isDesktop ? (
+                  <a href={project.url} className="project-link" key={index}>{project.url} 
+                  <span
                   id="project-arrow2-archive"
                   role="img"
                   aria-label="Link to project"
                 >
                   ↗
                 </span>
+                  </a>
+                ) : (
+                  project.url
+                )}
               </a>
               </div>
           </div>

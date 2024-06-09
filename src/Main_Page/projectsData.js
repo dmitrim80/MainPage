@@ -56,6 +56,15 @@ const projectsData = [
     logo: require("../assets/images/projects/my-fishtank/logo-myfishtank-85w.png"),
   },
   {
+    date: "2024-April",
+    title: "SOA Example",
+    madeAt: "Freelance",
+    builtWith: "JavaScript, HTML, CSS",
+    url: "/SOAExample",
+    description: `This example demonstrates how I can apply SOA principles in your React application by creating modular and reusable services.`,
+    logo: require("../assets/images/projects/main/logo-soa.png"),
+  },
+  {
     date: "2024-Pres",
     title: "BlackJack Web-Game",
     madeAt: "Portfolio Project",

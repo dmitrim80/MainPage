@@ -46,7 +46,7 @@ const Body = () => {
           </section>
           <hr className="break-line"/>
 
-          <section id="projects">
+          <section >
             {projectsData.map((project, index) => ( 
               <ol className="projects-list">
                 <a href={project.url} className="project-link" key={index}>
@@ -100,7 +100,7 @@ const Body = () => {
                 <div className="overLay-project-container"></div>
                 <div className="project-main-content">
                   <p className="resume" id="project-head">
-                    <span className="project-header" id="resume">View Full Resume</span>
+                    <span className="project-header" >View Full Resume</span>
                     <span
                       id="project-arrow"
                       role="img"
@@ -118,7 +118,7 @@ const Body = () => {
                 <div className="overLay-project-container"></div>
                 <div className="project-main-content">
                   <p className="resume" id="project-head">
-                    <span className="project-header">
+                    <span className="project-header" id="projects">
                       View Full Projects Archive
                     </span>
                     <span

@@ -3,8 +3,7 @@ import Header from "./Header";
 import Body from "./Body";
 import Archive from "./Archive";
 import { debounce } from "./Utilities";
-import { db } from "./firebaseConfig";
-import { serverTimestamp, collection, addDoc } from "firebase/firestore";
+import { storeVisit } from "./services/ipService";
 
 import "./main.css";
 
@@ -17,7 +16,7 @@ const Main = () => {
   useEffect(() => {
     // The handleScroll function that you want to debounce
     const handleScroll = () => {
-      const sections = ["about", "interests", "projects", "archive"]; // Update with your section IDs
+      const sections = ["about", "interests", "projects", "archive","soaexample"]; // Update with your section IDs
       let currentActiveLink = "";
       const scrollPosition = window.scrollY;
 
@@ -59,27 +58,15 @@ const Main = () => {
   }, []);
 
   useEffect(() => {
-    const storeVisit = async () => {
+    const storeIpVisit = async () => {
       try {
-        const response = await fetch("https://api.ipify.org?format=json");
-        const { ip } = await response.json();
-        if (!ip) {
-          return;
-        }
-
-        const visitsCollectionRef = collection(db, "ip_visits");
-
-        const visitData = {
-          ip: ip.trim(),
-          timestamp: serverTimestamp(),
-        };
-        await addDoc(visitsCollectionRef, visitData);
+        await storeVisit(); // Call the function to store the visit in the database
       } catch (error) {
-        console.error("Error ", error);
+        console.error("Failed to store visit:", error);
       }
     };
 
-    storeVisit();
+    storeIpVisit();
   }, []);
 
   return (
