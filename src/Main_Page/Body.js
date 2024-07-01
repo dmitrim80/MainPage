@@ -1,5 +1,5 @@
 import React from "react";
-import resume from "../assets/dm-res-6-6.pdf";
+import resume from "../assets/resume71.pdf";
 import projectsData from "./projectsData";
 
 

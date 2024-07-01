@@ -7,7 +7,7 @@ import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import pImg from "../assets/images/projects/main/profile-dm-dark-blue.jpg";
-import resume from "../assets/dm-res-6-6.pdf";
+import resume from "../assets/resume71.pdf";
 
 const Header = ({ activeLink, setActiveLink }) => {
   const handleLinkClick = (e, linkName) => {
