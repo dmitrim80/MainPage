@@ -13,7 +13,7 @@ const mealDates = {
 
 Object.entries(mealDates).forEach(([index, [dateTime, label]]) => {
   const eyebrow = meals[index]?.querySelector('.eyebrow');
-  if (!eyebrow) return;
+  if (!eyebrow || meals[index]?.querySelector('.meal-date')) return;
   const date = document.createElement('p');
   date.className = 'meal-date';
   const time = document.createElement('time');
