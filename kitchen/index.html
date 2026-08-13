@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1a6b6b">
   <meta name="description" content="Kitchen Log — home-cooked meals by Dmitri Morozov.">
   <title>Kitchen Log — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="kitchen.css">
-  <script src="../script.js" defer></script>
 </head>
-<body class="kitchen-page">
-  <header class="k-header" id="top">
+<body>
+  <header class="k-header">
     <a class="k-logo" href="../">DM.</a>
     <nav class="k-nav">
       <a href="#meals" class="active">Kitchen Log</a>
@@ -19,12 +18,12 @@
       <a href="#meals">Ingredients</a>
       <a href="../#about">About</a>
     </nav>
-    <button class="k-menu" type="button" aria-label="Menu" aria-expanded="false">
+    <button class="k-menu" type="button" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </header>
 
-  <main>
+  <div class="k-wrap">
     <section class="k-hero">
       <h1>Make it worth eating.</h1>
       <p class="k-lead">A quiet space for meals that nourish, moments that matter.</p>
@@ -32,94 +31,75 @@
 
     <section class="k-meals" id="meals">
       <div class="k-grid">
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Caribbean Quinoa Bowl" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Caribbean Quinoa Bowl">
+          <div class="k-body">
             <h2>Caribbean Quinoa Bowl</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 18, 2024</span>
               <span class="k-cal">450 – 520 kcal</span>
-              <span class="k-score">Health Score <strong>88</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>88</b> 🍃</span>
             </div>
           </div>
         </article>
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Jerk Salmon Plate" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80" alt="Jerk Salmon Plate">
+          <div class="k-body">
             <h2>Jerk Salmon Plate</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 17, 2024</span>
               <span class="k-cal">550 – 630 kcal</span>
-              <span class="k-score">Health Score <strong>92</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>92</b> 🍃</span>
             </div>
           </div>
         </article>
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80" alt="Chickpea Mango Salad" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80" alt="Chickpea Mango Salad">
+          <div class="k-body">
             <h2>Chickpea Mango Salad</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 16, 2024</span>
               <span class="k-cal">350 – 420 kcal</span>
-              <span class="k-score">Health Score <strong>86</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>86</b> 🍃</span>
             </div>
           </div>
         </article>
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80" alt="Coconut Green Soup" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80" alt="Coconut Green Soup">
+          <div class="k-body">
             <h2>Coconut Green Soup</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 15, 2024</span>
               <span class="k-cal">400 – 480 kcal</span>
-              <span class="k-score">Health Score <strong>85</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>85</b> 🍃</span>
             </div>
           </div>
         </article>
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=800&q=80" alt="Tropical Breakfast Bowl" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=800&q=80" alt="Tropical Breakfast Bowl">
+          <div class="k-body">
             <h2>Tropical Breakfast Bowl</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 14, 2024</span>
               <span class="k-cal">420 – 500 kcal</span>
-              <span class="k-score">Health Score <strong>89</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>89</b> 🍃</span>
             </div>
           </div>
         </article>
-
         <article class="k-card">
-          <div class="k-card-img">
-            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80" alt="Island Tofu Stir-Fry" loading="lazy">
-          </div>
-          <div class="k-card-body">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80" alt="Island Tofu Stir-Fry">
+          <div class="k-body">
             <h2>Island Tofu Stir-Fry</h2>
-            <div class="k-card-meta">
+            <div class="k-meta">
               <span class="k-date">May 13, 2024</span>
               <span class="k-cal">480 – 560 kcal</span>
-              <span class="k-score">Health Score <strong>87</strong> <i>🍃</i></span>
+              <span class="k-score">Health Score <b>87</b> 🍃</span>
             </div>
           </div>
         </article>
-
       </div>
     </section>
-  </main>
+  </div>
 
   <footer class="k-footer">
     <a href="../">← Back home</a>
@@ -128,15 +108,9 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const menu = document.querySelector('.k-menu');
-    const nav = document.querySelector('.k-nav');
-    if (menu) {
-      menu.addEventListener('click', () => {
-        const open = menu.getAttribute('aria-expanded') === 'true';
-        menu.setAttribute('aria-expanded', String(!open));
-        nav.classList.toggle('open');
-      });
-    }
+    document.querySelector('.k-menu')?.addEventListener('click', function() {
+      document.querySelector('.k-nav').classList.toggle('open');
+    });
   </script>
 </body>
 </html>

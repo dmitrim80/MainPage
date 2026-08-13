@@ -1,164 +1,139 @@
-@font-face{font-family:Inter;src:url('../static/media/RasmusAndersson-Inter-Regular.8427860ac8bc5bb4b008.ttf')}
-@font-face{font-family:Inter;src:url('../static/media/RasmusAndersson-Inter-Bold.4852edfcf88cee219c54.otf');font-weight:700}
-
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body.kitchen-page{
-  font-family:Inter,system-ui,sans-serif;
+html,body{width:100%;min-height:100%}
+body{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:#f3f0e8;
-  background:
-    radial-gradient(ellipse 70% 50% at 85% 5%,rgba(212,180,120,.2),transparent 55%),
-    linear-gradient(160deg,#1a5c5c 0%,#1e6b6b 40%,#245e6a 75%,#1a4f5a 100%);
-  min-height:100vh;
-  overflow-x:hidden;
+  background:linear-gradient(160deg,#1a5c5c 0%,#1e6b6b 40%,#245e6a 75%,#1a4f5a 100%);
+  background-attachment:fixed;
 }
 a{color:inherit;text-decoration:none}
-img{display:block;width:100%;height:100%;object-fit:cover}
+img{display:block;max-width:100%}
 
+/* Header */
 .k-header{
-  position:fixed;top:0;left:0;right:0;z-index:40;
+  position:fixed;top:0;left:0;right:0;z-index:50;
   height:60px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;
-  background:rgba(26,92,92,.65);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.06);
+  padding:0 5%;
+  background:rgba(26,92,92,.7);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.k-logo{font-size:20px;font-weight:700;letter-spacing:.02em;color:#f5f0e6;z-index:1}
-.k-nav{display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%)}
+.k-logo{font-size:20px;font-weight:700;color:#f5f0e6}
+.k-nav{display:flex;gap:28px}
 .k-nav a{
   font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(243,240,232,.5);position:relative;transition:color .2s;
+  color:rgba(243,240,232,.55);
 }
-.k-nav a:hover,.k-nav a.active{color:#f3f0e8}
-.k-nav a.active::after{
-  content:"";position:absolute;left:0;right:0;bottom:-5px;
-  height:1.5px;background:#e8c48a;
-}
-.k-menu{display:none;background:0;border:0;cursor:pointer;padding:4px;z-index:1}
-.k-menu span{display:block;width:18px;height:1.5px;background:#f3f0e8;margin:4px 0}
+.k-nav a.active,.k-nav a:hover{color:#f5f0e6}
+.k-nav a.active{border-bottom:1.5px solid #e8c48a;padding-bottom:2px}
+.k-menu{display:none;background:none;border:none;cursor:pointer}
+.k-menu span{display:block;width:18px;height:2px;background:#f3f0e8;margin:4px 0}
 
-.k-hero{
+/* Content wrap */
+.k-wrap{
+  width:90%;
   max-width:1100px;
   margin:0 auto;
-  padding:100px 40px 24px;
+  padding-top:90px;
+  padding-bottom:40px;
 }
+
+/* Hero */
+.k-hero{margin-bottom:32px}
 .k-hero h1{
-  font-size:clamp(34px,4.5vw,52px);
+  font-size:48px;
   font-weight:400;
-  letter-spacing:-.03em;
-  line-height:1.2;
+  letter-spacing:-0.03em;
+  line-height:1.15;
   color:#f5f0e6;
 }
 .k-hero h1::after{
   content:"";
   display:block;
-  width:40px;height:3px;
+  width:40px;
+  height:3px;
   background:#d4a06a;
   margin-top:12px;
   border-radius:2px;
 }
 .k-lead{
-  max-width:340px;
-  font-size:14.5px;
+  margin-top:14px;
+  max-width:360px;
+  font-size:15px;
   line-height:1.6;
   color:rgba(243,240,232,.65);
-  margin-top:14px;
 }
 
-.k-meals{
-  max-width:1100px;
-  margin:0 auto;
-  padding:8px 40px 64px;
-}
+/* Grid */
 .k-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:18px;
+  width:100%;
 }
 .k-card{
-  background:rgba(12,40,45,.5);
-  border:1px solid rgba(255,255,255,.08);
+  background:rgba(10,35,40,.55);
+  border:1px solid rgba(255,255,255,.1);
   border-radius:12px;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  transition:transform .3s ease,box-shadow .3s,border-color .25s;
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 .k-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 32px rgba(0,0,0,.28);
-  border-color:rgba(255,255,255,.14);
+  transform:translateY(-4px);
+  box-shadow:0 16px 36px rgba(0,0,0,.3);
 }
-.k-card-img{
+.k-card > img{
   width:100%;
-  height:190px;
-  overflow:hidden;
-  background:#0a2a2e;
-  flex-shrink:0;
+  height:200px;
+  object-fit:cover;
 }
-.k-card-img img{transition:transform .5s ease}
-.k-card:hover .k-card-img img{transform:scale(1.04)}
-
-.k-card-body{
-  padding:14px;
-  flex:1;
-  display:flex;
-  flex-direction:column;
-}
-.k-card-body h2{
-  font-size:15px;
+.k-body{padding:14px 16px 16px}
+.k-body h2{
+  font-size:16px;
   font-weight:500;
-  letter-spacing:-.02em;
   color:#f5f0e6;
   margin-bottom:10px;
-  line-height:1.3;
 }
-.k-card-meta{
+.k-meta{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:6px 12px;
-  font-size:11.5px;
-  margin-top:auto;
+  gap:8px 14px;
+  font-size:12px;
 }
 .k-date{color:rgba(243,240,232,.45)}
 .k-cal{color:#e0a060;font-weight:500}
-.k-score{
-  margin-left:auto;
-  color:rgba(243,240,232,.5);
-  display:flex;align-items:center;gap:3px;
-  white-space:nowrap;
-}
-.k-score strong{color:#f5f0e6;font-weight:600}
-.k-score i{font-style:normal;font-size:12px}
+.k-score{margin-left:auto;color:rgba(243,240,232,.55)}
+.k-score b{color:#f5f0e6}
 
+/* Footer */
 .k-footer{
+  width:90%;
   max-width:1100px;
   margin:0 auto;
-  padding:16px 40px;
-  display:flex;justify-content:space-between;align-items:center;
-  border-top:1px solid rgba(255,255,255,.08);
+  padding:18px 0;
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.1);
   font-size:12px;
   color:rgba(243,240,232,.4);
 }
-.k-footer a:hover{color:#f3f0e8}
 
-@media(max-width:960px){
+@media(max-width:900px){
   .k-nav{display:none}
   .k-nav.open{
     display:flex;flex-direction:column;gap:12px;
-    position:absolute;top:60px;left:16px;right:16px;
-    background:#1a5558;border:1px solid rgba(255,255,255,.1);
-    border-radius:12px;padding:16px;transform:none;
+    position:absolute;top:60px;right:5%;
+    background:#1a5558;padding:16px;border-radius:10px;
   }
   .k-menu{display:block}
-  .k-header,.k-hero,.k-meals,.k-footer{padding-left:24px;padding-right:24px}
   .k-grid{grid-template-columns:1fr 1fr}
+  .k-hero h1{font-size:36px}
 }
 @media(max-width:560px){
   .k-grid{grid-template-columns:1fr}
-  .k-card-img{height:210px}
+  .k-card > img{height:220px}
   .k-score{margin-left:0;width:100%}
   .k-footer{flex-direction:column;gap:8px;text-align:center}
 }
