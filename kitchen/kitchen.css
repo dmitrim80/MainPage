@@ -9,7 +9,6 @@ body{
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 
-/* Header */
 .k-header{
   position:fixed;top:0;left:0;right:0;z-index:50;
   height:60px;
@@ -21,112 +20,47 @@ img{display:block;max-width:100%}
 }
 .k-logo{font-size:20px;font-weight:700;color:#f5f0e6}
 .k-nav{display:flex;gap:28px}
-.k-nav a{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(243,240,232,.55);
-}
+.k-nav a{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(243,240,232,.55)}
 .k-nav a.active,.k-nav a:hover{color:#f5f0e6}
 .k-nav a.active{border-bottom:1.5px solid #e8c48a;padding-bottom:2px}
 .k-menu{display:none;background:none;border:none;cursor:pointer}
 .k-menu span{display:block;width:18px;height:2px;background:#f3f0e8;margin:4px 0}
 
-/* Content wrap */
-.k-wrap{
-  width:90%;
-  max-width:1100px;
-  margin:0 auto;
-  padding-top:90px;
-  padding-bottom:40px;
-}
-
-/* Hero */
+.k-wrap{width:90%;max-width:1100px;margin:0 auto;padding-top:90px;padding-bottom:40px}
 .k-hero{margin-bottom:32px}
-.k-hero h1{
-  font-size:48px;
-  font-weight:400;
-  letter-spacing:-0.03em;
-  line-height:1.15;
-  color:#f5f0e6;
-}
-.k-hero h1::after{
-  content:"";
-  display:block;
-  width:40px;
-  height:3px;
-  background:#d4a06a;
-  margin-top:12px;
-  border-radius:2px;
-}
-.k-lead{
-  margin-top:14px;
-  max-width:360px;
-  font-size:15px;
-  line-height:1.6;
-  color:rgba(243,240,232,.65);
-}
+.k-hero h1{font-size:48px;font-weight:400;letter-spacing:-0.03em;line-height:1.15;color:#f5f0e6}
+.k-hero h1::after{content:"";display:block;width:40px;height:3px;background:#d4a06a;margin-top:12px;border-radius:2px}
+.k-lead{margin-top:14px;max-width:480px;font-size:15px;line-height:1.6;color:rgba(243,240,232,.65)}
 
-/* Grid */
-.k-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:18px;
-  width:100%;
-}
+.k-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;width:100%}
 .k-card{
   background:rgba(10,35,40,.55);
   border:1px solid rgba(255,255,255,.1);
-  border-radius:12px;
-  overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease;
+  border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease;
 }
-.k-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 16px 36px rgba(0,0,0,.3);
-}
-.k-card > img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-.k-body{padding:14px 16px 16px}
-.k-body h2{
-  font-size:16px;
-  font-weight:500;
-  color:#f5f0e6;
-  margin-bottom:10px;
-}
-.k-meta{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:8px 14px;
-  font-size:12px;
-}
-.k-date{color:rgba(243,240,232,.45)}
+.k-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.3)}
+.k-card > img{width:100%;height:200px;object-fit:cover}
+.k-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
+.k-body h2{font-size:16px;font-weight:500;color:#f5f0e6;margin-bottom:8px}
+.k-prep,.k-ing{font-size:12px;line-height:1.5;color:rgba(243,240,232,.6);margin-bottom:6px}
+.k-prep strong,.k-ing strong{color:rgba(243,240,232,.85);font-weight:500}
+.k-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:12px;margin-top:auto;padding-top:10px}
 .k-cal{color:#e0a060;font-weight:500}
 .k-score{margin-left:auto;color:rgba(243,240,232,.55)}
 .k-score b{color:#f5f0e6}
 
-/* Footer */
 .k-footer{
-  width:90%;
-  max-width:1100px;
-  margin:0 auto;
-  padding:18px 0;
-  display:flex;
-  justify-content:space-between;
+  width:90%;max-width:1100px;margin:0 auto;padding:18px 0;
+  display:flex;justify-content:space-between;
   border-top:1px solid rgba(255,255,255,.1);
-  font-size:12px;
-  color:rgba(243,240,232,.4);
+  font-size:12px;color:rgba(243,240,232,.4);
 }
 
 @media(max-width:900px){
   .k-nav{display:none}
-  .k-nav.open{
-    display:flex;flex-direction:column;gap:12px;
-    position:absolute;top:60px;right:5%;
-    background:#1a5558;padding:16px;border-radius:10px;
-  }
+  .k-nav.open{display:flex;flex-direction:column;gap:12px;position:absolute;top:60px;right:5%;background:#1a5558;padding:16px;border-radius:10px}
   .k-menu{display:block}
   .k-grid{grid-template-columns:1fr 1fr}
   .k-hero h1{font-size:36px}
