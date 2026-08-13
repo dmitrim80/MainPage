@@ -43,7 +43,9 @@ img{display:block;max-width:100%}
 .k-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.3)}
 .k-card > img{width:100%;height:200px;object-fit:cover}
 .k-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column}
-.k-body h2{font-size:16px;font-weight:500;color:#f5f0e6;margin-bottom:8px}
+.k-body h2{font-size:16px;font-weight:500;color:#f5f0e6;margin-bottom:4px}
+.k-date{font-size:12px;color:rgba(243,240,232,.45);margin-bottom:8px;min-height:0}
+.k-date:empty{display:none;margin:0}
 .k-prep,.k-ing{font-size:12px;line-height:1.5;color:rgba(243,240,232,.6);margin-bottom:6px}
 .k-prep strong,.k-ing strong{color:rgba(243,240,232,.85);font-weight:500}
 .k-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:12px;margin-top:auto;padding-top:10px}
