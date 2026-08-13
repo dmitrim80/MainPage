@@ -117,11 +117,12 @@ img { display: block; max-width: 100%; }
 .hero {
   position: relative;
   z-index: 1;
-  min-height: 76vh;
+  min-height: 72vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 130px max(28px, calc((100vw - var(--max)) / 2)) 50px;
+  align-items: flex-start;
+  padding: 120px max(28px, calc((100vw - var(--max)) / 2)) 40px;
 }
 .hero-hello {
   font-size: 13px;
@@ -154,6 +155,7 @@ img { display: block; max-width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  width: fit-content;
   padding: 13px 22px;
   border: 1px solid rgba(255,255,255,0.22);
   border-radius: 4px;
@@ -184,7 +186,7 @@ img { display: block; max-width: 100%; }
   border: 1px solid var(--line);
   background: var(--panel);
   transition: transform 0.4s var(--ease), border-color 0.35s, box-shadow 0.35s;
-  min-height: 250px;
+  min-height: 260px;
 }
 .card:hover {
   transform: translateY(-4px);
@@ -193,12 +195,12 @@ img { display: block; max-width: 100%; }
 }
 .card-inner {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: 1fr 1.15fr;
   height: 100%;
-  min-height: 250px;
+  min-height: 260px;
 }
 .card-body {
-  padding: 28px 26px;
+  padding: 30px 28px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -244,6 +246,7 @@ img { display: block; max-width: 100%; }
 .card-visual {
   position: relative;
   overflow: hidden;
+  min-height: 100%;
 }
 .card-visual img {
   width: 100%;
@@ -255,11 +258,11 @@ img { display: block; max-width: 100%; }
 .visual-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(11,15,22,0.55) 0%, transparent 40%);
+  background: linear-gradient(90deg, rgba(11,15,22,0.5) 0%, transparent 35%);
   pointer-events: none;
 }
 .visual-overlay.warm {
-  background: linear-gradient(90deg, rgba(20,12,8,0.5) 0%, transparent 45%);
+  background: linear-gradient(90deg, rgba(20,12,8,0.45) 0%, transparent 40%);
 }
 
 /* Trading visual */
