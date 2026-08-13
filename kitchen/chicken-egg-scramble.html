@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a6b6b">
+  <title>Chicken &amp; Egg Scramble — Kitchen Log</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="kitchen.css">
+  <link rel="stylesheet" href="meal.css">
+</head>
+<body>
+  <header class="k-header">
+    <a class="k-logo" href="../">DM.</a>
+    <nav class="k-nav">
+      <a href="./" class="active">Kitchen Log</a>
+      <a href="./">Recipes</a>
+      <a href="./">Ingredients</a>
+      <a href="../#about">About</a>
+    </nav>
+    <button class="k-menu" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+  <main class="meal-page">
+    <a class="meal-back" href="./">← All meals</a>
+    <div class="meal-layout">
+      <div class="meal-photo"><img src="../assets/kitchen/9-Photo-9.jpg" alt="Chicken &amp; Egg Scramble"></div>
+      <div class="meal-info">
+        <p class="meal-date">July 29, 2026</p>
+        <h1>Chicken &amp; Egg Scramble</h1>
+        <div class="meal-meta"><span class="k-cal">450 – 550 kcal</span><span class="k-score">Health Score <b>90</b> 🍃</span></div>
+        <h2>Ingredients</h2>
+        <p class="meal-ing">Eggs · chicken · spinach · onion · tomatoes · cucumber · carrots</p>
+        <h2>How to prepare</h2>
+        <ol class="k-steps">
+          <li>Dice cooked chicken or cook fresh pieces in the pan.</li>
+          <li>Add onion and spinach; cook until softened.</li>
+          <li>Pour in beaten eggs and scramble together until set.</li>
+          <li>Plate the scramble.</li>
+          <li>Add tomato wedges, cucumber, and carrots on the side.</li>
+          <li>Season to taste and serve warm.</li>
+        </ol>
+        <a class="meal-back-bottom" href="./">← Back to Kitchen Log</a>
+      </div>
+    </div>
+  </main>
+  <footer class="k-footer"><a href="../">← Back home</a><p>© <span id="year"></span> Dmitri Morozov</p></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();document.querySelector('.k-menu')?.addEventListener('click',()=>document.querySelector('.k-nav').classList.toggle('open'));</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a6b6b">
+  <title>Chicken, Spinach &amp; Rice — Kitchen Log</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="kitchen.css">
+  <link rel="stylesheet" href="meal.css">
+</head>
+<body>
+  <header class="k-header">
+    <a class="k-logo" href="../">DM.</a>
+    <nav class="k-nav">
+      <a href="./" class="active">Kitchen Log</a>
+      <a href="./">Recipes</a>
+      <a href="./">Ingredients</a>
+      <a href="../#about">About</a>
+    </nav>
+    <button class="k-menu" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+  <main class="meal-page">
+    <a class="meal-back" href="./">← All meals</a>
+    <div class="meal-layout">
+      <div class="meal-photo"><img src="../assets/kitchen/4-Photo-4.jpg" alt="Chicken, Spinach &amp; Rice"></div>
+      <div class="meal-info">
+        <p class="meal-date">August 5, 2026</p>
+        <h1>Chicken, Spinach &amp; Rice</h1>
+        <div class="meal-meta"><span class="k-cal">520 – 640 kcal</span><span class="k-score">Health Score <b>87</b> 🍃</span></div>
+        <h2>Ingredients</h2>
+        <p class="meal-ing">Chicken · spinach · onion · peppers · rice · cherry tomatoes</p>
+        <h2>How to prepare</h2>
+        <ol class="k-steps">
+          <li>Cook rice according to package directions.</li>
+          <li>Season and cook chicken until done.</li>
+          <li>Sauté onion and peppers, then wilt spinach in the same pan.</li>
+          <li>Spoon rice onto the plate and top with chicken.</li>
+          <li>Add the spinach and pepper mix over the chicken.</li>
+          <li>Ring the plate with cherry tomatoes and serve.</li>
+        </ol>
+        <a class="meal-back-bottom" href="./">← Back to Kitchen Log</a>
+      </div>
+    </div>
+  </main>
+  <footer class="k-footer"><a href="../">← Back home</a><p>© <span id="year"></span> Dmitri Morozov</p></footer>
+  <script>document.getElementById('year').textContent=new Date().getFullYear();document.querySelector('.k-menu')?.addEventListener('click',()=>document.querySelector('.k-nav').classList.toggle('open'));</script>
+</body>
+</html>
