@@ -22,89 +22,91 @@
       <a href="#journal">Writing</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="header-right">
-      <span class="avail-badge"><i></i> Available for select projects</span>
-      <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <a class="connect-btn" href="#contact">Let's Connect <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="hero-hello">Hello, I'm</p>
-      <h1>Dmitri <em>Morozov</em></h1>
-      <p class="hero-bio">I build digital experiences and strategies at the intersection of design, technology, and performance.</p>
-      <a class="btn" href="#projects">View My Work <span>→</span></a>
-    </section>
+    <section class="hero-grid" id="projects">
+      <div class="hero-copy">
+        <p class="hero-hello"><span class="line"></span> Hello, I'm</p>
+        <h1>
+          <span class="name-solid">Dmitri</span>
+          <span class="name-outline">Morozov</span>
+        </h1>
+        <p class="hero-bio">I build digital experiences and make sense of complex systems. Focused on clarity, precision, and long-term value.</p>
+        <a class="btn" href="#about">View My Work <span>↗</span></a>
+      </div>
 
-    <section class="projects" id="projects">
-      <div class="grid">
-
+      <div class="cards">
         <a class="card trading" href="https://dmcapitalsolutions.com">
-          <div class="card-content">
-            <span class="tag">↗ Day Trading</span>
-            <h2>Day Trading</h2>
-            <p>Real-time trading dashboard with live market data, advanced charting, and risk analytics.</p>
-            <span class="cta">View Project →</span>
+          <div class="card-top">
+            <span class="tag"><i></i> Day Trading</span>
+            <span class="card-arrow">↗</span>
           </div>
-          <div class="card-media trading-media">
-            <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+          <h2>Precision. Probability.<br>Process.</h2>
+          <p>Data-driven trading infrastructure and real-time market analysis tools.</p>
+          <div class="card-visual trading-vis">
+            <svg viewBox="0 0 200 70" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#5ecfc4" stop-opacity=".45"/>
+                <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5ecfc4" stop-opacity=".35"/>
                   <stop offset="100%" stop-color="#5ecfc4" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <path d="M0 120 L30 100 L60 110 L90 75 L120 85 L150 50 L180 60 L210 30 L240 40 L270 18 L300 25 V160 H0Z" fill="url(#g1)"/>
-              <polyline points="0,120 30,100 60,110 90,75 120,85 150,50 180,60 210,30 240,40 270,18 300,25" fill="none" stroke="#5ecfc4" stroke-width="2"/>
+              <path d="M0 55 L20 48 L40 52 L60 35 L80 40 L100 22 L120 28 L140 12 L160 18 L180 8 L200 14 V70 H0Z" fill="url(#tg)"/>
+              <polyline points="0,55 20,48 40,52 60,35 80,40 100,22 120,28 140,12 160,18 180,8 200,14" fill="none" stroke="#5ecfc4" stroke-width="1.8"/>
             </svg>
           </div>
+          <span class="card-link">↗</span>
         </a>
 
         <a class="card sailing" href="sailing/">
-          <div class="card-content">
-            <span class="tag">⛵ Sailing</span>
-            <h2>Sailing</h2>
-            <p>Brand and website for a luxury sailing charter. Calm waters, timeless design.</p>
-            <span class="cta">View Project →</span>
+          <div class="card-top">
+            <span class="tag"><i></i> Sailing</span>
+            <span class="card-arrow">↗</span>
           </div>
-          <div class="card-media sailing-media">
-            <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy">
+          <h2>Freedom. Discipline.<br>Horizon.</h2>
+          <p>Sailing across open waters teaches focus, resilience, and adaptability.</p>
+          <div class="card-visual sailing-vis">
+            <svg viewBox="0 0 120 80" fill="none">
+              <path d="M60 8 L60 58" stroke="rgba(120,180,230,.7)" stroke-width="1.5"/>
+              <path d="M60 12 L95 55 L60 55Z" fill="rgba(100,160,220,.25)" stroke="rgba(140,190,240,.5)" stroke-width="1"/>
+              <path d="M60 20 L35 55 L60 55Z" fill="rgba(80,140,200,.2)" stroke="rgba(120,170,220,.4)" stroke-width="1"/>
+              <ellipse cx="60" cy="60" rx="40" ry="6" fill="rgba(60,120,180,.15)" stroke="rgba(100,160,220,.3)" stroke-width="1"/>
+              <path d="M30 58 Q60 68 90 58" stroke="rgba(100,160,220,.4)" stroke-width="1" fill="none"/>
+            </svg>
           </div>
+          <span class="card-link">↗</span>
         </a>
 
         <a class="card cooking" href="kitchen/">
-          <div class="card-content">
-            <span class="tag">🍽 Cooking</span>
-            <h2>Cooking</h2>
-            <p>A culinary platform and brand system for modern, intentional cooking.</p>
-            <span class="cta">View Project →</span>
+          <div class="card-top">
+            <span class="tag"><i></i> Cooking</span>
+            <span class="card-arrow">↗</span>
           </div>
-          <div class="card-media cooking-media">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy">
+          <h2>Creativity. Craft.<br>Balance.</h2>
+          <p>Exploring flavors, techniques, and the art of intuitive cooking.</p>
+          <div class="card-visual cooking-vis">
+            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="" loading="lazy">
           </div>
+          <span class="card-link">↗</span>
         </a>
 
         <a class="card web" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
-          <div class="card-content">
-            <span class="tag"></> Web Design</span>
-            <h2>Web Design</h2>
-            <p>A showcase of web design craftsmanship, interactions, and visual systems.</p>
-            <span class="cta">View Project →</span>
+          <div class="card-top">
+            <span class="tag"><i></i> Web Design</span>
+            <span class="card-arrow">↗</span>
           </div>
-          <div class="card-media web-media">
-            <div class="codebox">
-              <div class="codebox-bar"><i></i><i></i><i></i></div>
-              <pre><span class="k">const</span> craft = {
-  clarity: <span class="b">true</span>,
-  purpose: <span class="s">"design"</span>,
-  detail: <span class="s">"intentional"</span>
-}</pre>
-            </div>
+          <h2>Code. Design.<br>Experience.</h2>
+          <p>Designing and building fast, elegant, and intentional digital experiences.</p>
+          <div class="card-visual web-vis">
+            <span class="code-symbol">&lt;/&gt;</span>
           </div>
+          <span class="card-link">↗</span>
         </a>
-
       </div>
     </section>
 
@@ -153,7 +155,7 @@
 
     <section class="contact" id="contact">
       <p class="eyebrow">Contact</p>
-      <h2>Let’s build what’s next.</h2>
+      <h2>Let's build what's next.</h2>
       <a class="email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
       <div class="social">
         <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn</a>
@@ -165,8 +167,8 @@
   </main>
 
   <footer>
-    <p>Based in New York · Working worldwide</p>
-    <p>© <span id="year"></span> Dmitri Morozov</p>
+    <p class="footer-tag"><span class="compass">✦</span> Clarity in thought. Excellence in execution.</p>
+    <p>© <span id="year"></span> Dmitri Morozov · All rights reserved</p>
   </footer>
 </body>
 </html>
