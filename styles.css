@@ -3,7 +3,6 @@
 
 :root{
   --bg:#05070b;
-  --panel:#0a0e16;
   --text:#f0ece4;
   --muted:#8a919c;
   --line:rgba(255,255,255,.08);
@@ -11,13 +10,12 @@
   --blue:#5b9fea;
   --amber:#d4a06a;
   --violet:#a78bfa;
-  --max:1080px;
   --ease:cubic-bezier(.22,.75,.25,1);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif;overflow-x:hidden;min-width:320px}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
@@ -32,7 +30,7 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 .site-header{
   position:fixed;top:0;left:0;right:0;height:60px;z-index:40;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 40px;
+  padding:0 5%;
   background:rgba(5,7,11,.82);backdrop-filter:blur(16px);
 }
 .monogram{
@@ -59,12 +57,13 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 .menu-button{display:none;z-index:1}
 .menu-button span{display:block;width:18px;height:1.5px;background:currentColor;margin:4px 0}
 
+main{position:relative;z-index:1;width:100%}
+
 .hero{
-  position:relative;z-index:1;
-  width:100%;
-  max-width:var(--max);
+  width:90%;
+  max-width:1080px;
   margin:0 auto;
-  padding:110px 40px 32px;
+  padding:110px 0 32px;
 }
 .hero-hello{
   display:flex;align-items:center;gap:12px;
@@ -73,15 +72,16 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 }
 .hero-hello .line{width:28px;height:1.5px;background:var(--teal)}
 .hero h1{
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:.2em;
+  display:flex;flex-wrap:nowrap;align-items:baseline;gap:.25em;
   margin-bottom:20px;line-height:1;
+  white-space:nowrap;
 }
 .name-solid{
-  font-size:clamp(48px,7.5vw,80px);
+  font-size:clamp(42px,6.5vw,78px);
   font-weight:400;letter-spacing:-.035em;
 }
 .name-outline{
-  font-size:clamp(48px,7.5vw,80px);
+  font-size:clamp(42px,6.5vw,78px);
   font-weight:300;letter-spacing:-.035em;
   color:transparent;
   -webkit-text-stroke:1.2px rgba(240,236,228,.55);
@@ -99,16 +99,15 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 .explore span{font-size:13px}
 
 .projects{
-  position:relative;z-index:1;
-  width:100%;
-  max-width:var(--max);
+  width:90%;
+  max-width:1080px;
   margin:0 auto;
-  padding:8px 40px 56px;
+  padding:8px 0 56px;
 }
 .cards{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
   width:100%;
 }
 .card{
@@ -117,7 +116,8 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
   border:1px solid var(--line);
   border-radius:14px;
   padding:22px 22px 24px;
-  min-height:230px;
+  min-height:240px;
+  min-width:0;
   overflow:hidden;
   display:flex;flex-direction:column;
   transition:transform .3s var(--ease),border-color .25s,box-shadow .3s;
@@ -137,7 +137,7 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 .cooking .card-label{color:var(--amber)}
 .web .card-label{color:var(--violet)}
 .card h2{
-  font-size:22px;font-weight:500;letter-spacing:-.03em;line-height:1.2;
+  font-size:clamp(18px,2vw,22px);font-weight:500;letter-spacing:-.03em;line-height:1.25;
   margin-bottom:10px;position:relative;z-index:2;
   max-width:58%;
 }
@@ -174,7 +174,7 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
   mask-image:linear-gradient(90deg,transparent,black 28%);
   -webkit-mask-image:linear-gradient(90deg,transparent,black 28%);
 }
-.cooking-art img{width:100%;height:100%;object-fit:cover;min-height:230px}
+.cooking-art img{width:100%;height:100%;object-fit:cover;min-height:240px}
 .web-art{width:42%;align-items:center;justify-content:center}
 .code-lg{
   font-size:56px;font-weight:300;letter-spacing:-.08em;
@@ -190,8 +190,8 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 .cooking:hover{border-color:rgba(212,160,106,.28)}
 .web:hover{border-color:rgba(167,139,250,.28)}
 
-.section{position:relative;z-index:1;padding:56px 40px;border-top:1px solid var(--line)}
-.section-inner{max-width:var(--max);margin:0 auto}
+.section{position:relative;z-index:1;padding:56px 5%;border-top:1px solid var(--line)}
+.section-inner{max-width:1080px;margin:0 auto;width:100%}
 .eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6e7580;margin-bottom:12px}
 .section h2{font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-.03em;line-height:1.2;margin-bottom:12px;max-width:640px}
 .lead{font-size:15px;line-height:1.6;color:#c8cdd4;margin-bottom:8px;max-width:640px}
@@ -221,16 +221,18 @@ button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
 footer{
   position:relative;z-index:1;
   display:flex;justify-content:space-between;align-items:center;
-  max-width:var(--max);margin:0 auto;
-  padding:18px 40px;
+  width:90%;max-width:1080px;margin:0 auto;
+  padding:18px 0;
   border-top:1px solid var(--line);
   font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#555c66;
 }
 .footer-tag{letter-spacing:.1em}
 
 @media(max-width:900px){
-  .site-header,.hero,.projects,.section,footer{padding-left:24px;padding-right:24px}
+  .site-header{padding:0 24px}
+  .hero,.projects{width:92%;padding-left:0;padding-right:0}
   .hero{padding-top:100px}
+  .hero h1{white-space:normal;flex-wrap:wrap}
   .cards{grid-template-columns:1fr}
   .card{min-height:200px}
   .card h2,.card > p{max-width:60%}
@@ -245,7 +247,7 @@ footer{
   }
 }
 @media(max-width:560px){
-  .name-solid,.name-outline{font-size:11vw}
+  .name-solid,.name-outline{font-size:12vw}
   .card h2,.card > p{max-width:100%}
   .card-art{opacity:.4}
   .social{flex-wrap:wrap;justify-content:center}
