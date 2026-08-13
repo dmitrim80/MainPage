@@ -23,7 +23,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="header-right">
-      <span class="avail-badge"><span class="avail-dot"></span> Available for select projects</span>
+      <span class="avail-badge"><i></i> Available for select projects</span>
       <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -35,148 +35,123 @@
       <p class="hero-hello">Hello, I'm</p>
       <h1>Dmitri <em>Morozov</em></h1>
       <p class="hero-bio">I build digital experiences and strategies at the intersection of design, technology, and performance.</p>
-      <a class="btn-primary" href="#projects">View My Work <span>→</span></a>
+      <a class="btn" href="#projects">View My Work <span>→</span></a>
     </section>
 
     <section class="projects" id="projects">
-      <div class="project-grid">
-        <article class="card card-trading">
-          <a href="https://dmcapitalsolutions.com" class="card-inner">
-            <div class="card-body">
-              <div class="card-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg> Day Trading</div>
-              <h2>Day Trading</h2>
-              <p>Real-time trading dashboard with live market data, advanced charting, and risk analytics.</p>
-              <span class="card-cta">View Project →</span>
-            </div>
-            <div class="card-visual trading-visual">
-              <svg viewBox="0 0 320 160" preserveAspectRatio="none" aria-hidden="true">
-                <defs>
-                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#5ecfc4" stop-opacity="0.4"/>
-                    <stop offset="100%" stop-color="#5ecfc4" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <g stroke="rgba(94,207,196,0.08)" stroke-width="1">
-                  <line x1="0" y1="40" x2="320" y2="40"/>
-                  <line x1="0" y1="80" x2="320" y2="80"/>
-                  <line x1="0" y1="120" x2="320" y2="120"/>
-                </g>
-                <path d="M0,130 L25,115 L50,120 L75,95 L100,105 L125,70 L150,80 L175,50 L200,60 L225,35 L250,45 L275,25 L300,32 L320,20 L320,160 L0,160 Z" fill="url(#areaGrad)"/>
-                <polyline points="0,130 25,115 50,120 75,95 100,105 125,70 150,80 175,50 200,60 225,35 250,45 275,25 300,32 320,20" fill="none" stroke="#5ecfc4" stroke-width="2.2"/>
-                <g stroke="#5ecfc4" stroke-width="1.5" opacity="0.7">
-                  <line x1="40" y1="100" x2="40" y2="130"/><rect x="36" y="110" width="8" height="12" fill="#5ecfc4" opacity="0.5"/>
-                  <line x1="90" y1="85" x2="90" y2="120"/><rect x="86" y="95" width="8" height="18" fill="#5ecfc4" opacity="0.5"/>
-                  <line x1="160" y1="55" x2="160" y2="95"/><rect x="156" y="65" width="8" height="20" fill="#5ecfc4" opacity="0.5"/>
-                  <line x1="230" y1="30" x2="230" y2="70"/><rect x="226" y="40" width="8" height="22" fill="#5ecfc4" opacity="0.5"/>
-                </g>
-              </svg>
-            </div>
-          </a>
-        </article>
+      <div class="grid">
 
-        <article class="card card-sailing">
-          <a href="sailing/" class="card-inner">
-            <div class="card-body">
-              <div class="card-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 18h18"/><path d="M12 3v15"/><path d="M12 3l8 12H4z"/></svg> Sailing</div>
-              <h2>Sailing</h2>
-              <p>Brand and website for a luxury sailing charter. Calm waters, timeless design.</p>
-              <span class="card-cta">View Project →</span>
-            </div>
-            <div class="card-visual sailing-visual">
-              <img src="https://images.unsplash.com/photo-1534190239940-9ba8944ea261?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy">
-              <div class="visual-overlay"></div>
-            </div>
-          </a>
-        </article>
+        <a class="card trading" href="https://dmcapitalsolutions.com">
+          <div class="card-content">
+            <span class="tag">↗ Day Trading</span>
+            <h2>Day Trading</h2>
+            <p>Real-time trading dashboard with live market data, advanced charting, and risk analytics.</p>
+            <span class="cta">View Project →</span>
+          </div>
+          <div class="card-media trading-media">
+            <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5ecfc4" stop-opacity=".45"/>
+                  <stop offset="100%" stop-color="#5ecfc4" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <path d="M0 120 L30 100 L60 110 L90 75 L120 85 L150 50 L180 60 L210 30 L240 40 L270 18 L300 25 V160 H0Z" fill="url(#g1)"/>
+              <polyline points="0,120 30,100 60,110 90,75 120,85 150,50 180,60 210,30 240,40 270,18 300,25" fill="none" stroke="#5ecfc4" stroke-width="2"/>
+            </svg>
+          </div>
+        </a>
 
-        <article class="card card-cooking">
-          <a href="kitchen/" class="card-inner">
-            <div class="card-body">
-              <div class="card-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg> Cooking</div>
-              <h2>Cooking</h2>
-              <p>A culinary platform and brand system for modern, intentional cooking.</p>
-              <span class="card-cta">View Project →</span>
-            </div>
-            <div class="card-visual cooking-visual">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=80&auto=format&fit=crop" alt="" loading="lazy">
-              <div class="visual-overlay warm"></div>
-            </div>
-          </a>
-        </article>
+        <a class="card sailing" href="sailing/">
+          <div class="card-content">
+            <span class="tag">⛵ Sailing</span>
+            <h2>Sailing</h2>
+            <p>Brand and website for a luxury sailing charter. Calm waters, timeless design.</p>
+            <span class="cta">View Project →</span>
+          </div>
+          <div class="card-media sailing-media">
+            <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy">
+          </div>
+        </a>
 
-        <article class="card card-web">
-          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer" class="card-inner">
-            <div class="card-body">
-              <div class="card-label"><span class="code-icon"></></span> Web Design</div>
-              <h2>Web Design</h2>
-              <p>A showcase of web design craftsmanship, interactions, and visual systems.</p>
-              <span class="card-cta">View Project →</span>
-            </div>
-            <div class="card-visual web-visual">
-              <div class="code-window">
-                <div class="code-titlebar">
-                  <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                </div>
-                <pre class="code-body"><span class="kw">const</span> experience = {
-  clarity: <span class="bool">true</span>,
-  purpose: <span class="str">"design"</span>,
-  craft: <span class="str">"intentional"</span>
+        <a class="card cooking" href="kitchen/">
+          <div class="card-content">
+            <span class="tag">🍽 Cooking</span>
+            <h2>Cooking</h2>
+            <p>A culinary platform and brand system for modern, intentional cooking.</p>
+            <span class="cta">View Project →</span>
+          </div>
+          <div class="card-media cooking-media">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="" loading="lazy">
+          </div>
+        </a>
+
+        <a class="card web" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
+          <div class="card-content">
+            <span class="tag">&lt;/&gt; Web Design</span>
+            <h2>Web Design</h2>
+            <p>A showcase of web design craftsmanship, interactions, and visual systems.</p>
+            <span class="cta">View Project →</span>
+          </div>
+          <div class="card-media web-media">
+            <div class="codebox">
+              <div class="codebox-bar"><i></i><i></i><i></i></div>
+              <pre><span class="k">const</span> craft = {
+  clarity: <span class="b">true</span>,
+  purpose: <span class="s">"design"</span>,
+  detail: <span class="s">"intentional"</span>
 }</pre>
-              </div>
             </div>
-          </a>
-        </article>
+          </div>
+        </a>
+
       </div>
     </section>
 
-    <section class="section about" id="about">
-      <div class="section-inner">
-        <p class="eyebrow">About</p>
-        <h2>Notes from the work in progress.</h2>
-        <p class="lead">This site documents the four projects I am actively developing: day trading, sailing, cooking, and web design.</p>
-        <p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice—what is being built, refined, and learned in real time.</p>
-        <div class="about-links">
-          <a href="https://dmcapitalsolutions.com">DM Capital Solutions ↗</a>
-          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
-        </div>
+    <section class="section" id="about">
+      <p class="eyebrow">About</p>
+      <h2>Notes from the work in progress.</h2>
+      <p class="lead">This site documents the four projects I am actively developing: day trading, sailing, cooking, and web design.</p>
+      <p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice—what is being built, refined, and learned in real time.</p>
+      <div class="links">
+        <a href="https://dmcapitalsolutions.com">DM Capital Solutions ↗</a>
+        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
       </div>
     </section>
 
-    <section class="section journal" id="journal">
-      <div class="section-inner">
-        <p class="eyebrow">Writing</p>
-        <h2>Recent entries</h2>
-        <div class="journal-list">
-          <a class="journal-item" href="kitchen/">
-            <span class="journal-meta">Cooking · Kitchen Log</span>
-            <h3>Home meals worth making again</h3>
-            <p>A living record of simple plates, ingredients, and everyday notes from the kitchen.</p>
-          </a>
-          <a class="journal-item" href="sailing/">
-            <span class="journal-meta">Sailing · Journey</span>
-            <h3>A horizon worth preparing for</h3>
-            <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
-          </a>
-          <a class="journal-item" href="https://dmcapitalsolutions.com">
-            <span class="journal-meta">Day Trading · Markets</span>
-            <h3>DM Capital Solutions</h3>
-            <p>The company site for day trading activity and related work.</p>
-          </a>
-          <a class="journal-item" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
-            <span class="journal-meta">Web Design · Code</span>
-            <h3>Repositories & experiments</h3>
-            <p>Source for this site and other web and software projects.</p>
-          </a>
-        </div>
+    <section class="section" id="journal">
+      <p class="eyebrow">Writing</p>
+      <h2>Recent entries</h2>
+      <div class="entries">
+        <a href="kitchen/">
+          <span>Cooking · Kitchen Log</span>
+          <h3>Home meals worth making again</h3>
+          <p>A living record of simple plates, ingredients, and everyday notes from the kitchen.</p>
+        </a>
+        <a href="sailing/">
+          <span>Sailing · Journey</span>
+          <h3>A horizon worth preparing for</h3>
+          <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
+        </a>
+        <a href="https://dmcapitalsolutions.com">
+          <span>Day Trading · Markets</span>
+          <h3>DM Capital Solutions</h3>
+          <p>The company site for day trading activity and related work.</p>
+        </a>
+        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
+          <span>Web Design · Code</span>
+          <h3>Repositories & experiments</h3>
+          <p>Source for this site and other web and software projects.</p>
+        </a>
       </div>
     </section>
 
     <section class="contact" id="contact">
       <p class="eyebrow">Contact</p>
       <h2>Let’s build what’s next.</h2>
-      <a class="contact-email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
-      <div class="social-links">
+      <a class="email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
+      <div class="social">
         <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub</a>
         <a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram</a>
