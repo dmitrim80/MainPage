@@ -3,162 +3,175 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#07090d">
+  <meta name="theme-color" content="#0a0a0a">
   <meta name="description" content="Dmitri Morozov — notes on day trading, sailing, cooking, and web design.">
-  <title>Dmitri Morozov — Markets, Sea, Kitchen & Code</title>
+  <title>Dmitri Morozov</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="ambient one" aria-hidden="true"></div>
-  <div class="ambient two" aria-hidden="true"></div>
+  <div class="bg-mountain" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
-    <a class="monogram" href="#top" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#projects">Projects</a>
-      <a href="https://dmcapitalsolutions.com">Trading</a>
-      <a href="sailing/">Sailing</a>
-      <a href="kitchen/">Cooking</a>
-      <a href="#web">Web Design</a>
+    <a class="monogram" href="#top" aria-label="Dmitri Morozov home">DM</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#projects">Work</a>
+      <a href="#journal">Journal</a>
       <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Write <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span>
+    </button>
   </header>
 
   <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <p class="hero-kicker reveal"><span></span> Personal notes & ongoing work</p>
-      <h1 id="hero-title" class="reveal">Dmitri<br><em>Morozov</em></h1>
-      <p class="identity reveal">Day Trading <i>/</i> Sailing <i>/</i> Cooking <i>/</i> Web Design</p>
-      <p class="hero-copy reveal">A living record of the projects that currently occupy my time and attention—markets, the sea, the kitchen, and the craft of building on the web.</p>
-      <div class="hero-actions reveal">
-        <a class="button" href="#projects">View projects <span>↓</span></a>
-        <a class="text-link" href="#about">About this site <span>↗</span></a>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-label">Dmitri Morozov</p>
+        <h1>Dmitri<br>Morozov</h1>
+        <p class="hero-bio">Designer, strategist, and perpetual student of discipline.<br>I build with intention and refine with time.</p>
+        <a class="hero-link" href="#journal">View Journal <span>→</span></a>
+      </div>
+      <div class="scroll-hint">
+        <span class="scroll-dot"></span>
+        Scroll to explore
       </div>
     </section>
 
-    <section class="section projects" id="projects">
-      <div class="section-label reveal"><span>01</span> Current projects</div>
-      <div class="section-heading reveal">
-        <h2>Four threads,<br><span>actively pursued.</span></h2>
-        <p>Each area has its own space. This homepage is the index.</p>
-      </div>
-
+    <section class="projects" id="projects">
       <div class="project-grid">
-        <article class="project-card trading reveal">
-          <a href="https://dmcapitalsolutions.com" class="project-link">
-            <span class="project-index">01</span>
-            <p class="project-tag">Day Trading</p>
-            <h3>Markets &<br>capital</h3>
-            <p class="project-desc">Active day trading and the work of DM Capital Solutions LLC—process, discipline, and the daily practice of reading markets.</p>
-            <span class="project-cta">Open company site <i>↗</i></span>
+        <article class="project-card trading">
+          <a href="https://dmcapitalsolutions.com" class="card-link">
+            <div class="card-text">
+              <span class="card-dot trading-dot"></span>
+              <h2>Day Trading</h2>
+              <p>Systematic market analysis and risk-first execution in global financial markets.</p>
+              <span class="card-cta">View Project →</span>
+            </div>
+            <div class="card-visual">
+              <svg viewBox="0 0 160 90" class="chart-svg" aria-hidden="true">
+                <polyline points="10,70 30,55 50,60 70,40 90,45 110,25 130,30 150,15" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="10" y1="80" x2="150" y2="80" stroke="currentColor" stroke-opacity="0.2"/>
+                <line x1="10" y1="10" x2="10" y2="80" stroke="currentColor" stroke-opacity="0.2"/>
+              </svg>
+            </div>
           </a>
         </article>
 
-        <article class="project-card sailing reveal">
-          <a href="sailing/" class="project-link">
-            <span class="project-index">02</span>
-            <p class="project-tag">Sailing</p>
-            <h3>Horizon &<br>preparation</h3>
-            <p class="project-desc">A long-range project built around seamanship, self-reliance, and the path toward extended offshore passages.</p>
-            <span class="project-cta">Follow the journey <i>↗</i></span>
+        <article class="project-card sailing">
+          <a href="sailing/" class="card-link">
+            <div class="card-text">
+              <span class="card-dot sailing-dot"></span>
+              <h2>Sailing</h2>
+              <p>Blue water passages and the pursuit of balance between freedom and seamanship.</p>
+              <span class="card-cta">View Project →</span>
+            </div>
+            <div class="card-visual sailing-visual">
+              <svg viewBox="0 0 140 100" class="sail-svg" aria-hidden="true">
+                <path d="M70 15 L70 85 M70 15 L110 75 L30 75 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                <path d="M20 85 Q70 78 120 85" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity="0.5"/>
+              </svg>
+            </div>
           </a>
         </article>
 
-        <article class="project-card cooking reveal">
-          <a href="kitchen/" class="project-link">
-            <span class="project-index">03</span>
-            <p class="project-tag">Cooking</p>
-            <h3>Kitchen<br>log</h3>
-            <p class="project-desc">A growing collection of simple home meals, ingredient notes, and plates worth making again.</p>
-            <span class="project-cta">Open the Kitchen Log <i>↗</i></span>
+        <article class="project-card cooking">
+          <a href="kitchen/" class="card-link">
+            <div class="card-text">
+              <span class="card-dot cooking-dot"></span>
+              <h2>Cooking</h2>
+              <p>Seasonal ingredients, craft, and the quiet satisfaction of cooking well.</p>
+              <span class="card-cta">View Project →</span>
+            </div>
+            <div class="card-visual cooking-visual">
+              <div class="plate">
+                <div class="plate-inner"></div>
+              </div>
+            </div>
           </a>
         </article>
 
-        <article class="project-card web reveal" id="web">
-          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer" class="project-link">
-            <span class="project-index">04</span>
-            <p class="project-tag">Web Design</p>
-            <h3>Code &<br>interfaces</h3>
-            <p class="project-desc">Building and refining sites, interfaces, and small systems—both this site and other experiments on GitHub.</p>
-            <span class="project-cta">View repositories <i>↗</i></span>
+        <article class="project-card web">
+          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer" class="card-link">
+            <div class="card-text">
+              <span class="card-dot web-dot"></span>
+              <h2>Web Design</h2>
+              <p>Thoughtful digital experiences rooted in typography, restraint, and purpose.</p>
+              <span class="card-cta">View Project →</span>
+            </div>
+            <div class="card-visual web-visual">
+              <svg viewBox="0 0 100 100" class="geo-svg" aria-hidden="true">
+                <rect x="15" y="15" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1"/>
+                <rect x="45" y="45" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1"/>
+                <line x1="35" y1="15" x2="65" y2="45" stroke="currentColor" stroke-width="0.8"/>
+                <line x1="15" y1="35" x2="45" y2="65" stroke="currentColor" stroke-width="0.8"/>
+              </svg>
+            </div>
           </a>
         </article>
       </div>
     </section>
 
     <section class="section about" id="about">
-      <div class="section-label reveal"><span>02</span> About</div>
-      <div class="about-layout">
-        <div class="portrait-wrap reveal">
-          <div class="portrait-frame">
-            <img src="static/media/profile-dm-dark-blue.6190f0ece88f0a9aabbd.jpg" alt="Portrait of Dmitri Morozov">
-          </div>
-        </div>
-        <div class="about-content">
-          <h2 class="reveal">Notes from the work<br><span>in progress.</span></h2>
-          <p class="lead reveal">This site is intentionally narrower than a full résumé. It exists to document the four projects I am actively developing: day trading, sailing, cooking, and web design.</p>
-          <p class="reveal">I bring a background in sales leadership, technology, and entrepreneurship. The focus here, however, is on the current practice—what is being built, refined, and learned in real time.</p>
-          <div class="about-links reveal">
-            <a class="text-link" href="https://dmcapitalsolutions.com">DM Capital Solutions <span>↗</span></a>
-            <a class="text-link" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
-            <a class="text-link" href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé <span>↗</span></a>
-          </div>
+      <div class="section-inner">
+        <p class="section-label">About</p>
+        <h2>Notes from the work<br>in progress.</h2>
+        <p class="lead">This site documents the four projects I am actively developing: day trading, sailing, cooking, and web design.</p>
+        <p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice—what is being built, refined, and learned in real time.</p>
+        <div class="about-links">
+          <a href="https://dmcapitalsolutions.com">DM Capital Solutions ↗</a>
+          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
         </div>
       </div>
     </section>
 
     <section class="section journal" id="journal">
-      <div class="section-label reveal"><span>03</span> From the projects</div>
-      <div class="section-heading reveal">
-        <h2>Recent<br><span>entries.</span></h2>
-        <p>Selected pieces from the active logs.</p>
-      </div>
-      <div class="journal-list">
-        <a class="journal-item reveal" href="kitchen/">
-          <span class="journal-meta">Cooking · Kitchen Log</span>
-          <h3>Home meals worth making again</h3>
-          <p>A living record of simple plates, ingredients, and everyday notes from the kitchen.</p>
-        </a>
-        <a class="journal-item reveal" href="sailing/">
-          <span class="journal-meta">Sailing · Journey</span>
-          <h3>A horizon worth preparing for</h3>
-          <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
-        </a>
-        <a class="journal-item reveal" href="https://dmcapitalsolutions.com">
-          <span class="journal-meta">Day Trading · Markets</span>
-          <h3>DM Capital Solutions</h3>
-          <p>The company site for day trading activity and related work.</p>
-        </a>
-        <a class="journal-item reveal" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
-          <span class="journal-meta">Web Design · Code</span>
-          <h3>Repositories & experiments</h3>
-          <p>Source for this site and other web and software projects.</p>
-        </a>
+      <div class="section-inner">
+        <p class="section-label">From the projects</p>
+        <h2>Recent entries</h2>
+        <div class="journal-list">
+          <a class="journal-item" href="kitchen/">
+            <span class="journal-meta">Cooking · Kitchen Log</span>
+            <h3>Home meals worth making again</h3>
+            <p>A living record of simple plates, ingredients, and everyday notes from the kitchen.</p>
+          </a>
+          <a class="journal-item" href="sailing/">
+            <span class="journal-meta">Sailing · Journey</span>
+            <h3>A horizon worth preparing for</h3>
+            <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
+          </a>
+          <a class="journal-item" href="https://dmcapitalsolutions.com">
+            <span class="journal-meta">Day Trading · Markets</span>
+            <h3>DM Capital Solutions</h3>
+            <p>The company site for day trading activity and related work.</p>
+          </a>
+          <a class="journal-item" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
+            <span class="journal-meta">Web Design · Code</span>
+            <h3>Repositories & experiments</h3>
+            <p>Source for this site and other web and software projects.</p>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <div class="contact-glow" aria-hidden="true"></div>
-      <div class="section-label reveal"><span>04</span> Contact</div>
-      <p class="eyebrow reveal">Questions, notes, or collaboration</p>
-      <h2 class="reveal">Write when you have<br><em>something to say.</em></h2>
-      <a class="contact-email reveal" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com <span>↗</span></a>
-      <div class="social-links reveal">
-        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
-        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
-        <a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram <span>↗</span></a>
-        <a href="https://x.com/njreef" target="_blank" rel="noreferrer">X <span>↗</span></a>
+      <p class="section-label">Contact</p>
+      <h2>Write when you have<br>something to say.</h2>
+      <a class="contact-email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://x.com/njreef" target="_blank" rel="noreferrer">X</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <a class="monogram" href="#top">DM<span>.</span></a>
+    <a class="monogram" href="#top">DM</a>
     <p>© <span id="year"></span> Dmitri Morozov</p>
     <a href="#top">Back to top ↑</a>
   </footer>
