@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#05070b">
-  <meta name="description" content="Dmitri Morozov — digital experiences, day trading, sailing, cooking, and web design.">
+  <meta name="description" content="Dmitri Morozov — thoughts on markets, meaningful work, and the pursuit of mastery.">
   <title>Dmitri Morozov</title>
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="styles.css">
@@ -18,94 +18,108 @@
     <nav class="nav">
       <a href="#top" class="active">Home</a>
       <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#journal">Writing</a>
+      <a href="#journal">Journal</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="connect-btn" href="#contact">Let's Connect <span>↗</span></a>
+    <a class="connect-btn" href="#contact">Let's Connect <span>→</span></a>
     <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </header>
 
   <main>
-    <section class="hero-grid" id="projects">
-      <div class="hero-copy">
-        <p class="hero-hello"><span class="line"></span> Hello, I'm</p>
-        <h1>
-          <span class="name-solid">Dmitri</span>
-          <span class="name-outline">Morozov</span>
-        </h1>
-        <p class="hero-bio">I build digital experiences and make sense of complex systems. Focused on clarity, precision, and long-term value.</p>
-        <a class="btn" href="#about">View My Work <span>↗</span></a>
-      </div>
+    <section class="hero" id="projects">
+      <p class="hero-hello">Hello, I'm <span class="line"></span></p>
+      <h1>
+        <span class="name-solid">Dmitri</span>
+        <span class="name-outline">Morozov</span>
+      </h1>
+      <p class="hero-bio">Thoughts on markets, meaningful work, and the pursuit of mastery.<br>Curated reflections from a life in progress.</p>
+      <a class="explore" href="#journal">Explore the Journal <span>↓</span></a>
+    </section>
 
+    <section class="projects">
       <div class="cards">
         <a class="card trading" href="https://dmcapitalsolutions.com">
-          <div class="card-top">
-            <span class="tag"><i></i> Day Trading</span>
-            <span class="card-arrow">↗</span>
+          <div class="card-label">
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M2 12 L5 8 L8 10 L14 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 3 H14 V6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Day Trading
           </div>
-          <h2>Precision. Probability.<br>Process.</h2>
-          <p>Data-driven trading infrastructure and real-time market analysis tools.</p>
-          <div class="card-visual trading-vis">
-            <svg viewBox="0 0 200 70" preserveAspectRatio="none">
+          <h2>Markets &amp; Probability</h2>
+          <p>Discipline, risk, and the art of decision making under uncertainty.</p>
+          <span class="view">View Project <span>→</span></span>
+          <div class="card-art trading-art" aria-hidden="true">
+            <svg viewBox="0 0 240 120" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#5ecfc4" stop-opacity=".35"/>
-                  <stop offset="100%" stop-color="#5ecfc4" stop-opacity="0"/>
+                <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3dd6c6" stop-opacity=".25"/>
+                  <stop offset="100%" stop-color="#3dd6c6" stop-opacity="0"/>
                 </linearGradient>
               </defs>
-              <path d="M0 55 L20 48 L40 52 L60 35 L80 40 L100 22 L120 28 L140 12 L160 18 L180 8 L200 14 V70 H0Z" fill="url(#tg)"/>
-              <polyline points="0,55 20,48 40,52 60,35 80,40 100,22 120,28 140,12 160,18 180,8 200,14" fill="none" stroke="#5ecfc4" stroke-width="1.8"/>
+              <!-- candlesticks -->
+              <g stroke="#3dd6c6" stroke-width="1.2" fill="#3dd6c6">
+                <line x1="20" y1="70" x2="20" y2="95" opacity=".5"/><rect x="16" y="75" width="8" height="15" opacity=".7"/>
+                <line x1="40" y1="55" x2="40" y2="90" opacity=".5"/><rect x="36" y="60" width="8" height="22" opacity=".7"/>
+                <line x1="60" y1="48" x2="60" y2="78" opacity=".5"/><rect x="56" y="52" width="8" height="18" opacity=".7"/>
+                <line x1="80" y1="40" x2="80" y2="72" opacity=".5"/><rect x="76" y="45" width="8" height="20" opacity=".7"/>
+                <line x1="100" y1="35" x2="100" y2="68" opacity=".5"/><rect x="96" y="40" width="8" height="18" opacity=".7"/>
+                <line x1="120" y1="28" x2="120" y2="58" opacity=".5"/><rect x="116" y="32" width="8" height="16" opacity=".75"/>
+                <line x1="140" y1="22" x2="140" y2="50" opacity=".5"/><rect x="136" y="26" width="8" height="14" opacity=".8"/>
+                <line x1="160" y1="18" x2="160" y2="45" opacity=".5"/><rect x="156" y="22" width="8" height="12" opacity=".85"/>
+                <line x1="180" y1="14" x2="180" y2="40" opacity=".5"/><rect x="176" y="18" width="8" height="12" opacity=".9"/>
+                <line x1="200" y1="10" x2="200" y2="35" opacity=".5"/><rect x="196" y="14" width="8" height="10" opacity=".95"/>
+                <line x1="220" y1="8" x2="220" y2="28" opacity=".5"/><rect x="216" y="12" width="8" height="8"/>
+              </g>
+              <path d="M20 88 L40 75 L60 68 L80 62 L100 55 L120 45 L140 38 L160 32 L180 28 L200 22 L220 18 V120 H20Z" fill="url(#cg)"/>
             </svg>
           </div>
-          <span class="card-link">↗</span>
         </a>
 
         <a class="card sailing" href="sailing/">
-          <div class="card-top">
-            <span class="tag"><i></i> Sailing</span>
-            <span class="card-arrow">↗</span>
+          <div class="card-label">
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M3 12 Q8 14 13 12" stroke="currentColor" stroke-width="1.2" fill="none"/><path d="M8 2 L8 12" stroke="currentColor" stroke-width="1.2"/><path d="M8 3 L13 11 H8Z" fill="currentColor" opacity=".35" stroke="currentColor" stroke-width="1"/><path d="M8 5 L4 11 H8Z" fill="currentColor" opacity=".2" stroke="currentColor" stroke-width="1"/></svg>
+            Sailing
           </div>
-          <h2>Freedom. Discipline.<br>Horizon.</h2>
-          <p>Sailing across open waters teaches focus, resilience, and adaptability.</p>
-          <div class="card-visual sailing-vis">
-            <svg viewBox="0 0 100 90" fill="none">
-              <path d="M48 6 L48 62" stroke="rgba(140,190,240,.75)" stroke-width="1.5"/>
-              <path d="M48 10 L82 58 L48 58Z" fill="rgba(100,160,220,.22)" stroke="rgba(150,200,250,.55)" stroke-width="1"/>
-              <path d="M48 18 L22 58 L48 58Z" fill="rgba(70,130,190,.18)" stroke="rgba(120,170,220,.4)" stroke-width="1"/>
-              <path d="M20 62 Q50 72 80 62" stroke="rgba(100,160,220,.35)" stroke-width="1.2" fill="none"/>
-              <ellipse cx="50" cy="64" rx="32" ry="5" fill="rgba(50,110,170,.12)"/>
+          <h2>Bluewater &amp; Perspective</h2>
+          <p>Lessons from the sea on simplicity, resilience, and freedom.</p>
+          <span class="view">View Project <span>→</span></span>
+          <div class="card-art sailing-art" aria-hidden="true">
+            <svg viewBox="0 0 200 140" fill="none">
+              <ellipse cx="100" cy="118" rx="90" ry="14" fill="rgba(60,120,180,.12)"/>
+              <path d="M10 115 Q50 105 100 112 Q150 120 190 108" stroke="rgba(100,160,220,.25)" stroke-width="1.2" fill="none"/>
+              <path d="M10 122 Q60 112 100 120 Q140 128 190 115" stroke="rgba(80,140,200,.18)" stroke-width="1" fill="none"/>
+              <line x1="100" y1="18" x2="100" y2="108" stroke="rgba(160,200,240,.7)" stroke-width="1.5"/>
+              <path d="M100 22 L155 100 H100Z" fill="rgba(90,150,220,.2)" stroke="rgba(150,200,250,.55)" stroke-width="1"/>
+              <path d="M100 32 L55 100 H100Z" fill="rgba(60,120,190,.15)" stroke="rgba(120,170,220,.4)" stroke-width="1"/>
+              <path d="M70 108 H130 L125 112 H75Z" fill="rgba(40,80,120,.4)" stroke="rgba(100,150,200,.35)" stroke-width="0.8"/>
             </svg>
           </div>
-          <span class="card-link">↗</span>
         </a>
 
         <a class="card cooking" href="kitchen/">
-          <div class="card-top">
-            <span class="tag"><i></i> Cooking</span>
-            <span class="card-arrow">↗</span>
+          <div class="card-label">
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="9" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 2 V4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M5.5 3.2 L6.5 4.8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><path d="M10.5 3.2 L9.5 4.8" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+            Cooking
           </div>
-          <h2>Creativity. Craft.<br>Balance.</h2>
-          <p>Exploring flavors, techniques, and the art of intuitive cooking.</p>
-          <div class="card-visual cooking-vis">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" alt="" loading="lazy">
+          <h2>Craft in the Kitchen</h2>
+          <p>Flavor, intuition, and the joy of creating for others.</p>
+          <span class="view">View Project <span>→</span></span>
+          <div class="card-art cooking-art" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=600&q=80" alt="" loading="lazy">
           </div>
-          <span class="card-link">↗</span>
         </a>
 
         <a class="card web" href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
-          <div class="card-top">
-            <span class="tag"><i></i> Web Design</span>
-            <span class="card-arrow">↗</span>
+          <div class="card-label">
+            <svg class="ico" viewBox="0 0 16 16" fill="none"><path d="M5 3 L1 8 L5 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 3 L15 8 L11 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Web Design
           </div>
-          <h2>Code. Design.<br>Experience.</h2>
-          <p>Designing and building fast, elegant, and intentional digital experiences.</p>
-          <div class="card-visual web-vis">
-            <span class="code-symbol">&lt;/&gt;</span>
+          <h2>Digital Craft &amp; Intent</h2>
+          <p>Building elegant experiences with purpose and precision.</p>
+          <span class="view">View Project <span>→</span></span>
+          <div class="card-art web-art" aria-hidden="true">
+            <span class="code-lg">&lt;/&gt;</span>
           </div>
-          <span class="card-link">↗</span>
         </a>
       </div>
     </section>
@@ -126,7 +140,7 @@
 
     <section class="section" id="journal">
       <div class="section-inner">
-        <p class="eyebrow">Writing</p>
+        <p class="eyebrow">Journal</p>
         <h2>Recent entries</h2>
         <div class="entries">
           <a href="kitchen/">
@@ -146,7 +160,7 @@
           </a>
           <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">
             <span>Web Design · Code</span>
-            <h3>Repositories & experiments</h3>
+            <h3>Repositories &amp; experiments</h3>
             <p>Source for this site and other web and software projects.</p>
           </a>
         </div>
@@ -167,8 +181,8 @@
   </main>
 
   <footer>
-    <p class="footer-tag"><span class="compass">✦</span> Clarity in thought. Excellence in execution.</p>
-    <p>© <span id="year"></span> Dmitri Morozov · All rights reserved</p>
+    <p class="footer-tag">Curious mind. Disciplined approach. Meaningful pursuits.</p>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
   </footer>
 </body>
 </html>
