@@ -8,97 +8,445 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-hybrid">
+  <link rel="stylesheet" href="sailing.css?v=20260814-horizon">
   <script src="../script.js" defer></script>
   <style>
-    .sailboat-feature{margin:0 0 8px;border:1px solid rgba(130,234,220,.18);background:linear-gradient(145deg,rgba(8,54,64,.42),rgba(3,22,29,.78));overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;min-height:380px}
-    .sailboat-feature__media{display:block;position:relative;min-height:320px;overflow:hidden}
-    .sailboat-feature__media img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04) brightness(.78);transition:transform .7s ease,filter .5s ease}
-    .sailboat-feature:hover .sailboat-feature__media img{transform:scale(1.04);filter:saturate(.95) contrast(1.03) brightness(.88)}
-    .sailboat-feature__body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
-    .sailboat-feature__eyebrow{color:var(--cyan,#82eadc);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
-    .sailboat-feature__body h3{font-size:clamp(28px,3.2vw,42px);letter-spacing:-.04em;margin:0 0 14px;line-height:1.08}
-    .sailboat-feature__body p{color:#a8b8bd;font-size:15px;line-height:1.65;margin:0 0 28px;max-width:420px}
-    .sailboat-feature__meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 28px;padding-top:18px;border-top:1px solid rgba(130,234,220,.14)}
-    .sailboat-feature__meta span{font-size:11px;letter-spacing:.06em;color:#7d9196}
-    .sailboat-feature__meta strong{color:#d5e3e4;font-weight:500}
-    @media(max-width:900px){.sailboat-feature{grid-template-columns:1fr;min-height:0}.sailboat-feature__media{min-height:260px}.sailboat-feature__body{padding:28px 24px}}
+    /* Horizon design — aligned to selected concept */
+    .sailing-page {
+      --cyan: #82eadc;
+      --navy: #0a1620;
+      background: #071018;
+    }
+
+    /* Full-bleed photographic hero */
+    .sailing-hero {
+      min-height: 88svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(130,234,220,.12);
+      background: #061720;
+    }
+    .sailing-hero .nautical-grid,
+    .sailing-hero .sail-scene,
+    .sailing-hero .scroll-cue,
+    .sailing-hero .back-link { display: none !important; }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      background: url("assets/open-ocean-sunset.png") center 40% / cover no-repeat;
+      filter: saturate(.9) contrast(1.05) brightness(.72);
+    }
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(4,14,22,.82) 0%, rgba(4,18,26,.55) 42%, rgba(4,18,26,.25) 70%, transparent 100%),
+        linear-gradient(180deg, transparent 40%, rgba(4,12,18,.88) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 140px max(5vw, calc((100vw - 1120px) / 2)) 72px;
+      max-width: 680px;
+    }
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #9eb8bc;
+      margin-bottom: 22px;
+    }
+    .hero-kicker::before {
+      content: "";
+      width: 28px;
+      height: 1.5px;
+      background: var(--cyan);
+    }
+    .sailing-hero h1 {
+      font-size: clamp(42px, 5.8vw, 72px);
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin: 0 0 20px;
+      color: #f0f4f2;
+    }
+    .sailing-hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cyan);
+      -webkit-text-stroke: 0;
+    }
+    .sailing-lede {
+      color: #b0c4c8;
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 460px;
+      margin: 0 0 32px;
+    }
+    .sailing-hero .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--cyan);
+      border: 1px solid rgba(130,234,220,.45);
+      padding: 12px 22px;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background .25s, border-color .25s;
+    }
+    .sailing-hero .button:hover {
+      background: rgba(130,234,220,.1);
+      border-color: var(--cyan);
+    }
+
+    /* Combined Sailboats + Course band */
+    .sailboats-band {
+      display: grid;
+      grid-template-columns: 1.35fr .9fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(130,234,220,.1);
+      background: #0a1620;
+    }
+    .sailboats-main {
+      padding: 64px max(4vw, 40px) 64px max(5vw, calc((100vw - 1120px) / 2));
+      border-right: 1px solid rgba(130,234,220,.1);
+    }
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #7d9196;
+      margin-bottom: 12px;
+    }
+    .section-label span { color: var(--cyan); }
+    .sailboats-main > p.intro {
+      color: #9eb0b4;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 420px;
+      margin: 0 0 36px;
+    }
+
+    .feature-card {
+      display: grid;
+      grid-template-columns: 1.1fr .95fr;
+      gap: 0;
+      border: 1px solid rgba(130,234,220,.16);
+      background: linear-gradient(145deg, rgba(8,40,52,.55), rgba(4,18,26,.85));
+      overflow: hidden;
+      min-height: 340px;
+    }
+    .feature-card__media {
+      display: block;
+      position: relative;
+      min-height: 300px;
+      overflow: hidden;
+    }
+    .feature-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.88) brightness(.9);
+      transition: transform .6s ease;
+    }
+    .feature-card:hover .feature-card__media img { transform: scale(1.04); }
+    .feature-card__body {
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .feature-card__eyebrow {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 0 0 10px;
+    }
+    .feature-card__body h3 {
+      font-size: clamp(26px, 2.8vw, 36px);
+      letter-spacing: -.03em;
+      margin: 0 0 12px;
+      line-height: 1.1;
+      color: #eef4f2;
+    }
+    .feature-card__body p {
+      color: #a8b8bd;
+      font-size: 14px;
+      line-height: 1.6;
+      margin: 0 0 22px;
+    }
+    .feature-card__stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 20px;
+      margin: 0 0 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(130,234,220,.12);
+    }
+    .feature-card__stats span {
+      font-size: 12px;
+      color: #7d9196;
+    }
+    .feature-card__stats strong {
+      color: #d8e6e4;
+      font-weight: 500;
+      margin-right: 4px;
+    }
+    .feature-card .button {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(130,234,220,.35);
+      padding-bottom: 3px;
+      transition: border-color .2s;
+    }
+    .feature-card .button:hover { border-color: var(--cyan); }
+
+    /* Compact course / roadmap column */
+    .course-panel {
+      padding: 64px 40px 64px 36px;
+      background: rgba(6,20,28,.6);
+    }
+    .course-panel .eyebrow {
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin: 0 0 8px;
+    }
+    .course-panel h2 {
+      font-size: 22px;
+      letter-spacing: -.02em;
+      margin: 0 0 32px;
+      color: #e8f0ee;
+    }
+    .course-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .course-list::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(var(--cyan), rgba(130,234,220,.15));
+    }
+    .course-list li {
+      position: relative;
+      padding: 0 0 28px 28px;
+    }
+    .course-list li:last-child { padding-bottom: 0; }
+    .course-list li::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #0a1620;
+      border: 1.5px solid #5a6e74;
+    }
+    .course-list li.active::before {
+      background: var(--cyan);
+      border-color: var(--cyan);
+      box-shadow: 0 0 12px rgba(130,234,220,.5);
+    }
+    .course-list small {
+      display: block;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #6d848a;
+      margin-bottom: 4px;
+    }
+    .course-list strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 500;
+      color: #d5e3e4;
+      margin-bottom: 4px;
+    }
+    .course-list p {
+      font-size: 13px;
+      color: #8a9ea2;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Keep existing lower sections clean */
+    .section { padding: 72px max(5vw, calc((100vw - 1120px) / 2)); }
+    .section-label { margin-bottom: 18px; }
+
+    @media (max-width: 980px) {
+      .sailboats-band { grid-template-columns: 1fr; }
+      .sailboats-main {
+        padding: 48px 24px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(130,234,220,.1);
+      }
+      .course-panel { padding: 48px 24px; }
+      .feature-card { grid-template-columns: 1fr; }
+      .feature-card__media { min-height: 240px; }
+    }
+    @media (max-width: 600px) {
+      .hero-content { padding: 120px 20px 56px; }
+      .sailing-hero h1 { font-size: 11.5vw; }
+    }
   </style>
 </head>
 <body class="sailing-page">
-  <div class="ambient one" aria-hidden="true"></div><div class="ambient two" aria-hidden="true"></div>
+  <div class="ambient one" aria-hidden="true"></div>
+  <div class="ambient two" aria-hidden="true"></div>
+
   <header class="site-header" id="top">
     <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
-    <nav class="nav" aria-label="Sailing page navigation"><a href="../">Home</a><a href="#vision">Vision</a><a href="#sailboats">Sailboats</a><a href="#preparation">Preparation</a><a href="#route">Roadmap</a><a href="#log">Log</a></nav>
+    <nav class="nav" aria-label="Sailing page navigation">
+      <a href="../">Home</a>
+      <a href="#vision">Vision</a>
+      <a href="#sailboats">Sailboats</a>
+      <a href="#preparation">Preparation</a>
+      <a href="#route">Roadmap</a>
+      <a href="#log">Log</a>
+    </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
     <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
   </header>
+
   <main>
+    <!-- Full-bleed photographic hero -->
     <section class="sailing-hero" aria-labelledby="sailing-title">
-      <div class="nautical-grid" aria-hidden="true"></div>
-      <div class="hero-copy-block">
-        <a class="back-link reveal" href="../"><span>←</span> Dmitri Morozov</a>
-        <p class="hero-kicker reveal"><span></span> Sailing & exploration</p>
-        <h1 id="sailing-title" class="reveal">A horizon worth<br><em>preparing for.</em></h1>
-        <p class="sailing-lede reveal">A long-range personal project built around seamanship, self-reliance and the freedom to explore—one deliberate step at a time.</p>
-        <a class="button reveal" href="#vision">Explore the journey <span>↓</span></a>
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-kicker">Sailing & exploration</p>
+        <h1 id="sailing-title">A horizon<br><em>worth preparing for</em></h1>
+        <p class="sailing-lede">Practical knowledge, refined gear, and timeless seamanship for bluewater sailors.</p>
+        <a class="button" href="#sailboats">Explore the journey <span>→</span></a>
       </div>
-      <div class="sail-scene reveal" aria-hidden="true">
-        <div class="ocean-photo"></div><div class="scene-shade"></div>
-        <div class="t37-outline boat"><span class="mast"></span><span class="sail-main"></span><span class="sail-jib"></span><span class="hull"></span></div>
-        <div class="coordinates">TAYANA 37 · CUTTER RIG · OPEN OCEAN</div>
-      </div>
-      <a class="scroll-cue" href="#vision"><span></span>Scroll to explore</a>
     </section>
+
+    <!-- Combined Sailboats feature + Course panel (matches selected design) -->
+    <section class="sailboats-band" id="sailboats">
+      <div class="sailboats-main">
+        <div class="section-label"><span>02</span> Sailboats</div>
+        <p class="intro">Classic, capable cruising sailboats built for distance, comfort, and confidence offshore.</p>
+
+        <article class="feature-card">
+          <a class="feature-card__media" href="tayana-37/">
+            <img src="assets/tayana-37-reference.png" alt="Tayana 37 under sail">
+          </a>
+          <div class="feature-card__body">
+            <p class="feature-card__eyebrow">Feature boat</p>
+            <h3>Tayana 37</h3>
+            <p>A timeless bluewater cruiser with legendary balance, sturdy construction, and ocean-proven capability.</p>
+            <div class="feature-card__stats">
+              <span><strong>36′8″</strong> LOA</span>
+              <span><strong>11′6″</strong> Beam</span>
+              <span><strong>5′8″</strong> Draft</span>
+              <span><strong>22,500 lb</strong> Disp.</span>
+            </div>
+            <a href="tayana-37/" class="button">View details <span>→</span></a>
+          </div>
+        </article>
+      </div>
+
+      <aside class="course-panel" aria-label="Journey roadmap">
+        <p class="eyebrow">Roadmap</p>
+        <h2>Your course</h2>
+        <ol class="course-list">
+          <li class="active">
+            <small>01</small>
+            <strong>Prepare</strong>
+            <p>Build knowledge, assess your needs, and plan with purpose.</p>
+          </li>
+          <li>
+            <small>02</small>
+            <strong>Outfit</strong>
+            <p>Equip your boat with the right gear for safety and self-reliance.</p>
+          </li>
+          <li>
+            <small>03</small>
+            <strong>Sail</strong>
+            <p>Navigate with confidence and make passages that matter.</p>
+          </li>
+          <li>
+            <small>04</small>
+            <strong>Reflect</strong>
+            <p>Log your experiences, refine your skills, and keep exploring.</p>
+          </li>
+        </ol>
+      </aside>
+    </section>
+
+    <!-- Vision -->
     <section class="section sailing-vision" id="vision">
-      <div class="section-label reveal"><span>01</span> The vision</div>
+      <div class="section-label"><span>01</span> The vision</div>
       <div class="vision-layout">
-        <div class="section-heading reveal"><h2>Not an escape.<br><span>An expedition.</span></h2></div>
-        <div class="vision-copy reveal"><p class="lead">The goal is to build the experience, judgment and systems required for extended offshore sailing—and eventually, a voyage measured in oceans rather than weekends.</p><p>This page will document the full process: choosing the right boat, developing seamanship, preparing for offshore conditions and learning from each passage along the way.</p></div>
+        <div class="section-heading">
+          <h2>Not an escape.<br><span>An expedition.</span></h2>
+        </div>
+        <div class="vision-copy">
+          <p class="lead">The goal is to build the experience, judgment and systems required for extended offshore sailing—and eventually, a voyage measured in oceans rather than weekends.</p>
+          <p>This page will document the full process: choosing the right boat, developing seamanship, preparing for offshore conditions and learning from each passage along the way.</p>
+        </div>
       </div>
       <div class="vision-principles">
-        <article class="reveal"><span>01</span><i>◇</i><h3>Freedom</h3><p>The ability to move deliberately, live simply and let curiosity define the next destination.</p></article>
-        <article class="reveal"><span>02</span><i>⌁</i><h3>Seamanship</h3><p>Competence earned through study, repetition, weather awareness and time on the water.</p></article>
-        <article class="reveal"><span>03</span><i>◎</i><h3>Self-reliance</h3><p>Building the practical judgment to maintain systems and solve problems far from shore.</p></article>
-        <article class="reveal"><span>04</span><i>↗</i><h3>Exploration</h3><p>Reaching new places slowly enough to understand the distance traveled between them.</p></article>
+        <article><span>01</span><i>◇</i><h3>Freedom</h3><p>The ability to move deliberately, live simply and let curiosity define the next destination.</p></article>
+        <article><span>02</span><i>⌁</i><h3>Seamanship</h3><p>Competence earned through study, repetition, weather awareness and time on the water.</p></article>
+        <article><span>03</span><i>◎</i><h3>Self-reliance</h3><p>Building the practical judgment to maintain systems and solve problems far from shore.</p></article>
+        <article><span>04</span><i>↗</i><h3>Exploration</h3><p>Reaching new places slowly enough to understand the distance traveled between them.</p></article>
       </div>
     </section>
-    <section class="section tayana-fieldbook" id="sailboats">
-      <div class="section-label reveal"><span>02</span> Sailboats</div>
-      <div class="fieldbook-intro reveal">
-        <div><p class="eyebrow">Working platforms</p><h2>Boats that can<br><span>carry the voyage.</span></h2></div>
-        <p>Research begins with proven offshore designs. The current primary reference is the Tayana 37—a classic Robert Perry cutter with a long record of blue-water passages.</p>
-      </div>
-      <article class="sailboat-feature reveal">
-        <a class="sailboat-feature__media" href="tayana-37/"><img src="assets/tayana-37-reference.png" alt="Tayana 37 sailing offshore"></a>
-        <div class="sailboat-feature__body">
-          <p class="sailboat-feature__eyebrow">Primary reference</p>
-          <h3>Tayana 37</h3>
-          <p>Robert Perry design · cutter · long keel · canoe stern. A benchmark traditional blue-water cruiser with solid construction and a proven passagemaking record.</p>
-          <div class="sailboat-feature__meta">
-            <span><strong>36′8″</strong> LOA</span>
-            <span><strong>22,500 lb</strong> disp.</span>
-            <span><strong>≈ 588</strong> built</span>
-          </div>
-          <a href="tayana-37/" class="button">Full Tayana 37 reference <span>→</span></a>
-        </div>
-      </article>
-    </section>
+
+    <!-- Preparation -->
     <section class="section preparation" id="preparation">
-      <div class="section-label reveal"><span>03</span> Preparation</div>
-      <div class="section-heading reveal"><h2>The voyage begins<br><span>before departure.</span></h2><p>Turning a distant ambition into a sequence of practical, testable decisions.</p></div>
+      <div class="section-label"><span>03</span> Preparation</div>
+      <div class="section-heading">
+        <h2>The voyage begins<br><span>before departure.</span></h2>
+        <p>Turning a distant ambition into a sequence of practical, testable decisions.</p>
+      </div>
       <div class="prep-grid">
-        <article class="prep-card reveal"><span class="prep-number">01</span><p>Platform</p><h3>Find the right boat</h3><ul><li>Offshore-capable design</li><li>Manageable systems</li><li>Survey and refit planning</li></ul></article>
-        <article class="prep-card reveal"><span class="prep-number">02</span><p>Skills</p><h3>Build competence</h3><ul><li>Navigation and weather</li><li>Heavy-weather sailing</li><li>Maintenance and repair</li></ul></article>
-        <article class="prep-card reveal"><span class="prep-number">03</span><p>Systems</p><h3>Prepare for autonomy</h3><ul><li>Energy and water</li><li>Safety and communications</li><li>Provisioning and redundancy</li></ul></article>
-        <article class="prep-card reveal"><span class="prep-number">04</span><p>Experience</p><h3>Expand the range</h3><ul><li>Coastal passages</li><li>Offshore shakedowns</li><li>Longer independent voyages</li></ul></article>
+        <article class="prep-card"><span class="prep-number">01</span><p>Platform</p><h3>Find the right boat</h3><ul><li>Offshore-capable design</li><li>Manageable systems</li><li>Survey and refit planning</li></ul></article>
+        <article class="prep-card"><span class="prep-number">02</span><p>Skills</p><h3>Build competence</h3><ul><li>Navigation and weather</li><li>Heavy-weather sailing</li><li>Maintenance and repair</li></ul></article>
+        <article class="prep-card"><span class="prep-number">03</span><p>Systems</p><h3>Prepare for autonomy</h3><ul><li>Energy and water</li><li>Safety and communications</li><li>Provisioning and redundancy</li></ul></article>
+        <article class="prep-card"><span class="prep-number">04</span><p>Experience</p><h3>Expand the range</h3><ul><li>Coastal passages</li><li>Offshore shakedowns</li><li>Longer independent voyages</li></ul></article>
       </div>
     </section>
+
+    <!-- Full roadmap (detailed) -->
     <section class="section route" id="route">
-      <div class="section-label reveal"><span>04</span> Journey roadmap</div>
+      <div class="section-label"><span>04</span> Journey roadmap</div>
       <div class="route-layout">
-        <div class="route-copy reveal"><p class="eyebrow">From idea to open ocean</p><h2>Progress,<br><span>charted.</span></h2><p>The route is intentionally flexible. Each stage earns the confidence and information required to take on the next one safely.</p></div>
-        <div class="route-map reveal">
+        <div class="route-copy">
+          <p class="eyebrow">From idea to open ocean</p>
+          <h2>Progress,<br><span>charted.</span></h2>
+          <p>The route is intentionally flexible. Each stage earns the confidence and information required to take on the next one safely.</p>
+        </div>
+        <div class="route-map">
           <div class="route-line" aria-hidden="true"></div>
           <article class="route-stop active"><span>01</span><div><small>Now</small><h3>Research & definition</h3><p>Clarify the mission, boat criteria, budget and training path.</p></div></article>
           <article class="route-stop"><span>02</span><div><small>Next</small><h3>Boat search & preparation</h3><p>Select, survey and prepare a vessel for the intended passages.</p></div></article>
@@ -108,17 +456,30 @@
         </div>
       </div>
     </section>
+
+    <!-- Log -->
     <section class="section journey-log" id="log">
-      <div class="section-label reveal"><span>05</span> Journey log</div>
-      <div class="log-intro reveal"><div><p class="eyebrow">Field notes coming next</p><h2>The story will live<br><span>in the details.</span></h2></div><p>Future entries will cover the boat search, training, equipment choices, passages and lessons that turn preparation into real experience.</p></div>
-      <div class="log-grid">
-        <article class="log-card reveal"><span>Log 001</span><strong>Defining the mission</strong><small>Coming soon</small></article>
-        <article class="log-card reveal"><span>Log 002</span><strong>The offshore boat shortlist</strong><small>Coming soon</small></article>
-        <article class="log-card reveal"><span>Log 003</span><strong>Building the passage plan</strong><small>Coming soon</small></article>
+      <div class="section-label"><span>05</span> Journey log</div>
+      <div class="log-intro">
+        <div>
+          <p class="eyebrow">Field notes coming next</p>
+          <h2>The story will live<br><span>in the details.</span></h2>
+        </div>
+        <p>Future entries will cover the boat search, training, equipment choices, passages and lessons that turn preparation into real experience.</p>
       </div>
-      <a class="journey-contact reveal" href="mailto:dmitri.m80@gmail.com">Share a sailing story or recommendation <span>↗</span></a>
+      <div class="log-grid">
+        <article class="log-card"><span>Log 001</span><strong>Defining the mission</strong><small>Coming soon</small></article>
+        <article class="log-card"><span>Log 002</span><strong>The offshore boat shortlist</strong><small>Coming soon</small></article>
+        <article class="log-card"><span>Log 003</span><strong>Building the passage plan</strong><small>Coming soon</small></article>
+      </div>
+      <a class="journey-contact" href="mailto:dmitri.m80@gmail.com">Share a sailing story or recommendation <span>↗</span></a>
     </section>
   </main>
-  <footer><a class="monogram" href="../">DM<span>.</span></a><p>© <span id="year"></span> Dmitri Morozov</p><a href="#top">Back to top ↑</a></footer>
+
+  <footer>
+    <a class="monogram" href="../">DM<span>.</span></a>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
 </body>
 </html>
