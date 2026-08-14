@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-ocean">
+  <link rel="stylesheet" href="sailing.css?v=20260814-live">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -17,33 +17,60 @@
       --navy: #0b1520;
       --navy-deep: #071018;
       color: #e8eef0;
-      background-color: #041018;
-      background-image:
-        linear-gradient(180deg, rgba(4,16,24,.82) 0%, rgba(4,16,24,.88) 40%, rgba(4,16,24,.92) 100%),
-        url("assets/open-ocean-texture.png");
-      background-size: auto, cover;
-      background-position: center, center;
-      background-attachment: fixed, fixed;
-      background-repeat: no-repeat, no-repeat;
+      background: #041018;
+      overflow-x: hidden;
     }
     .sailing-page .ambient { display: none; }
 
-    /* Soft ocean wash behind content bands */
-    .sailing-page main {
+    /* Live ocean wallpaper */
+    .ocean-live-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      filter: brightness(.55) saturate(1.05) contrast(1.05);
+    }
+    .ocean-live-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(4,16,24,.55) 0%, rgba(4,16,24,.72) 45%, rgba(4,16,24,.88) 100%);
+    }
+    .sailing-page .site-header,
+    .sailing-page main,
+    .sailing-page footer {
       position: relative;
       z-index: 1;
     }
     .sailboats-band {
-      background: rgba(11, 21, 32, .78) !important;
-      backdrop-filter: blur(8px);
+      background: rgba(11, 21, 32, .82) !important;
+      backdrop-filter: blur(10px);
     }
     .section {
-      background: rgba(7, 16, 24, .55);
+      background: rgba(7, 16, 24, .62);
+      backdrop-filter: blur(4px);
     }
     .sailing-page footer {
-      background: rgba(4, 16, 24, .85);
-      position: relative;
-      z-index: 1;
+      background: rgba(4, 16, 24, .88);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .ocean-live-bg { display: none; }
+      .sailing-page {
+        background-image:
+          linear-gradient(180deg, rgba(4,16,24,.82), rgba(4,16,24,.92)),
+          url("assets/open-ocean-texture.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+      }
+    }
+    @media (max-width: 700px) {
+      .ocean-live-bg { filter: brightness(.45) saturate(1.02); }
     }
 
     .sailing-page .site-header {
@@ -59,7 +86,7 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
       overflow: hidden;
-      background: #061018;
+      background: transparent;
       border-bottom: none;
       padding: 0;
     }
@@ -71,9 +98,8 @@
     .hero-photo {
       position: absolute;
       inset: 0;
-      background:
-        url("assets/open-ocean-sunset.png") left center / cover no-repeat;
-      filter: saturate(1.05) contrast(1.08) brightness(.85);
+      background: transparent;
+      display: none;
     }
     .hero-shade {
       position: absolute;
@@ -81,15 +107,15 @@
       background:
         linear-gradient(90deg,
           transparent 0%,
-          transparent 38%,
-          rgba(6,14,22,.55) 58%,
-          rgba(6,14,22,.88) 78%,
-          rgba(6,14,22,.95) 100%),
-        linear-gradient(180deg,
-          rgba(6,14,22,.25) 0%,
           transparent 30%,
-          transparent 70%,
-          rgba(6,14,22,.5) 100%);
+          rgba(6,14,22,.45) 55%,
+          rgba(6,14,22,.78) 78%,
+          rgba(6,14,22,.9) 100%),
+        linear-gradient(180deg,
+          rgba(6,14,22,.2) 0%,
+          transparent 35%,
+          transparent 65%,
+          rgba(6,14,22,.55) 100%);
     }
 
     .hero-content {
@@ -410,9 +436,6 @@
       .feature-card { grid-template-columns: 1fr; }
       .feature-card__media { min-height: 220px; }
       .feature-card__stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .sailing-page {
-        background-attachment: scroll, scroll;
-      }
     }
     @media (max-width: 560px) {
       .sailing-hero h1 { font-size: 11vw; }
@@ -421,6 +444,10 @@
   </style>
 </head>
 <body class="sailing-page">
+  <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" poster="assets/ocean-waves-poster.jpg" aria-hidden="true">
+    <source src="assets/ocean-waves-bg.mp4" type="video/mp4">
+  </video>
+  <div class="ocean-live-overlay" aria-hidden="true"></div>
   <header class="site-header" id="top">
     <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
     <nav class="nav" aria-label="Sailing page navigation">
