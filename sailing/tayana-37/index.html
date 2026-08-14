@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37nav">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37sticky">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -47,11 +47,21 @@
   background:
     linear-gradient(180deg, rgba(4,16,24,.18) 0%, rgba(4,16,24,.22) 50%, rgba(4,16,24,.62) 100%);
 }
-.t37-page .site-header,
 .t37-page main,
 .t37-page footer {
   position: relative;
   z-index: 1;
+}
+.t37-page main {
+  padding-top: 60px;
+}
+/* Keep global fixed header (styles.css); only raise stacking above video */
+.t37-page .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
 }
 .t37-page .sec {
   background: rgba(7, 16, 24, .72);
