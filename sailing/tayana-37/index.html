@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37sticky">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37lb">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -435,6 +435,73 @@
   .t37-page .instrument { grid-template-columns: repeat(2, 1fr); }
   .t37-page .hero h1 { font-size: 11vw; }
 }
+
+/* Full-size image lightbox */
+.t37-page .g {
+  cursor: zoom-in;
+}
+.t37-page .g img {
+  cursor: zoom-in;
+}
+.t37-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 8, 14, .92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 24px;
+  box-sizing: border-box;
+  cursor: zoom-out;
+}
+.t37-lb.is-open {
+  display: flex;
+}
+.t37-lb img {
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid rgba(94,207,196,.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  cursor: default;
+}
+.t37-lb-cap {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #9eb3b8;
+  max-width: 90vw;
+  text-align: center;
+  pointer-events: none;
+}
+.t37-lb-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: 0;
+  color: #c5d4d8;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px 12px;
+  z-index: 2;
+}
+.t37-lb-close:hover {
+  color: #fff;
+}
+body.t37-lb-active {
+  overflow: hidden;
+}
 </style>
 </head>
 <body class="sailing-page t37-page">
@@ -629,5 +696,56 @@
   <p>© <span id="year"></span> Dmitri Morozov</p>
   <a href="#top">Back to top ↑</a>
 </footer>
+
+<div class="t37-lb" id="t37-lb" role="dialog" aria-modal="true" aria-label="Full-size image" hidden>
+  <button type="button" class="t37-lb-close" id="t37-lb-close" aria-label="Close">&times;</button>
+  <img src="" alt="">
+  <div class="t37-lb-cap" id="t37-lb-cap"></div>
+</div>
+<script>
+(function () {
+  var lb = document.getElementById('t37-lb');
+  if (!lb) return;
+  var img = lb.querySelector('img');
+  var cap = document.getElementById('t37-lb-cap');
+  var closeBtn = document.getElementById('t37-lb-close');
+
+  function openLb(src, alt, caption) {
+    img.src = src;
+    img.alt = alt || '';
+    cap.textContent = caption || alt || '';
+    lb.hidden = false;
+    lb.classList.add('is-open');
+    document.body.classList.add('t37-lb-active');
+  }
+  function closeLb() {
+    lb.classList.remove('is-open');
+    lb.hidden = true;
+    img.removeAttribute('src');
+    document.body.classList.remove('t37-lb-active');
+  }
+
+  document.addEventListener('click', function (e) {
+    var fig = e.target.closest && e.target.closest('.t37-page figure.g');
+    if (!fig) return;
+    var photo = fig.querySelector('img');
+    if (!photo || !photo.src) return;
+    e.preventDefault();
+    var captionEl = fig.querySelector('figcaption');
+    openLb(photo.currentSrc || photo.src, photo.alt, captionEl ? captionEl.textContent : photo.alt);
+  });
+
+  closeBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    closeLb();
+  });
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb) closeLb();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb();
+  });
+})();
+</script>
 </body>
 </html>
