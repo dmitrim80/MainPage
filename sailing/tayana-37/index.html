@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-exact">
+<link rel="stylesheet" href="../sailing.css?v=20260814-ocean">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -16,10 +16,26 @@
   --cyan-bright: #7ee0d6;
   --navy: #0b1520;
   --navy-deep: #071018;
-  background: var(--navy-deep);
   color: #e8eef0;
+  background-color: #041018;
+  background-image:
+    linear-gradient(180deg, rgba(4,16,24,.84) 0%, rgba(4,16,24,.9) 50%, rgba(4,16,24,.94) 100%),
+    url("../assets/open-ocean-texture.png");
+  background-size: auto, cover;
+  background-position: center, center;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
 }
 .t37-page .ambient { display: none; }
+.t37-page main { position: relative; z-index: 1; }
+.t37-page .sec {
+  background: rgba(7, 16, 24, .5);
+}
+.t37-page footer {
+  background: rgba(4, 16, 24, .88);
+  position: relative;
+  z-index: 1;
+}
 .t37-page .site-header {
   background: rgba(7,16,24,.9);
   border-bottom: 1px solid rgba(94,207,196,.1);
@@ -340,6 +356,9 @@
     aspect-ratio: 4/3;
   }
   .t37-page .hc { padding-top: 100px; }
+  .t37-page {
+    background-attachment: scroll, scroll;
+  }
 }
 @media (max-width: 560px) {
   .t37-page .instrument { grid-template-columns: repeat(2, 1fr); }
@@ -479,7 +498,7 @@
         <figure class="g"><img src="assets/7-%20Davits%20folded%20in.jpeg" alt="Davits folded" loading="lazy"><figcaption>Davits folded</figcaption></figure>
         <figure class="g"><img src="assets/10-%20Outboard%20Motor%20Lift%20(Garhauer).jpeg" alt="Outboard lift" loading="lazy"><figcaption>Outboard lift</figcaption></figure>
         <figure class="g"><img src="assets/13-%20Wind%20Generator%20Mount.jpeg" alt="Wind generator" loading="lazy"><figcaption>Wind generator</figcaption></figure>
-        <figure class="g"><img src="assets/18-%20Solar%20Panel%20Overview.jpeg" alt="Solar overview" loading="lazy"><figcaption>Solar mount</figcaption></figure>
+        <figure class="g"><img src="assets/18-%20Solar%20Panel%20Overview.jpeg" alt="Solar overview" loading="lazy"><figcaption>Solar overview</figcaption></figure>
         <figure class="g"><img src="assets/19-%20Solar%20Panel%20Mount.jpeg" alt="Solar mount" loading="lazy"><figcaption>Solar mount</figcaption></figure>
       </div>
     </div>
