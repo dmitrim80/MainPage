@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-exact">
+  <link rel="stylesheet" href="sailing.css?v=20260814-ocean">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -16,10 +16,35 @@
       --cyan-bright: #7ee0d6;
       --navy: #0b1520;
       --navy-deep: #071018;
-      background: var(--navy-deep);
       color: #e8eef0;
+      background-color: #041018;
+      background-image:
+        linear-gradient(180deg, rgba(4,16,24,.82) 0%, rgba(4,16,24,.88) 40%, rgba(4,16,24,.92) 100%),
+        url("assets/open-ocean-texture.png");
+      background-size: auto, cover;
+      background-position: center, center;
+      background-attachment: fixed, fixed;
+      background-repeat: no-repeat, no-repeat;
     }
     .sailing-page .ambient { display: none; }
+
+    /* Soft ocean wash behind content bands */
+    .sailing-page main {
+      position: relative;
+      z-index: 1;
+    }
+    .sailboats-band {
+      background: rgba(11, 21, 32, .78) !important;
+      backdrop-filter: blur(8px);
+    }
+    .section {
+      background: rgba(7, 16, 24, .55);
+    }
+    .sailing-page footer {
+      background: rgba(4, 16, 24, .85);
+      position: relative;
+      z-index: 1;
+    }
 
     .sailing-page .site-header {
       background: rgba(7,16,24,.88);
@@ -159,7 +184,7 @@
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       border: 1px solid rgba(94,207,196,.14);
-      background: #0d1a24;
+      background: rgba(13, 26, 36, .9);
       overflow: hidden;
       min-height: 300px;
     }
@@ -250,7 +275,7 @@
 
     .course-panel {
       padding: 56px 36px 64px 36px;
-      background: #0a1520;
+      background: rgba(10, 21, 32, .72);
     }
     .course-panel .eyebrow-row {
       display: flex;
@@ -385,6 +410,9 @@
       .feature-card { grid-template-columns: 1fr; }
       .feature-card__media { min-height: 220px; }
       .feature-card__stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .sailing-page {
+        background-attachment: scroll, scroll;
+      }
     }
     @media (max-width: 560px) {
       .sailing-hero h1 { font-size: 11vw; }
