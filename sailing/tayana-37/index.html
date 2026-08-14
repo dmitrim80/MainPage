@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-ocean">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37live">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -17,28 +17,63 @@
   --navy: #0b1520;
   --navy-deep: #071018;
   color: #e8eef0;
-  background-color: #041018;
-  background-image:
-    linear-gradient(180deg, rgba(4,16,24,.84) 0%, rgba(4,16,24,.9) 50%, rgba(4,16,24,.94) 100%),
-    url("../assets/open-ocean-texture.png");
-  background-size: auto, cover;
-  background-position: center, center;
-  background-attachment: fixed, fixed;
-  background-repeat: no-repeat, no-repeat;
+  background: #041018;
+  overflow-x: hidden;
 }
 .t37-page .ambient { display: none; }
-.t37-page main { position: relative; z-index: 1; }
-.t37-page .sec {
-  background: rgba(7, 16, 24, .5);
+
+/* Full-page live wallpaper */
+.t37-page .ocean-live-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(.85) saturate(1.1) contrast(1.05);
 }
+.t37-page .ocean-live-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(4,16,24,.30) 0%, rgba(4,16,24,.45) 45%, rgba(4,16,24,.65) 100%);
+}
+.t37-page .site-header,
+.t37-page main,
 .t37-page footer {
-  background: rgba(4, 16, 24, .88);
   position: relative;
   z-index: 1;
+}
+.t37-page .sec {
+  background: rgba(7, 16, 24, .72);
+  backdrop-filter: blur(4px);
+}
+.t37-page footer {
+  background: rgba(4, 16, 24, .90);
 }
 .t37-page .site-header {
   background: rgba(7,16,24,.9);
   border-bottom: 1px solid rgba(94,207,196,.1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .t37-page .ocean-live-bg { display: none; }
+  .t37-page {
+    background-image:
+      linear-gradient(180deg, rgba(4,16,24,.84), rgba(4,16,24,.94)),
+      url("../assets/open-ocean-texture.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
 }
 
 .t37-page .hero {
@@ -48,15 +83,15 @@
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
-  background: #061018;
+  background: transparent;
   border-bottom: none;
   padding: 0;
 }
 .t37-page .hb {
   position: absolute;
   inset: 0;
-  background: url("assets/Official%20Picture.jpg") center 40% / cover no-repeat;
-  filter: saturate(.9) contrast(1.05) brightness(.55);
+  background: transparent;
+  display: none;
 }
 .t37-page .hs {
   position: absolute;
@@ -118,7 +153,7 @@
   margin: 0 max(5vw, calc((100vw - 1120px) / 2));
   border: 1px solid rgba(94,207,196,.14);
   border-bottom: 0;
-  background: rgba(8,20,28,.82);
+  background: rgba(8,20,28,.75);
   backdrop-filter: blur(14px);
   position: relative;
   z-index: 2;
@@ -152,7 +187,7 @@
   gap: 0;
   overflow-x: auto;
   padding: 0 max(5vw, calc((100vw - 1120px) / 2));
-  background: rgba(7,16,24,.94);
+  background: rgba(7,16,24,.88);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(94,207,196,.1);
   -webkit-overflow-scrolling: touch;
@@ -356,9 +391,6 @@
     aspect-ratio: 4/3;
   }
   .t37-page .hc { padding-top: 100px; }
-  .t37-page {
-    background-attachment: scroll, scroll;
-  }
 }
 @media (max-width: 560px) {
   .t37-page .instrument { grid-template-columns: repeat(2, 1fr); }
@@ -367,6 +399,10 @@
 </style>
 </head>
 <body class="sailing-page t37-page">
+<video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+  <source src="assets/ocean_cut_small.mp4" type="video/mp4">
+</video>
+<div class="ocean-live-overlay" aria-hidden="true"></div>
 <header class="site-header" id="top">
   <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
   <nav class="nav" aria-label="Page navigation">
