@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37font">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37nav">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -61,9 +61,10 @@
   background: rgba(4, 16, 24, .90);
 }
 .t37-page .site-header {
-  background: rgba(4,12,18,.94);
+  background: rgba(4,12,18,.96);
   border-bottom: 1px solid rgba(94,207,196,.12);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 @media (prefers-reduced-motion: reduce) {
   .t37-page .ocean-live-bg { display: none; }
@@ -226,35 +227,6 @@
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-}
-
-.t37-page .subnav {
-  position: sticky;
-  top: 60px;
-  z-index: 25;
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  padding: 0 max(5vw, calc((100vw - 1120px) / 2));
-  background: rgba(7,16,24,.88);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(94,207,196,.1);
-  -webkit-overflow-scrolling: touch;
-}
-.t37-page .subnav a {
-  flex: 0 0 auto;
-  padding: 14px 16px;
-  font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #7d9196;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-  transition: color .2s, border-color .2s;
-}
-.t37-page .subnav a:hover {
-  color: #d5e3e4;
-  border-bottom-color: rgba(94,207,196,.4);
 }
 
 .t37-page .sec {
@@ -462,10 +434,11 @@
 <div class="ocean-live-overlay" aria-hidden="true"></div>
 <header class="site-header" id="top">
   <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
-  <nav class="nav" aria-label="Page navigation">
+  <nav class="nav" aria-label="Primary">
     <a href="../../">Home</a>
     <a href="../">Sailing</a>
     <a href="#overview">Overview</a>
+    <a href="#specs">Specs</a>
     <a href="#exterior">Exterior</a>
     <a href="#deck">Deck</a>
     <a href="#interior">Interior</a>
@@ -503,16 +476,6 @@
       <div><small>Built</small><strong>≈ 588</strong></div>
     </div>
   </section>
-
-  <nav class="subnav" aria-label="On this page">
-    <a href="#overview">Overview</a>
-    <a href="#specs">Specs</a>
-    <a href="#exterior">Exterior</a>
-    <a href="#deck">Deck</a>
-    <a href="#interior">Interior</a>
-    <a href="#documents">Documents</a>
-    <a href="#ownership">Ownership</a>
-  </nav>
 
   <section class="sec" id="overview">
     <div class="lab"><span>01</span> Overview</div>
