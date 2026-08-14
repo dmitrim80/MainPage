@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-fullpage">
+  <link rel="stylesheet" href="sailing.css?v=20260814-scale2">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -25,14 +25,16 @@
     /* ===== FULL-PAGE LIVE WALLPAPER ===== */
     .ocean-live-bg {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       width: 100vw;
       height: 100vh;
       min-width: 100%;
       min-height: 100%;
       object-fit: cover;
       object-position: center center;
+      transform: translate(-50%, -50%) scale(2);
+      transform-origin: center center;
       z-index: 0;
       pointer-events: none;
       filter: brightness(.85) saturate(1.1) contrast(1.05);
