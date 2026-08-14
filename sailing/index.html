@@ -3,32 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#062a35">
+  <meta name="theme-color" content="#0a1620">
   <meta name="description" content="Dmitri Morozov's sailing and exploration journey — the vision, preparation and path toward extended offshore passages.">
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-horizon">
+  <link rel="stylesheet" href="sailing.css?v=20260814-exact">
   <script src="../script.js" defer></script>
   <style>
-    /* Horizon design — aligned to selected concept */
     .sailing-page {
-      --cyan: #82eadc;
-      --navy: #0a1620;
-      background: #071018;
+      --cyan: #5ecfc4;
+      --cyan-bright: #7ee0d6;
+      --navy: #0b1520;
+      --navy-deep: #071018;
+      background: var(--navy-deep);
+      color: #e8eef0;
+    }
+    .sailing-page .ambient { display: none; }
+
+    .sailing-page .site-header {
+      background: rgba(7,16,24,.88);
+      border-bottom: 1px solid rgba(94,207,196,.1);
     }
 
-    /* Full-bleed photographic hero */
     .sailing-hero {
-      min-height: 88svh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0;
       position: relative;
+      min-height: 72vh;
+      min-height: 72svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
       overflow: hidden;
-      border-bottom: 1px solid rgba(130,234,220,.12);
-      background: #061720;
+      background: #061018;
+      border-bottom: none;
+      padding: 0;
     }
     .sailing-hero .nautical-grid,
     .sailing-hero .sail-scene,
@@ -38,133 +46,142 @@
     .hero-photo {
       position: absolute;
       inset: 0;
-      background: url("assets/open-ocean-sunset.png") center 40% / cover no-repeat;
-      filter: saturate(.9) contrast(1.05) brightness(.72);
+      background:
+        url("assets/open-ocean-sunset.png") left center / cover no-repeat;
+      filter: saturate(1.05) contrast(1.08) brightness(.85);
     }
     .hero-shade {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(105deg, rgba(4,14,22,.82) 0%, rgba(4,18,26,.55) 42%, rgba(4,18,26,.25) 70%, transparent 100%),
-        linear-gradient(180deg, transparent 40%, rgba(4,12,18,.88) 100%);
+        linear-gradient(90deg,
+          transparent 0%,
+          transparent 38%,
+          rgba(6,14,22,.55) 58%,
+          rgba(6,14,22,.88) 78%,
+          rgba(6,14,22,.95) 100%),
+        linear-gradient(180deg,
+          rgba(6,14,22,.25) 0%,
+          transparent 30%,
+          transparent 70%,
+          rgba(6,14,22,.5) 100%);
     }
+
     .hero-content {
+      grid-column: 2;
       position: relative;
       z-index: 2;
-      padding: 140px max(5vw, calc((100vw - 1120px) / 2)) 72px;
-      max-width: 680px;
-    }
-    .hero-kicker {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 11px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #9eb8bc;
-      margin-bottom: 22px;
-    }
-    .hero-kicker::before {
-      content: "";
-      width: 28px;
-      height: 1.5px;
-      background: var(--cyan);
+      padding: 100px 6vw 80px 2vw;
+      max-width: 520px;
+      justify-self: start;
     }
     .sailing-hero h1 {
-      font-size: clamp(42px, 5.8vw, 72px);
-      line-height: .95;
-      letter-spacing: -.04em;
-      margin: 0 0 20px;
-      color: #f0f4f2;
-    }
-    .sailing-hero h1 em {
-      font-style: italic;
+      font-size: clamp(40px, 5.2vw, 64px);
       font-weight: 400;
-      color: var(--cyan);
-      -webkit-text-stroke: 0;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin: 0 0 18px;
+      color: #f4f7f6;
+    }
+    .sailing-hero h1 .line2 {
+      display: block;
+      color: var(--cyan-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--cyan);
+      margin: 0 0 20px;
+      border: 0;
     }
     .sailing-lede {
-      color: #b0c4c8;
-      font-size: 16px;
+      color: #b8c9cd;
+      font-size: 15px;
       line-height: 1.65;
-      max-width: 460px;
-      margin: 0 0 32px;
+      max-width: 380px;
+      margin: 0 0 28px;
     }
     .sailing-hero .button {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: transparent;
-      color: var(--cyan);
-      border: 1px solid rgba(130,234,220,.45);
-      padding: 12px 22px;
+      color: var(--cyan-bright);
+      border: none;
+      padding: 0;
       font-size: 12px;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      border-radius: 2px;
-      transition: background .25s, border-color .25s;
+      font-weight: 500;
+      transition: opacity .2s;
     }
-    .sailing-hero .button:hover {
-      background: rgba(130,234,220,.1);
-      border-color: var(--cyan);
-    }
+    .sailing-hero .button:hover { opacity: .8; }
+    .sailing-hero .button span { font-size: 14px; }
 
-    /* Combined Sailboats + Course band */
     .sailboats-band {
       display: grid;
-      grid-template-columns: 1.35fr .9fr;
-      gap: 0;
-      border-bottom: 1px solid rgba(130,234,220,.1);
-      background: #0a1620;
+      grid-template-columns: 1.45fr 0.9fr;
+      background: var(--navy);
+      border-top: 1px solid rgba(94,207,196,.08);
     }
+
     .sailboats-main {
-      padding: 64px max(4vw, 40px) 64px max(5vw, calc((100vw - 1120px) / 2));
-      border-right: 1px solid rgba(130,234,220,.1);
+      padding: 56px 40px 64px max(5vw, calc((100vw - 1180px) / 2 + 8px));
+      border-right: 1px solid rgba(94,207,196,.1);
     }
     .section-label {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      letter-spacing: .16em;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      color: #7d9196;
-      margin-bottom: 12px;
+      color: #c5d4d8;
+      font-weight: 500;
+      margin-bottom: 10px;
     }
-    .section-label span { color: var(--cyan); }
-    .sailboats-main > p.intro {
-      color: #9eb0b4;
+    .section-label span {
+      color: #8a9ea4;
+      font-weight: 400;
+      letter-spacing: .12em;
+    }
+    .sailboats-main > .intro {
+      color: #8a9ea4;
       font-size: 14px;
-      line-height: 1.6;
-      max-width: 420px;
-      margin: 0 0 36px;
+      line-height: 1.55;
+      max-width: 400px;
+      margin: 0 0 32px;
     }
 
     .feature-card {
       display: grid;
-      grid-template-columns: 1.1fr .95fr;
-      gap: 0;
-      border: 1px solid rgba(130,234,220,.16);
-      background: linear-gradient(145deg, rgba(8,40,52,.55), rgba(4,18,26,.85));
+      grid-template-columns: 1.15fr 1fr;
+      border: 1px solid rgba(94,207,196,.14);
+      background: #0d1a24;
       overflow: hidden;
-      min-height: 340px;
+      min-height: 300px;
     }
     .feature-card__media {
       display: block;
       position: relative;
-      min-height: 300px;
+      min-height: 280px;
       overflow: hidden;
+      background: #08141c;
     }
     .feature-card__media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(.88) brightness(.9);
-      transition: transform .6s ease;
+      object-position: center;
+      filter: saturate(.92) brightness(.92);
+      transition: transform .55s ease;
     }
-    .feature-card:hover .feature-card__media img { transform: scale(1.04); }
+    .feature-card:hover .feature-card__media img { transform: scale(1.03); }
+
     .feature-card__body {
-      padding: 36px 32px;
+      padding: 28px 28px 28px 30px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -174,70 +191,99 @@
       letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--cyan);
-      margin: 0 0 10px;
+      margin: 0 0 8px;
+      font-weight: 500;
     }
     .feature-card__body h3 {
-      font-size: clamp(26px, 2.8vw, 36px);
-      letter-spacing: -.03em;
+      font-size: clamp(28px, 2.6vw, 36px);
+      font-weight: 400;
+      letter-spacing: -.025em;
       margin: 0 0 12px;
       line-height: 1.1;
-      color: #eef4f2;
+      color: #f0f5f4;
     }
-    .feature-card__body p {
-      color: #a8b8bd;
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0 0 22px;
+    .feature-card__body > p {
+      color: #9aadb2;
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin: 0 0 20px;
     }
     .feature-card__stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 20px;
-      margin: 0 0 24px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 0 0 22px;
       padding-top: 16px;
-      border-top: 1px solid rgba(130,234,220,.12);
+      border-top: 1px solid rgba(94,207,196,.12);
+    }
+    .feature-card__stats div { text-align: left; }
+    .feature-card__stats strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #e2ecea;
+      letter-spacing: -.01em;
+      margin-bottom: 2px;
     }
     .feature-card__stats span {
-      font-size: 12px;
-      color: #7d9196;
-    }
-    .feature-card__stats strong {
-      color: #d8e6e4;
-      font-weight: 500;
-      margin-right: 4px;
+      font-size: 9px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #6d8288;
     }
     .feature-card .button {
       align-self: flex-start;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      color: var(--cyan-bright);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border: none;
+      background: none;
+      padding: 0;
+      transition: opacity .2s;
+    }
+    .feature-card .button:hover { opacity: .75; }
+
+    .course-panel {
+      padding: 56px 36px 64px 36px;
+      background: #0a1520;
+    }
+    .course-panel .eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .course-panel .eyebrow-row .star {
       color: var(--cyan);
       font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      border-bottom: 1px solid rgba(130,234,220,.35);
-      padding-bottom: 3px;
-      transition: border-color .2s;
-    }
-    .feature-card .button:hover { border-color: var(--cyan); }
-
-    /* Compact course / roadmap column */
-    .course-panel {
-      padding: 64px 40px 64px 36px;
-      background: rgba(6,20,28,.6);
+      line-height: 1;
     }
     .course-panel .eyebrow {
       font-size: 10px;
       letter-spacing: .16em;
       text-transform: uppercase;
       color: var(--cyan);
-      margin: 0 0 8px;
+      margin: 0;
+      font-weight: 500;
     }
     .course-panel h2 {
       font-size: 22px;
+      font-weight: 400;
       letter-spacing: -.02em;
-      margin: 0 0 32px;
-      color: #e8f0ee;
+      margin: 0 0 8px;
+      color: #eef4f2;
+    }
+    .course-panel .course-rule {
+      width: 40px;
+      height: 2px;
+      background: var(--cyan);
+      margin: 0 0 28px;
+      border: 0;
     }
     .course-list {
       list-style: none;
@@ -248,80 +294,105 @@
     .course-list::before {
       content: "";
       position: absolute;
-      left: 7px;
-      top: 8px;
-      bottom: 8px;
+      left: 5px;
+      top: 10px;
+      bottom: 18px;
       width: 1px;
-      background: linear-gradient(var(--cyan), rgba(130,234,220,.15));
+      background: linear-gradient(var(--cyan), rgba(94,207,196,.12));
     }
     .course-list li {
       position: relative;
-      padding: 0 0 28px 28px;
+      padding: 0 0 26px 26px;
     }
     .course-list li:last-child { padding-bottom: 0; }
     .course-list li::before {
       content: "";
       position: absolute;
-      left: 3px;
-      top: 6px;
+      left: 1px;
+      top: 5px;
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: #0a1620;
-      border: 1.5px solid #5a6e74;
+      background: #0a1520;
+      border: 1.5px solid #4a5e66;
+      box-sizing: border-box;
     }
     .course-list li.active::before {
       background: var(--cyan);
       border-color: var(--cyan);
-      box-shadow: 0 0 12px rgba(130,234,220,.5);
+      box-shadow: 0 0 10px rgba(94,207,196,.45);
     }
-    .course-list small {
+    .course-list .num {
       display: block;
-      font-size: 10px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #6d848a;
-      margin-bottom: 4px;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: #6d8288;
+      margin-bottom: 3px;
+      font-variant-numeric: tabular-nums;
     }
     .course-list strong {
       display: block;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
-      color: #d5e3e4;
+      color: #dce8e6;
       margin-bottom: 4px;
+      letter-spacing: .02em;
     }
     .course-list p {
-      font-size: 13px;
-      color: #8a9ea2;
+      font-size: 12.5px;
+      color: #7d9198;
       line-height: 1.5;
       margin: 0;
     }
 
-    /* Keep existing lower sections clean */
-    .section { padding: 72px max(5vw, calc((100vw - 1120px) / 2)); }
-    .section-label { margin-bottom: 18px; }
+    .band-footer {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 18px;
+      border-top: 1px solid rgba(94,207,196,.08);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #5a6e74;
+    }
 
-    @media (max-width: 980px) {
+    .section {
+      padding: 72px max(5vw, calc((100vw - 1120px) / 2));
+    }
+
+    @media (max-width: 1020px) {
+      .sailing-hero {
+        grid-template-columns: 1fr;
+        min-height: 60vh;
+      }
+      .hero-content {
+        grid-column: 1;
+        padding: 120px 24px 56px;
+        max-width: 100%;
+        background: linear-gradient(transparent, rgba(6,14,22,.92));
+      }
+      .hero-shade {
+        background:
+          linear-gradient(180deg, transparent 20%, rgba(6,14,22,.7) 70%, rgba(6,14,22,.95) 100%);
+      }
       .sailboats-band { grid-template-columns: 1fr; }
       .sailboats-main {
         padding: 48px 24px;
         border-right: 0;
-        border-bottom: 1px solid rgba(130,234,220,.1);
+        border-bottom: 1px solid rgba(94,207,196,.1);
       }
       .course-panel { padding: 48px 24px; }
       .feature-card { grid-template-columns: 1fr; }
-      .feature-card__media { min-height: 240px; }
+      .feature-card__media { min-height: 220px; }
+      .feature-card__stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     }
-    @media (max-width: 600px) {
-      .hero-content { padding: 120px 20px 56px; }
-      .sailing-hero h1 { font-size: 11.5vw; }
+    @media (max-width: 560px) {
+      .sailing-hero h1 { font-size: 11vw; }
+      .hero-content { padding: 100px 20px 48px; }
     }
   </style>
 </head>
 <body class="sailing-page">
-  <div class="ambient one" aria-hidden="true"></div>
-  <div class="ambient two" aria-hidden="true"></div>
-
   <header class="site-header" id="top">
     <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
     <nav class="nav" aria-label="Sailing page navigation">
@@ -337,19 +408,17 @@
   </header>
 
   <main>
-    <!-- Full-bleed photographic hero -->
     <section class="sailing-hero" aria-labelledby="sailing-title">
       <div class="hero-photo" aria-hidden="true"></div>
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-content">
-        <p class="hero-kicker">Sailing & exploration</p>
-        <h1 id="sailing-title">A horizon<br><em>worth preparing for</em></h1>
+        <h1 id="sailing-title">A horizon<br><span class="line2">worth preparing for</span></h1>
+        <hr class="hero-rule">
         <p class="sailing-lede">Practical knowledge, refined gear, and timeless seamanship for bluewater sailors.</p>
         <a class="button" href="#sailboats">Explore the journey <span>→</span></a>
       </div>
     </section>
 
-    <!-- Combined Sailboats feature + Course panel (matches selected design) -->
     <section class="sailboats-band" id="sailboats">
       <div class="sailboats-main">
         <div class="section-label"><span>02</span> Sailboats</div>
@@ -364,10 +433,10 @@
             <h3>Tayana 37</h3>
             <p>A timeless bluewater cruiser with legendary balance, sturdy construction, and ocean-proven capability.</p>
             <div class="feature-card__stats">
-              <span><strong>36′8″</strong> LOA</span>
-              <span><strong>11′6″</strong> Beam</span>
-              <span><strong>5′8″</strong> Draft</span>
-              <span><strong>22,500 lb</strong> Disp.</span>
+              <div><strong>36′8″</strong><span>LOA</span></div>
+              <div><strong>11′6″</strong><span>Beam</span></div>
+              <div><strong>5′8″</strong><span>Draft</span></div>
+              <div><strong>22,500 lb</strong><span>Displacement</span></div>
             </div>
             <a href="tayana-37/" class="button">View details <span>→</span></a>
           </div>
@@ -375,34 +444,39 @@
       </div>
 
       <aside class="course-panel" aria-label="Journey roadmap">
-        <p class="eyebrow">Roadmap</p>
+        <div class="eyebrow-row">
+          <span class="star" aria-hidden="true">✦</span>
+          <p class="eyebrow">Roadmap</p>
+        </div>
         <h2>Your course</h2>
+        <hr class="course-rule">
         <ol class="course-list">
           <li class="active">
-            <small>01</small>
+            <span class="num">01</span>
             <strong>Prepare</strong>
             <p>Build knowledge, assess your needs, and plan with purpose.</p>
           </li>
           <li>
-            <small>02</small>
+            <span class="num">02</span>
             <strong>Outfit</strong>
             <p>Equip your boat with the right gear for safety and self-reliance.</p>
           </li>
           <li>
-            <small>03</small>
+            <span class="num">03</span>
             <strong>Sail</strong>
             <p>Navigate with confidence and make passages that matter.</p>
           </li>
           <li>
-            <small>04</small>
+            <span class="num">04</span>
             <strong>Reflect</strong>
             <p>Log your experiences, refine your skills, and keep exploring.</p>
           </li>
         </ol>
       </aside>
+
+      <div class="band-footer">Keep exploring</div>
     </section>
 
-    <!-- Vision -->
     <section class="section sailing-vision" id="vision">
       <div class="section-label"><span>01</span> The vision</div>
       <div class="vision-layout">
@@ -422,7 +496,6 @@
       </div>
     </section>
 
-    <!-- Preparation -->
     <section class="section preparation" id="preparation">
       <div class="section-label"><span>03</span> Preparation</div>
       <div class="section-heading">
@@ -437,7 +510,6 @@
       </div>
     </section>
 
-    <!-- Full roadmap (detailed) -->
     <section class="section route" id="route">
       <div class="section-label"><span>04</span> Journey roadmap</div>
       <div class="route-layout">
@@ -457,7 +529,6 @@
       </div>
     </section>
 
-    <!-- Log -->
     <section class="section journey-log" id="log">
       <div class="section-label"><span>05</span> Journey log</div>
       <div class="log-intro">
