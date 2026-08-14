@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-mp4">
+  <link rel="stylesheet" href="sailing.css?v=20260814-vis">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -22,16 +22,20 @@
     }
     .sailing-page .ambient { display: none; }
 
-    /* Live ocean wallpaper */
+    /* Live ocean wallpaper — full-bleed, more visible */
     .ocean-live-bg {
       position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
+      object-position: center center;
       z-index: 0;
       pointer-events: none;
-      filter: brightness(.55) saturate(1.05) contrast(1.05);
+      filter: brightness(.85) saturate(1.1) contrast(1.05);
     }
     .ocean-live-overlay {
       position: fixed;
@@ -39,7 +43,7 @@
       z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(4,16,24,.55) 0%, rgba(4,16,24,.72) 45%, rgba(4,16,24,.88) 100%);
+        linear-gradient(180deg, rgba(4,16,24,.22) 0%, rgba(4,16,24,.35) 40%, rgba(4,16,24,.55) 100%);
     }
     .sailing-page .site-header,
     .sailing-page main,
@@ -70,7 +74,7 @@
       }
     }
     @media (max-width: 700px) {
-      .ocean-live-bg { filter: brightness(.45) saturate(1.02); }
+      .ocean-live-bg { filter: brightness(.78) saturate(1.08); }
     }
 
     .sailing-page .site-header {
@@ -107,15 +111,15 @@
       background:
         linear-gradient(90deg,
           transparent 0%,
-          transparent 30%,
-          rgba(6,14,22,.45) 55%,
-          rgba(6,14,22,.78) 78%,
-          rgba(6,14,22,.9) 100%),
-        linear-gradient(180deg,
-          rgba(6,14,22,.2) 0%,
           transparent 35%,
-          transparent 65%,
-          rgba(6,14,22,.55) 100%);
+          rgba(6,14,22,.25) 58%,
+          rgba(6,14,22,.55) 82%,
+          rgba(6,14,22,.72) 100%),
+        linear-gradient(180deg,
+          rgba(6,14,22,.12) 0%,
+          transparent 40%,
+          transparent 70%,
+          rgba(6,14,22,.35) 100%);
     }
 
     .hero-content {
