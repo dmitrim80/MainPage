@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-band">
+  <link rel="stylesheet" href="sailing.css?v=20260814-fullpage">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -22,58 +22,49 @@
     }
     .sailing-page .ambient { display: none; }
 
-    /* Live video scoped to Sailboats band only */
-    .sailboats-band {
-      position: relative;
-      overflow: hidden;
-      background: #0a1520 !important;
-    }
-    .sailboats-band .ocean-live-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+    /* ===== FULL-PAGE LIVE WALLPAPER ===== */
+    .ocean-live-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      min-width: 100%;
+      min-height: 100%;
       object-fit: cover;
       object-position: center center;
       z-index: 0;
       pointer-events: none;
-      filter: brightness(.88) saturate(1.1) contrast(1.05);
+      filter: brightness(.85) saturate(1.1) contrast(1.05);
     }
-    .sailboats-band .ocean-live-overlay {
-      position: absolute;
+    .ocean-live-overlay {
+      position: fixed;
       inset: 0;
-      z-index: 1;
+      z-index: 0;
       pointer-events: none;
       background:
-        linear-gradient(180deg, rgba(4,16,24,.25) 0%, rgba(4,16,24,.40) 50%, rgba(4,16,24,.55) 100%);
+        linear-gradient(180deg, rgba(4,16,24,.30) 0%, rgba(4,16,24,.45) 45%, rgba(4,16,24,.65) 100%);
     }
-    .sailboats-band > *:not(.ocean-live-bg):not(.ocean-live-overlay) {
-      position: relative;
-      z-index: 2;
-    }
-    .sailboats-main {
-      background: transparent !important;
-    }
-    .course-panel {
-      background: rgba(10, 21, 32, .55) !important;
-      backdrop-filter: blur(6px);
-    }
-    .section {
-      background: rgba(7, 16, 24, .85);
-    }
+    .sailing-page .site-header,
+    .sailing-page main,
     .sailing-page footer {
-      background: rgba(4, 16, 24, .95);
+      position: relative;
+      z-index: 1;
     }
+
     @media (prefers-reduced-motion: reduce) {
-      .sailboats-band .ocean-live-bg { display: none; }
-      .sailboats-band {
-        background:
-          linear-gradient(180deg, rgba(4,16,24,.7), rgba(4,16,24,.85)),
-          url("assets/open-ocean-texture.png") center / cover !important;
+      .ocean-live-bg { display: none; }
+      .sailing-page {
+        background-image:
+          linear-gradient(180deg, rgba(4,16,24,.82), rgba(4,16,24,.92)),
+          url("assets/open-ocean-texture.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
       }
     }
     @media (max-width: 700px) {
-      .sailboats-band .ocean-live-bg { filter: brightness(.8) saturate(1.08); }
+      .ocean-live-bg { filter: brightness(.78) saturate(1.08); }
     }
 
     .sailing-page .site-header {
@@ -101,9 +92,8 @@
     .hero-photo {
       position: absolute;
       inset: 0;
-      background:
-        url("assets/open-ocean-sunset.png") left center / cover no-repeat;
-      filter: saturate(1.05) contrast(1.08) brightness(.85);
+      background: transparent;
+      display: none;
     }
     .hero-shade {
       position: absolute;
@@ -112,14 +102,14 @@
         linear-gradient(90deg,
           transparent 0%,
           transparent 35%,
-          rgba(6,14,22,.25) 58%,
-          rgba(6,14,22,.55) 82%,
-          rgba(6,14,22,.72) 100%),
+          rgba(6,14,22,.30) 58%,
+          rgba(6,14,22,.60) 82%,
+          rgba(6,14,22,.78) 100%),
         linear-gradient(180deg,
-          rgba(6,14,22,.12) 0%,
+          rgba(6,14,22,.15) 0%,
           transparent 40%,
           transparent 70%,
-          rgba(6,14,22,.35) 100%);
+          rgba(6,14,22,.40) 100%);
     }
 
     .hero-content {
@@ -178,7 +168,8 @@
     .sailboats-band {
       display: grid;
       grid-template-columns: 1.45fr 0.9fr;
-      background: transparent;
+      background: rgba(11, 21, 32, .72);
+      backdrop-filter: blur(8px);
       border-top: 1px solid rgba(94,207,196,.08);
     }
 
@@ -305,7 +296,7 @@
 
     .course-panel {
       padding: 56px 36px 64px 36px;
-      background: rgba(10, 21, 32, .72);
+      background: rgba(10, 21, 32, .65);
     }
     .course-panel .eyebrow-row {
       display: flex;
@@ -413,6 +404,11 @@
 
     .section {
       padding: 72px max(5vw, calc((100vw - 1120px) / 2));
+      background: rgba(7, 16, 24, .78);
+      backdrop-filter: blur(4px);
+    }
+    .sailing-page footer {
+      background: rgba(4, 16, 24, .90);
     }
 
     @media (max-width: 1020px) {
@@ -448,6 +444,10 @@
   </style>
 </head>
 <body class="sailing-page">
+  <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/stern-view-big-waves.mp4" type="video/mp4">
+  </video>
+  <div class="ocean-live-overlay" aria-hidden="true"></div>
   <header class="site-header" id="top">
     <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
     <nav class="nav" aria-label="Sailing page navigation">
@@ -475,10 +475,6 @@
     </section>
 
     <section class="sailboats-band" id="sailboats">
-      <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-        <source src="assets/stern-view-big-waves.mp4" type="video/mp4">
-      </video>
-      <div class="ocean-live-overlay" aria-hidden="true"></div>
       <div class="sailboats-main">
         <div class="section-label"><span>02</span> Sailboats</div>
         <p class="intro">Classic, capable cruising sailboats built for distance, comfort, and confidence offshore.</p>
