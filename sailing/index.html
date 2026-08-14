@@ -8,8 +8,22 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260809-3">
+  <link rel="stylesheet" href="sailing.css?v=20260814-hybrid">
   <script src="../script.js" defer></script>
+  <style>
+    .sailboat-feature{margin:0 0 8px;border:1px solid rgba(130,234,220,.18);background:linear-gradient(145deg,rgba(8,54,64,.42),rgba(3,22,29,.78));overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;min-height:380px}
+    .sailboat-feature__media{display:block;position:relative;min-height:320px;overflow:hidden}
+    .sailboat-feature__media img{width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04) brightness(.78);transition:transform .7s ease,filter .5s ease}
+    .sailboat-feature:hover .sailboat-feature__media img{transform:scale(1.04);filter:saturate(.95) contrast(1.03) brightness(.88)}
+    .sailboat-feature__body{padding:40px 36px;display:flex;flex-direction:column;justify-content:center}
+    .sailboat-feature__eyebrow{color:var(--cyan,#82eadc);font-size:10px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 14px}
+    .sailboat-feature__body h3{font-size:clamp(28px,3.2vw,42px);letter-spacing:-.04em;margin:0 0 14px;line-height:1.08}
+    .sailboat-feature__body p{color:#a8b8bd;font-size:15px;line-height:1.65;margin:0 0 28px;max-width:420px}
+    .sailboat-feature__meta{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 28px;padding-top:18px;border-top:1px solid rgba(130,234,220,.14)}
+    .sailboat-feature__meta span{font-size:11px;letter-spacing:.06em;color:#7d9196}
+    .sailboat-feature__meta strong{color:#d5e3e4;font-weight:500}
+    @media(max-width:900px){.sailboat-feature{grid-template-columns:1fr;min-height:0}.sailboat-feature__media{min-height:260px}.sailboat-feature__body{padding:28px 24px}}
+  </style>
 </head>
 <body class="sailing-page">
   <div class="ambient one" aria-hidden="true"></div><div class="ambient two" aria-hidden="true"></div>
@@ -19,7 +33,6 @@
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
     <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
   </header>
-
   <main>
     <section class="sailing-hero" aria-labelledby="sailing-title">
       <div class="nautical-grid" aria-hidden="true"></div>
@@ -37,7 +50,6 @@
       </div>
       <a class="scroll-cue" href="#vision"><span></span>Scroll to explore</a>
     </section>
-
     <section class="section sailing-vision" id="vision">
       <div class="section-label reveal"><span>01</span> The vision</div>
       <div class="vision-layout">
@@ -51,32 +63,27 @@
         <article class="reveal"><span>04</span><i>↗</i><h3>Exploration</h3><p>Reaching new places slowly enough to understand the distance traveled between them.</p></article>
       </div>
     </section>
-
     <section class="section tayana-fieldbook" id="sailboats">
       <div class="section-label reveal"><span>02</span> Sailboats</div>
-      <div class="fieldbook-intro reveal"><div><p class="eyebrow">Working platforms</p><h2>Boats that can<br><span>carry the voyage.</span></h2></div><p>Research begins with proven offshore designs. The current primary reference is the Tayana 37—a classic Robert Perry cutter with a long record of blue-water passages.</p></div>
-
-      <article class="reveal" style="margin:0 0 50px;border:1px solid rgba(130,234,220,.18);background:linear-gradient(145deg,rgba(8,54,64,.4),rgba(3,22,29,.75));overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;min-height:320px;">
-        <a href="tayana-37/" style="display:block;position:relative;min-height:280px;overflow:hidden;">
-          <img src="assets/tayana-37-reference.png" alt="Tayana 37 sailing offshore" style="width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.04) brightness(.78);display:block;">
-        </a>
-        <div style="padding:32px 28px;display:flex;flex-direction:column;justify-content:center;">
-          <p style="color:var(--cyan);font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;">Primary reference</p>
-          <h3 style="font-size:clamp(26px,3vw,38px);letter-spacing:-.04em;margin:0 0 12px;line-height:1.1;">Tayana 37</h3>
-          <p style="color:#a8b8bd;font-size:14px;line-height:1.6;margin:0 0 20px;max-width:400px;">Robert Perry design · cutter · long keel · canoe stern. Approximately 588 built. Specs, exterior, deck systems, interior, plans and documents.</p>
-          <a href="tayana-37/" class="button" style="align-self:flex-start;">Full Tayana 37 reference <span>→</span></a>
+      <div class="fieldbook-intro reveal">
+        <div><p class="eyebrow">Working platforms</p><h2>Boats that can<br><span>carry the voyage.</span></h2></div>
+        <p>Research begins with proven offshore designs. The current primary reference is the Tayana 37—a classic Robert Perry cutter with a long record of blue-water passages.</p>
+      </div>
+      <article class="sailboat-feature reveal">
+        <a class="sailboat-feature__media" href="tayana-37/"><img src="assets/tayana-37-reference.png" alt="Tayana 37 sailing offshore"></a>
+        <div class="sailboat-feature__body">
+          <p class="sailboat-feature__eyebrow">Primary reference</p>
+          <h3>Tayana 37</h3>
+          <p>Robert Perry design · cutter · long keel · canoe stern. A benchmark traditional blue-water cruiser with solid construction and a proven passagemaking record.</p>
+          <div class="sailboat-feature__meta">
+            <span><strong>36′8″</strong> LOA</span>
+            <span><strong>22,500 lb</strong> disp.</span>
+            <span><strong>≈ 588</strong> built</span>
+          </div>
+          <a href="tayana-37/" class="button">Full Tayana 37 reference <span>→</span></a>
         </div>
       </article>
-
-      <div class="fieldbook-grid">
-        <figure class="fieldbook-card boat-photo reveal"><img src="assets/tayana-37-reference.png" alt="Tayana 37 sailing offshore"><figcaption><span>01</span><strong>Offshore reference</strong><small>Classic cutter profile</small></figcaption></figure>
-        <figure class="fieldbook-card horizon-photo reveal"><img src="assets/ocean-horizon.png" alt="Open ocean horizon"><figcaption><span>02</span><strong>Open-water horizon</strong><small>The destination, not a backdrop</small></figcaption></figure>
-        <figure class="fieldbook-card technical-photo reveal"><img src="assets/tayana-37-profile.png" alt="Tayana 37 profile"><figcaption><span>03</span><strong>Hull & layout</strong><small>Cutter, ketch and pilothouse plans</small></figcaption></figure>
-        <figure class="fieldbook-card harbor-photo reveal"><img src="assets/harbor-inspiration.png" alt="Harbor departure"><figcaption><span>04</span><strong>Departure energy</strong><small>From harbor to horizon</small></figcaption></figure>
-        <figure class="fieldbook-card specs-photo reveal"><img src="assets/tayana-37-specs.png" alt="Tayana 37 specs"><figcaption><span>05</span><strong>Vessel notes</strong><small>Dimensions, displacement and sail plan</small></figcaption></figure>
-      </div>
     </section>
-
     <section class="section preparation" id="preparation">
       <div class="section-label reveal"><span>03</span> Preparation</div>
       <div class="section-heading reveal"><h2>The voyage begins<br><span>before departure.</span></h2><p>Turning a distant ambition into a sequence of practical, testable decisions.</p></div>
@@ -87,7 +94,6 @@
         <article class="prep-card reveal"><span class="prep-number">04</span><p>Experience</p><h3>Expand the range</h3><ul><li>Coastal passages</li><li>Offshore shakedowns</li><li>Longer independent voyages</li></ul></article>
       </div>
     </section>
-
     <section class="section route" id="route">
       <div class="section-label reveal"><span>04</span> Journey roadmap</div>
       <div class="route-layout">
@@ -102,7 +108,6 @@
         </div>
       </div>
     </section>
-
     <section class="section journey-log" id="log">
       <div class="section-label reveal"><span>05</span> Journey log</div>
       <div class="log-intro reveal"><div><p class="eyebrow">Field notes coming next</p><h2>The story will live<br><span>in the details.</span></h2></div><p>Future entries will cover the boat search, training, equipment choices, passages and lessons that turn preparation into real experience.</p></div>
@@ -114,7 +119,6 @@
       <a class="journey-contact reveal" href="mailto:dmitri.m80@gmail.com">Share a sailing story or recommendation <span>↗</span></a>
     </section>
   </main>
-
   <footer><a class="monogram" href="../">DM<span>.</span></a><p>© <span id="year"></span> Dmitri Morozov</p><a href="#top">Back to top ↑</a></footer>
 </body>
 </html>
