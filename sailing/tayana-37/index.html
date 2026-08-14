@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37fix">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37blend">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -45,7 +45,7 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(4,16,24,.42) 0%, rgba(4,16,24,.50) 40%, rgba(4,16,24,.72) 100%);
+    linear-gradient(180deg, rgba(4,16,24,.28) 0%, rgba(4,16,24,.32) 45%, rgba(4,16,24,.70) 100%);
 }
 .t37-page .site-header,
 .t37-page main,
@@ -79,14 +79,14 @@
 
 .t37-page .hero {
   position: relative;
-  min-height: 70svh;
+  min-height: 78svh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
   background: transparent;
   border-bottom: none;
-  padding: 0;
+  padding: 0 0 0;
 }
 .t37-page .hb {
   position: absolute;
@@ -98,14 +98,26 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(4,16,24,.45) 0%, rgba(4,16,24,.35) 40%, rgba(4,16,24,.75) 75%, rgba(4,16,24,.92) 100%);
+    linear-gradient(180deg,
+      rgba(4,16,24,.25) 0%,
+      rgba(4,16,24,.20) 35%,
+      rgba(4,16,24,.55) 70%,
+      rgba(4,16,24,.88) 100%);
+  pointer-events: none;
 }
 .t37-page .hc {
   position: relative;
   z-index: 2;
-  padding: 120px max(5vw, calc((100vw - 1120px) / 2)) 48px;
-  max-width: min(720px, 92vw);
+  margin: 0 max(4vw, calc((100vw - 960px) / 2)) 0;
+  padding: 40px 40px 28px;
+  max-width: 640px;
   box-sizing: border-box;
+  background: linear-gradient(165deg, rgba(6,16,24,.72) 0%, rgba(6,16,24,.55) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(94,207,196,.12);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
 }
 .t37-page .bc {
   display: flex;
@@ -120,21 +132,27 @@
 .t37-page .bc a { color: #9eb3b8; }
 .t37-page .bc a:hover { color: var(--cyan-bright); }
 .t37-page .hero h1 {
-  font-size: clamp(36px, 5vw, 64px);
+  font-size: clamp(34px, 4.6vw, 56px);
   font-weight: 400;
-  line-height: 1.12;
+  line-height: 1.15;
   letter-spacing: -.03em;
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: #f4f7f6;
   max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+}
+.t37-page .hero h1 .line1 {
+  display: block;
+  width: 100%;
 }
 .t37-page .hero h1 .line2 {
   display: block;
+  width: 100%;
   color: var(--cyan-bright);
   font-style: normal;
-  margin-top: 0.08em;
+  font-size: 0.78em;
+  line-height: 1.2;
+  margin-top: 0.12em;
+  white-space: normal;
 }
 .t37-page .hero-rule {
   width: 48px;
@@ -145,25 +163,27 @@
 }
 .t37-page .lede {
   color: #b0c4c8;
-  font-size: 15px;
+  font-size: 14.5px;
   line-height: 1.65;
-  max-width: 520px;
-  margin: 0 0 36px;
+  max-width: 100%;
+  margin: 0;
 }
 
 .t37-page .instrument {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 0;
-  margin: 0 max(5vw, calc((100vw - 1120px) / 2));
-  border: 1px solid rgba(94,207,196,.14);
-  border-bottom: 0;
-  background: rgba(6,14,22,.88);
-  backdrop-filter: blur(14px);
+  margin: 0 max(4vw, calc((100vw - 960px) / 2)) 28px;
+  max-width: 640px;
+  border: 1px solid rgba(94,207,196,.12);
+  border-top: 1px solid rgba(94,207,196,.08);
+  background: linear-gradient(180deg, rgba(6,16,24,.70) 0%, rgba(6,16,24,.82) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   position: relative;
   z-index: 2;
-  max-width: 100%;
   box-sizing: border-box;
+  border-radius: 0 0 4px 4px;
 }
 .t37-page .instrument div {
   padding: 16px 14px;
@@ -397,7 +417,17 @@
     min-height: 260px;
     aspect-ratio: 4/3;
   }
-  .t37-page .hc { padding-top: 100px; }
+  .t37-page .hc {
+    margin-left: 16px;
+    margin-right: 16px;
+    padding: 28px 22px 20px;
+    max-width: none;
+  }
+  .t37-page .instrument {
+    margin-left: 16px;
+    margin-right: 16px;
+    max-width: none;
+  }
 }
 @media (max-width: 560px) {
   .t37-page .instrument { grid-template-columns: repeat(2, 1fr); }
@@ -435,7 +465,7 @@
         <a href="../#sailboats">Sailboats</a><span>/</span>
         <span>Tayana 37</span>
       </nav>
-      <h1 id="t37-title">Tayana 37<br><span class="line2">A classic built for distance</span></h1>
+      <h1 id="t37-title"><span class="line1">Tayana 37</span><span class="line2">A classic built for distance</span></h1>
       <hr class="hero-rule">
       <p class="lede">Heavy-displacement long-keel cutter with canoe stern. Designed by Robert Perry, built by Ta Yang in Taiwan from 1976. Approximately 588 hulls produced.</p>
     </div>
