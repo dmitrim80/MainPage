@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37open">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37fix2">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -135,37 +135,44 @@
 }
 .t37-page .bc a { color: #9eb3b8; }
 .t37-page .bc a:hover { color: var(--cyan-bright); }
-.t37-page .hero h1 {
+/* Override global .hero h1 { display:flex } from styles.css */
+.t37-page .hero h1,
+.t37-page h1#t37-title {
   display: block !important;
-  font-size: clamp(40px, 5.2vw, 60px);
+  flex-direction: column !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  white-space: normal !important;
+  font-size: clamp(42px, 5.5vw, 64px);
   font-weight: 400;
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -.03em;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: #f4f7f6;
   max-width: 100%;
-  flex-direction: column !important;
-  flex-wrap: nowrap !important;
   text-shadow: 0 2px 24px rgba(0,0,0,.55);
 }
-.t37-page .hero h1 .line1 {
+.t37-page .hero h1 .line1,
+.t37-page h1#t37-title .line1 {
   display: block !important;
   float: none !important;
-  clear: both;
-  width: 100%;
+  width: 100% !important;
+  flex: none !important;
   color: #f4f7f6;
 }
-.t37-page .hero h1 .line2 {
+.t37-page .hero h1 .line2,
+.t37-page h1#t37-title .line2 {
   display: block !important;
   float: none !important;
-  clear: both;
-  width: 100%;
+  width: 100% !important;
+  flex: none !important;
   color: var(--cyan-bright);
   font-style: normal;
-  font-size: clamp(26px, 3.4vw, 38px);
-  line-height: 1.2;
-  margin-top: 0.18em;
-  white-space: normal;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.22;
+  margin-top: 0.2em;
+  white-space: normal !important;
   letter-spacing: -.02em;
 }
 .t37-page .hero-rule {
