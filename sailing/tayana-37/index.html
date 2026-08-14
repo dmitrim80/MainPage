@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37blend">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37open">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -45,7 +45,7 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(4,16,24,.28) 0%, rgba(4,16,24,.32) 45%, rgba(4,16,24,.70) 100%);
+    linear-gradient(180deg, rgba(4,16,24,.18) 0%, rgba(4,16,24,.22) 50%, rgba(4,16,24,.62) 100%);
 }
 .t37-page .site-header,
 .t37-page main,
@@ -86,7 +86,7 @@
   overflow: hidden;
   background: transparent;
   border-bottom: none;
-  padding: 0 0 0;
+  padding: 0;
 }
 .t37-page .hb {
   position: absolute;
@@ -99,25 +99,28 @@
   inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(4,16,24,.25) 0%,
-      rgba(4,16,24,.20) 35%,
-      rgba(4,16,24,.55) 70%,
-      rgba(4,16,24,.88) 100%);
+      rgba(4,16,24,.20) 0%,
+      rgba(4,16,24,.15) 40%,
+      rgba(4,16,24,.55) 72%,
+      rgba(4,16,24,.90) 100%);
   pointer-events: none;
 }
 .t37-page .hc {
   position: relative;
   z-index: 2;
-  margin: 0 max(4vw, calc((100vw - 960px) / 2)) 0;
-  padding: 40px 40px 28px;
-  max-width: 640px;
+  margin: 0;
+  padding: 0 max(5vw, calc((100vw - 960px) / 2)) 20px;
+  max-width: none;
+  width: 100%;
   box-sizing: border-box;
-  background: linear-gradient(165deg, rgba(6,16,24,.72) 0%, rgba(6,16,24,.55) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(94,207,196,.12);
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.t37-page .hc-inner {
+  max-width: 560px;
 }
 .t37-page .bc {
   display: flex;
@@ -126,33 +129,44 @@
   font-size: 10px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #7d9196;
+  color: #9aadb2;
   margin-bottom: 22px;
+  text-shadow: 0 1px 10px rgba(0,0,0,.4);
 }
 .t37-page .bc a { color: #9eb3b8; }
 .t37-page .bc a:hover { color: var(--cyan-bright); }
 .t37-page .hero h1 {
-  font-size: clamp(34px, 4.6vw, 56px);
+  display: block !important;
+  font-size: clamp(40px, 5.2vw, 60px);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.08;
   letter-spacing: -.03em;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   color: #f4f7f6;
   max-width: 100%;
+  flex-direction: column !important;
+  flex-wrap: nowrap !important;
+  text-shadow: 0 2px 24px rgba(0,0,0,.55);
 }
 .t37-page .hero h1 .line1 {
-  display: block;
+  display: block !important;
+  float: none !important;
+  clear: both;
   width: 100%;
+  color: #f4f7f6;
 }
 .t37-page .hero h1 .line2 {
-  display: block;
+  display: block !important;
+  float: none !important;
+  clear: both;
   width: 100%;
   color: var(--cyan-bright);
   font-style: normal;
-  font-size: 0.78em;
+  font-size: clamp(26px, 3.4vw, 38px);
   line-height: 1.2;
-  margin-top: 0.12em;
+  margin-top: 0.18em;
   white-space: normal;
+  letter-spacing: -.02em;
 }
 .t37-page .hero-rule {
   width: 48px;
@@ -162,28 +176,28 @@
   border: 0;
 }
 .t37-page .lede {
-  color: #b0c4c8;
-  font-size: 14.5px;
+  color: #c2d2d6;
+  font-size: 15px;
   line-height: 1.65;
-  max-width: 100%;
-  margin: 0;
+  max-width: 480px;
+  margin: 0 0 8px;
+  text-shadow: 0 1px 12px rgba(0,0,0,.45);
 }
 
 .t37-page .instrument {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 0;
-  margin: 0 max(4vw, calc((100vw - 960px) / 2)) 28px;
-  max-width: 640px;
-  border: 1px solid rgba(94,207,196,.12);
-  border-top: 1px solid rgba(94,207,196,.08);
-  background: linear-gradient(180deg, rgba(6,16,24,.70) 0%, rgba(6,16,24,.82) 100%);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  margin: 0 max(5vw, calc((100vw - 960px) / 2)) 36px;
+  max-width: 560px;
+  border: 1px solid rgba(94,207,196,.14);
+  background: rgba(6,14,22,.78);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: relative;
   z-index: 2;
   box-sizing: border-box;
-  border-radius: 0 0 4px 4px;
+  border-radius: 2px;
 }
 .t37-page .instrument div {
   padding: 16px 14px;
@@ -199,11 +213,12 @@
   margin-bottom: 5px;
 }
 .t37-page .instrument strong {
-  font-size: 17px;
+  font-size: 15px;
   letter-spacing: -.02em;
   color: #e4eeec;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .t37-page .subnav {
@@ -418,14 +433,12 @@
     aspect-ratio: 4/3;
   }
   .t37-page .hc {
-    margin-left: 16px;
-    margin-right: 16px;
-    padding: 28px 22px 20px;
-    max-width: none;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .t37-page .instrument {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
     max-width: none;
   }
 }
@@ -460,14 +473,19 @@
     <div class="hb" aria-hidden="true"></div>
     <div class="hs" aria-hidden="true"></div>
     <div class="hc">
-      <nav class="bc" aria-label="Breadcrumb">
-        <a href="../">Sailing</a><span>/</span>
-        <a href="../#sailboats">Sailboats</a><span>/</span>
-        <span>Tayana 37</span>
-      </nav>
-      <h1 id="t37-title"><span class="line1">Tayana 37</span><span class="line2">A classic built for distance</span></h1>
-      <hr class="hero-rule">
-      <p class="lede">Heavy-displacement long-keel cutter with canoe stern. Designed by Robert Perry, built by Ta Yang in Taiwan from 1976. Approximately 588 hulls produced.</p>
+      <div class="hc-inner">
+        <nav class="bc" aria-label="Breadcrumb">
+          <a href="../">Sailing</a><span>/</span>
+          <a href="../#sailboats">Sailboats</a><span>/</span>
+          <span>Tayana 37</span>
+        </nav>
+        <h1 id="t37-title">
+          <span class="line1">Tayana 37</span>
+          <span class="line2">A classic built for distance</span>
+        </h1>
+        <hr class="hero-rule">
+        <p class="lede">Heavy-displacement long-keel cutter with canoe stern. Designed by Robert Perry, built by Ta Yang in Taiwan from 1976. Approximately 588 hulls produced.</p>
+      </div>
     </div>
     <div class="instrument" aria-label="Key specifications">
       <div><small>LOA</small><strong>36′8″</strong></div>
