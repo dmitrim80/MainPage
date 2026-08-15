@@ -8,7 +8,7 @@
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
 <link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" href="../sailing.css?v=20260814-t37lb">
+<link rel="stylesheet" href="../sailing.css?v=20260814-t37speed">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
@@ -204,10 +204,10 @@
 
 .t37-page .instrument {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0;
   margin: 0 max(5vw, calc((100vw - 1120px) / 2)) 36px;
-  max-width: 752px;
+  max-width: 880px;
   border: 1px solid rgba(94,207,196,.14);
   background: rgba(6,14,22,.78);
   backdrop-filter: blur(12px);
@@ -413,7 +413,7 @@
 .t37-page .bb a:hover { color: var(--cyan-bright); }
 
 @media (max-width: 900px) {
-  .t37-page .instrument { grid-template-columns: repeat(3, 1fr); }
+  .t37-page .instrument { grid-template-columns: repeat(4, 1fr); }
   .t37-page .tc,
   .t37-page .asym { grid-template-columns: 1fr; }
   .t37-page .asym .g:first-child {
@@ -550,6 +550,7 @@ body.t37-lb-active {
       <div><small>Beam</small><strong>11′6″</strong></div>
       <div><small>Draft</small><strong>5′8″</strong></div>
       <div><small>Disp.</small><strong>22,500 lb</strong></div>
+      <div><small>Hull speed</small><strong>≈ 7.5 kn</strong></div>
       <div><small>Built</small><strong>≈ 588</strong></div>
     </div>
   </section>
