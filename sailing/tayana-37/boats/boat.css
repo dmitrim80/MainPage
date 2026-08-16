@@ -1,0 +1,115 @@
+.boat-page {
+  --cyan: #5ecfc4;
+  --cyan-bright: #7ee0d6;
+  min-height: 100vh;
+  color: #e8eef0;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(94,207,196,.12), transparent 34%),
+    linear-gradient(145deg, #0b1d28 0%, #041018 48%, #071018 100%);
+}
+.boat-page .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  background: rgba(4,12,18,.94);
+  border-bottom: 1px solid rgba(94,207,196,.12);
+  backdrop-filter: blur(14px);
+}
+.boat-page main { padding-top: 60px; }
+.boat-hero {
+  min-height: 58vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 96px max(5vw, calc((100vw - 1120px) / 2)) 64px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(94,207,196,.08);
+}
+.boat-hero__inner { max-width: 760px; }
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin-bottom: 28px;
+  color: #82989e;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.breadcrumbs a { color: #a5b8bc; }
+.breadcrumbs a:hover { color: var(--cyan-bright); }
+.boat-kicker {
+  margin: 0 0 10px;
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+.boat-hero h1 {
+  display: block !important;
+  margin: 0 0 18px;
+  color: #f4f7f6;
+  font-size: clamp(50px, 8vw, 90px);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+.boat-location {
+  margin: 0;
+  color: #b8c9cd;
+  font-size: 17px;
+}
+.boat-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 720px;
+  margin-top: 38px;
+  border: 1px solid rgba(94,207,196,.14);
+  background: rgba(6,14,22,.65);
+}
+.boat-details div { padding: 17px 20px; border-right: 1px solid rgba(94,207,196,.1); }
+.boat-details div:last-child { border-right: 0; }
+.boat-details small {
+  display: block;
+  margin-bottom: 5px;
+  color: #6d8288;
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.boat-details strong { color: #e4eeec; font-size: 14px; font-weight: 500; }
+.photos {
+  padding: 70px max(5vw, calc((100vw - 1120px) / 2)) 90px;
+  background: rgba(5,15,22,.72);
+}
+.section-label {
+  margin: 0 0 18px;
+  color: #c5d4d8;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.section-label span { margin-right: 10px; color: #789097; }
+.photo-placeholder {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  text-align: center;
+  border: 1px dashed rgba(126,224,214,.28);
+  background: rgba(13,29,39,.5);
+}
+.photo-placeholder strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #eaf2f1;
+  font-size: 24px;
+  font-weight: 400;
+}
+.photo-placeholder p { max-width: 520px; margin: 0; color: #8fa4a9; line-height: 1.6; }
+.boat-page footer { position: relative; background: #041018; }
+@media (max-width: 700px) {
+  .boat-hero { min-height: 64vh; padding-bottom: 42px; }
+  .boat-details { grid-template-columns: 1fr; }
+  .boat-details div { border-right: 0; border-bottom: 1px solid rgba(94,207,196,.1); }
+  .boat-details div:last-child { border-bottom: 0; }
+}
