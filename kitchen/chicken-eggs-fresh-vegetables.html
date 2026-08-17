@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1a6b6b">
+  <meta name="description" content="Chicken, Eggs &amp; Fresh Vegetables — Kitchen Log by Dmitri Morozov.">
+  <title>Chicken, Eggs &amp; Fresh Vegetables — Kitchen Log</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="kitchen.css">
+  <link rel="stylesheet" href="meal.css">
+</head>
+<body>
+  <header class="k-header">
+    <a class="k-logo" href="../">DM.</a>
+    <nav class="k-nav">
+      <a href="./" class="active">Kitchen Log</a>
+      <a href="./">Recipes</a>
+      <a href="./">Ingredients</a>
+      <a href="../#about">About</a>
+    </nav>
+    <button class="k-menu" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+  <main class="meal-page">
+    <a class="meal-back" href="./">← All meals</a>
+    <div class="meal-layout">
+      <div class="meal-photo">
+        <img src="../assets/kitchen/chicken-eggs-fresh-vegetables-2026-08-16.jpg" alt="Chicken, Eggs &amp; Fresh Vegetables">
+      </div>
+      <div class="meal-info">
+        <p class="meal-date">August 16, 2026</p>
+        <h1>Chicken, Eggs &amp; Fresh Vegetables</h1>
+        <div class="meal-meta">
+          <span class="k-cal">500 – 650 kcal</span>
+          <span class="k-score">Health Score <b>94</b> 🍃</span>
+        </div>
+        <h2>Ingredients</h2>
+        <p class="meal-ing">Chicken · eggs · spinach · yellow bell pepper · cucumber · baby carrots · cherry tomatoes</p>
+        <h2>How to prepare</h2>
+        <ol class="k-steps">
+          <li>Season and cook the chicken until golden and cooked through, then cut it into bite-size pieces.</li>
+          <li>Sauté the yellow bell pepper and spinach until just tender.</li>
+          <li>Add the chicken and beaten eggs, then cook gently until the eggs are set.</li>
+          <li>Slice the cucumber and rinse the baby carrots and cherry tomatoes.</li>
+          <li>Arrange the warm chicken-and-egg mixture with the fresh vegetables.</li>
+          <li>Finish with your preferred seasoning and serve.</li>
+        </ol>
+        <a class="meal-back-bottom" href="./">← Back to Kitchen Log</a>
+      </div>
+    </div>
+  </main>
+  <footer class="k-footer">
+    <a href="../">← Back home</a>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelector('.k-menu')?.addEventListener('click', () => {
+      document.querySelector('.k-nav').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
