@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260814-scale24">
+  <link rel="stylesheet" href="sailing.css?v=20260817-anchorage1">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -443,6 +443,38 @@
       .sailing-hero h1 { font-size: 11vw; }
       .hero-content { padding: 100px 20px 48px; }
     }
+
+    .anchorage-feature {
+      padding: 78px max(5vw, calc((100vw - 1180px) / 2));
+      background: rgba(5, 19, 28, .78);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(94,207,196,.1);
+      border-bottom: 1px solid rgba(94,207,196,.1);
+    }
+    .anchorage-feature__card {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      min-height: 430px;
+      overflow: hidden;
+      border: 1px solid rgba(94,207,196,.18);
+      background: rgba(8, 28, 38, .92);
+    }
+    .anchorage-feature__copy { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+    .anchorage-feature__copy h2 { font-size: clamp(38px, 4.4vw, 62px); font-weight: 400; line-height: 1; letter-spacing: -.045em; margin: 10px 0 20px; }
+    .anchorage-feature__copy h2 span { color: var(--cyan-bright); font-style: italic; }
+    .anchorage-feature__copy > p:not(.eyebrow) { color: #91a7ac; line-height: 1.65; max-width: 430px; margin: 0 0 28px; }
+    .anchorage-feature__copy .button { color: var(--cyan-bright); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+    .anchorage-feature__maps { position: relative; min-height: 430px; background: #07151e; overflow: hidden; }
+    .anchorage-feature__maps img { position: absolute; width: 68%; border: 1px solid rgba(255,255,255,.18); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .anchorage-feature__maps img:first-child { left: 4%; top: 7%; transform: rotate(-3deg); }
+    .anchorage-feature__maps img:last-child { right: -3%; bottom: -5%; transform: rotate(3deg); }
+    .anchorage-feature__maps::after { content: "42 maps · 19 coastal states"; position: absolute; right: 20px; top: 18px; z-index: 2; padding: 8px 11px; background: rgba(4,17,25,.88); color: #9fe6dd; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; }
+    @media (max-width: 800px) {
+      .anchorage-feature { padding: 58px 22px; }
+      .anchorage-feature__card { grid-template-columns: 1fr; }
+      .anchorage-feature__copy { padding: 34px 28px 38px; }
+      .anchorage-feature__maps { min-height: 340px; }
+    }
   </style>
 </head>
 <body class="sailing-page">
@@ -456,6 +488,7 @@
       <a href="../">Home</a>
       <a href="#vision">Vision</a>
       <a href="#sailboats">Sailboats</a>
+      <a href="Anchorage/">Anchorage</a>
       <a href="#preparation">Preparation</a>
       <a href="#route">Roadmap</a>
       <a href="#log">Log</a>
@@ -532,6 +565,21 @@
       </aside>
 
       <div class="band-footer">Keep exploring</div>
+    </section>
+
+    <section class="anchorage-feature" aria-labelledby="anchorage-feature-title">
+      <div class="anchorage-feature__card">
+        <div class="anchorage-feature__copy">
+          <p class="eyebrow">Coastal field guide</p>
+          <h2 id="anchorage-feature-title">Find room<br><span>to swing.</span></h2>
+          <p>Browse legal, free and restricted anchorage maps by state, with full-size charts for planning your next coastal stop.</p>
+          <a href="Anchorage/" class="button">Open anchorage guide <span>→</span></a>
+        </div>
+        <a class="anchorage-feature__maps" href="Anchorage/" aria-label="Open the anchorage map guide">
+          <img src="Anchorage/assets/F00D38A5-0C97-4142-B894-F7992D8E55BA_1_105_c.jpeg" alt="South Carolina legal anchoring areas map" loading="lazy">
+          <img src="Anchorage/assets/20C05C7D-134B-4389-972D-6B45DAEC03CD_1_105_c.jpeg" alt="South Carolina restricted anchoring areas map" loading="lazy">
+        </a>
+      </div>
     </section>
 
     <section class="section sailing-vision" id="vision">

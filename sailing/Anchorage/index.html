@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07131c">
+  <meta name="description" content="A visual state-by-state guide to generally legal, free and restricted anchorage areas around the United States coast.">
+  <title>Anchorage Guide — Sailing & Exploration</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="anchorage.css?v=20260817-1">
+  <script src="../../script.js" defer></script>
+  <script src="anchorage.js?v=20260817-1" defer></script>
+</head>
+<body class="anchorage-page">
+  <div class="chart-grid" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
+    <nav class="nav" aria-label="Anchorage guide navigation">
+      <a href="../../">Home</a>
+      <a href="../">Sailing</a>
+      <a class="active" href="#maps">Anchorage</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <section class="anchorage-hero" aria-labelledby="anchorage-title">
+      <div class="hero-copy">
+        <a class="back-link" href="../"><span>←</span> Sailing &amp; exploration</a>
+        <p class="eyebrow">Coastal field guide · United States</p>
+        <h1 id="anchorage-title">Know where<br><span>to drop anchor.</span></h1>
+        <p class="hero-lede">A visual library of generally legal, free anchoring areas and places where anchoring is prohibited or restricted.</p>
+        <a class="hero-action" href="#maps">Explore the maps <span>↓</span></a>
+      </div>
+      <div class="hero-chart" aria-hidden="true">
+        <div class="compass"><span>N</span><i></i><b>✦</b></div>
+        <div class="anchor-mark">⚓</div>
+        <div class="depth depth-one">12</div>
+        <div class="depth depth-two">24</div>
+        <div class="depth depth-three">8</div>
+        <svg viewBox="0 0 640 520" role="presentation">
+          <path d="M-20 370 C80 280 164 422 262 330 S448 238 666 318"/>
+          <path d="M-20 410 C92 320 190 458 296 370 S476 286 670 356"/>
+          <path class="course" d="M92 430 C156 338 246 388 304 295 S438 178 558 122"/>
+          <circle cx="92" cy="430" r="7"/><circle cx="304" cy="295" r="7"/><circle cx="558" cy="122" r="7"/>
+        </svg>
+        <p>Sound judgment begins<br>before the hook is down.</p>
+      </div>
+    </section>
+
+    <section class="notice" aria-label="Important safety notice">
+      <span class="notice-icon">!</span>
+      <div>
+        <strong>Planning reference—not a navigational chart</strong>
+        <p>Rules, boundaries and local conditions change. Before anchoring, verify the latest official nautical chart, Local Notice to Mariners, posted signs and harbormaster guidance.</p>
+      </div>
+    </section>
+
+    <section class="map-library" id="maps" aria-labelledby="maps-title">
+      <div class="library-heading">
+        <div>
+          <p class="eyebrow">42 reference maps</p>
+          <h2 id="maps-title">Anchorage by state</h2>
+        </div>
+        <p>Choose a state, then compare generally permitted waters with restricted and no-anchoring areas. Select any map to inspect it full size.</p>
+      </div>
+
+      <div class="area-switcher" role="group" aria-label="Choose a coastal area">
+        <button class="area-button active" type="button" data-coast="all" aria-pressed="true">
+          <span>00</span><strong>All areas</strong><small>Complete map library</small>
+        </button>
+        <button class="area-button" type="button" data-coast="east" aria-pressed="false">
+          <span>01</span><strong>East Coast</strong><small>Maine to Georgia</small>
+        </button>
+        <button class="area-button" type="button" data-coast="gulf" aria-pressed="false">
+          <span>02</span><strong>Gulf of Mexico</strong><small>Louisiana to Texas</small>
+        </button>
+        <button class="area-button" type="button" data-coast="west" aria-pressed="false">
+          <span>03</span><strong>West Coast</strong><small>Pacific, Alaska &amp; Hawaii</small>
+        </button>
+      </div>
+
+      <div class="map-controls" aria-label="Filter anchorage maps">
+        <label>
+          <span>State or region</span>
+          <select id="state-filter">
+            <option value="all">All states &amp; regions</option>
+          </select>
+        </label>
+        <div class="type-filter" role="group" aria-label="Map type">
+          <button class="filter-button active" type="button" data-type="all" aria-pressed="true">All maps</button>
+          <button class="filter-button legal" type="button" data-type="legal" aria-pressed="false"><i></i> Legal / free</button>
+          <button class="filter-button restricted" type="button" data-type="restricted" aria-pressed="false"><i></i> Restricted</button>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite"></p>
+      </div>
+
+      <div class="map-grid" id="map-grid"></div>
+      <p class="empty-message" id="empty-message" hidden>No maps match these filters.</p>
+      <noscript><p class="empty-message">JavaScript is required to browse the map library.</p></noscript>
+    </section>
+
+    <section class="about-section" id="about">
+      <div>
+        <p class="eyebrow">Use the guide well</p>
+        <h2>Plan broadly.<br><span>Verify locally.</span></h2>
+      </div>
+      <div class="about-steps">
+        <article><span>01</span><h3>Scan the coast</h3><p>Use the maps to understand the general pattern of suitable and restricted waters.</p></article>
+        <article><span>02</span><h3>Check current sources</h3><p>Confirm depths, hazards, weather, holding ground and regulations with official information.</p></article>
+        <article><span>03</span><h3>Anchor responsibly</h3><p>Stay clear of channels, protected habitats, private property and working waterfronts.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="map-viewer" id="map-viewer">
+    <div class="viewer-bar">
+      <div><span id="viewer-type"></span><strong id="viewer-title"></strong></div>
+      <button type="button" id="viewer-close" aria-label="Close full-size map">Close ×</button>
+    </div>
+    <div class="viewer-image-wrap"><img id="viewer-image" alt=""></div>
+    <p>General planning reference only. Verify current official sources before anchoring.</p>
+  </dialog>
+
+  <footer>
+    <a class="monogram" href="../../">DM<span>.</span></a>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+</body>
+</html>
