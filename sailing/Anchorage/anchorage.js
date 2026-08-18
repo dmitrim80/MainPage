@@ -40,13 +40,29 @@ const maps = [
   ["New Hampshire", "restricted", "Illegal anchoring · Coastal waters", "E341A3CD-AE48-49DC-A8FE-1184A4EE5AEE_1_102_o.jpeg"],
   ["Connecticut", "restricted", "No-anchoring areas · Long Island Sound", "E58D46E5-F231-4E9E-84E7-1D2633783FA9_1_105_c.jpeg"],
   ["New York", "legal", "Where anchoring is generally legal & free", "E96A5CC8-E7F9-443C-B1C2-BA54A7C47F19_1_105_c.jpeg"],
-  ["South Carolina", "legal", "Legal / free anchoring areas", "F00D38A5-0C97-4142-B894-F7992D8E55BA_1_105_c.jpeg"]
+  ["South Carolina", "legal", "Legal / free anchoring areas", "F00D38A5-0C97-4142-B894-F7992D8E55BA_1_105_c.jpeg"],
+  ["Florida", "legal", "Legal / free anchoring areas", "1A1AF536-100D-4702-9A3E-8FB30579E062_1_102_o.jpeg"],
+  ["Alabama", "legal", "Legal / free coastal anchoring", "291D6A5C-9E61-49FB-B227-64B67BB95B55_1_105_c.jpeg"],
+  ["Louisiana", "legal", "Legal / free coastal anchoring", "452EF976-6E39-49FF-B7FC-82F8DB845BFC_1_102_o.jpeg"],
+  ["South Carolina", "legal", "Anchorage guide · State overview", "6FC99EE8-2AAC-4754-BEBD-0CFBCA0273CD_1_102_o.jpeg"],
+  ["Alabama", "restricted", "Illegal coastal anchorage areas", "7017CD2F-ECD0-4F86-A756-7C15A6F8BA90_1_102_o.jpeg"],
+  ["Georgia", "restricted", "Illegal coastal anchorage areas", "75607AB7-1A23-4A88-AA82-ADFB1827F746_1_102_o.jpeg"],
+  ["Alaska", "legal", "Legal / free coastal anchoring", "A720E85A-BF6E-49E5-8F7D-24F4D083C52E_1_105_c.jpeg"],
+  ["Hawaii", "restricted", "Illegal anchorage areas", "B5009F57-A8AF-4377-B75A-6A814E01BEDD_1_102_o.jpeg"],
+  ["Washington", "legal", "Legal / free anchoring areas", "BB2B86AC-0096-4DF1-843B-0E2C47DD9EB5_1_105_c.jpeg"],
+  ["Florida", "restricted", "Illegal anchorage areas", "CDC6DDED-7919-4890-B2EB-F4ADD01CD763_1_102_o.jpeg"],
+  ["Oregon", "legal", "Legal / free coastal anchoring", "D0450FE5-D0D4-409D-9E99-80E46A7C928F_1_102_o.jpeg"],
+  ["Washington", "restricted", "Illegal coastal anchorage areas", "D124711E-8FDB-44FE-B244-624D7C88A54B_1_102_o.jpeg"],
+  ["Mississippi", "legal", "Legal / free coastal anchoring", "ED7648AF-125D-4B6D-843B-B3AC55A9518A_1_102_o.jpeg"],
+  ["Oregon", "restricted", "Illegal coastal anchorage areas", "EF3FE09D-43A9-4799-8188-0F2FECE9989C_1_102_o.jpeg"],
+  ["Texas", "legal", "Legal / free anchoring areas", "F37FC198-5C2D-480A-AEFB-E03FAD3DCC0F_1_102_o.jpeg"]
 ].map(([state, type, title, file]) => ({state, type, title, file}));
 
-const gulfStates = new Set(["Louisiana", "Mississippi", "Texas"]);
-const westStates = new Set(["Alaska", "California", "Hawaii"]);
+const gulfStates = new Set(["Alabama", "Florida", "Louisiana", "Mississippi", "Texas"]);
+const westStates = new Set(["Alaska", "California", "Hawaii", "Oregon", "Washington"]);
 maps.forEach(map => {
-  map.coast = map.state === "United States" ? "national" : gulfStates.has(map.state) ? "gulf" : westStates.has(map.state) ? "west" : "east";
+  map.coasts = map.state === "United States" ? ["national"] : westStates.has(map.state) ? ["west"] : gulfStates.has(map.state) ? ["gulf"] : ["east"];
+  if (map.state === "Florida") map.coasts.push("east");
 });
 
 const grid = document.querySelector("#map-grid");
@@ -65,7 +81,7 @@ let activeCoast = "all";
 function populateStates() {
   const previousState = stateFilter.value;
   stateFilter.replaceChildren(new Option("All states & regions", "all"));
-  const availableStates = maps.filter(map => activeCoast === "all" || map.coast === activeCoast).map(map => map.state);
+  const availableStates = maps.filter(map => activeCoast === "all" || map.coasts.includes(activeCoast)).map(map => map.state);
   [...new Set(availableStates)].sort().forEach(state => stateFilter.append(new Option(state, state)));
   stateFilter.value = availableStates.includes(previousState) ? previousState : "all";
 }
@@ -80,7 +96,7 @@ function openMap(map) {
 
 function renderMaps() {
   const state = stateFilter.value;
-  const visible = maps.filter(map => (activeCoast === "all" || map.coast === activeCoast) && (state === "all" || map.state === state) && (activeType === "all" || map.type === activeType));
+  const visible = maps.filter(map => (activeCoast === "all" || map.coasts.includes(activeCoast)) && (state === "all" || map.state === state) && (activeType === "all" || map.type === activeType));
   grid.replaceChildren();
   visible.forEach(map => {
     const card = document.createElement("button");
