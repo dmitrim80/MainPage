@@ -6,9 +6,15 @@
   var boatName = title.textContent.trim();
   var label = section.querySelector('.section-label');
   var placeholder = section.querySelector('.photo-placeholder');
+  var photoBase = section.getAttribute('data-photo-base') || 'photos/';
 
   function photoUrl(filename) {
-    return 'photos/' + encodeURIComponent(filename);
+    if (filename.indexOf('/') !== -1) {
+      return filename.split('/').map(function (part) {
+        return encodeURIComponent(part);
+      }).join('/');
+    }
+    return photoBase + encodeURIComponent(filename);
   }
 
   fetch('photos/manifest.json')
