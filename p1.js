@@ -1,1 +1,1 @@
-window.__P1='placeholder';
+window.__P1='test-upload-ok';
