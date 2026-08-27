@@ -182,17 +182,75 @@
     </section>
 
     <section class="workbook" id="numbers" aria-labelledby="workbook-title">
-      <div class="workbook__copy">
-        <p class="section-index">05 · Planning numbers</p>
-        <h2 id="workbook-title">The numbers behind<br><span>the route.</span></h2>
-        <p>The plan uses 24 legs and a conservative 4.8-knot loaded-cruiser average. Passage and stay days are organized around the seasonal route, while the fuel estimate uses 0.65 gallons per engine hour with different motoring shares for offshore, coastal and island legs.</p>
+      <div class="plan-summary">
+        <div class="workbook__copy">
+          <p class="section-index">05 · Planning numbers</p>
+          <h2 id="workbook-title">The numbers behind<br><span>the route.</span></h2>
+          <p>The plan uses 24 legs and a conservative 4.8-knot loaded-cruiser average. Passage and stay days are organized around the seasonal route, while the fuel estimate uses 0.65 gallons per engine hour with different motoring shares for offshore, coastal and island legs.</p>
+        </div>
+        <dl class="workbook__facts">
+          <div><dt>46.3</dt><dd>estimated passage days</dd></div>
+          <div><dt>334.7</dt><dd>planned stay / anchor days</dd></div>
+          <div><dt>1,521</dt><dd>estimated fuel gallons</dd></div>
+          <div><dt>18</dt><dd>passage and arrival maps</dd></div>
+        </dl>
       </div>
-      <dl class="workbook__facts">
-        <div><dt>46.3</dt><dd>estimated passage days</dd></div>
-        <div><dt>334.7</dt><dd>planned stay / anchor days</dd></div>
-        <div><dt>1,521</dt><dd>estimated fuel gallons</dd></div>
-        <div><dt>18</dt><dd>passage and arrival maps</dd></div>
-      </dl>
+
+      <div class="leg-itinerary" aria-labelledby="leg-itinerary-title">
+        <div class="leg-itinerary__heading">
+          <p class="eyebrow">Complete itinerary</p>
+          <h3 id="leg-itinerary-title">Every leg, in sequence.</h3>
+          <p>Underway and stay times are planning estimates. Open each chapter to review its legs and arrival notes.</p>
+        </div>
+
+        <details class="leg-chapter" open>
+          <summary><span>Chapter 01</span><strong>East Coast → Bermuda → St. Martin</strong><small>Legs 01–03 · Oct–Dec</small></summary>
+          <div class="leg-list">
+            <article class="leg-detail"><span class="leg-detail__number">01</span><div class="leg-detail__body"><p class="leg-detail__period">Oct 20–Nov 5, 2026 · Coastal</p><h4>Sandy Hook, NJ <span>→</span> Norfolk / Hampton, VA</h4><div class="leg-detail__metrics"><span>240 nm</span><span>50 hr / 2.1 days underway</span><span>13.9 stay days</span></div><p>Hampton Roads staging anchorage or marina.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">02</span><div class="leg-detail__body"><p class="leg-detail__period">Nov 5–Dec 5, 2026 · Offshore</p><h4>Norfolk / Hampton, VA <span>→</span> St. George’s, Bermuda</h4><div class="leg-detail__metrics"><span>640 nm</span><span>133 hr / 5.6 days underway</span><span>24.4 stay days</span></div><p>Ordnance Island Yacht Reporting Centre, then Powder Hole.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">03</span><div class="leg-detail__body"><p class="leg-detail__period">Dec 5–13, 2026 · Offshore</p><h4>St. George’s, Bermuda <span>→</span> Simpson Bay, Sint Maarten</h4><div class="leg-detail__metrics"><span>863 nm</span><span>180 hr / 7.5 days underway</span><span>0.5 stay days</span></div><p>Clear on the Dutch side at Simpson Bay; do not mix with Marigot clearance.</p></div></article>
+          </div>
+        </details>
+
+        <details class="leg-chapter">
+          <summary><span>Chapter 02</span><strong>Leewards → Virgins → Puerto Rico</strong><small>Legs 04–08 · Dec–Mar</small></summary>
+          <div class="leg-list">
+            <article class="leg-detail"><span class="leg-detail__number">04</span><div class="leg-detail__body"><p class="leg-detail__period">Dec 13–28, 2026 · Island cruising</p><h4>Sint Maarten <span>→</span> Anguilla / St. Barts / Statia / St. Kitts</h4><div class="leg-detail__metrics"><span>90 nm</span><span>19 hr / 0.8 days underway</span><span>14.2 stay days</span></div><p>Clear in and out at each jurisdiction; anchorages vary.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">05</span><div class="leg-detail__body"><p class="leg-detail__period">Dec 28–31, 2026 · Offshore</p><h4>St. Kitts <span>→</span> Virgin Gorda, BVI</h4><div class="leg-detail__metrics"><span>125 nm</span><span>26 hr / 1.1 days underway</span><span>1.9 stay days</span></div><p>Gun Creek or Road Town for official BVI clearance.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">06</span><div class="leg-detail__body"><p class="leg-detail__period">Dec 31, 2026–Jan 25, 2027 · Island cruising</p><h4>Virgin Gorda / Tortola <span>→</span> St. John / St. Thomas, USVI</h4><div class="leg-detail__metrics"><span>110 nm</span><span>23 hr / 1.0 day underway</span><span>24.0 stay days</span></div><p>Report entry to U.S. CBP before going ashore.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">07</span><div class="leg-detail__body"><p class="leg-detail__period">Jan 25–Feb 20, 2027 · Island cruising</p><h4>St. Thomas, USVI <span>→</span> Culebra / Vieques / Fajardo, PR</h4><div class="leg-detail__metrics"><span>70 nm</span><span>15 hr / 0.6 days underway</span><span>25.4 stay days</span></div><p>Cruz Bay departure; Ensenada Honda, Vieques and Fajardo stops.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">08</span><div class="leg-detail__body"><p class="leg-detail__period">Feb 20–Mar 5, 2027 · Coastal</p><h4>Fajardo, PR <span>→</span> Boquerón, PR via south coast</h4><div class="leg-detail__metrics"><span>120 nm</span><span>25 hr / 1.0 day underway</span><span>12.0 stay days</span></div><p>Use Salinas and/or Ponce; avoid the exposed nonstop north-coast assumption.</p></div></article>
+          </div>
+        </details>
+
+        <details class="leg-chapter">
+          <summary><span>Chapter 03</span><strong>Puerto Rico → Bahamas → Florida</strong><small>Legs 09–15 · Mar–May</small></summary>
+          <div class="leg-list">
+            <article class="leg-detail"><span class="leg-detail__number">09</span><div class="leg-detail__body"><p class="leg-detail__period">Mar 5–12, 2027 · Offshore</p><h4>Boquerón, PR <span>→</span> Samaná, Dominican Republic</h4><div class="leg-detail__metrics"><span>140 nm</span><span>29 hr / 1.2 days underway</span><span>5.8 stay days</span></div><p>Samaná official entry and despacho.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">10</span><div class="leg-detail__body"><p class="leg-detail__period">Mar 12–25, 2027 · Coastal</p><h4>Samaná, DR <span>→</span> Luperón, DR</h4><div class="leg-detail__metrics"><span>110 nm</span><span>23 hr / 1.0 day underway</span><span>12.0 stay days</span></div><p>Obtain domestic despacho as required; Puerto Plata is optional.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">11</span><div class="leg-detail__body"><p class="leg-detail__period">Mar 25–27, 2027 · Offshore</p><h4>Luperón, DR <span>→</span> Providenciales, Turks &amp; Caicos</h4><div class="leg-detail__metrics"><span>135 nm</span><span>28 hr / 1.2 days underway</span><span>0.8 stay days</span></div><p>Providenciales official entry.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">12</span><div class="leg-detail__body"><p class="leg-detail__period">Mar 27–29, 2027 · Offshore</p><h4>Providenciales, TCI <span>→</span> Mayaguana, Bahamas</h4><div class="leg-detail__metrics"><span>65 nm</span><span>14 hr / 0.6 days underway</span><span>1.4 stay days</span></div><p>Abraham’s Bay for official Bahamas entry.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">13</span><div class="leg-detail__body"><p class="leg-detail__period">Mar 29–Apr 18, 2027 · Island cruising</p><h4>Mayaguana <span>→</span> Georgetown, Exuma</h4><div class="leg-detail__metrics"><span>190 nm</span><span>40 hr / 1.6 days underway</span><span>18.4 stay days</span></div><p>Crooked/Acklins, Long Island, then Georgetown.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">14</span><div class="leg-detail__body"><p class="leg-detail__period">Apr 18–25, 2027 · Coastal</p><h4>Georgetown, Exuma <span>→</span> Bimini</h4><div class="leg-detail__metrics"><span>240 nm</span><span>50 hr / 2.1 days underway</span><span>4.9 stay days</span></div><p>Nassau optional; use daylight for banks and coral heads.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">15</span><div class="leg-detail__body"><p class="leg-detail__period">Apr 25–May 4, 2027 · Offshore</p><h4>Bimini <span>→</span> Fort Lauderdale, FL</h4><div class="leg-detail__metrics"><span>50 nm</span><span>10 hr / 0.4 days underway</span><span>8.6 stay days</span></div><p>Report arrival to CBP immediately; ROAM may be available.</p></div></article>
+          </div>
+        </details>
+
+        <details class="leg-chapter">
+          <summary><span>Chapter 04</span><strong>Florida → Maine → Norfolk</strong><small>Legs 16–24 · May–Nov</small></summary>
+          <div class="leg-list">
+            <article class="leg-detail"><span class="leg-detail__number">16</span><div class="leg-detail__body"><p class="leg-detail__period">May 4–10, 2027 · Coastal</p><h4>Fort Lauderdale, FL <span>→</span> Fernandina Beach, FL</h4><div class="leg-detail__metrics"><span>340 nm</span><span>71 hr / 3.0 days underway</span><span>3.0 stay days</span></div><p>Fort Pierce, Canaveral and St. Augustine are bailout options.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">17</span><div class="leg-detail__body"><p class="leg-detail__period">May 10–18, 2027 · Coastal</p><h4>Fernandina Beach, FL <span>→</span> Morehead City / Beaufort, NC</h4><div class="leg-detail__metrics"><span>346 nm</span><span>72 hr / 3.0 days underway</span><span>5.0 stay days</span></div><p>Charleston intermediate stop; time inlet currents.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">18</span><div class="leg-detail__body"><p class="leg-detail__period">May 18–21, 2027 · Coastal</p><h4>Morehead City, NC <span>→</span> Chesapeake entrance</h4><div class="leg-detail__metrics"><span>213 nm</span><span>44 hr / 1.8 days underway</span><span>1.2 stay days</span></div><p>Require about a 60-hour usable weather window around Hatteras.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">19</span><div class="leg-detail__body"><p class="leg-detail__period">May 21–28, 2027 · Coastal</p><h4>Chesapeake entrance <span>→</span> Sandy Hook, NJ</h4><div class="leg-detail__metrics"><span>229 nm</span><span>48 hr / 2.0 days underway</span><span>5.0 stay days</span></div><p>Cape May and Atlantic City are bailout options.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">20</span><div class="leg-detail__body"><p class="leg-detail__period">May 28–Jul 12, 2027 · Coastal cruising</p><h4>Sandy Hook, NJ <span>→</span> Cape Cod Canal via Montauk / Newport</h4><div class="leg-detail__metrics"><span>181 nm</span><span>38 hr / 1.6 days underway</span><span>43.4 stay days</span></div><p>Montauk, Block Island and Newport; transit the Canal with a fair current.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">21</span><div class="leg-detail__body"><p class="leg-detail__period">Jul 12–Sep 5, 2027 · Coastal cruising</p><h4>Cape Cod Canal <span>→</span> Bar Harbor / Mount Desert, ME</h4><div class="leg-detail__metrics"><span>212 nm</span><span>44 hr / 1.8 days underway</span><span>53.2 stay days</span></div><p>Portland, Rockland and the Maine islands.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">22</span><div class="leg-detail__body"><p class="leg-detail__period">Sep 5–25, 2027 · Coastal</p><h4>Bar Harbor, ME <span>→</span> Newport, RI</h4><div class="leg-detail__metrics"><span>254 nm</span><span>53 hr / 2.2 days underway</span><span>17.8 stay days</span></div><p>Portland, then Cape Cod Canal with a fair westbound current.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">23</span><div class="leg-detail__body"><p class="leg-detail__period">Sep 25–Oct 20, 2027 · Coastal</p><h4>Newport, RI <span>→</span> Cape May, NJ</h4><div class="leg-detail__metrics"><span>237 nm</span><span>49 hr / 2.1 days underway</span><span>22.9 stay days</span></div><p>Sandy Hook intermediate stop.</p></div></article>
+            <article class="leg-detail"><span class="leg-detail__number">24</span><div class="leg-detail__body"><p class="leg-detail__period">Oct 20–Nov 5, 2027 · Coastal</p><h4>Cape May, NJ <span>→</span> Norfolk / Hampton, VA</h4><div class="leg-detail__metrics"><span>136 nm</span><span>28 hr / 1.2 days underway</span><span>14.8 stay days</span></div><p>Finish in Hampton Roads; time the Cape May and Chesapeake tides.</p></div></article>
+          </div>
+        </details>
+      </div>
     </section>
 
     <aside class="planning-note" aria-label="Important planning limitation">
