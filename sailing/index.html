@@ -8,7 +8,7 @@
   <title>Sailing & Exploration — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="sailing.css?v=20260817-anchorage2">
+  <link rel="stylesheet" href="sailing.css?v=20260827-passage1">
   <script src="../script.js" defer></script>
   <style>
     .sailing-page {
@@ -475,6 +475,60 @@
       .anchorage-feature__copy { padding: 34px 28px 38px; }
       .anchorage-feature__maps { min-height: 340px; }
     }
+
+    .passage-feature {
+      padding: 78px max(5vw, calc((100vw - 1180px) / 2));
+      background: rgba(4, 17, 25, .82);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(94,207,196,.1);
+    }
+    .passage-feature__card {
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      min-height: 480px;
+      overflow: hidden;
+      border: 1px solid rgba(94,207,196,.18);
+      background: rgba(8, 28, 38, .92);
+    }
+    .passage-feature__map {
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+      background: #07151e;
+    }
+    .passage-feature__map img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.78) brightness(.78);
+      transition: transform .55s ease, filter .55s ease;
+    }
+    .passage-feature__map:hover img { transform: scale(1.025); filter: saturate(.95) brightness(.9); }
+    .passage-feature__map::after {
+      content: "5,336 nm · 24 legs";
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 8px 11px;
+      background: rgba(4,17,25,.9);
+      color: #9fe6dd;
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .passage-feature__copy { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
+    .passage-feature__copy h2 { font-size: clamp(38px, 4.4vw, 62px); font-weight: 400; line-height: 1; letter-spacing: -.045em; margin: 10px 0 20px; }
+    .passage-feature__copy h2 span { color: var(--cyan-bright); font-style: italic; }
+    .passage-feature__copy > p:not(.eyebrow) { color: #91a7ac; line-height: 1.65; max-width: 430px; margin: 0 0 28px; }
+    .passage-feature__copy .button { color: var(--cyan-bright); font-size: 11px; letter-spacing: .13em; text-transform: uppercase; }
+    @media (max-width: 800px) {
+      .passage-feature { padding: 58px 22px; }
+      .passage-feature__card { grid-template-columns: 1fr; }
+      .passage-feature__copy { padding: 34px 28px 38px; grid-row: 1; }
+      .passage-feature__map { min-height: 360px; }
+    }
   </style>
 </head>
 <body class="sailing-page">
@@ -488,6 +542,7 @@
       <a href="../">Home</a>
       <a href="#vision">Vision</a>
       <a href="#sailboats">Sailboats</a>
+      <a href="yearly-passage-plan/">Passage Plan</a>
       <a href="Anchorage/">Anchorage</a>
       <a href="#preparation">Preparation</a>
       <a href="#route">Roadmap</a>
@@ -565,6 +620,20 @@
       </aside>
 
       <div class="band-footer">Keep exploring</div>
+    </section>
+
+    <section class="passage-feature" aria-labelledby="passage-feature-title">
+      <div class="passage-feature__card">
+        <a class="passage-feature__map" href="yearly-passage-plan/" aria-label="Open the yearly Atlantic and Caribbean passage plan">
+          <img src="yearly-passage-plan/assets/maps/yearly-loop-overview.png" alt="Yearly passage loop from the East Coast through Bermuda and the Caribbean" loading="lazy">
+        </a>
+        <div class="passage-feature__copy">
+          <p class="eyebrow">Yearly passage plan</p>
+          <h2 id="passage-feature-title">Follow the weather.<br><span>Complete the loop.</span></h2>
+          <p>A seasonal Tayana 37 route from the East Coast to Bermuda and the Caribbean, returning through the Bahamas, Florida and Maine—with passage charts, arrival maps and an editable workbook.</p>
+          <a href="yearly-passage-plan/" class="button">Explore the yearly plan <span>→</span></a>
+        </div>
+      </div>
     </section>
 
     <section class="anchorage-feature" aria-labelledby="anchorage-feature-title">
