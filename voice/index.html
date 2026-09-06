@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#05070b">
-  <meta name="description" content="Text to speech with an xAI voice. Paste text, generate audio, save as MP3.">
+  <meta name="description" content="On-device text to speech. Paste text and hear it on this phone. No API key required.">
   <title>Voice · Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
@@ -15,9 +15,9 @@
     .voice-lead{color:var(--muted);margin-bottom:28px;max-width:560px}
     .panel{background:rgba(10,14,22,.9);border:1px solid var(--line);border-radius:14px;padding:22px}
     label.field{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a919c;margin:0 0 8px}
-    textarea,input[type=password],input[type=text],select{width:100%;background:#080b12;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:12px 14px;font:inherit;outline:none}
+    textarea,select{width:100%;background:#080b12;border:1px solid var(--line);border-radius:8px;color:var(--text);padding:12px 14px;font:inherit;outline:none}
     textarea{min-height:220px;resize:vertical;line-height:1.55}
-    textarea:focus,input:focus,select:focus{border-color:rgba(167,139,250,.45)}
+    textarea:focus,select:focus{border-color:rgba(167,139,250,.45)}
     .meta-row{display:flex;justify-content:space-between;gap:12px;margin:8px 0 18px;font-size:12px;color:var(--muted)}
     .actions{display:flex;flex-wrap:wrap;gap:10px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:6px;padding:10px 16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.18)}
@@ -30,8 +30,6 @@
     .hint{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
     .status{margin-top:14px;font-size:13px;color:#c8cdd4;min-height:1.4em}
     .status.error{color:#f0a0a0}
-    .player{margin-top:18px;display:none}
-    .player audio{width:100%}
   </style>
 </head>
 <body>
@@ -50,28 +48,36 @@
   <main>
     <div class="voice-wrap">
       <p class="eyebrow">Text to speech</p>
-      <h1>Write it. Hear it. Keep it.</h1>
-      <p class="voice-lead">Paste a script, generate speech with your default xAI voice, then save the result as an MP3. The API key stays in this browser and is never written into the site files.</p>
+      <h1>Write it. Hear it.</h1>
+      <p class="voice-lead">This page speaks on your device. It does not call Grok or xAI and does not need an API key. The voice is the one installed on this phone or computer.</p>
       <div class="panel">
         <label class="field" for="script">Text</label>
         <textarea id="script" placeholder="Paste the lecture, journal note, or script here."></textarea>
-        <div class="meta-row"><span id="count">0 characters</span><span>Limit 15,000 characters per request</span></div>
+        <div class="meta-row"><span id="count">0 characters</span><span>Spoken on this device</span></div>
         <div class="actions">
-          <button class="btn primary" id="generate" type="button">Convert to audio</button>
-          <button class="btn" id="save" type="button" disabled>Save MP3</button>
+          <button class="btn primary" id="speak" type="button">Speak</button>
+          <button class="btn" id="stop" type="button">Stop</button>
           <button class="btn" id="clear" type="button">Clear</button>
         </div>
         <p class="status" id="status"></p>
-        <div class="player" id="player"><audio id="audio" controls></audio></div>
-        <details class="settings">
-          <summary>Voice and API settings</summary>
+        <details class="settings" open>
+          <summary>Voice settings</summary>
           <div class="grid-2">
-            <div><label class="field" for="voice">Default voice ID</label><input id="voice" type="text" spellcheck="false" placeholder="your-custom-voice-id or orion"></div>
-            <div><label class="field" for="language">Language</label><input id="language" type="text" value="en" spellcheck="false"></div>
-            <div><label class="field" for="apikey">xAI API key</label><input id="apikey" type="password" autocomplete="off" spellcheck="false" placeholder="xai-..."></div>
-            <div><label class="field" for="endpoint">TTS endpoint</label><input id="endpoint" type="text" spellcheck="false" value="https://api.x.ai/v1/tts"></div>
+            <div>
+              <label class="field" for="voice">Device voice</label>
+              <select id="voice"></select>
+            </div>
+            <div>
+              <label class="field" for="rate">Speed</label>
+              <select id="rate">
+                <option value="0.8">Slow</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.15">A little faster</option>
+                <option value="1.3">Fast</option>
+              </select>
+            </div>
           </div>
-          <p class="hint">Create a custom voice in the xAI console, then paste its voice_id above. That ID becomes the default on this page. If the browser blocks a direct call to api.x.ai, point the endpoint at a small proxy you control.</p>
+          <p class="hint">Safari on iPhone cannot export this on-device speech as an MP3 file. Use Speak to listen. A downloadable MP3 still requires a speech service such as xAI.</p>
         </details>
       </div>
     </div>
@@ -84,19 +90,9 @@
     const scriptEl = document.getElementById("script");
     const countEl = document.getElementById("count");
     const statusEl = document.getElementById("status");
-    const audioEl = document.getElementById("audio");
-    const playerEl = document.getElementById("player");
-    const generateBtn = document.getElementById("generate");
-    const saveBtn = document.getElementById("save");
     const voiceEl = document.getElementById("voice");
-    const languageEl = document.getElementById("language");
-    const keyEl = document.getElementById("apikey");
-    const endpointEl = document.getElementById("endpoint");
-    let objectUrl = "";
-    voiceEl.value = localStorage.getItem("dm_voice_id") || "orion";
-    keyEl.value = localStorage.getItem("dm_xai_key") || "";
-    languageEl.value = localStorage.getItem("dm_voice_lang") || "en";
-    endpointEl.value = localStorage.getItem("dm_tts_endpoint") || "https://api.x.ai/v1/tts";
+    const rateEl = document.getElementById("rate");
+    const speakBtn = document.getElementById("speak");
     document.getElementById("year").textContent = new Date().getFullYear();
     document.querySelector(".menu-button")?.addEventListener("click", () => {
       document.querySelector(".site-header").classList.toggle("menu-open");
@@ -104,74 +100,78 @@
     scriptEl.addEventListener("input", () => {
       countEl.textContent = scriptEl.value.length.toLocaleString() + " characters";
     });
-    ["voice","apikey","language","endpoint"].forEach((id) => {
-      document.getElementById(id).addEventListener("change", persistSettings);
-    });
-    function persistSettings() {
-      localStorage.setItem("dm_voice_id", voiceEl.value.trim());
-      localStorage.setItem("dm_xai_key", keyEl.value.trim());
-      localStorage.setItem("dm_voice_lang", languageEl.value.trim() || "en");
-      localStorage.setItem("dm_tts_endpoint", endpointEl.value.trim());
+    function supported() {
+      return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
     }
+    function loadVoices() {
+      const voices = speechSynthesis.getVoices();
+      const previous = localStorage.getItem("dm_device_voice") || "";
+      voiceEl.innerHTML = "";
+      if (!voices.length) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "Default device voice";
+        voiceEl.appendChild(opt);
+        return;
+      }
+      voices.forEach((voice, index) => {
+        const opt = document.createElement("option");
+        opt.value = String(index);
+        opt.textContent = voice.name + (voice.lang ? " (· " + voice.lang + ")" : "");
+        if (previous && voice.name === previous) opt.selected = true;
+        voiceEl.appendChild(opt);
+      });
+      if (!previous) {
+        const preferred = voices.findIndex(v => /en-US/i.test(v.lang) && /male|daniel|fred|samantha|alex|aaron/i.test(v.name));
+        const en = voices.findIndex(v => /^en/i.test(v.lang));
+        voiceEl.selectedIndex = preferred >= 0 ? preferred : (en >= 0 ? en : 0);
+      }
+    }
+    if (supported()) {
+      loadVoices();
+      speechSynthesis.onvoiceschanged = loadVoices;
+    } else {
+      statusEl.textContent = "This browser does not support on-device speech.";
+      statusEl.classList.add("error");
+      speakBtn.disabled = true;
+    }
+    voiceEl.addEventListener("change", () => {
+      const voices = speechSynthesis.getVoices();
+      const voice = voices[Number(voiceEl.value)];
+      if (voice) localStorage.setItem("dm_device_voice", voice.name);
+    });
+    speakBtn.addEventListener("click", () => {
+      const text = scriptEl.value.trim();
+      statusEl.classList.remove("error");
+      if (!text) {
+        statusEl.textContent = "Paste some text first.";
+        statusEl.classList.add("error");
+        return;
+      }
+      speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      const voices = speechSynthesis.getVoices();
+      const voice = voices[Number(voiceEl.value)];
+      if (voice) utter.voice = voice;
+      utter.rate = Number(rateEl.value) || 1;
+      utter.onstart = () => { statusEl.textContent = "Speaking…"; };
+      utter.onend = () => { statusEl.textContent = "Finished."; };
+      utter.onerror = () => {
+        statusEl.textContent = "The device could not speak this text.";
+        statusEl.classList.add("error");
+      };
+      speechSynthesis.speak(utter);
+    });
+    document.getElementById("stop").addEventListener("click", () => {
+      speechSynthesis.cancel();
+      statusEl.textContent = "Stopped.";
+    });
     document.getElementById("clear").addEventListener("click", () => {
+      speechSynthesis.cancel();
       scriptEl.value = "";
       countEl.textContent = "0 characters";
       statusEl.textContent = "";
       statusEl.classList.remove("error");
-      saveBtn.disabled = true;
-      playerEl.style.display = "none";
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
-      objectUrl = "";
-    });
-    generateBtn.addEventListener("click", async () => {
-      const text = scriptEl.value.trim();
-      const key = keyEl.value.trim();
-      const voice = voiceEl.value.trim() || "orion";
-      persistSettings();
-      statusEl.classList.remove("error");
-      if (!text) { statusEl.textContent = "Paste some text first."; statusEl.classList.add("error"); return; }
-      if (text.length > 15000) { statusEl.textContent = "Please shorten the text to 15,000 characters or fewer."; statusEl.classList.add("error"); return; }
-      if (!key) { statusEl.textContent = "Add your xAI API key under Voice and API settings."; statusEl.classList.add("error"); document.querySelector(".settings").open = true; return; }
-      generateBtn.disabled = true; saveBtn.disabled = true; statusEl.textContent = "Generating speech…";
-      try {
-        const response = await fetch(endpointEl.value.trim(), {
-          method: "POST",
-          headers: { "Authorization": "Bearer " + key, "Content-Type": "application/json" },
-          body: JSON.stringify({ text: text, voice_id: voice, language: languageEl.value.trim() || "en" })
-        });
-        if (!response.ok) {
-          const errText = await response.text();
-          throw new Error(response.status + " " + (errText.slice(0, 280) || response.statusText));
-        }
-        const blob = await response.blob();
-        if (objectUrl) URL.revokeObjectURL(objectUrl);
-        objectUrl = URL.createObjectURL(blob);
-        audioEl.src = objectUrl;
-        playerEl.style.display = "block";
-        saveBtn.disabled = false;
-        statusEl.textContent = "Ready. Play below or save the MP3.";
-        audioEl.play().catch(function(){});
-      } catch (err) {
-        statusEl.classList.add("error");
-        var message = String(err && err.message ? err.message : err);
-        if (/Failed to fetch|NetworkError|CORS/i.test(message)) {
-          statusEl.textContent = "The browser could not reach the TTS endpoint directly. That is usually a CORS limit. Use a small proxy and paste its URL in settings.";
-        } else {
-          statusEl.textContent = "Generation failed: " + message;
-        }
-      } finally {
-        generateBtn.disabled = false;
-      }
-    });
-    saveBtn.addEventListener("click", () => {
-      if (!objectUrl) return;
-      var stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
-      var a = document.createElement("a");
-      a.href = objectUrl;
-      a.download = "voice-" + stamp + ".mp3";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
     });
   </script>
 </body>
