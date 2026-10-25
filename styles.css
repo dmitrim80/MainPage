@@ -16,9 +16,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{
-  background:
-    linear-gradient(180deg, rgba(247,241,232,.4) 0%, rgba(247,241,232,.58) 50%, rgba(247,241,232,.7) 100%),
-    url('https://images.pexels.com/photos/14137344/pexels-photo-14137344.jpeg?auto=compress&cs=tinysrgb&w=1920') center top / cover fixed no-repeat;
+  background:#f7f1e8;
   color:var(--text);
   font:15px/1.55 Inter,system-ui,sans-serif;
   overflow-x:hidden;
