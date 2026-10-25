@@ -38,14 +38,14 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Smooth rotating marina / sailboat background — uses local boat photos
+// Smooth rotating marina / sailboat background — temporary hosted boat photos
 (function rotateBackground() {
   const images = [
-    'assets/bg-marina-1.jpg',
-    'assets/bg-marina-2.jpg',
-    'assets/bg-marina-3.jpg',
-    'assets/bg-marina-4.jpg',
-    'assets/bg-marina-5.jpg'
+    'https://litter.catbox.moe/8mgtvi.jpg',
+    'https://litter.catbox.moe/phv0np.jpg',
+    'https://litter.catbox.moe/z83t8o.jpg',
+    'https://litter.catbox.moe/trtimx.jpg',
+    'https://litter.catbox.moe/pgo7lm.jpg'
   ];
   let index = 0;
 
