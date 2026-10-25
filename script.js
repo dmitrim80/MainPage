@@ -38,14 +38,14 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Smooth rotating marina / sailboat background
+// Smooth rotating marina / sailboat background — uses local boat photos
 (function rotateBackground() {
   const images = [
-    'https://images.pexels.com/photos/14137344/pexels-photo-14137344.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/13420543/pexels-photo-13420543.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/13004400/pexels-photo-13004400.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/34965625/pexels-photo-34965625.jpeg?auto=compress&cs=tinysrgb&w=1920',
-    'https://images.pexels.com/photos/5370910/pexels-photo-5370910.jpeg?auto=compress&cs=tinysrgb&w=1920'
+    'assets/bg-marina-1.jpg',
+    'assets/bg-marina-2.jpg',
+    'assets/bg-marina-3.jpg',
+    'assets/bg-marina-4.jpg',
+    'assets/bg-marina-5.jpg'
   ];
   let index = 0;
 
