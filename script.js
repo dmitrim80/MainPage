@@ -38,7 +38,7 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Rotating marina / sailboat background
+// Smooth rotating marina / sailboat background
 (function rotateBackground() {
   const images = [
     'https://images.pexels.com/photos/14137344/pexels-photo-14137344.jpeg?auto=compress&cs=tinysrgb&w=1920',
@@ -48,20 +48,35 @@ if (yearEl) {
     'https://images.pexels.com/photos/5370910/pexels-photo-5370910.jpeg?auto=compress&cs=tinysrgb&w=1920'
   ];
   let index = 0;
-  const overlay = 'linear-gradient(180deg, rgba(247,241,232,.4) 0%, rgba(247,241,232,.58) 50%, rgba(247,241,232,.7) 100%)';
 
-  function setBackground() {
-    document.body.style.backgroundImage = overlay + ', url("' + images[index] + '")';
-    document.body.style.backgroundSize = 'auto, cover';
-    document.body.style.backgroundPosition = 'center top';
-    document.body.style.backgroundAttachment = 'fixed';
-    document.body.style.backgroundRepeat = 'no-repeat';
+  const layerA = document.createElement('div');
+  const layerB = document.createElement('div');
+  [layerA, layerB].forEach(el => {
+    el.style.cssText = 'position:fixed;inset:0;background-size:cover;background-position:center top;background-attachment:fixed;background-repeat:no-repeat;z-index:-2;transition:opacity 1.8s ease-in-out;pointer-events:none;';
+  });
+  layerB.style.opacity = '0';
+  document.body.prepend(layerA);
+  document.body.prepend(layerB);
+
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg, rgba(247,241,232,.4) 0%, rgba(247,241,232,.58) 50%, rgba(247,241,232,.7) 100%);';
+  document.body.prepend(overlay);
+
+  let active = layerA;
+  let inactive = layerB;
+
+  function show(url) {
+    inactive.style.backgroundImage = 'url("' + url + '")';
+    inactive.style.opacity = '1';
+    active.style.opacity = '0';
+    [active, inactive] = [inactive, active];
   }
 
-  setBackground();
+  show(images[0]);
+
   setInterval(() => {
     index = (index + 1) % images.length;
-    setBackground();
+    show(images[index]);
   }, 60000);
 })();
 
