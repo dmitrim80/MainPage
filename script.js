@@ -47,8 +47,7 @@ if (yearEl) {
     'assets/bg-marina-4.jpg',
     'assets/bg-marina-5.jpg',
     'assets/bg-marina-6.jpg',
-    'assets/bg-marina-7.jpg',
-    'static/media/IMG_8651.jpeg'
+    'assets/bg-marina-7.jpg'
   ];
   let index = 0;
 
