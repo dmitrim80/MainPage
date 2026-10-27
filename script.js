@@ -79,7 +79,7 @@ if (yearEl) {
   setInterval(() => {
     index = (index + 1) % images.length;
     show(images[index]);
-  }, 15000);
+  }, 5000);
 })();
 
 (function enhanceSailingCertification() {
