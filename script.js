@@ -41,11 +41,14 @@ if (yearEl) {
 // Smooth rotating marina / sailboat background — uses existing repo photos
 (function rotateBackground() {
   const images = [
-    'static/media/IMG_8710.jpeg',
-    'static/media/IMG_8651.jpeg',
-    '1981-tayana-37-pilothouse-sail-9729161-20250326143744029-1_XLARGE.webp',
-    '1981-tayana-37-pilothouse-sail-9729161-20250326143750786-1_XLARGE.webp',
-    '1981-tayana-37-pilothouse-sail-9729161-20250326143805236-1_XLARGE.webp'
+    'assets/bg-marina-1.jpg',
+    'assets/bg-marina-2.jpg',
+    'assets/bg-marina-3.jpg',
+    'assets/bg-marina-4.jpg',
+    'assets/bg-marina-5.jpg',
+    'assets/bg-marina-6.jpg',
+    'assets/bg-marina-7.jpg',
+    'static/media/IMG_8651.jpeg'
   ];
   let index = 0;
 
