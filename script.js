@@ -38,14 +38,14 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Smooth rotating marina / sailboat background — temporary hosted boat photos
+// Smooth rotating marina / sailboat background — uses existing repo photos
 (function rotateBackground() {
   const images = [
-    'https://litter.catbox.moe/8mgtvi.jpg',
-    'https://litter.catbox.moe/phv0np.jpg',
-    'https://litter.catbox.moe/z83t8o.jpg',
-    'https://litter.catbox.moe/trtimx.jpg',
-    'https://litter.catbox.moe/pgo7lm.jpg'
+    'static/media/IMG_8710.jpeg',
+    'static/media/IMG_8651.jpeg',
+    '1981-tayana-37-pilothouse-sail-9729161-20250326143744029-1_XLARGE.webp',
+    '1981-tayana-37-pilothouse-sail-9729161-20250326143750786-1_XLARGE.webp',
+    '1981-tayana-37-pilothouse-sail-9729161-20250326143805236-1_XLARGE.webp'
   ];
   let index = 0;
 
