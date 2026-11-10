@@ -8,57 +8,10 @@
   <title>In Search of the Right Boat — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../sailing/sailing.css?v=20260827-passage1">
   <style>
     body { background: #0a1620; color: #e8eef0; }
-    .site-header {
-      background: rgba(7,16,24,.88) !important;
-      border-bottom: 1px solid rgba(94,207,196,.1);
-    }
-    .site-header .monogram {
-      color: #f4f7f6;
-      border-bottom: 1.5px solid #c9a227;
-      padding-bottom: 2px;
-    }
-    .site-header .nav a {
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(232,238,240,.72) !important;
-      text-decoration: none;
-    }
-    .site-header .nav a:hover,
-    .site-header .nav a.active {
-      color: #5ecfc4 !important;
-    }
-    .site-header .nav-cta {
-      font-size: 11px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #f4f7f6 !important;
-      text-decoration: none;
-      z-index: 1;
-    }
-    .site-header .nav-cta span { color: #5ecfc4; margin-left: 4px; }
-    .site-header .menu-button { display: none; z-index: 1; }
-    .site-header .menu-button span { display: block; width: 18px; height: 1.5px; background: currentColor; margin: 4px 0; }
-    @media (max-width: 900px) {
-      .site-header .nav { display: none; }
-      .site-header .menu-button { display: block; color: #f4f7f6; }
-      .site-header.menu-open .nav {
-        display: flex;
-        position: absolute;
-        top: 60px;
-        left: 12px;
-        right: 12px;
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px;
-        background: #0b1520;
-        border: 1px solid rgba(94,207,196,.3);
-        border-radius: 10px;
-        transform: none;
-      }
-    }
+    /* Header/footer inherit from styles.css + sailing.css */
 
     .post-hero {
       min-height: 85vh;
@@ -101,7 +54,7 @@
     }
   </style>
 </head>
-<body>
+<body class="sailing-page">
   <header class="site-header" id="top">
     <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
     <nav class="nav" aria-label="Journal page navigation">
@@ -270,6 +223,7 @@
   </main>
 
   <footer>
+    <a class="monogram" href="../">DM<span>.</span></a>
     <p>© <span id="year"></span> Dmitri Morozov</p>
     <a href="#top">Back to top ↑</a>
   </footer>
