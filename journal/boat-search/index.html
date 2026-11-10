@@ -9,44 +9,34 @@
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    /* Header matching sailing page */
+    /* Header — inherit size/alignment from styles.css, override colors only */
     .site-header {
       background: rgba(7,16,24,.88) !important;
       border-bottom: 1px solid rgba(94,207,196,.1);
-      backdrop-filter: blur(16px);
     }
     .site-header .monogram {
       color: #f4f7f6 !important;
-      border-bottom: 1.5px solid #c9a227;
-      padding-bottom: 2px;
-      font-weight: 700;
+      border-bottom-color: #c9a227;
     }
-    .site-header .nav a {
-      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
-      color: rgba(232,238,240,.72) !important;
-    }
-    .site-header .nav a:hover { color: #5ecfc4 !important; }
     .site-header .nav-cta {
-      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-      color: #f4f7f6 !important; text-decoration: none;
-      z-index: 1;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #f4f7f6 !important;
+      text-decoration: none;
     }
     .site-header .nav-cta span { color: #5ecfc4; margin-left: 4px; }
-    .site-header .menu-button {
-      display: none;
-      background: none; border: 0; cursor: pointer;
-      z-index: 1; color: #f4f7f6;
-    }
-    .site-header .menu-button span {
-      display: block; width: 18px; height: 1.5px;
-      background: #f4f7f6; margin: 4px 0;
-    }
-    @media (max-width: 900px) {
-      .site-header { padding: 0 20px !important; }
-      .site-header .nav { display: none; }
-      .site-header.menu-open .nav { display: flex !important; position: absolute; top: 60px; left: 12px; right: 12px; flex-direction: column; gap: 10px; padding: 14px; background: #0b1520; border: 1px solid rgba(94,207,196,.3); border-radius: 10px; transform: none; z-index: 50; }
-      .site-header .menu-button { display: block !important; }
-      .site-header .nav-cta { display: block !important; }
+    .site-header.menu-open .nav {
+      display: flex !important;
+      position: absolute;
+      top: 60px; left: 12px; right: 12px;
+      flex-direction: column; gap: 10px;
+      padding: 14px;
+      background: #0b1520;
+      border: 1px solid rgba(94,207,196,.3);
+      border-radius: 10px;
+      transform: none;
+      z-index: 50;
     }
 
     /* Footer matching sailing page */
