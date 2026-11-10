@@ -11,15 +11,26 @@
   <style>
     /* Header matching sailing page */
     .site-header {
+      position: fixed !important;
+      top: 0; left: 0; right: 0;
+      height: 60px !important;
+      z-index: 40;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 5% !important;
       background: rgba(7,16,24,.88) !important;
       border-bottom: 1px solid rgba(94,207,196,.1);
       backdrop-filter: blur(16px);
+      color: #f7f1e8;
     }
     .site-header .monogram {
       color: #f4f7f6 !important;
       border-bottom: 1.5px solid #c9a227;
       padding-bottom: 2px;
       font-weight: 700;
+      font-size: 18px !important;
+      letter-spacing: .02em;
     }
     .site-header .nav a {
       font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
@@ -42,22 +53,10 @@
       background: #f4f7f6; margin: 4px 0;
     }
     @media (max-width: 900px) {
-      .site-header {
-        padding: 0 16px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-      }
+      .site-header { padding: 0 20px !important; }
       .site-header .nav { display: none !important; }
       .site-header .menu-button { display: block !important; }
-      .site-header .nav-cta {
-        display: block !important;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .site-header .monogram { flex-shrink: 0; }
-      .site-header .menu-button { flex-shrink: 0; }
+      .site-header .nav-cta { display: block !important; }
     }
 
     /* Footer matching sailing page */
