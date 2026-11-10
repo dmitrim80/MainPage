@@ -16,7 +16,8 @@
     }
     .site-header .monogram {
       color: #f4f7f6;
-      border-bottom-color: #5ecfc4;
+      border-bottom: 1.5px solid #c9a227;
+      padding-bottom: 2px;
     }
     .site-header .nav a {
       font-size: 11px;
@@ -29,17 +30,35 @@
     .site-header .nav a.active {
       color: #5ecfc4 !important;
     }
-    .site-header .connect-btn {
-      font-size: 10px;
+    .site-header .nav-cta {
+      font-size: 11px;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: #e8eef0 !important;
-      border: 1px solid rgba(94,207,196,.4);
-      border-radius: 3px;
-      padding: 8px 14px;
+      color: #f4f7f6 !important;
+      text-decoration: none;
+      z-index: 1;
     }
-    .site-header .connect-btn span { color: #5ecfc4; margin-left: 6px; }
-    .site-header .connect-btn:hover { border-color: #5ecfc4; background: rgba(94,207,196,.1); }
+    .site-header .nav-cta span { color: #5ecfc4; margin-left: 4px; }
+    .site-header .menu-button { display: none; z-index: 1; }
+    .site-header .menu-button span { display: block; width: 18px; height: 1.5px; background: currentColor; margin: 4px 0; }
+    @media (max-width: 900px) {
+      .site-header .nav { display: none; }
+      .site-header .menu-button { display: block; color: #f4f7f6; }
+      .site-header.menu-open .nav {
+        display: flex;
+        position: absolute;
+        top: 60px;
+        left: 12px;
+        right: 12px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        background: #0b1520;
+        border: 1px solid rgba(94,207,196,.3);
+        border-radius: 10px;
+        transform: none;
+      }
+    }
 
     .post-hero {
       min-height: 85vh;
@@ -84,14 +103,15 @@
 </head>
 <body>
   <header class="site-header" id="top">
-    <a class="monogram" href="../" aria-label="Home">DM</a>
-    <nav class="nav">
+    <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
+    <nav class="nav" aria-label="Journal page navigation">
       <a href="../">Home</a>
       <a href="../#about">About</a>
       <a href="../#journal">Journal</a>
       <a href="../#contact">Contact</a>
     </nav>
-    <a class="connect-btn" href="../#contact">Let's Connect <span>→</span></a>
+    <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
   </header>
 
   <section class="post-hero">
