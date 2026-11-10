@@ -10,12 +10,36 @@
   <link rel="stylesheet" href="../styles.css">
   <style>
     body { background: #0a1620; color: #e8eef0; }
-    .site-header { background: rgba(7,16,24,.94) !important; border-bottom: 1px solid rgba(94,207,196,.12); }
-    .site-header .monogram { color: #f4f7f6; border-bottom-color: #5ecfc4; }
-    .site-header .nav a { color: rgba(232,238,240,.72) !important; }
-    .site-header .nav a:hover { color: #5ecfc4 !important; }
-    .site-header .connect-btn { color: #e8eef0 !important; border-color: rgba(94,207,196,.4); }
-    .site-header .connect-btn span { color: #5ecfc4; }
+    .site-header {
+      background: rgba(7,16,24,.88) !important;
+      border-bottom: 1px solid rgba(94,207,196,.1);
+    }
+    .site-header .monogram {
+      color: #f4f7f6;
+      border-bottom-color: #5ecfc4;
+    }
+    .site-header .nav a {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(232,238,240,.72) !important;
+      text-decoration: none;
+    }
+    .site-header .nav a:hover,
+    .site-header .nav a.active {
+      color: #5ecfc4 !important;
+    }
+    .site-header .connect-btn {
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #e8eef0 !important;
+      border: 1px solid rgba(94,207,196,.4);
+      border-radius: 3px;
+      padding: 8px 14px;
+    }
+    .site-header .connect-btn span { color: #5ecfc4; margin-left: 6px; }
+    .site-header .connect-btn:hover { border-color: #5ecfc4; background: rgba(94,207,196,.1); }
 
     .post-hero {
       min-height: 85vh;
