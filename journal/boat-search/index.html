@@ -16,9 +16,10 @@
       backdrop-filter: blur(16px);
     }
     .site-header .monogram {
-      color: #f4f7f6;
+      color: #f4f7f6 !important;
       border-bottom: 1.5px solid #c9a227;
       padding-bottom: 2px;
+      font-weight: 700;
     }
     .site-header .nav a {
       font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
@@ -28,13 +29,23 @@
     .site-header .nav-cta {
       font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
       color: #f4f7f6 !important; text-decoration: none;
+      z-index: 1;
     }
     .site-header .nav-cta span { color: #5ecfc4; margin-left: 4px; }
-    .site-header .menu-button { display: none; }
-    .site-header .menu-button span { display: block; width: 18px; height: 1.5px; background: #f4f7f6; margin: 4px 0; }
+    .site-header .menu-button {
+      display: none;
+      background: none; border: 0; cursor: pointer;
+      z-index: 1; color: #f4f7f6;
+    }
+    .site-header .menu-button span {
+      display: block; width: 18px; height: 1.5px;
+      background: #f4f7f6; margin: 4px 0;
+    }
     @media (max-width: 900px) {
-      .site-header .nav { display: none; }
-      .site-header .menu-button { display: block; color: #f4f7f6; }
+      .site-header { padding: 0 20px !important; }
+      .site-header .nav { display: none !important; }
+      .site-header .menu-button { display: block !important; }
+      .site-header .nav-cta { display: block !important; }
     }
 
     /* Footer matching sailing page */
@@ -95,6 +106,7 @@
       .post-hero { min-height: 70vh; padding-bottom: 48px; }
     }
   </style>
+  <script src="../script.js" defer></script>
 </head>
 <body >
   <header class="site-header" id="top">
