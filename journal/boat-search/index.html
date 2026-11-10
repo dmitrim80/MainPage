@@ -42,10 +42,22 @@
       background: #f4f7f6; margin: 4px 0;
     }
     @media (max-width: 900px) {
-      .site-header { padding: 0 20px !important; }
+      .site-header {
+        padding: 0 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
       .site-header .nav { display: none !important; }
       .site-header .menu-button { display: block !important; }
-      .site-header .nav-cta { display: block !important; }
+      .site-header .nav-cta {
+        display: block !important;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .site-header .monogram { flex-shrink: 0; }
+      .site-header .menu-button { flex-shrink: 0; }
     }
 
     /* Footer matching sailing page */
