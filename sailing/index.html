@@ -17,13 +17,14 @@
       --navy: #0b1520;
       --navy-deep: #071018;
       color: #e8eef0;
-      background: #041018;
+      background: #041018 url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover fixed;
       overflow-x: hidden;
     }
     .sailing-page .ambient { display: none; }
 
     /* ===== FULL-PAGE LIVE WALLPAPER ===== */
     .ocean-live-bg {
+      display: none !important;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -40,6 +41,7 @@
       filter: brightness(.85) saturate(1.1) contrast(1.05);
     }
     .ocean-live-overlay {
+      display: none !important;
       position: fixed;
       inset: 0;
       z-index: 0;
@@ -76,13 +78,15 @@
 
     .sailing-hero {
       position: relative;
-      min-height: 72vh;
-      min-height: 72svh;
+      min-height: 82vh;
+      min-height: 82svh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
       overflow: hidden;
-      background: transparent;
+      background:
+        linear-gradient(90deg, rgba(4,16,24,.55) 0%, rgba(4,16,24,.25) 42%, rgba(4,16,24,.65) 100%),
+        url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover no-repeat;
       border-bottom: none;
       padding: 0;
     }
