@@ -163,7 +163,7 @@
       <a href="../../#contact">Contact</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" onclick="this.parentElement.classList.toggle('menu-open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
   </header>
 
   <section class="post-hero">
