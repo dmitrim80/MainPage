@@ -39,7 +39,6 @@
       transform: translateY(-2px);
       box-shadow: 0 16px 40px rgba(15,44,76,.15);
     }
-    .theme-preview a { display: block; text-decoration: none; color: inherit; }
     .preview-horizon {
       height: 220px;
       background:
@@ -122,6 +121,38 @@
       justify-content: center;
       color: #0f2c4c;
     }
+    .preview-dark {
+      background: #05070b;
+      padding: 16px;
+      height: 220px;
+      display: grid;
+      grid-template-columns: 1fr 70px;
+      gap: 12px;
+      align-items: center;
+      color: #f0ece4;
+    }
+    .preview-dark .text h4 {
+      font-size: 16px;
+      margin: 0 0 4px;
+      color: #f0ece4;
+      font-weight: 400;
+    }
+    .preview-dark .text h4 span {
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(240,236,228,.55);
+    }
+    .preview-dark .text p {
+      font-size: 9px;
+      color: #8a919c;
+      margin: 0;
+    }
+    .preview-dark .portrait {
+      width: 70px;
+      height: 88px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.1);
+      background: url('../static/media/profile1.jpg') center/cover;
+    }
     .preview-earlier {
       height: 220px;
       background: #faf8f5;
@@ -190,13 +221,13 @@
         <p class="lead">Themes listed newest first (oldest at the bottom). Click any theme name or preview to view the full-page design.</p>
 
         <div style="margin-top:32px;">
-          <!-- 03 Horizon Light (Current) -->
+          <!-- 04 Horizon Light (Current) -->
           <div class="theme-entry">
-            <div class="theme-number">03</div>
+            <div class="theme-number">04</div>
             <div>
               <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Current · 11 November 2026</span>
-              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);"><a href="../" style="color:inherit;border-bottom:1px solid transparent;">Horizon Light</a></h3>
-              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type. Backup of previous theme stored in /backups/.</p>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);"><a href="../" style="color:inherit;">Horizon Light</a></h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type.</p>
               <p style="margin-top:12px;font-size:13px;"><a href="../" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View full page →</a></p>
             </div>
             <a href="../" class="theme-preview">
@@ -208,13 +239,13 @@
             </a>
           </div>
 
-          <!-- 02 Sunrise Marina -->
+          <!-- 03 Sunrise Marina -->
           <div class="theme-entry">
-            <div class="theme-number">02</div>
+            <div class="theme-number">03</div>
             <div>
               <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">25 October 2026 – 11 November 2026</span>
               <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);"><a href="sunrise-marina.html" style="color:inherit;">Sunrise Marina</a></h3>
-              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Cream background (#f7f1e8), deep navy, gold accents, ambient warm gradients, side-by-side hero with rectangular portrait, two equal project cards (Sailing / Cooking). Outline treatment on surname. Files: backups/index-2026-11-11.html and backups/styles-2026-11-11.css.</p>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Cream background (#f7f1e8), deep navy, gold accents, ambient warm gradients, side-by-side hero with rectangular portrait, two equal project cards (Sailing / Cooking). Outline treatment on surname.</p>
               <p style="margin-top:12px;font-size:13px;"><a href="sunrise-marina.html" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View full page →</a></p>
             </div>
             <a href="sunrise-marina.html" class="theme-preview">
@@ -232,13 +263,33 @@
             </a>
           </div>
 
+          <!-- 02 Dark Water -->
+          <div class="theme-entry">
+            <div class="theme-number">02</div>
+            <div>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">25 October 2026</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);"><a href="dark-water.html" style="color:inherit;">Dark Water</a></h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Dark background (#05070b), light text, teal accents, side-by-side hero with rectangular portrait and outline surname. Earlier dark-mode version of the homepage. Files: backups/index-2026-10-25.html and backups/styles-2026-10-25.css.</p>
+              <p style="margin-top:12px;font-size:13px;"><a href="dark-water.html" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View full page →</a></p>
+            </div>
+            <a href="dark-water.html" class="theme-preview">
+              <div class="preview-dark">
+                <div class="text">
+                  <h4>Dmitri <span>Morozov</span></h4>
+                  <p>Thoughts on markets...</p>
+                </div>
+                <div class="portrait"></div>
+              </div>
+            </a>
+          </div>
+
           <!-- 01 Early Studies -->
           <div class="theme-entry">
             <div class="theme-number">01</div>
             <div>
               <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Earlier concepts</span>
               <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);"><a href="early-studies.html" style="color:inherit;">Early Studies</a></h3>
-              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes. Additional backups may exist under /backups/.</p>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes.</p>
               <p style="margin-top:12px;font-size:13px;"><a href="early-studies.html" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View full page →</a></p>
             </div>
             <a href="early-studies.html" class="theme-preview">
