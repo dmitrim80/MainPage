@@ -552,7 +552,7 @@
     }
   
     .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; padding: 12px; min-width: 44px; min-height: 44px; }
-    .sailing-page .site-header .menu-button span { display: block; width: 20px; height: 2px; background: #f4f7f6; margin: 4px 0; pointer-events: none; }
+    .sailing-page .site-header .menu-button span { display: block; width: 20px; height: 2px; background: #f4f7f6; margin: 4px 0; }
     @media (max-width: 900px) {
       .sailing-page .site-header .nav { display: none !important; }
       .sailing-page .site-header .menu-button { display: block !important; }
@@ -622,6 +622,33 @@
   border-bottom: 1px solid rgba(255,255,255,.1);
 }
 </style>
+
+<style>
+/* Menu copied from journal page */
+.site-header.menu-open .nav {
+  display: flex !important;
+  position: absolute !important;
+  top: 60px !important;
+  left: 12px !important;
+  right: 12px !important;
+  flex-direction: column !important;
+  background: #0b1520 !important;
+  padding: 14px !important;
+  z-index: 9999 !important;
+  border: 1px solid rgba(94,207,196,.3);
+  border-radius: 10px;
+}
+.site-header.menu-open .nav a {
+  color: #e8eef0 !important;
+  padding: 10px 0 !important;
+  display: block !important;
+}
+.menu-button span { pointer-events: none; }
+@media (max-width: 900px) {
+  .nav { display: none !important; }
+  .menu-button { display: block !important; }
+}
+</style>
 </head>
 <body class="sailing-page">
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
@@ -641,7 +668,7 @@
       <a href="#log">Log</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" id="menuBtn" onclick="document.querySelector('.site-header').classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" ontouchend="event.preventDefault();var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))" onclick="var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
   </header>
 
   <main>
