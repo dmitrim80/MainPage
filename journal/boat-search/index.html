@@ -130,38 +130,41 @@
 </style>
   <script src="../../script.js" defer></script>
 
-
+<style>
+@media(max-width:9999px){
+  .nav{display:none !important}
+  .menu-button{display:block !important}
+  .site-header.menu-open .nav{
+    display:flex !important;
+    position:absolute !important;
+    top:60px !important;left:12px !important;right:12px !important;
+    flex-direction:column !important;
+    background:#0b1520 !important;
+    padding:14px !important;
+    z-index:999 !important;
+    border:1px solid rgba(94,207,196,.3);
+    border-radius:10px;
+  }
+  .site-header.menu-open .nav a{
+    color:#e8eef0 !important;
+    padding:8px 0;
+    display:block;
+  }
+}
+</style>
 </head>
-<body>
-<header class="site-header" id="top">
-  <a class="monogram" href="../../">DM</a>
-  <nav class="nav">
-    <a href="../../">Home</a>
-    <a href="../../#about">About</a>
-    <a href="../../#journal">Journal</a>
-    <a href="../../#contact">Contact</a>
-  </nav>
-  <a class="connect-btn" href="../../#contact">Let's Connect <span>→</span></a>
-  <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-<header class="site-header" id="top">
-  <a class="monogram" href="../../">DM</a>
-  <nav class="nav">
-    <a href="../../">Home</a>
-    <a href="../../#about">About</a>
-    <a href="../../#journal">Journal</a>
-    <a href="../../#contact">Contact</a>
-  </nav>
-  <a class="connect-btn" href="../../#contact">Let's Connect <span>→</span></a>
-  <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-  
+<body >
+  <header class="site-header" id="top">
+    <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
+    <nav class="nav" aria-label="Journal page navigation">
+      <a href="../../">Home</a>
+      <a href="../../#about">About</a>
+      <a href="../../#journal">Journal</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" ontouchend="event.preventDefault();var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))" onclick="var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
+  </header>
 
   <section class="post-hero">
     <div class="post-hero-inner">
