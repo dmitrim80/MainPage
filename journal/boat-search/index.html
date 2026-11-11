@@ -10,6 +10,25 @@
   <link rel="stylesheet" href="../../styles.css?v=20261110">
   <style>
     /* Header — inherit size/alignment from styles.css, override colors only */
+    
+    @media (max-width: 900px) {
+      .site-header .nav { display: none !important; }
+      .site-header .menu-button { display: block !important; }
+      .site-header.menu-open .nav {
+        display: flex !important;
+        position: absolute !important;
+        top: 60px !important;
+        left: 12px !important;
+        right: 12px !important;
+        flex-direction: column !important;
+        background: #0b1520 !important;
+        z-index: 100 !important;
+        padding: 14px;
+        border: 1px solid rgba(94,207,196,.3);
+        border-radius: 10px;
+      }
+    }
+
     .site-header {
       background: rgba(7,16,24,.88) !important;
       border-bottom: 1px solid rgba(94,207,196,.1);
@@ -141,7 +160,7 @@
         <p>These are the vessels I looked at during the search. Most were Tayana 37s. A few were other offshore designs that shared the same philosophy.</p>
         <div class="two-col">
           <div class="feature-card">
-            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
+            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki-malo/photos/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
             <div class="body">
               <span class="status">Leading candidate</span>
               <h3>Teki Malo</h3>
@@ -157,7 +176,7 @@
             </div>
           </div>
           <div class="feature-card">
-            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/Three%20Little%20Birds%2C%201983%20Cambridge%2C%20MD%2C%2045k/2852044_54041275_1.jpg" alt="Three Little Birds">
+            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/three-little-birds/photos/2852044_54041275_1.jpg" alt="Three Little Birds">
             <div class="body">
               <span class="status">Rejected</span>
               <h3>Three Little Birds</h3>
