@@ -608,19 +608,42 @@
 }
 </style>
 
-
+<style>
+@media (max-width: 900px) {
+  .site-header .nav { display: none; }
+  .site-header .menu-button { display: block; }
+  .site-header.menu-open .nav {
+    display: flex !important;
+    position: absolute;
+    top: 60px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: #0f2c4c;
+    border: 1px solid rgba(201,162,39,.3);
+    border-radius: 10px;
+    z-index: 100;
+  }
+  .site-header.menu-open .nav a {
+    color: #fff;
+    padding: 8px 0;
+  }
+}
+</style>
 </head>
 <body class="sailing-page">
 <header class="site-header" id="top">
-  <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
-  <nav class="nav" aria-label="Primary">
+  <a class="monogram" href="../">DM<span>.</span></a>
+  <nav class="nav">
     <a href="../">Home</a>
     <a href="#sailboats">Sailboats</a>
     <a href="#tayana">Tayana 37</a>
     <a href="tayana-37/">All Boats</a>
   </nav>
   <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-  <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
