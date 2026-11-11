@@ -28,15 +28,20 @@
     .site-header .nav-cta span { color: #5ecfc4; margin-left: 4px; }
     .site-header.menu-open .nav {
       display: flex !important;
-      position: absolute;
-      top: 60px; left: 12px; right: 12px;
-      flex-direction: column; gap: 10px;
+      position: absolute !important;
+      top: 60px !important; left: 12px !important; right: 12px !important;
+      flex-direction: column !important; gap: 10px;
       padding: 14px;
-      background: #0b1520;
+      background: #0b1520 !important;
       border: 1px solid rgba(94,207,196,.3);
       border-radius: 10px;
-      transform: none;
-      z-index: 50;
+      transform: none !important;
+      z-index: 100 !important;
+    }
+    .site-header.menu-open .nav a {
+      color: #e8eef0 !important;
+      padding: 8px 0;
+      display: block;
     }
 
     /* Footer matching sailing page */
