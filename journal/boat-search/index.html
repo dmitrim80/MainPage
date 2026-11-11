@@ -109,7 +109,7 @@
       <a href="../../#contact">Contact</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
 
   <section class="post-hero">
@@ -273,5 +273,20 @@
     <a href="#top">Back to top ↑</a>
   </footer>
   <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+<script>
+(function(){
+  var header = document.querySelector('.site-header');
+  var btn = document.querySelector('.menu-button');
+  if (!header || !btn) return;
+  btn.addEventListener('click', function(){
+    var open = header.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav a').forEach(function(a){
+    a.addEventListener('click', function(){ header.classList.remove('menu-open'); });
+  });
+})();
+</script>
 </body>
 </html>
