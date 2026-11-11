@@ -577,6 +577,29 @@
       }
     }
 </style>
+
+<style>
+@media(max-width:900px){
+  .sailing-page .nav{display:none !important}
+  .sailing-page .menu-button{display:block !important}
+  .sailing-page .site-header.menu-open .nav{
+    display:flex !important;
+    position:absolute !important;
+    top:60px !important;left:12px !important;right:12px !important;
+    flex-direction:column !important;
+    background:#0b1520 !important;
+    padding:14px !important;
+    z-index:999 !important;
+    border:1px solid rgba(94,207,196,.3);
+    border-radius:10px;
+  }
+  .sailing-page .site-header.menu-open .nav a{
+    color:#e8eef0 !important;
+    padding:8px 0;
+    display:block;
+  }
+}
+</style>
 </head>
 <body class="sailing-page">
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
@@ -699,26 +722,18 @@
   </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function(){
+(function(){
   var header = document.querySelector('.site-header');
   var btn = document.querySelector('.menu-button');
   if (!header || !btn) return;
-  btn.onclick = function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    if (header.classList.contains('menu-open')) {
-      header.classList.remove('menu-open');
-      btn.setAttribute('aria-expanded', 'false');
-    } else {
-      header.classList.add('menu-open');
-      btn.setAttribute('aria-expanded', 'true');
-    }
-  };
-  var links = header.querySelectorAll('.nav a');
-  for (var i = 0; i < links.length; i++) {
-    links[i].onclick = function(){ header.classList.remove('menu-open'); };
-  }
-});
+  btn.addEventListener('click', function(){
+    var open = header.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav a').forEach(function(a){
+    a.addEventListener('click', function(){ header.classList.remove('menu-open'); });
+  });
+})();
 </script>
 </body>
 </html>
