@@ -699,18 +699,26 @@
   </footer>
 
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', function(){
   var header = document.querySelector('.site-header');
   var btn = document.querySelector('.menu-button');
   if (!header || !btn) return;
-  btn.addEventListener('click', function(){
-    var open = header.classList.toggle('menu-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.querySelectorAll('.nav a').forEach(function(a){
-    a.addEventListener('click', function(){ header.classList.remove('menu-open'); });
-  });
-})();
+  btn.onclick = function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    if (header.classList.contains('menu-open')) {
+      header.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      header.classList.add('menu-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  };
+  var links = header.querySelectorAll('.nav a');
+  for (var i = 0; i < links.length; i++) {
+    links[i].onclick = function(){ header.classList.remove('menu-open'); };
+  }
+});
 </script>
 </body>
 </html>
