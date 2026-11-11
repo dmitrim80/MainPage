@@ -7,7 +7,7 @@
   <meta name="description" content="Dmitri Morozov's sailing journey — focusing on Río Dulce, Guatemala and the 1988 Tayana 37 Teki Malo.">
   <title>Río Dulce & Teki Malo — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="../styles.css?v=20261111a">
+  <link rel="stylesheet" href="../styles.css?v=20261110">
   <link rel="stylesheet" href="sailing.css?v=20260827-passage1">
   <script src="../script.js" defer></script>
   <style>
@@ -641,7 +641,7 @@
       <a href="#log">Log</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" ontouchend="event.preventDefault();var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))" onclick="var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" id="menuBtn" onclick="document.querySelector('.site-header').classList.toggle('menu-open')"><span></span><span></span><span></span></button>
   </header>
 
   <main>
