@@ -74,18 +74,23 @@
     
     .sailing-page .site-header.menu-open .nav {
       display: flex !important;
-      position: absolute;
-      top: 60px;
-      left: 12px;
-      right: 12px;
-      flex-direction: column;
+      position: absolute !important;
+      top: 60px !important;
+      left: 12px !important;
+      right: 12px !important;
+      flex-direction: column !important;
       gap: 10px;
       padding: 14px;
-      background: #0b1520;
+      background: #0b1520 !important;
       border: 1px solid rgba(94,207,196,.3);
       border-radius: 10px;
-      transform: none;
-      z-index: 50;
+      transform: none !important;
+      z-index: 100 !important;
+    }
+    .sailing-page .site-header.menu-open .nav a {
+      color: #e8eef0 !important;
+      padding: 8px 0;
+      display: block;
     }
 
     .sailing-page .site-header {
@@ -643,25 +648,11 @@
       <div class="band-footer">Keep exploring</div>
     </section>
 
-    <section class="section" id="tayana" style="background:rgba(7,16,24,.85);padding:64px 5%;border-top:1px solid rgba(94,207,196,.15);">
+    <section class="section" style="background:rgba(7,16,24,.78);padding:48px 5%;">
       <div class="section-label"><span>03</span> The Tayana 37</div>
-      <h2 style="font-size:32px;font-weight:400;margin:8px 0 12px;color:#f0f5f4;">The design and the boats</h2>
-      <p style="color:#9ab0b6;max-width:560px;margin:0 0 32px;line-height:1.65;font-size:16px;">The Tayana 37 is a classic Robert Perry design — full keel, heavy displacement, protected rudder, and cutter rig. Built for offshore passages and long-term living aboard. These are the individual boats that have been part of the search.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:32px;">
-        <a href="tayana-37/boats/teki-malo/" style="display:block;background:rgba(13,26,36,.9);border:1px solid rgba(94,207,196,.2);overflow:hidden;text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki-malo/photos/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo" style="width:100%;height:160px;object-fit:cover;display:block;">
-          <div style="padding:16px;"><span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5ecfc4;">Leading candidate</span><h3 style="margin:6px 0 4px;font-size:16px;color:#f0f5f4;font-weight:500;">Teki Malo</h3><p style="margin:0;font-size:13px;color:#8a9ea4;">1988 · Río Dulce, Guatemala</p></div>
-        </a>
-        <a href="tayana-37/boats/pantala/" style="display:block;background:rgba(13,26,36,.9);border:1px solid rgba(94,207,196,.2);overflow:hidden;text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/pantala/photos/1982-tayana-37-power-10216395-20260611123446559-1.webp" alt="Pantala" style="width:100%;height:160px;object-fit:cover;display:block;">
-          <div style="padding:16px;"><span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a9ea4;">Walked away</span><h3 style="margin:6px 0 4px;font-size:16px;color:#f0f5f4;font-weight:500;">Pantala</h3><p style="margin:0;font-size:13px;color:#8a9ea4;">1982 · New Bern, North Carolina</p></div>
-        </a>
-        <a href="tayana-37/boats/three-little-birds/" style="display:block;background:rgba(13,26,36,.9);border:1px solid rgba(94,207,196,.2);overflow:hidden;text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/three-little-birds/photos/2852044_54041275_1.jpg" alt="Three Little Birds" style="width:100%;height:160px;object-fit:cover;display:block;">
-          <div style="padding:16px;"><span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a9ea4;">Rejected</span><h3 style="margin:6px 0 4px;font-size:16px;color:#f0f5f4;font-weight:500;">Three Little Birds</h3><p style="margin:0;font-size:13px;color:#8a9ea4;">1983 · Cambridge, Maryland</p></div>
-        </a>
-      </div>
-      <a class="button" href="tayana-37/" style="color:#5ecfc4;font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;">View full Tayana 37 page and all boats <span>→</span></a>
+      <h2 style="font-size:28px;font-weight:400;margin:8px 0 16px;color:#f0f5f4;">The design and the boats</h2>
+      <p style="color:#9ab0b6;max-width:560px;margin:0 0 24px;line-height:1.6;">The Tayana 37 is a classic Robert Perry design — full keel, cutter rig, built for offshore passages. The page below covers the design in detail and the individual boats that have been part of the search.</p>
+      <a class="button" href="tayana-37/" style="color:#5ecfc4;font-size:12px;letter-spacing:.1em;text-transform:uppercase;">View Tayana 37 details and boats <span>→</span></a>
     </section>
 
   </main>
