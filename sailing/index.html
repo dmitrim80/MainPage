@@ -580,50 +580,52 @@
 
 
 
+
+
 <style>
-.sailing-page .site-header.menu-open .nav {
-  display: flex !important;
-  position: absolute !important;
-  top: 60px !important;
-  left: 12px !important;
-  right: 12px !important;
-  flex-direction: column !important;
-  background: #0b1520 !important;
-  padding: 14px !important;
-  z-index: 9999 !important;
-  border: 1px solid rgba(94,207,196,.3);
-  border-radius: 10px;
-}
-.sailing-page .site-header.menu-open .nav a {
-  color: #e8eef0 !important;
-  padding: 10px 0 !important;
-  display: block !important;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+.menu-button { display: none; background: none; border: 0; cursor: pointer; padding: 10px; }
+.menu-button span { display: block; width: 18px; height: 2px; background: #fff; margin: 4px 0; }
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .menu-button { display: block; }
+  .site-header.menu-open .nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #0b1520;
+    padding: 16px;
+    z-index: 100;
+  }
+  .site-header.menu-open .nav a {
+    color: #fff;
+    padding: 12px 0;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
 }
 </style>
-
-
 </head>
 <body class="sailing-page">
+<header class="site-header" id="top">
+  <a class="monogram" href="../">DM<span>.</span></a>
+  <nav class="nav">
+    <a href="../">Home</a>
+    <a href="#sailboats">Sailboats</a>
+    <a href="#tayana">Tayana 37</a>
+    <a href="tayana-37/">All Boats</a>
+  </nav>
+  <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
+  <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
     <source src="assets/stern-view-big-waves.mp4" type="video/mp4">
   </video>
   <div class="ocean-live-overlay" aria-hidden="true"></div>
-  <header class="site-header" id="top">
-    <a class="monogram" href="../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
-    <nav class="nav" aria-label="Sailing page navigation">
-      <a href="../">Home</a>
-      <a href="#vision">Vision</a>
-      <a href="#sailboats">Sailboats</a>
-      <a href="yearly-passage-plan/">Passage Plan</a>
-      <a href="Anchorage/">Anchorage</a>
-      <a href="#preparation">Preparation</a>
-      <a href="#route">Roadmap</a>
-      <a href="#log">Log</a>
-    </nav>
-    <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
-  </header>
+  
 
   <main>
     <section class="sailing-hero" aria-labelledby="sailing-title">
@@ -725,5 +727,17 @@
   </footer>
 
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.querySelector('.menu-button');
+  var header = document.querySelector('.site-header');
+  if (btn && header) {
+    btn.onclick = function() {
+      header.classList.toggle('menu-open');
+    };
+  }
+});
+</script>
 </body>
 </html>
