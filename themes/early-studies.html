@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f2c4c">
+  <title>Early Studies — Theme Demo</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../styles.css?v=20261111">
+  <style>
+    body { background: #faf8f5; }
+    .demo-banner {
+      background: #0f2c4c;
+      color: #f7f1e8;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .demo-banner a { color: #c9a227; border-bottom: 1px solid #c9a227; }
+    .study-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 5% 60px;
+      background: linear-gradient(135deg, #0f2c4c 0%, #1a3a5c 50%, #f7f1e8 100%);
+      color: #fff;
+    }
+    .study-hero h1 {
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 400;
+      letter-spacing: -.03em;
+      margin: 0 0 16px;
+      line-height: 1;
+    }
+    .study-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 5%;
+    }
+    .study-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .study-card {
+      background: #fff;
+      border: 1px solid rgba(26,35,50,.1);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .study-card h3 { margin: 0 0 8px; font-size: 16px; color: #0f2c4c; font-weight: 500; }
+    .study-card p { margin: 0; font-size: 13px; color: #5a6a7a; }
+    .swatches { display: flex; gap: 12px; margin: 24px 0; }
+    .swatch { width: 48px; height: 48px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="demo-banner">Theme Demo: Early Studies &nbsp;|&nbsp; <a href="index.html">← Back to Themes</a></div>
+  <header class="site-header">
+    <a class="monogram" href="../">DM</a>
+    <nav class="nav">
+      <a href="../">Home</a>
+      <a href="index.html">Themes</a>
+    </nav>
+  </header>
+  <section class="study-hero">
+    <div>
+      <h1>Early Studies</h1>
+      <p style="font-size:16px;max-width:420px;opacity:.9;margin:0;">Explorations of palette, type, and layout before the site settled into a consistent direction.</p>
+    </div>
+  </section>
+  <div class="study-content">
+    <p class="eyebrow">Design Notes</p>
+    <h2 style="font-size:28px;font-weight:400;color:#0f2c4c;margin:8px 0 16px;">Core explorations</h2>
+    <p style="color:#5a6a7a;line-height:1.6;">These early studies tested full-bleed photographic treatments, material textures, and restrained editorial layouts. The shared palette of navy, cream, gold, and teal emerged here and continued through later themes.</p>
+    <div class="swatches">
+      <div class="swatch" style="background:#0f2c4c;"></div>
+      <div class="swatch" style="background:#f7f1e8;border:1px solid #ddd;"></div>
+      <div class="swatch" style="background:#c9a227;"></div>
+      <div class="swatch" style="background:#1a9b9b;"></div>
+    </div>
+    <div class="study-grid">
+      <div class="study-card">
+        <h3>Horizon</h3>
+        <p>Full-bleed photographic hero concepts</p>
+      </div>
+      <div class="study-card">
+        <h3>Material</h3>
+        <p>Wood, canvas, and copper textures</p>
+      </div>
+      <div class="study-card">
+        <h3>Editorial</h3>
+        <p>Generous type and whitespace</p>
+      </div>
+    </div>
+  </div>
+  <footer style="max-width:800px;margin:0 auto;padding:20px 5%;">
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
