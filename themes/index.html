@@ -11,13 +11,21 @@
   <style>
     .theme-entry {
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 32px;
+      grid-template-columns: 48px 1fr 320px;
+      gap: 24px;
       padding: 28px 0;
       border-bottom: 1px solid var(--line);
       align-items: start;
     }
     .theme-entry:last-of-type { border-bottom: 0; }
+    .theme-number {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: -.02em;
+      line-height: 1;
+      padding-top: 2px;
+    }
     .theme-preview {
       border-radius: 12px;
       overflow: hidden;
@@ -142,9 +150,13 @@
       font-size: 9px;
       color: #fff;
     }
-    @media (max-width: 800px) {
-      .theme-entry { grid-template-columns: 1fr; }
-      .theme-preview { max-width: 360px; }
+    @media (max-width: 900px) {
+      .theme-entry { grid-template-columns: 36px 1fr; }
+      .theme-preview { grid-column: 1 / -1; max-width: 360px; }
+    }
+    @media (max-width: 600px) {
+      .theme-entry { grid-template-columns: 1fr; gap: 16px; }
+      .theme-number { font-size: 16px; }
     }
   </style>
 </head>
@@ -168,28 +180,36 @@
       <div class="section-inner">
         <p class="eyebrow">Design Archive</p>
         <h2>Web Design Themes</h2>
-        <p class="lead">Reference for the visual themes used on this site. Each entry includes the date applied, a short description, a visual preview, and notes on how to restore a previous version.</p>
+        <p class="lead">Themes listed in chronological order. Each entry includes the sequence number, date applied, description, visual preview, and notes on restoration.</p>
 
         <div style="margin-top:32px;">
+          <!-- 01 Earlier concepts -->
           <div class="theme-entry">
+            <div class="theme-number">01</div>
             <div>
-              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Current · 11 November 2026</span>
-              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon Live-Aboard</h3>
-              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type. Backup of previous theme stored in /backups/.</p>
-              <p style="margin-top:12px;font-size:13px;"><a href="../" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View live →</a></p>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Earlier concepts</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon (photographic) and other explorations</h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes. Additional backups may exist under /backups/.</p>
             </div>
             <div class="theme-preview">
-              <div class="preview-horizon">
-                <div class="circle"></div>
-                <h4>Dmitri Morozov</h4>
-                <p>Building a home that sails.</p>
+              <div class="preview-earlier">
+                <div class="swatch-row">
+                  <div class="swatch navy"></div>
+                  <div class="swatch cream"></div>
+                  <div class="swatch gold"></div>
+                  <div class="swatch teal"></div>
+                </div>
+                <div class="layout-sample"></div>
+                <p style="font-size:11px;color:#5a6a7a;margin:0;">Core palette & layout explorations</p>
               </div>
             </div>
           </div>
 
+          <!-- 02 Sunrise Marina -->
           <div class="theme-entry">
+            <div class="theme-number">02</div>
             <div>
-              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Previous · 25 October 2026 – 11 November 2026</span>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">25 October 2026 – 11 November 2026</span>
               <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Sunrise Marina / Cream & Gold</h3>
               <p style="color:var(--muted);font-size:14px;line-height:1.55;">Cream background (#f7f1e8), deep navy, gold accents, ambient warm gradients, side-by-side hero with rectangular portrait, two equal project cards (Sailing / Cooking). Outline treatment on surname. Files: backups/index-2026-11-11.html and backups/styles-2026-11-11.css.</p>
               <p style="margin-top:12px;font-size:13px;">To restore: replace index.html and styles.css with the backups dated 2026-11-11.</p>
@@ -209,22 +229,20 @@
             </div>
           </div>
 
+          <!-- 03 Horizon Live-Aboard (Current) -->
           <div class="theme-entry">
+            <div class="theme-number">03</div>
             <div>
-              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Earlier concepts</span>
-              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon (photographic) and other explorations</h3>
-              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes. Additional backups may exist under /backups/.</p>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Current · 11 November 2026</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon Live-Aboard</h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type. Backup of previous theme stored in /backups/.</p>
+              <p style="margin-top:12px;font-size:13px;"><a href="../" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View live →</a></p>
             </div>
             <div class="theme-preview">
-              <div class="preview-earlier">
-                <div class="swatch-row">
-                  <div class="swatch navy"></div>
-                  <div class="swatch cream"></div>
-                  <div class="swatch gold"></div>
-                  <div class="swatch teal"></div>
-                </div>
-                <div class="layout-sample"></div>
-                <p style="font-size:11px;color:#5a6a7a;margin:0;">Core palette & layout explorations</p>
+              <div class="preview-horizon">
+                <div class="circle"></div>
+                <h4>Dmitri Morozov</h4>
+                <p>Building a home that sails.</p>
               </div>
             </div>
           </div>
