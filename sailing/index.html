@@ -24,7 +24,10 @@
     .feature-card p { margin: 8px 0 0; font-size: 14px; color: #9ab0b6; }
     footer { background: rgba(4,16,24,.9); border-top: 1px solid rgba(94,207,196,.1); padding: 20px 5%; display: flex; justify-content: space-between; color: #8a9ea4; }
     footer a { color: #5ecfc4; text-decoration: none; }
-  </style>
+  
+    .header-spacer { display: none; }
+    @media (max-width: 900px) { .header-spacer { display: block; height: 60px; } }
+</style>
 </head>
 <body>
 <header class="site-header" id="top">
@@ -40,7 +43,7 @@
     <span></span><span></span><span></span>
   </button>
 </header>
-<div style="height: 80px;"></div>
+<div class="header-spacer"></div>
 <main>
 
     <section class="sailing-hero" aria-labelledby="sailing-title">
