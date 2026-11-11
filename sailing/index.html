@@ -10,7 +10,7 @@
   <style>
     body { background: #041018; color: #e8eef0; }
     .site-header { background: rgba(7,16,24,.92) !important; }
-    .sailing-hero { min-height: 85vh; margin-top: 60px; display: flex; align-items: flex-end; padding: 100px 5% 60px; background: linear-gradient(180deg, rgba(4,16,24,.3) 0%, rgba(4,16,24,.85) 100%), url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover; }
+    .sailing-hero { min-height: 85vh;  display: flex; align-items: flex-end; padding: 100px 5% 60px; background: linear-gradient(180deg, rgba(4,16,24,.3) 0%, rgba(4,16,24,.85) 100%), url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover; }
     .sailing-hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 400; margin: 0; color: #fff; line-height: 1.1; }
     .sailing-hero h1 span { color: #5ecfc4; }
     .sailing-lede { max-width: 520px; color: rgba(232,238,240,.85); font-size: 16px; line-height: 1.6; margin: 16px 0 24px; }
@@ -24,10 +24,7 @@
     .feature-card p { margin: 8px 0 0; font-size: 14px; color: #9ab0b6; }
     footer { background: rgba(4,16,24,.9); border-top: 1px solid rgba(94,207,196,.1); padding: 20px 5%; display: flex; justify-content: space-between; color: #8a9ea4; }
     footer a { color: #5ecfc4; text-decoration: none; }
-  
-    .header-spacer { display: none; }
-    @media (max-width: 900px) { .header-spacer { display: block; height: 60px; } }
-</style>
+  </style>
 </head>
 <body>
 <header class="site-header" id="top">
@@ -43,7 +40,7 @@
     <span></span><span></span><span></span>
   </button>
 </header>
-<div class="header-spacer"></div>
+<div style="height: 80px;"></div>
 <main>
 
     <section class="sailing-hero" aria-labelledby="sailing-title">
