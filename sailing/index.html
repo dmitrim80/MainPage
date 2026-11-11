@@ -582,24 +582,69 @@
 
 
 
+<style>
+.menu-button { display: none; background: none; border: 0; cursor: pointer; padding: 10px; }
+.menu-button span { display: block; width: 18px; height: 2px; background: #fff; margin: 4px 0; }
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .menu-button { display: block; }
+  .site-header.menu-open .nav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #0b1520;
+    padding: 16px;
+    z-index: 100;
+  }
+  .site-header.menu-open .nav a {
+    color: #fff;
+    padding: 12px 0;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+}
+</style>
 
+<style>
+@media (max-width: 900px) {
+  .site-header .nav { display: none; }
+  .site-header .menu-button { display: block; }
+  .site-header.menu-open .nav {
+    display: flex !important;
+    position: absolute;
+    top: 60px;
+    left: 12px;
+    right: 12px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    background: #0f2c4c;
+    border: 1px solid rgba(201,162,39,.3);
+    border-radius: 10px;
+    z-index: 100;
+  }
+  .site-header.menu-open .nav a {
+    color: #fff;
+    padding: 8px 0;
+  }
+}
+</style>
 </head>
 <body class="sailing-page">
 <header class="site-header" id="top">
-  <a class="monogram" href="../">DM</a>
+  <a class="monogram" href="../">DM<span>.</span></a>
   <nav class="nav">
     <a href="../">Home</a>
-    <a href="../#about">About</a>
-    <a href="../#journal">Journal</a>
-    <a href="../#contact">Contact</a>
+    <a href="#sailboats">Sailboats</a>
+    <a href="#tayana">Tayana 37</a>
+    <a href="tayana-37/">All Boats</a>
   </nav>
-  <a class="connect-btn" href="../#contact">Let's Connect <span>→</span></a>
-  <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
+  <button class="menu-button" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
-
-
 
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
     <source src="assets/stern-view-big-waves.mp4" type="video/mp4">
@@ -708,6 +753,16 @@
 
 
 
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.querySelector('.menu-button');
+  var header = document.querySelector('.site-header');
+  if (btn && header) {
+    btn.onclick = function() {
+      header.classList.toggle('menu-open');
+    };
+  }
+});
+</script>
 </body>
 </html>
