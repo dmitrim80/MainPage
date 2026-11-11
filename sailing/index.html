@@ -550,7 +550,33 @@
       .passage-feature__copy { padding: 34px 28px 38px; grid-row: 1; }
       .passage-feature__map { min-height: 360px; }
     }
-  </style>
+  
+    .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; }
+    .sailing-page .site-header .menu-button span { display: block; width: 20px; height: 2px; background: #f4f7f6; margin: 4px 0; }
+    @media (max-width: 900px) {
+      .sailing-page .site-header .nav { display: none !important; }
+      .sailing-page .site-header .menu-button { display: block !important; }
+      .sailing-page .site-header.menu-open .nav {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: #0b1520 !important;
+        padding: 16px 20px !important;
+        z-index: 200 !important;
+        border-top: 1px solid rgba(94,207,196,.2);
+      }
+      .sailing-page .site-header.menu-open .nav a {
+        display: block !important;
+        padding: 12px 0 !important;
+        color: #e8eef0 !important;
+        font-size: 14px !important;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+      }
+    }
+</style>
 </head>
 <body class="sailing-page">
   <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
@@ -657,7 +683,7 @@
           <div style="padding:12px;"><strong style="color:#f0f5f4;display:block;">Pantala</strong><span style="color:#8a9ea4;font-size:12px;">1982 · North Carolina</span></div>
         </a>
         <a href="tayana-37/boats/three-little-birds/" style="display:block;background:#0d1a24;border:1px solid rgba(94,207,196,.25);text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/Three%20Little%20Birds%2C%201983%20Cambridge%2C%20MD%2C%2045k/2852044_54041275_1.jpg" style="width:100%;height:140px;object-fit:cover;" alt="Three Little Birds">
+          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/three-little-birds/photos/main.jpg" style="width:100%;height:140px;object-fit:cover;" alt="Three Little Birds">
           <div style="padding:12px;"><strong style="color:#f0f5f4;display:block;">Three Little Birds</strong><span style="color:#8a9ea4;font-size:12px;">1983 · Maryland</span></div>
         </a>
       </div>
