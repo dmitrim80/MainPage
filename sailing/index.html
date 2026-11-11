@@ -551,7 +551,7 @@
       .passage-feature__map { min-height: 360px; }
     }
   
-    .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; padding: 12px; min-width: 48px; min-height: 48px; -webkit-tap-highlight-color: transparent; }
+    .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; padding: 12px; min-width: 44px; min-height: 44px; }
     .sailing-page .site-header .menu-button span { display: block; width: 20px; height: 2px; background: #f4f7f6; margin: 4px 0; }
     @media (max-width: 900px) {
       .sailing-page .site-header .nav { display: none !important; }
@@ -641,7 +641,7 @@
       <a href="#log">Log</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" id="menuBtn" onclick="document.querySelector('.site-header').classList.toggle('menu-open')" ontouchstart="event.preventDefault();document.querySelector('.site-header').classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" id="menuBtn" onclick="document.querySelector('.site-header').classList.toggle('menu-open')"><span></span><span></span><span></span></button>
   </header>
 
   <main>
@@ -743,19 +743,6 @@
     <a href="#top">Back to top ↑</a>
   </footer>
 
-<script>
-(function(){
-  var header = document.querySelector('.site-header');
-  var btn = document.querySelector('.menu-button');
-  if (!header || !btn) return;
-  btn.addEventListener('click', function(){
-    var open = header.classList.toggle('menu-open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  document.querySelectorAll('.nav a').forEach(function(a){
-    a.addEventListener('click', function(){ header.classList.remove('menu-open'); });
-  });
-})();
-</script>
+
 </body>
 </html>
