@@ -8,6 +8,145 @@
   <link rel="icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles.css?v=20261111">
   <script src="../script.js" defer></script>
+  <style>
+    .theme-entry {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .theme-entry:last-of-type { border-bottom: 0; }
+    .theme-preview {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 32px rgba(15,44,76,.1);
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .preview-horizon {
+      height: 220px;
+      background:
+        linear-gradient(180deg, rgba(15,44,76,.3) 0%, rgba(15,44,76,.65) 100%),
+        url('../assets/bg-marina-1.jpg') center/cover;
+      color: #fff;
+      padding: 24px 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .preview-horizon h4 {
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0 0 6px;
+      letter-spacing: -.02em;
+    }
+    .preview-horizon p {
+      font-size: 11px;
+      opacity: .9;
+      margin: 0;
+      max-width: 180px;
+    }
+    .preview-horizon .circle {
+      position: absolute;
+      top: 18px;
+      right: 16px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.5);
+      background: url('../static/media/profile1.jpg') center/cover;
+    }
+    .preview-marina {
+      background: #f7f1e8;
+      padding: 16px;
+      height: 220px;
+      display: grid;
+      grid-template-columns: 1fr 70px;
+      gap: 12px;
+      align-items: center;
+    }
+    .preview-marina .text h4 {
+      font-size: 16px;
+      margin: 0 0 4px;
+      color: #0f2c4c;
+      font-weight: 400;
+    }
+    .preview-marina .text h4 span {
+      color: transparent;
+      -webkit-text-stroke: 1px #c9a227;
+    }
+    .preview-marina .text p {
+      font-size: 9px;
+      color: #5a6a7a;
+      margin: 0;
+    }
+    .preview-marina .portrait {
+      width: 70px;
+      height: 88px;
+      border-radius: 8px;
+      border: 1px solid rgba(201,162,39,.3);
+      background: url('../static/media/profile1.jpg') center/cover;
+    }
+    .preview-cards {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .preview-cards div {
+      flex: 1;
+      height: 36px;
+      background: #fffaf4;
+      border: 1px solid rgba(26,35,50,.1);
+      border-radius: 6px;
+      font-size: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f2c4c;
+    }
+    .preview-earlier {
+      height: 220px;
+      background: #faf8f5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .swatch-row {
+      display: flex;
+      gap: 8px;
+    }
+    .swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+    }
+    .swatch.navy { background: #0f2c4c; }
+    .swatch.cream { background: #f7f1e8; border: 1px solid #ddd; }
+    .swatch.gold { background: #c9a227; }
+    .swatch.teal { background: #1a9b9b; }
+    .layout-sample {
+      height: 80px;
+      background: linear-gradient(90deg, #0f2c4c 30%, #f7f1e8 30%);
+      border-radius: 6px;
+      position: relative;
+    }
+    .layout-sample::after {
+      content: 'Sample layout';
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-size: 9px;
+      color: #fff;
+    }
+    @media (max-width: 800px) {
+      .theme-entry { grid-template-columns: 1fr; }
+      .theme-preview { max-width: 360px; }
+    }
+  </style>
 </head>
 <body>
   <div class="ambient" aria-hidden="true"></div>
@@ -29,27 +168,65 @@
       <div class="section-inner">
         <p class="eyebrow">Design Archive</p>
         <h2>Web Design Themes</h2>
-        <p class="lead">Reference for the visual themes used on this site. Each entry includes the date applied, a short description, and notes on how to restore a previous version.</p>
+        <p class="lead">Reference for the visual themes used on this site. Each entry includes the date applied, a short description, a visual preview, and notes on how to restore a previous version.</p>
 
-        <div class="entries" style="margin-top:32px;">
-          <div style="padding:20px 0;border-bottom:1px solid var(--line);">
-            <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Current · 11 November 2026</span>
-            <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon Live-Aboard</h3>
-            <p style="color:var(--muted);font-size:14px;line-height:1.55;max-width:640px;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type. Backup of previous theme stored in /backups/.</p>
-            <p style="margin-top:12px;font-size:13px;"><a href="../" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View live →</a></p>
+        <div style="margin-top:32px;">
+          <div class="theme-entry">
+            <div>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Current · 11 November 2026</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon Live-Aboard</h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Full-bleed photographic hero with marina/horizon background, circular portrait, and content hierarchy focused on Pantala as live-aboard home and galley practice. Cream ground, navy header with gold accents, Inter type. Backup of previous theme stored in /backups/.</p>
+              <p style="margin-top:12px;font-size:13px;"><a href="../" style="border-bottom:1px solid var(--gold);padding-bottom:2px;">View live →</a></p>
+            </div>
+            <div class="theme-preview">
+              <div class="preview-horizon">
+                <div class="circle"></div>
+                <h4>Dmitri Morozov</h4>
+                <p>Building a home that sails.</p>
+              </div>
+            </div>
           </div>
 
-          <div style="padding:20px 0;border-bottom:1px solid var(--line);">
-            <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Previous · 25 October 2026 – 11 November 2026</span>
-            <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Sunrise Marina / Cream & Gold</h3>
-            <p style="color:var(--muted);font-size:14px;line-height:1.55;max-width:640px;">Cream background (#f7f1e8), deep navy, gold accents, ambient warm gradients, side-by-side hero with rectangular portrait, two equal project cards (Sailing / Cooking). Outline treatment on surname. Files: backups/index-2026-11-11.html and backups/styles-2026-11-11.css.</p>
-            <p style="margin-top:12px;font-size:13px;">To restore: replace index.html and styles.css with the backups dated 2026-11-11.</p>
+          <div class="theme-entry">
+            <div>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Previous · 25 October 2026 – 11 November 2026</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Sunrise Marina / Cream & Gold</h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Cream background (#f7f1e8), deep navy, gold accents, ambient warm gradients, side-by-side hero with rectangular portrait, two equal project cards (Sailing / Cooking). Outline treatment on surname. Files: backups/index-2026-11-11.html and backups/styles-2026-11-11.css.</p>
+              <p style="margin-top:12px;font-size:13px;">To restore: replace index.html and styles.css with the backups dated 2026-11-11.</p>
+            </div>
+            <div class="theme-preview">
+              <div class="preview-marina">
+                <div class="text">
+                  <h4>Dmitri <span>Morozov</span></h4>
+                  <p>Thoughts on markets...</p>
+                  <div class="preview-cards">
+                    <div>Sailing</div>
+                    <div>Cooking</div>
+                  </div>
+                </div>
+                <div class="portrait"></div>
+              </div>
+            </div>
           </div>
 
-          <div style="padding:20px 0;">
-            <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Earlier concepts</span>
-            <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon (photographic) and other explorations</h3>
-            <p style="color:var(--muted);font-size:14px;line-height:1.55;max-width:640px;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes. Additional backups may exist under /backups/.</p>
+          <div class="theme-entry">
+            <div>
+              <span style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);">Earlier concepts</span>
+              <h3 style="font-size:18px;margin:6px 0 8px;color:var(--navy);">Horizon (photographic) and other explorations</h3>
+              <p style="color:var(--muted);font-size:14px;line-height:1.55;">Earlier design explorations included full-bleed horizon concepts, material craft treatments, and editorial minimal layouts. Selected visual direction recorded in project notes. Additional backups may exist under /backups/.</p>
+            </div>
+            <div class="theme-preview">
+              <div class="preview-earlier">
+                <div class="swatch-row">
+                  <div class="swatch navy"></div>
+                  <div class="swatch cream"></div>
+                  <div class="swatch gold"></div>
+                  <div class="swatch teal"></div>
+                </div>
+                <div class="layout-sample"></div>
+                <p style="font-size:11px;color:#5a6a7a;margin:0;">Core palette & layout explorations</p>
+              </div>
+            </div>
           </div>
         </div>
 
