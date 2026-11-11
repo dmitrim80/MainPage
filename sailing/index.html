@@ -551,7 +551,7 @@
       .passage-feature__map { min-height: 360px; }
     }
   
-    .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; }
+    .sailing-page .site-header .menu-button { display: none; background: none; border: 0; cursor: pointer; z-index: 50; padding: 12px; min-width: 44px; min-height: 44px; }
     .sailing-page .site-header .menu-button span { display: block; width: 20px; height: 2px; background: #f4f7f6; margin: 4px 0; }
     @media (max-width: 900px) {
       .sailing-page .site-header .nav { display: none !important; }
@@ -619,7 +619,7 @@
       <a href="#log">Log</a>
     </nav>
     <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" onclick="this.parentElement.classList.toggle('menu-open');this.setAttribute('aria-expanded',this.parentElement.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false" ontouchend="event.preventDefault();var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))" onclick="var h=this.parentElement;h.classList.toggle('menu-open');this.setAttribute('aria-expanded',h.classList.contains('menu-open'))"><span></span><span></span><span></span></button>
   </header>
 
   <main>
