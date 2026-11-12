@@ -3,55 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0a1620">
+  <meta name="theme-color" content="#0f2c4c">
   <title>Río Dulce & Teki Malo — Dmitri Morozov</title>
   <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../styles.css?v=20261112">
   <style>
-    body { background: #041018; color: #e8eef0; margin: 0; }
-    .site-header { background: rgba(7,16,24,.92) !important; }
-    .sailing-hero { min-height: 85vh;  display: flex; align-items: flex-end; padding: 100px 5% 60px; background: linear-gradient(180deg, rgba(4,16,24,.3) 0%, rgba(4,16,24,.85) 100%), url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover; }
-    .sailing-hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 400; margin: 0; color: #fff; line-height: 1.1; }
-    .sailing-hero h1 span { color: #5ecfc4; }
-    .sailing-lede { max-width: 520px; color: rgba(232,238,240,.85); font-size: 16px; line-height: 1.6; margin: 16px 0 24px; }
-    .hero-rule { width: 48px; height: 2px; background: #5ecfc4; border: 0; margin: 16px 0; }
-    .button { color: #5ecfc4; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; }
-    .sailboats-band { padding: 48px 5%; background: rgba(7,16,24,.78); }
-    .section-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #5ecfc4; margin-bottom: 8px; }
-    .feature-card { background: rgba(13,26,36,.9); border: 1px solid rgba(94,207,196,.2); overflow: hidden; }
+    .sailing-hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 120px 5% 70px;
+      background:
+        linear-gradient(180deg, rgba(15,44,76,.3) 0%, rgba(15,44,76,.65) 100%),
+        url("https://www.thoroughlytravel.com/wp-content/uploads/2025/11/rio-dulce-canyon.jpg") center/cover;
+      color: #fff;
+    }
+    .sailing-hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 400;
+      margin: 0;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+    }
+    .sailing-hero h1 span { color: #e8d48b; }
+    .sailing-lede {
+      max-width: 520px;
+      color: rgba(255,255,255,.88);
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 16px 0 24px;
+    }
+    .hero-rule { width: 48px; height: 2px; background: #c9a227; border: 0; margin: 16px 0; }
+    .button {
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,.4);
+      padding-bottom: 3px;
+    }
+    .sailboats-band { padding: 56px 5%; background: rgba(247,241,232,.96); }
+    .section-label { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #c9a227; margin-bottom: 8px; }
+    .feature-card {
+      background: #fffaf4;
+      border: 1px solid rgba(26,35,50,.1);
+      border-radius: 14px;
+      overflow: hidden;
+    }
     .feature-card img { width: 100%; height: 200px; object-fit: cover; }
-    .feature-card h3 { margin: 0; font-size: 18px; color: #f0f5f4; }
-    .feature-card p { margin: 8px 0 0; font-size: 14px; color: #9ab0b6; }
-    footer { background: #071018; border-top: 1px solid rgba(94,207,196,.1); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; color: #8a9ea4; width: 100%; margin: 0; box-sizing: border-box; }
-    footer a { color: #5ecfc4; text-decoration: none; }
-  
-    .feature-card__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; padding: 16px 0; border-top: 1px solid rgba(94,207,196,.2); }
-    .feature-card__stats div { display: flex; flex-direction: column; }
-    .feature-card__stats strong { font-size: 16px; color: #f0f5f4; }
-    .feature-card__stats span { font-size: 11px; color: #8a9ea4; text-transform: uppercase; letter-spacing: .05em; margin-top: 2px; }
-</style>
+    .feature-card h3 { margin: 0; font-size: 18px; color: #0f2c4c; }
+    .feature-card p { margin: 8px 0 0; font-size: 14px; color: #5a6a7a; }
+    .course-panel { margin-top: 32px; }
+    .course-list { list-style: none; padding: 0; }
+    .course-list li { padding: 12px 0; border-bottom: 1px solid rgba(26,35,50,.08); }
+    .course-list .num { color: #c9a227; font-size: 12px; letter-spacing: .1em; }
+    footer {
+      background: transparent;
+      border-top: 1px solid rgba(26,35,50,.12);
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #7a8494;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    footer a { color: #0f2c4c; text-decoration: none; }
+  </style>
 </head>
 <body>
-<header class="site-header" id="top">
-  <a class="monogram" href="../">DM</a>
-  <nav class="nav">
-    <a href="../">Home</a>
-    <a href="../#about">About</a>
-    <a href="../#journal">Journal</a>
-    <a href="../#contact">Contact</a>
-  </nav>
-  <a class="connect-btn" href="../#contact">Let's Connect <span>→</span></a>
-  <button class="menu-button" type="button" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-<main>
-
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="monogram" href="../">DM</a>
+    <nav class="nav">
+      <a href="../">Home</a>
+      <a href="../#about">About</a>
+      <a href="../#journal">Journal</a>
+      <a href="../#contact">Contact</a>
+    </nav>
+    <a class="connect-btn" href="../#contact">Let's Connect <span>→</span></a>
+    <button class="menu-button" type="button" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <main>
     <section class="sailing-hero" aria-labelledby="sailing-title">
-      <div class="hero-photo" aria-hidden="true"></div>
-      <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-content">
-        <h1 id="sailing-title">Río Dulce<br><span class="line2">A horizon worth preparing for</span></h1>
+        <h1 id="sailing-title">Río Dulce<br><span>A horizon worth preparing for</span></h1>
         <hr class="hero-rule">
         <p class="sailing-lede">A multi-month stay aboard Teki Malo, our 1988 Tayana 37 cutter, exploring the Sweet River and Lake Izabal, Guatemala. From New Jersey to the Caribbean coast.</p>
         <a class="button" href="#sailboats">Discover the journey <span>→</span></a>
@@ -59,88 +100,60 @@
     </section>
 
     <section class="sailboats-band" id="sailboats">
-      <div class="sailboats-main">
-        <div class="section-label"><span>02</span> Sailboats</div>
-        <p class="intro">The vessel for a multi-month stay on the Sweet River and Lake Izabal.</p>
+      <div class="section-label">Sailboats</div>
+      <p style="color:#5a6a7a;max-width:520px;margin:0 0 24px;">The vessel for a multi-month stay on the Sweet River and Lake Izabal.</p>
 
-        <article class="feature-card" style="background:rgba(10,35,40,.55);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo" style="width:100%;height:200px;object-fit:cover;display:block;">
-          <div style="padding:14px 16px 16px;">
-            <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#5ecfc4;">Featured vessel</span>
-            <h3 style="margin:6px 0 4px;font-size:18px;font-weight:500;color:#f5f0e6;">Teki Malo</h3>
-            <p style="margin:0 0 12px;font-size:13px;color:rgba(243,240,232,.6);line-height:1.5;">1988 Tayana 37 Cutter · Río Dulce, Guatemala</p>
-            <div style="display:flex;flex-wrap:wrap;gap:8px 16px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;">
-              <span style="color:rgba(243,240,232,.55);"><strong style="color:#f5f0e6;">1988</strong> Year</span>
-              <span style="color:rgba(243,240,232,.55);"><strong style="color:#f5f0e6;">22,500 lb</strong> Displacement</span>
-            </div>
-            <a href="tayana-37/boats/teki-malo/" style="display:inline-block;margin-top:12px;color:#5ecfc4;font-size:12px;text-decoration:none;">View details →</a>
-          </div>
-        </article>
-      </div>
-
-      <aside class="course-panel" aria-label="Journey roadmap">
-        <div class="eyebrow-row">
-          <span class="star" aria-hidden="true">✦</span>
-          <p class="eyebrow">Roadmap</p>
+      <article class="feature-card">
+        <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
+        <div style="padding:18px 20px 22px;">
+          <span style="font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#c9a227;">Featured vessel</span>
+          <h3 style="margin:6px 0 4px;">Teki Malo</h3>
+          <p>1988 Tayana 37 Cutter · Río Dulce, Guatemala</p>
+          <a href="tayana-37/boats/teki-malo/" style="display:inline-block;margin-top:14px;color:#0f2c4c;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #c9a227;padding-bottom:2px;">View details →</a>
         </div>
-        <h2>Your course</h2>
-        <hr class="course-rule">
+      </article>
+
+      <aside class="course-panel">
+        <p class="section-label" style="margin-top:36px;">Roadmap</p>
+        <h2 style="font-size:24px;font-weight:400;color:#0f2c4c;margin:0 0 16px;">Your course</h2>
         <ol class="course-list">
-          <li class="active">
-            <span class="num">01</span>
-            <strong>Prepare</strong>
-            <p>Build knowledge, assess your needs, and plan with purpose.</p>
-          </li>
-          <li>
-            <span class="num">02</span>
-            <strong>Outfit</strong>
-            <p>Equip your boat with the right gear for safety and self-reliance.</p>
-          </li>
-          <li>
-            <span class="num">03</span>
-            <strong>Sail</strong>
-            <p>Navigate with confidence and make passages that matter.</p>
-          </li>
-          <li>
-            <span class="num">04</span>
-            <strong>Reflect</strong>
-            <p>Log your experiences, refine your skills, and keep exploring.</p>
-          </li>
+          <li><span class="num">01</span> <strong style="color:#0f2c4c;">Prepare</strong><p style="margin:4px 0 0;font-size:14px;color:#5a6a7a;">Build knowledge, assess your needs, and plan with purpose.</p></li>
+          <li><span class="num">02</span> <strong style="color:#0f2c4c;">Outfit</strong><p style="margin:4px 0 0;font-size:14px;color:#5a6a7a;">Equip your boat with the right gear for safety and self-reliance.</p></li>
+          <li><span class="num">03</span> <strong style="color:#0f2c4c;">Sail</strong><p style="margin:4px 0 0;font-size:14px;color:#5a6a7a;">Navigate with confidence and make passages that matter.</p></li>
+          <li><span class="num">04</span> <strong style="color:#0f2c4c;">Reflect</strong><p style="margin:4px 0 0;font-size:14px;color:#5a6a7a;">Log your experiences, refine your skills, and keep exploring.</p></li>
         </ol>
       </aside>
-
-      <div class="band-footer">Keep exploring</div>
     </section>
 
-    <section class="section" id="tayana" style="background:rgba(7,16,24,.9);padding:48px 5%;border-top:1px solid rgba(94,207,196,.2);">
-      <div class="section-label"><span>03</span> The Tayana 37</div>
-      <h2 style="font-size:28px;font-weight:400;margin:8px 0 12px;color:#fff;">The design and the boats</h2>
-      <p style="color:#b8c9cd;max-width:560px;margin:0 0 24px;line-height:1.6;">The Tayana 37 is a classic Robert Perry design. These are the boats that have been part of the search.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:24px;">
-        <a href="tayana-37/boats/teki-malo/" style="display:block;background:#0d1a24;border:1px solid rgba(94,207,196,.25);text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" style="width:100%;height:140px;object-fit:cover;" alt="Teki Malo">
-          <div style="padding:12px;"><strong style="color:#f0f5f4;display:block;">Teki Malo</strong><span style="color:#8a9ea4;font-size:12px;">1988 · Guatemala</span></div>
-        </a>
-        <a href="tayana-37/boats/pantala/" style="display:block;background:#0d1a24;border:1px solid rgba(94,207,196,.25);text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/pantala/photos/1982-tayana-37-power-10216395-20260611123446559-1.webp" style="width:100%;height:140px;object-fit:cover;" alt="Pantala">
-          <div style="padding:12px;"><strong style="color:#f0f5f4;display:block;">Pantala</strong><span style="color:#8a9ea4;font-size:12px;">1982 · North Carolina</span></div>
-        </a>
-        <a href="tayana-37/boats/three-little-birds/" style="display:block;background:#0d1a24;border:1px solid rgba(94,207,196,.25);text-decoration:none;">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/three-little-birds/photos/main.jpg" style="width:100%;height:140px;object-fit:cover;" alt="Three Little Birds">
-          <div style="padding:12px;"><strong style="color:#f0f5f4;display:block;">Three Little Birds</strong><span style="color:#8a9ea4;font-size:12px;">1983 · Maryland</span></div>
-        </a>
+    <section class="section" style="background:rgba(247,241,232,.9);">
+      <div class="section-inner">
+        <p class="eyebrow">The Tayana 37</p>
+        <h2>The design and the boats</h2>
+        <p class="lead">The Tayana 37 is a classic Robert Perry design. These are the boats that have been part of the search.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:24px 0;">
+          <a href="tayana-37/boats/teki-malo/" style="display:block;background:#fffaf4;border:1px solid rgba(26,35,50,.1);border-radius:12px;overflow:hidden;text-decoration:none;">
+            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" style="width:100%;height:140px;object-fit:cover;" alt="Teki Malo">
+            <div style="padding:14px;"><strong style="color:#0f2c4c;display:block;">Teki Malo</strong><span style="color:#5a6a7a;font-size:12px;">1988 · Guatemala</span></div>
+          </a>
+          <a href="tayana-37/boats/pantala/" style="display:block;background:#fffaf4;border:1px solid rgba(26,35,50,.1);border-radius:12px;overflow:hidden;text-decoration:none;">
+            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/pantala/photos/1982-tayana-37-power-10216395-20260611123446559-1.webp" style="width:100%;height:140px;object-fit:cover;" alt="Pantala">
+            <div style="padding:14px;"><strong style="color:#0f2c4c;display:block;">Pantala</strong><span style="color:#5a6a7a;font-size:12px;">1982 · North Carolina</span></div>
+          </a>
+          <a href="tayana-37/boats/three-little-birds/" style="display:block;background:#fffaf4;border:1px solid rgba(26,35,50,.1);border-radius:12px;overflow:hidden;text-decoration:none;">
+            <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/three-little-birds/photos/main.jpg" style="width:100%;height:140px;object-fit:cover;" alt="Three Little Birds">
+            <div style="padding:14px;"><strong style="color:#0f2c4c;display:block;">Three Little Birds</strong><span style="color:#5a6a7a;font-size:12px;">1983 · Maryland</span></div>
+          </a>
+        </div>
+        <a href="tayana-37/" style="color:#0f2c4c;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #c9a227;padding-bottom:2px;">View all Tayana boats →</a>
       </div>
-      <a href="tayana-37/" style="color:#5ecfc4;font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;">View all Tayana boats →</a>
     </section>
-
-  
-</main>
-<footer>
-  <a class="monogram" href="../">DM</a>
-  <p>© <span id="year"></span> Dmitri Morozov</p>
-  <a href="#top">Back to top ↑</a>
-</footer>
-<script src="../script.js" defer></script>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  </main>
+  <footer>
+    <a class="monogram" href="../" style="border-bottom:none;">DM</a>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+  <script src="../script.js" defer></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
