@@ -3,55 +3,81 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0a1620">
+  <meta name="theme-color" content="#0f2c4c">
   <title>In Search of the Right Boat — Dmitri Morozov</title>
   <link rel="icon" href="../../favicon.ico">
-  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../styles.css?v=20261112">
   <style>
-    body { background: #071018; color: #e8eef0; }
-    .site-header { background: rgba(7,16,24,.92) !important; }
-    .post-hero { min-height: 70vh; margin-top: 60px; display: flex; align-items: flex-end; padding: 100px 5% 48px; background: linear-gradient(180deg, rgba(7,16,24,.4) 0%, rgba(7,16,24,.85) 100%), url("https://upload.wikimedia.org/wikipedia/commons/0/0e/Tayana_37_under_the_Brooklyn_Bridge.jpg") center/cover; }
-    .post-meta { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #5ecfc4; margin-bottom: 12px; }
+    .post-hero {
+      min-height: 70vh;
+      margin-top: 60px;
+      display: flex;
+      align-items: flex-end;
+      padding: 100px 5% 48px;
+      background:
+        linear-gradient(180deg, rgba(15,44,76,.35) 0%, rgba(15,44,76,.7) 100%),
+        url("https://upload.wikimedia.org/wikipedia/commons/0/0e/Tayana_37_under_the_Brooklyn_Bridge.jpg") center/cover;
+      color: #fff;
+    }
+    .post-meta { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: #e8d48b; margin-bottom: 12px; }
     .post-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 400; margin: 0; color: #fff; line-height: 1.1; }
-    .post-subtitle { font-size: 18px; color: rgba(232,238,240,.8); margin: 12px 0 0; }
-    .post-byline { font-size: 14px; color: #8a9ea4; margin-top: 16px; }
+    .post-subtitle { font-size: 18px; color: rgba(255,255,255,.85); margin: 12px 0 0; }
+    .post-byline { font-size: 14px; color: rgba(255,255,255,.7); margin-top: 16px; }
     .post-body { max-width: 720px; margin: 0 auto; padding: 48px 5%; }
-    .pull-quote { font-size: 20px; font-style: italic; color: #c8d4d8; border-left: 2px solid #5ecfc4; padding-left: 20px; margin: 32px 0; }
+    .pull-quote {
+      font-size: 20px;
+      font-style: italic;
+      color: #1a2332;
+      border-left: 2px solid #c9a227;
+      padding-left: 20px;
+      margin: 32px 0;
+    }
     .chapter { margin-bottom: 48px; }
-    .chapter h2 { font-size: 24px; font-weight: 400; color: #f0f5f4; margin: 0 0 16px; }
-    .chapter p { color: #b8c4c8; line-height: 1.7; margin: 0 0 16px; }
+    .chapter h2 { font-size: 24px; font-weight: 400; color: #0f2c4c; margin: 0 0 16px; }
+    .chapter p { color: #5a6a7a; line-height: 1.7; margin: 0 0 16px; }
     .image-break { margin: 32px 0; }
-    .image-break img { width: 100%; border-radius: 4px; }
+    .image-break img { width: 100%; border-radius: 8px; }
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
-    .feature-card { background: rgba(13,26,36,.75); border: 1px solid rgba(94,207,196,.15); overflow: hidden; text-decoration: none; display: block; }
+    .feature-card {
+      background: #fffaf4;
+      border: 1px solid rgba(26,35,50,.1);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+    }
     .feature-card img { width: 100%; height: 160px; object-fit: cover; }
     .feature-card .body { padding: 14px; }
-    .feature-card h3 { margin: 0 0 4px; font-size: 16px; color: #f0f5f4; }
-    .feature-card p { margin: 0; font-size: 13px; color: #9ab0b6; }
-    .status { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #5ecfc4; }
-    footer { background: rgba(4,16,24,.9); border-top: 1px solid rgba(94,207,196,.1); padding: 20px 5%; display: flex; justify-content: space-between; color: #8a9ea4; }
-    footer a { color: #5ecfc4; text-decoration: none; }
+    .feature-card h3 { margin: 0 0 4px; font-size: 16px; color: #0f2c4c; }
+    .feature-card p { margin: 0; font-size: 13px; color: #5a6a7a; }
+    .status { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #c9a227; }
     @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
-<header class="site-header" id="top">
-  <a class="monogram" href="../../">DM</a>
-  <nav class="nav">
-    <a href="../../">Home</a>
-    <a href="../../#about">About</a>
-    <a href="../../#journal">Journal</a>
-    <a href="../../#contact">Contact</a>
-  </nav>
-  <a class="connect-btn" href="../../#contact">Let's Connect <span>→</span></a>
-  <button class="menu-button" type="button" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-<div style="height: 80px;"></div>
-<main>
-
-    <article class="post-wrap">
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="monogram" href="../../">DM</a>
+    <nav class="nav">
+      <a href="../../">Home</a>
+      <a href="../../#about">About</a>
+      <a href="../../#journal">Journal</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+    <a class="connect-btn" href="../../#contact">Let's Connect <span>→</span></a>
+    <button class="menu-button" type="button" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <main>
+    <section class="post-hero">
+      <div>
+        <p class="post-meta">Journal · Sailing</p>
+        <h1>In Search of the Right Boat</h1>
+        <p class="post-subtitle">Months of research, inspections, and decisions in the search for a home that sails.</p>
+      </div>
+    </section>
+    <div class="post-body">
       <p>Some journeys begin when you cast off the dock. Mine began long before I ever stepped aboard the boat that might carry me across an ocean.</p>
       <p>For months, I’ve been searching for something more than a sailboat. I’ve been searching for a home, a way of life, and the freedom to explore the world on my own terms.</p>
       <p>My vision is simple: a strong, dependable bluewater sailboat capable of crossing oceans, comfortable enough to live aboard, and manageable enough to sail solo. A boat that can take me along distant coastlines, into quiet anchorages, and eventually across the open Pacific.</p>
@@ -59,7 +85,6 @@
 
       <div class="pull-quote">There have been thousands of miles of research, long drives, disappointing inspections, late-night conversations with brokers, unexpected discoveries, and some difficult decisions. And now, the search is taking me to Guatemala.</div>
 
-      
       <section class="chapter">
         <h2>The Boats</h2>
         <p>These are the vessels I looked at during the search. Most were Tayana 37s. A few were other offshore designs that shared the same philosophy.</p>
@@ -106,142 +131,46 @@
         <p>I began studying the characteristics that separate a coastal cruiser from a true bluewater sailboat. Hull construction. Keel design. Stability. Rigging. Self-steering. Fuel and water capacity. Seaworthiness. Maintenance. The ability to survive heavy weather. And perhaps most importantly, whether a boat could be handled safely by one person.</p>
         <p>I wasn’t looking for the biggest or flashiest yacht. I wanted a boat I could trust.</p>
         <p>My research led me toward traditional offshore designs, particularly the legendary Tayana 37, designed by Robert Perry. The Tayana’s full keel, heavy displacement, protected rudder, and cutter rig appealed to me. It represented the kind of sailing I envisioned: long passages, remote destinations, and a boat built with the open ocean in mind.</p>
-        <p>Other designs caught my attention, including the Baba 35, Pacific Seacraft 37, Cabo Rico 38, and Island Packet 38. But I kept coming back to the Tayana.</p>
         <figure class="image-break">
           <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Tayana_37_under_the_Brooklyn_Bridge.jpg" alt="Tayana 37 under sail">
-          <figcaption>The Tayana 37 — a classic designed for distance.</figcaption>
+          <figcaption style="font-size:13px;color:#5a6a7a;margin-top:8px;">The Tayana 37 — a classic designed for distance.</figcaption>
         </figure>
       </section>
 
       <section class="chapter">
         <h2>Chapter 2 — The First Reality Checks</h2>
         <p>As summer turned toward fall, my research became more serious. Online listings were no longer enough. I needed to see these boats in person.</p>
-
-        <h3 style="font-size:18px;margin:28px 0 12px;color:#e8eef0;">Three Little Birds — Cambridge, Maryland</h3>
+        <h3 style="font-size:18px;margin:28px 0 12px;color:#0f2c4c;">Three Little Birds — Cambridge, Maryland</h3>
         <p>One of my early inspections took me to Maryland to see Three Little Birds. Like many older cruising sailboats, she looked promising in photographs. But photographs don’t reveal everything.</p>
         <p>Once aboard, I began finding the kinds of problems that can turn a dream into a long restoration project. Signs of water intrusion, deteriorated wood, questionable hatches, a neglected engine compartment, and the unmistakable smell of diesel. There were too many unanswered questions about the condition of the boat.</p>
         <p>It was disappointing, but it taught me something important: a beautiful classic sailboat can hide decades of deferred maintenance. I wasn’t looking for a boat that would spend its first year in a boatyard. I wanted to go sailing.</p>
-
-        <h3 style="font-size:18px;margin:28px 0 12px;color:#e8eef0;">Briana — Reedville, Virginia</h3>
-        <p>My next experience took me farther south, to Virginia, to inspect Briana. Compared with Three Little Birds, the interior made a better impression. There was more to like, but there were still concerns. The cockpit teak needed attention, there were signs of water intrusion, and some mechanical questions remained unresolved.</p>
-        <p>Each visit was making me more knowledgeable and more selective. I was beginning to understand the difference between a boat that could eventually be made ready for an ocean crossing and one that was already reasonably close. And that distinction mattered.</p>
-
-        <div class="two-col">
-          <div class="feature-card">
-            <img src="https://www.practical-sailor.com/wp-content/uploads/2026/05/1985-tayana-37-power-9641605-20241226090428819-1_XLARGE.webp" alt="Sailboat detail">
-            <div class="body">
-              <span class="status">Rejected</span>
-              <h3>Three Little Birds</h3>
-              <p>Cambridge, MD · Water intrusion, deteriorated wood, neglected systems.</p>
-            </div>
-          </div>
-          <div class="feature-card">
-            <img src="https://dtsskelcze808.cloudfront.net/wp-content/uploads/2026/05/20120220/compressed_1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Tayana 37">
-            <div class="body">
-              <span class="status">Rejected</span>
-              <h3>Briana</h3>
-              <p>Reedville, VA · Water intrusion, mechanical questions, deferred maintenance.</p>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section class="chapter">
         <h2>Chapter 3 — Pantala: The Boat I Thought Might Be the One</h2>
         <p>Then came Pantala. A 1982 Tayana 37 in New Bern, North Carolina. Of all the boats I had researched, Pantala seemed to check many of the boxes. She had the traditional offshore design I wanted, a cutter rig, and an extensive history of work and improvements.</p>
-        <p>In October, I made the long drive from New Jersey to New Bern. Driving south through the night, I had plenty of time to imagine what might come next. If everything worked out, I could picture myself preparing the boat, sailing down the Intracoastal Waterway, finding a favorable weather window, and eventually heading offshore. I had already been studying routes south toward Florida and east toward Bermuda.</p>
+        <p>In October, I made the long drive from New Jersey to New Bern. Driving south through the night, I had plenty of time to imagine what might come next. If everything worked out, I could picture myself preparing the boat, sailing down the Intracoastal Waterway, finding a favorable weather window, and eventually heading offshore.</p>
         <p>Walking aboard Pantala was exciting. Here was a boat that represented so much of what I had been looking for. But as the inspection process continued, concerns began to emerge. There were issues involving the engine, diesel odors inside the cabin, structural woodwork near the bow, and possible leaks around chainplates. The deeper we looked, the more questions appeared.</p>
-        <p>Eventually, a professional inspection raised enough concerns that I had to reconsider the entire project. That was difficult. I’d already spent considerable time researching Pantala, communicating with the broker, traveling to North Carolina, and imagining a future aboard her.</p>
         <div class="pull-quote">But the ocean doesn’t care how emotionally invested you are in a boat. A vessel needs to be seaworthy, not simply beautiful.</div>
         <p>In early November, I made the decision not to proceed with Pantala. It was one of the more disappointing moments of the search. Yet I also knew it was the right decision. Sometimes the most important seamanship happens before you ever leave the dock. Knowing when to walk away may be just as valuable as knowing when to set sail.</p>
       </section>
 
       <section class="chapter">
-        <h2>Chapter 4 — The Search Goes International</h2>
-        <p>After Pantala, I expanded my search beyond the continental United States. I was no longer limiting myself to boats within driving distance. The Caribbean, Central America, and even the Pacific coast became possibilities.</p>
-        <p>I researched several other promising vessels. There was Sans Souci, another Tayana 37 with offshore sailing history. There was Josie in Virginia, along with other Tayana listings. I also compared Island Packet 38s, a Cabo Rico 38, and a Tayana pilothouse model on the West Coast.</p>
-        <p>Each boat had its own personality and compromises. Some offered more interior space. Others were easier to handle. Some had attractive equipment but raised questions about their maintenance history.</p>
-        <p>And then two boats emerged as especially interesting possibilities.</p>
-
-        <h3 style="font-size:18px;margin:28px 0 12px;color:#e8eef0;">Scrimshaw — A Baba 35 in the Dominican Republic</h3>
-        <p>Scrimshaw, a 1979 Baba 35 located in Luperón, Dominican Republic, caught my attention. The Baba 35 shares much of the traditional offshore philosophy that attracts me to the Tayana 37. Heavy construction, classic lines, and a reputation as a capable passagemaker.</p>
-        <p>I began corresponding with the broker and arranged a video walkthrough. I wanted to see the cockpit, interior accommodations, engine compartment, rigging, and overall condition. Living aboard changes how you evaluate a boat. Suddenly, the height of the cabin, length of a berth, ventilation, refrigeration, electrical systems, and cockpit comfort become just as important as sailing performance.</p>
-        <p>Scrimshaw remained an interesting candidate. But another Tayana was beginning to capture my attention.</p>
-        <figure class="image-break">
-          <img src="https://www.guatemala.com/fotos/2026/07/Canon-de-Rio-Dulce.webp" alt="Río Dulce canyon">
-          <figcaption>The search turned toward Central America and the Caribbean.</figcaption>
-        </figure>
-      </section>
-
-      <section class="chapter">
         <h2>Chapter 5 — Teki Malo: A Tayana in the Jungle</h2>
         <p>Somewhere along the Río Dulce in Guatemala sits a 1988 Tayana 37 named Teki Malo. When I first discovered her, I was intrigued. She had the familiar lines of the Tayana design I admired, but she was located in a place I had never expected my search to take me.</p>
-        <p>Guatemala. Not a typical destination for someone from New Jersey shopping for a sailboat. But Río Dulce is a fascinating place in the cruising world. The river winds inland from the Caribbean through lush tropical scenery, past limestone cliffs, jungle-covered hills, small settlements, and sheltered marinas. For years, sailors have brought their boats here to escape hurricane season, maintain their vessels, and experience a different pace of life.</p>
-        <p>And tucked away at Tortugal Marina was Teki Malo.</p>
+        <p>Guatemala. Not a typical destination for someone from New Jersey shopping for a sailboat. But Río Dulce is a fascinating place in the cruising world. The river winds inland from the Caribbean through lush tropical scenery, past limestone cliffs, jungle-covered hills, small settlements, and sheltered marinas.</p>
         <p>I contacted Catherine Hobson of Dockside Yacht Brokerage and began gathering information. Photographs, specifications, previous survey records, equipment lists, and discussions about maintenance. I arranged a video walkthrough so I could get a better sense of the boat without immediately traveling internationally.</p>
-        <p>I examined everything I could. The engine. The rigging. The chainplates. The electrical system. The interior. The sails. The deck hardware. I wanted to know what had been maintained, what needed attention, and what might be waiting beneath the surface.</p>
-        <p>I also began studying the practical challenges of owning a boat in Guatemala. Navigation through the Río Dulce. Local marine services. Customs and documentation. Where to obtain supplies. How to travel between Guatemala City and the marina. Even learning how to find reliable nautical charts for the river became a project of its own.</p>
         <p>The search was gradually becoming something bigger than shopping for a boat. I was learning how to prepare for life in a new cruising environment.</p>
-        <figure class="image-break">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Green_R%C3%ADo_Dulce_%28Unsplash%29.jpg/1280px-Green_R%C3%ADo_Dulce_%28Unsplash%29.jpg" alt="Río Dulce river">
-          <figcaption>Río Dulce, Guatemala — where Teki Malo waits.</figcaption>
-        </figure>
-        <div class="feature-card" style="max-width:480px;margin:32px 0;">
-          <img src="https://dtsskelcze808.cloudfront.net/wp-content/uploads/2026/05/20120220/compressed_1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
-          <div class="body">
-            <span class="status">Leading candidate</span>
-            <h3>Teki Malo</h3>
-            <p>1988 Tayana 37 cutter · Tortugal Marina, Río Dulce, Guatemala</p>
-          </div>
-        </div>
       </section>
 
-      <section class="chapter">
-        <h2>Chapter 6 — Preparing for the Inspection</h2>
-        <p>By early November, Teki Malo had become my leading candidate. After further conversations with Catherine and the sellers, we reached an agreement to proceed, subject to the inspections and other purchase contingencies.</p>
-        <p>I wasn’t ready to call her mine. Not yet. I’d learned too much from Pantala to skip the important steps. This time, I wanted a comprehensive inspection process.</p>
-        <p>I arranged for marine surveyor Casey Brooks to examine the vessel. The plan includes a sea trial, a haul-out to inspect the underwater hull, and a detailed evaluation of the boat’s condition. I also began coordinating with a local diesel mechanic known as Diesel John and a rigging specialist named Ryan.</p>
-        <p>The engine deserves particular attention. Teki Malo’s Yanmar has accumulated substantial operating hours, so I want to see how it starts cold and performs under load. The standing rigging, mast, chainplates, and associated hardware also need careful evaluation. A boat that may eventually carry me across an ocean must earn my confidence.</p>
-        <div class="pull-quote">On November 9, I booked my flights. I’ll leave Philadelphia on November 18, fly through Chicago, and arrive in Guatemala City that afternoon. From there, I’ll make my way to Río Dulce.</div>
-        <p>Catherine helped arrange accommodation at Bruno’s Hotel, recommended by Casey. The main sea trial and survey are scheduled for Monday, November 23. For the first time, the journey toward Teki Malo has a definite departure date. I’m no longer just looking at photographs on a computer screen. I’m actually going to Guatemala to step aboard the boat.</p>
-      </section>
-
-      <section class="chapter">
-        <h2>Chapter 7 — A Different Kind of Life</h2>
-        <p>One of the things that makes this search so important to me is what comes afterward. I’m not simply buying a recreational sailboat for occasional weekends. I’m preparing for a different lifestyle. A home that moves.</p>
-        <p>A place where mornings might begin in a quiet anchorage, afternoons might be spent sailing along an unfamiliar coastline, and evenings might end under a sky full of stars.</p>
-        <p>I also plan to continue working remotely. As an active day trader, I’ve been designing a compact trading workstation suitable for a cruising sailboat. Reliable satellite internet, multiple high-resolution monitors, sufficient battery capacity, and solar power are all part of the plan.</p>
-        <p>It’s an unusual combination. A traditional bluewater sailboat equipped with modern technology. A floating home and office capable of taking me far beyond the places I’ve known.</p>
-        <p>And while I once imagined heading toward Bermuda and the Atlantic, I’ve also become increasingly interested in the Pacific. The west coast of the Americas, remote islands, and perhaps eventually Hawaii. I’m keeping the possibilities open. The ocean is a very big place.</p>
-      </section>
-
-      <section class="chapter">
-        <h2>Chapter 8 — What the Search Has Taught Me</h2>
-        <p>Looking back over the past several months, I’ve learned far more than I expected.</p>
-        <p>I’ve learned to look beyond polished photographs and attractive descriptions. I’ve learned that an engine compartment can tell you a great deal about how a boat has been maintained. That water stains deserve investigation. That rigging history matters. That the smell of diesel inside a cabin isn’t something to casually dismiss when you’re planning to live aboard.</p>
-        <p>I’ve learned that every boat is a collection of compromises. And that even the most respected bluewater design is only as dependable as its actual condition and maintenance.</p>
-        <div class="pull-quote">But perhaps the most important lesson is patience. I could have settled for a boat earlier in the search. Instead, I kept asking questions. I kept researching. I kept traveling. And when something didn’t feel right, I moved on.</div>
-        <p>Not because I expect to find a perfect boat. There is no perfect boat. But there is a difference between accepting the normal responsibilities of owning an older sailboat and taking on problems that could compromise safety or prevent the adventure from beginning. I want the right balance. A boat with character, strength, and a future.</p>
-      </section>
-
-      <section class="chapter">
-        <h2>Chapter 9 — Next Stop: Guatemala</h2>
-        <p>As I write this in November 2026, my bags are almost ready. The flights are arranged. The hotel is organized. The surveyor is scheduled. The mechanic and rigger are being coordinated. And somewhere on the Río Dulce, Teki Malo is waiting.</p>
-        <p>I don’t yet know whether she’ll become my home. That’s what the inspections are for. Perhaps I’ll discover a well-maintained cruising boat ready for her next chapter. Perhaps I’ll find problems that require more work than expected. Or perhaps the search will continue.</p>
-        <p>Whatever happens, I’m glad I made the journey. Because this adventure was never just about buying a sailboat. It was about choosing a direction, learning what it takes to get there, and having the determination to keep moving toward it.</p>
-        <p>The road has already taken me from New Jersey through Maryland, Virginia, and North Carolina. Now it’s taking me to the jungles of Guatemala.</p>
-        <div class="pull-quote">And if everything works out, the next chapter won’t be written from behind a computer screen. It will be written from the cockpit of a sailboat, somewhere beyond the horizon.</div>
-        <p style="text-align:center;margin-top:48px;font-size:18px;color:#5ecfc4;letter-spacing:.08em;">To be continued…</p>
-      </section>
-    </article>
-  
-</main>
-<footer>
-  <a class="monogram" href="../../">DM</a>
-  <p>© <span id="year"></span> Dmitri Morozov</p>
-  <a href="#top">Back to top ↑</a>
-</footer>
-<script src="../../script.js" defer></script>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+      <p style="margin-top:40px;"><a href="../../" style="color:#0f2c4c;border-bottom:1px solid #c9a227;padding-bottom:2px;">← Back to home</a></p>
+    </div>
+  </main>
+  <footer>
+    <p class="footer-tag">Curious mind. Disciplined approach. Meaningful pursuits.</p>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+  </footer>
+  <script src="../../script.js" defer></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
