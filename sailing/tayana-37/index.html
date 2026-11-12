@@ -3,26 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0a1620">
+<meta name="theme-color" content="#0f2c4c">
 <meta name="description" content="Tayana 37 — Robert Perry bluewater cutter: specifications, exterior, deck systems, interior and documents.">
 <title>Tayana 37 — Sailboats · Dmitri Morozov</title>
 <link rel="icon" href="../../favicon.ico">
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../styles.css?v=20261112">
 <link rel="stylesheet" href="../sailing.css?v=20260814-t37speed">
 <script src="../../script.js" defer></script>
 <style>
 .t37-page {
-  --cyan: #5ecfc4;
-  --cyan-bright: #7ee0d6;
-  --navy: #0b1520;
-  --navy-deep: #071018;
-  color: #e8eef0;
-  background: #041018;
+  --cyan: #c9a227;
+  --cyan-bright: #e8d48b;
+  --navy: #0f2c4c;
+  --navy-deep: #0a1f35;
+  color: #1a2332;
+  background: #f7f1e8;
   overflow-x: hidden;
 }
-.t37-page .ambient { display: none; }
+.t37-page .ambient { display: block; }
 
-/* Full-page live wallpaper */
 .t37-page .ocean-live-bg {
   position: fixed;
   top: 50%;
@@ -37,7 +36,7 @@
   transform-origin: center center;
   z-index: 0;
   pointer-events: none;
-  filter: brightness(.85) saturate(1.1) contrast(1.05);
+  filter: brightness(.9) saturate(1.05);
 }
 .t37-page .ocean-live-overlay {
   position: fixed;
@@ -45,7 +44,7 @@
   z-index: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(4,16,24,.18) 0%, rgba(4,16,24,.22) 50%, rgba(4,16,24,.62) 100%);
+    linear-gradient(180deg, rgba(15,44,76,.25) 0%, rgba(15,44,76,.4) 50%, rgba(247,241,232,.85) 100%);
 }
 .t37-page main,
 .t37-page footer {
@@ -55,36 +54,28 @@
 .t37-page main {
   padding-top: 60px;
 }
-/* Keep global fixed header (styles.css); only raise stacking above video */
 .t37-page .site-header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
+  background: rgba(15,44,76,.75) !important;
+  backdrop-filter: blur(16px);
 }
 .t37-page .sec {
-  background: rgba(7, 16, 24, .72);
+  background: rgba(247,241,232,.88);
   backdrop-filter: blur(4px);
 }
 .t37-page footer {
-  background: rgba(4, 16, 24, .90);
-}
-.t37-page .site-header {
-  background: rgba(4,12,18,.96);
-  border-bottom: 1px solid rgba(94,207,196,.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(247,241,232,.95);
+  border-top: 1px solid rgba(26,35,50,.12);
+  color: #7a8494;
 }
 @media (prefers-reduced-motion: reduce) {
   .t37-page .ocean-live-bg { display: none; }
   .t37-page {
-    background-image:
-      linear-gradient(180deg, rgba(4,16,24,.84), rgba(4,16,24,.94)),
-      url("../assets/open-ocean-texture.png");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: #f7f1e8;
   }
 }
 
@@ -98,22 +89,18 @@
   background: transparent;
   border-bottom: none;
   padding: 0;
+  color: #fff;
 }
-.t37-page .hb {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  display: none;
-}
+.t37-page .hb { display: none; }
 .t37-page .hs {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(180deg,
-      rgba(4,16,24,.20) 0%,
-      rgba(4,16,24,.15) 40%,
-      rgba(4,16,24,.55) 72%,
-      rgba(4,16,24,.90) 100%);
+      rgba(15,44,76,.2) 0%,
+      rgba(15,44,76,.15) 40%,
+      rgba(15,44,76,.55) 72%,
+      rgba(15,44,76,.75) 100%);
   pointer-events: none;
 }
 .t37-page .hc {
@@ -124,15 +111,8 @@
   max-width: none;
   width: 100%;
   box-sizing: border-box;
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
 }
-.t37-page .hc-inner {
-  max-width: 752px;
-}
+.t37-page .hc-inner { max-width: 752px; }
 .t37-page .bc {
   display: flex;
   flex-wrap: wrap;
@@ -140,66 +120,41 @@
   font-size: 10px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #9aadb2;
+  color: rgba(255,255,255,.7);
   margin-bottom: 22px;
-  text-shadow: 0 1px 10px rgba(0,0,0,.4);
 }
-.t37-page .bc a { color: #9eb3b8; }
-.t37-page .bc a:hover { color: var(--cyan-bright); }
-/* Override global .hero h1 { display:flex } from styles.css */
+.t37-page .bc a { color: rgba(255,255,255,.8); }
+.t37-page .bc a:hover { color: #e8d48b; }
 .t37-page .hero h1,
 .t37-page h1#t37-title {
   display: block !important;
-  flex-direction: column !important;
-  flex-wrap: wrap !important;
-  align-items: flex-start !important;
-  gap: 0 !important;
-  white-space: normal !important;
   font-size: clamp(46px, 6vw, 72px);
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -.03em;
   margin: 0 0 20px;
-  color: #f4f7f6;
-  max-width: 100%;
-  text-shadow: 0 2px 24px rgba(0,0,0,.55);
-}
-.t37-page .hero h1 .line1,
-.t37-page h1#t37-title .line1 {
-  display: block !important;
-  float: none !important;
-  width: 100% !important;
-  flex: none !important;
-  color: #f4f7f6;
+  color: #fff;
 }
 .t37-page .hero h1 .line2,
 .t37-page h1#t37-title .line2 {
-  display: block !important;
-  float: none !important;
-  width: 100% !important;
-  flex: none !important;
-  color: var(--cyan-bright);
-  font-style: normal;
+  color: #e8d48b;
   font-size: clamp(32px, 4vw, 46px);
   line-height: 1.22;
   margin-top: 0.2em;
-  white-space: normal !important;
-  letter-spacing: -.02em;
 }
 .t37-page .hero-rule {
   width: 48px;
   height: 2px;
-  background: var(--cyan);
+  background: #c9a227;
   margin: 0 0 18px;
   border: 0;
 }
 .t37-page .lede {
-  color: #c2d2d6;
+  color: rgba(255,255,255,.88);
   font-size: 15px;
   line-height: 1.65;
   max-width: 640px;
   margin: 0 0 8px;
-  text-shadow: 0 1px 12px rgba(0,0,0,.45);
 }
 
 .t37-page .instrument {
@@ -208,18 +163,17 @@
   gap: 0;
   margin: 0 max(5vw, calc((100vw - 1120px) / 2)) 36px;
   max-width: 880px;
-  border: 1px solid rgba(94,207,196,.14);
-  background: rgba(6,14,22,.78);
+  border: 1px solid rgba(201,162,39,.25);
+  background: rgba(15,44,76,.55);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   position: relative;
   z-index: 2;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 8px;
 }
 .t37-page .instrument div {
   padding: 16px 14px;
-  border-right: 1px solid rgba(94,207,196,.1);
+  border-right: 1px solid rgba(201,162,39,.15);
 }
 .t37-page .instrument div:last-child { border-right: 0; }
 .t37-page .instrument small {
@@ -227,13 +181,13 @@
   font-size: 9px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: #6d8288;
+  color: rgba(255,255,255,.6);
   margin-bottom: 5px;
 }
 .t37-page .instrument strong {
   font-size: 15px;
   letter-spacing: -.02em;
-  color: #e4eeec;
+  color: #fff;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -241,7 +195,7 @@
 
 .t37-page .sec {
   padding: 64px max(5vw, calc((100vw - 1120px) / 2));
-  border-bottom: 1px solid rgba(94,207,196,.06);
+  border-bottom: 1px solid rgba(26,35,50,.08);
 }
 .t37-page .lab {
   display: flex;
@@ -250,24 +204,19 @@
   font-size: 12px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: #c5d4d8;
+  color: #c9a227;
   font-weight: 500;
   margin-bottom: 20px;
 }
-.t37-page .lab span {
-  color: #8a9ea4;
-  font-weight: 400;
-  letter-spacing: .12em;
-}
 .t37-page .prose {
   max-width: 640px;
-  color: #9aadb2;
+  color: #5a6a7a;
   font-size: 15px;
   line-height: 1.7;
 }
 .t37-page .ld {
   font-size: 17px;
-  color: #d5e3e4;
+  color: #1a2332;
   line-height: 1.55;
   margin-bottom: 14px;
 }
@@ -285,16 +234,16 @@
 .t37-page th,
 .t37-page td {
   padding: 11px 0;
-  border-bottom: 1px solid rgba(94,207,196,.1);
+  border-bottom: 1px solid rgba(26,35,50,.1);
   text-align: left;
 }
 .t37-page th {
-  color: #7d9196;
+  color: #5a6a7a;
   font-weight: 400;
   width: 46%;
 }
 .t37-page td {
-  color: #d8e6e4;
+  color: #1a2332;
   font-variant-numeric: tabular-nums;
   font-size: 13px;
 }
@@ -309,13 +258,13 @@
   display: grid;
   grid-template-columns: 18px 1fr;
   gap: 8px;
-  color: #9aadb2;
+  color: #5a6a7a;
   font-size: 14px;
   line-height: 1.5;
 }
 .t37-page .fl li::before {
   content: "◇";
-  color: var(--cyan);
+  color: #c9a227;
   font-size: 10px;
   margin-top: 3px;
 }
@@ -342,15 +291,15 @@
   margin: 0;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(94,207,196,.12);
-  background: #0a1520;
+  border: 1px solid rgba(26,35,50,.1);
+  border-radius: 8px;
+  background: #fffaf4;
   aspect-ratio: 4/3;
 }
 .t37-page .g img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(.9) brightness(.9);
   transition: transform .5s ease;
 }
 .t37-page .g:hover img { transform: scale(1.03); }
@@ -358,10 +307,10 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 24px 12px 10px;
-  background: linear-gradient(transparent, rgba(4,12,18,.94));
+  background: linear-gradient(transparent, rgba(15,44,76,.85));
   font-size: 10px;
   letter-spacing: .06em;
-  color: rgba(232,242,240,.9);
+  color: #fff;
 }
 
 .t37-page .zone { margin-top: 36px; }
@@ -370,14 +319,14 @@
   font-size: 12px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: #c9a227;
   margin: 0 0 14px;
   font-weight: 500;
 }
 
 .t37-page .docs {
   margin-top: 12px;
-  border-top: 1px solid rgba(94,207,196,.12);
+  border-top: 1px solid rgba(26,35,50,.1);
 }
 .t37-page .docs a {
   display: grid;
@@ -385,32 +334,29 @@
   gap: 16px;
   align-items: center;
   padding: 14px 2px;
-  border-bottom: 1px solid rgba(94,207,196,.08);
-  color: #d8e6e4;
+  border-bottom: 1px solid rgba(26,35,50,.08);
+  color: #0f2c4c;
   text-decoration: none;
   font-size: 14px;
-  transition: color .2s;
 }
-.t37-page .docs a:hover { color: var(--cyan-bright); }
+.t37-page .docs a:hover { color: #c9a227; }
 .t37-page .docs small {
   font-size: 10px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: #6d8288;
+  color: #5a6a7a;
 }
 
 .t37-page .bb {
   padding: 32px max(5vw, calc((100vw - 1120px) / 2)) 72px;
-  border-top: 1px solid rgba(94,207,196,.08);
+  border-top: 1px solid rgba(26,35,50,.08);
 }
 .t37-page .bb a {
-  color: #9eb3b8;
+  color: #0f2c4c;
   font-size: 13px;
-  border-bottom: 1px solid rgba(94,207,196,.3);
+  border-bottom: 1px solid #c9a227;
   padding-bottom: 3px;
-  transition: color .2s;
 }
-.t37-page .bb a:hover { color: var(--cyan-bright); }
 
 @media (max-width: 900px) {
   .t37-page .instrument { grid-template-columns: repeat(4, 1fr); }
@@ -436,13 +382,7 @@
   .t37-page .hero h1 { font-size: 11vw; }
 }
 
-/* Full-size image lightbox */
-.t37-page .g {
-  cursor: zoom-in;
-}
-.t37-page .g img {
-  cursor: zoom-in;
-}
+.t37-page .g { cursor: zoom-in; }
 .t37-lb {
   position: fixed;
   inset: 0;
@@ -450,25 +390,21 @@
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(2, 8, 14, .92);
+  background: rgba(15,44,76,.92);
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   padding: 24px;
   box-sizing: border-box;
   cursor: zoom-out;
 }
-.t37-lb.is-open {
-  display: flex;
-}
+.t37-lb.is-open { display: flex; }
 .t37-lb img {
   max-width: min(96vw, 1400px);
   max-height: 92vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  border: 1px solid rgba(94,207,196,.18);
-  box-shadow: 0 20px 60px rgba(0,0,0,.5);
-  cursor: default;
+  border: 1px solid rgba(201,162,39,.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
 }
 .t37-lb-cap {
   position: absolute;
@@ -478,7 +414,7 @@
   font-size: 12px;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #9eb3b8;
+  color: #f7f1e8;
   max-width: 90vw;
   text-align: center;
   pointer-events: none;
@@ -489,19 +425,14 @@
   right: 20px;
   background: transparent;
   border: 0;
-  color: #c5d4d8;
+  color: #f7f1e8;
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
   padding: 8px 12px;
   z-index: 2;
 }
-.t37-lb-close:hover {
-  color: #fff;
-}
-body.t37-lb-active {
-  overflow: hidden;
-}
+body.t37-lb-active { overflow: hidden; }
 .boat-directory {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -513,54 +444,55 @@ body.t37-lb-active {
   padding: 26px;
   flex-direction: column;
   justify-content: flex-end;
-  color: #e8eef0;
+  color: #1a2332;
   text-decoration: none;
-  border: 1px solid rgba(94,207,196,.16);
-  background:
-    linear-gradient(145deg, rgba(16,35,47,.94), rgba(6,17,25,.96));
-  transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  border: 1px solid rgba(26,35,50,.1);
+  border-radius: 12px;
+  background: #fffaf4;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 .boat-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(126,224,214,.5);
-  background:
-    linear-gradient(145deg, rgba(20,43,56,.96), rgba(7,21,30,.98));
+  box-shadow: 0 12px 32px rgba(15,44,76,.1);
 }
 .boat-card small {
   margin-bottom: 8px;
-  color: var(--cyan);
+  color: #c9a227;
   font-size: 10px;
   letter-spacing: .15em;
   text-transform: uppercase;
 }
 .boat-card strong {
   margin-bottom: 8px;
-  color: #f4f7f6;
+  color: #0f2c4c;
   font-size: 28px;
   font-weight: 400;
   letter-spacing: -.02em;
 }
 .boat-card span {
-  color: #95a9ae;
+  color: #5a6a7a;
   font-size: 13px;
 }
 .boat-card em {
   margin-top: 24px;
-  color: var(--cyan-bright);
+  color: #0f2c4c;
   font-size: 11px;
   font-style: normal;
   letter-spacing: .1em;
   text-transform: uppercase;
+  border-bottom: 1px solid #c9a227;
+  padding-bottom: 2px;
 }
 </style>
 </head>
 <body class="sailing-page t37-page">
+<div class="ambient" aria-hidden="true"></div>
 <video class="ocean-live-bg" autoplay muted loop playsinline preload="auto" aria-hidden="true">
   <source src="assets/ocean_cut_small.mp4" type="video/mp4">
 </video>
 <div class="ocean-live-overlay" aria-hidden="true"></div>
 <header class="site-header" id="top">
-  <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
+  <a class="monogram" href="../../" aria-label="Dmitri Morozov, home">DM</a>
   <nav class="nav" aria-label="Primary">
     <a href="../../">Home</a>
     <a href="../">Sailing</a>
@@ -572,13 +504,12 @@ body.t37-lb-active {
     <a href="#boats">Boats</a>
     <a href="#documents">Documents</a>
   </nav>
-  <a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a>
-  <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+  <a class="connect-btn" href="mailto:dmitri.m80@gmail.com">Let's Connect <span>→</span></a>
+  <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
 </header>
 
 <main>
   <section class="hero" aria-labelledby="t37-title">
-    <div class="hb" aria-hidden="true"></div>
     <div class="hs" aria-hidden="true"></div>
     <div class="hc">
       <div class="hc-inner">
@@ -654,229 +585,26 @@ body.t37-lb-active {
       <figure class="g"><img src="assets/15-Side1.jpg" alt="Starboard profile" loading="lazy"><figcaption>Starboard profile</figcaption></figure>
       <figure class="g"><img src="assets/Underwater%20camera.jpg" alt="Underbody" loading="lazy"><figcaption>Underbody</figcaption></figure>
     </div>
-    <div class="gg" style="margin-top:12px">
-      <figure class="g"><img src="assets/CT-37.jpg" alt="Early CT-37" loading="lazy"><figcaption>Early CT-37</figcaption></figure>
-      <figure class="g"><img src="assets/Jim%20Hampsen%27s%20Sea%20Gypsy.jpg" alt="Sea Gypsy" loading="lazy"><figcaption>Sea Gypsy</figcaption></figure>
-      <figure class="g"><img src="assets/Bold%20Venture%20in%20Travel%20Lift.jpeg" alt="Travel lift" loading="lazy"><figcaption>Travel lift</figcaption></figure>
-      <figure class="g"><img src="assets/New%20Bottom%20Paint.jpeg" alt="Bottom paint" loading="lazy"><figcaption>Bottom paint</figcaption></figure>
-      <figure class="g"><img src="assets/Underwater%20camera%202.jpg" alt="Keel and rudder" loading="lazy"><figcaption>Keel and rudder</figcaption></figure>
-      <figure class="g"><img src="assets/1984-tayana-37-sail-10002618-20251105080048988-2.webp" alt="1984 example" loading="lazy"><figcaption>1984 example</figcaption></figure>
-    </div>
-  </section>
-
-  <section class="sec" id="deck">
-    <div class="lab"><span>04</span> Deck and systems</div>
-    <div class="zone">
-      <h3>Foredeck and anchoring</h3>
-      <div class="gg">
-        <figure class="g"><img src="assets/1%20-%20Foredeck%20With%20Dual%20Anchors.jpeg" alt="Dual anchors" loading="lazy"><figcaption>Dual anchors</figcaption></figure>
-        <figure class="g"><img src="assets/2%20-%20Foredeck_Starboard.jpeg" alt="Foredeck starboard" loading="lazy"><figcaption>Foredeck starboard</figcaption></figure>
-        <figure class="g"><img src="assets/6%20-%20Anchor%20Locker%20With%20Line%20Storage%20Aft.jpeg" alt="Anchor locker" loading="lazy"><figcaption>Anchor locker</figcaption></figure>
-        <figure class="g"><img src="assets/Bowsprit.jpg" alt="Bowsprit" loading="lazy"><figcaption>Bowsprit</figcaption></figure>
-        <figure class="g"><img src="assets/21-Windlass1.jpg" alt="Windlass" loading="lazy"><figcaption>Windlass</figcaption></figure>
-        <figure class="g"><img src="assets/rocna_25_tayana_37_1.jpg" alt="Rocna 25" loading="lazy"><figcaption>Rocna 25</figcaption></figure>
-        <figure class="g"><img src="assets/anchor%20mount%20forward%20view.jpg" alt="Mount forward" loading="lazy"><figcaption>Mount forward</figcaption></figure>
-        <figure class="g"><img src="assets/roller%20furling%20001.jpg" alt="Roller furling" loading="lazy"><figcaption>Roller furling</figcaption></figure>
-      </div>
-    </div>
-    <div class="zone">
-      <h3>Stern, davits and power</h3>
-      <div class="gg">
-        <figure class="g"><img src="assets/3-%20Davits%20deployed-%20(motor%20is%20not%20stored%20on%20dinghy%20while%20tra.jpeg" alt="Davits deployed" loading="lazy"><figcaption>Davits deployed</figcaption></figure>
-        <figure class="g"><img src="assets/4-%20Davits%2C%20cross%20brace%20and%20sockets.jpeg" alt="Davits and brace" loading="lazy"><figcaption>Davits and brace</figcaption></figure>
-        <figure class="g"><img src="assets/6b-%20Overview%2C%20dinghy%20in%20davits%20for%20cruising%20in%20calm%20waters.jpeg" alt="Dinghy in davits" loading="lazy"><figcaption>Dinghy in davits</figcaption></figure>
-        <figure class="g"><img src="assets/7-%20Davits%20folded%20in.jpeg" alt="Davits folded" loading="lazy"><figcaption>Davits folded</figcaption></figure>
-        <figure class="g"><img src="assets/10-%20Outboard%20Motor%20Lift%20(Garhauer).jpeg" alt="Outboard lift" loading="lazy"><figcaption>Outboard lift</figcaption></figure>
-        <figure class="g"><img src="assets/13-%20Wind%20Generator%20Mount.jpeg" alt="Wind generator" loading="lazy"><figcaption>Wind generator</figcaption></figure>
-        <figure class="g"><img src="assets/18-%20Solar%20Panel%20Overview.jpeg" alt="Solar overview" loading="lazy"><figcaption>Solar overview</figcaption></figure>
-        <figure class="g"><img src="assets/19-%20Solar%20Panel%20Mount.jpeg" alt="Solar mount" loading="lazy"><figcaption>Solar mount</figcaption></figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="interior">
-    <div class="lab"><span>05</span> Interior and layout</div>
-    <div class="asym">
-      <figure class="g"><img src="assets/Tayana-37-Interior.png.webp" alt="Interior layout" loading="lazy"><figcaption>Interior layout</figcaption></figure>
-      <figure class="g"><img src="assets/DSC_0042.jpeg" alt="Saloon" loading="lazy"><figcaption>Saloon</figcaption></figure>
-      <figure class="g"><img src="assets/DSC_0043.jpeg" alt="Galley" loading="lazy"><figcaption>Galley</figcaption></figure>
-      <figure class="g"><img src="assets/DSC_0049.jpeg" alt="Forward cabin" loading="lazy"><figcaption>Forward cabin</figcaption></figure>
-      <figure class="g"><img src="assets/Tayana-37-sotrage.png.webp" alt="Storage" loading="lazy"><figcaption>Storage</figcaption></figure>
-      <figure class="g"><img src="assets/P3100136.jpeg" alt="Interior photo" loading="lazy"><figcaption>Interior photo</figcaption></figure>
-    </div>
   </section>
 
   <section class="sec" id="boats">
-    <div class="lab"><span>06</span> Individual boats</div>
+    <div class="lab"><span>04</span> Boats</div>
+    <p class="ld" style="max-width:640px;margin-bottom:24px;">The Tayana 37s that have been part of the search.</p>
     <div class="boat-directory">
-      <a class="boat-card" href="boats/three-little-birds/">
-        <small>1983 Tayana 37</small>
-        <strong>Three Little Birds</strong>
-        <span>Cambridge, Maryland</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/teki-malo/">
-        <small>1988 Tayana 37</small>
-        <strong>Teki Malo</strong>
-        <span>Río Dulce, Guatemala</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/night-heron/">
-        <small>1977 Tayana 37</small>
-        <strong>Night Heron</strong>
-        <span>Marina del Rey, California</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/second-wind/">
-        <small>1981 Tayana 37</small>
-        <strong>Second Wind</strong>
-        <span>Shelter Bay Marina, Panama</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/doggfish/">
-        <small>1986 Tayana 37</small>
-        <strong>Doggfish</strong>
-        <span>Fuerte Sherman, Panama</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/compass-rose/">
-        <small>1983 Tayana 37</small>
-        <strong>Compass Rose</strong>
-        <span>San Carlos Nuevo Guaymas, Mexico</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/sans-souci/">
-        <small>1982 Tayana 37</small>
-        <strong>Sans Souci</strong>
-        <span>Sodus Point, New York</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/pantala/">
-        <small>1982 Tayana 37</small>
-        <strong>Pantala</strong>
-        <span>New Bern, North Carolina</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/peace-and-quiet/">
-        <small>1986 Tayana 37</small>
-        <strong>Peace & Quiet</strong>
-        <span>Lyme, Connecticut</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/kama/">
-        <small>1976 Tayana 37</small>
-        <strong>Kama</strong>
-        <span>Washington, North Carolina</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/honu/">
-        <small>1978 Tayana 37</small>
-        <strong>Honu</strong>
-        <span>Puerto Peñasco, Mexico</span>
-        <em>View boat &rarr;</em>
-      </a>
-      <a class="boat-card" href="boats/albatross/">
-        <small>1984 Tayana 37</small>
-        <strong>ALBATROSS</strong>
-        <span>Palm Coast, Florida</span>
-        <em>View boat &rarr;</em>
-      </a>
+      <a class="boat-card" href="boats/teki-malo/"><small>1988</small><strong>Teki Malo</strong><span>Río Dulce, Guatemala</span><em>View details →</em></a>
+      <a class="boat-card" href="boats/pantala/"><small>1982</small><strong>Pantala</strong><span>New Bern, North Carolina</span><em>View details →</em></a>
+      <a class="boat-card" href="boats/three-little-birds/"><small>1983</small><strong>Three Little Birds</strong><span>Cambridge, Maryland</span><em>View details →</em></a>
     </div>
   </section>
 
-  <section class="sec" id="documents">
-    <div class="lab"><span>07</span> Plans and documents</div>
-    <div class="docs">
-      <a href="assets/Brochure.pdf" target="_blank" rel="noopener"><span>Brochure</span><small>PDF</small></a>
-      <a href="assets/Perry_on_CT-37.pdf" target="_blank" rel="noopener"><span>Perry on the CT-37</span><small>PDF</small></a>
-      <a href="assets/T37_SailPlan.jpg" target="_blank" rel="noopener"><span>Sail plan</span><small>JPG</small></a>
-      <a href="assets/T37-581%20deck%20layout.pdf" target="_blank" rel="noopener"><span>Deck layout (T37-581)</span><small>PDF</small></a>
-      <a href="assets/T37-581%20port%20facing%20view%20and%20accomodation%20overhead%20view.pdf" target="_blank" rel="noopener"><span>Port and accommodation views</span><small>PDF</small></a>
-      <a href="assets/T37-581%20starboard%20view.pdf" target="_blank" rel="noopener"><span>Starboard view</span><small>PDF</small></a>
-      <a href="assets/Rocna_anchor_bow_roller.pdf" target="_blank" rel="noopener"><span>Rocna bow roller notes</span><small>PDF</small></a>
-      <a href="assets/Manual1.pdf" target="_blank" rel="noopener"><span>Manual 1</span><small>PDF</small></a>
-      <a href="assets/Manual2.pdf" target="_blank" rel="noopener"><span>Manual 2</span><small>PDF</small></a>
-      <a href="assets/Manual3.pdf" target="_blank" rel="noopener"><span>Manual 3</span><small>PDF</small></a>
-      <a href="assets/Manual4.pdf" target="_blank" rel="noopener"><span>Manual 4</span><small>PDF</small></a>
-      <a href="assets/Manual5.pdf" target="_blank" rel="noopener"><span>Manual 5</span><small>PDF</small></a>
-    </div>
-  </section>
-
-  <section class="sec" id="ownership">
-    <div class="lab"><span>08</span> Ownership notes</div>
-    <div class="tc">
-      <div class="prose">
-        <p class="ld">Condition and systems upgrades drive value. Survey priorities include deck core (especially teak-overlaid decks), chainplates, tankage, rigging, and auxiliary systems. The model remains actively traded and well documented by owners worldwide.</p>
-      </div>
-      <ul class="fl">
-        <li>Proven coastal and bluewater platform</li>
-        <li>Active secondary market</li>
-        <li>Teak decks and older systems often need work</li>
-        <li>Cutter preferred for passagemaking</li>
-        <li>Semi-custom interiors vary by boat</li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="bb"><a href="../#sailboats">← Return to Sailboats</a></div>
+  <div class="bb">
+    <a href="../">← Back to Sailing</a>
+  </div>
 </main>
-
 <footer>
-  <a class="monogram" href="../../">DM<span>.</span></a>
   <p>© <span id="year"></span> Dmitri Morozov</p>
   <a href="#top">Back to top ↑</a>
 </footer>
-
-<div class="t37-lb" id="t37-lb" role="dialog" aria-modal="true" aria-label="Full-size image" hidden>
-  <button type="button" class="t37-lb-close" id="t37-lb-close" aria-label="Close">&times;</button>
-  <img src="" alt="">
-  <div class="t37-lb-cap" id="t37-lb-cap"></div>
-</div>
-<script>
-(function () {
-  var lb = document.getElementById('t37-lb');
-  if (!lb) return;
-  var img = lb.querySelector('img');
-  var cap = document.getElementById('t37-lb-cap');
-  var closeBtn = document.getElementById('t37-lb-close');
-
-  function openLb(src, alt, caption) {
-    img.src = src;
-    img.alt = alt || '';
-    cap.textContent = caption || alt || '';
-    lb.hidden = false;
-    lb.classList.add('is-open');
-    document.body.classList.add('t37-lb-active');
-  }
-  function closeLb() {
-    lb.classList.remove('is-open');
-    lb.hidden = true;
-    img.removeAttribute('src');
-    document.body.classList.remove('t37-lb-active');
-  }
-
-  document.addEventListener('click', function (e) {
-    var fig = e.target.closest && e.target.closest('.t37-page figure.g');
-    if (!fig) return;
-    var photo = fig.querySelector('img');
-    if (!photo || !photo.src) return;
-    e.preventDefault();
-    var captionEl = fig.querySelector('figcaption');
-    openLb(photo.currentSrc || photo.src, photo.alt, captionEl ? captionEl.textContent : photo.alt);
-  });
-
-  closeBtn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    closeLb();
-  });
-  lb.addEventListener('click', function (e) {
-    if (e.target === lb) closeLb();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lb.classList.contains('is-open')) closeLb();
-  });
-})();
-</script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
