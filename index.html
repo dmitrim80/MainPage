@@ -3,116 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0f2c4c">
-  <meta name="description" content="Dmitri Morozov — live-aboard practice, seamanship, and life on the water.">
-  <title>Dmitri Morozov</title>
-  <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="styles.css?v=20261112">
-  <script src="script.js" defer></script>
+  <meta name="theme-color" content="#f1e3d1">
+  <meta name="description" content="Postcards from Dmitri Morozov. A sailing journal, the Tayana 37 collection, passage preparation, and simple meals for life afloat.">
+  <title>Dmitri Morozov — Postcards Afloat</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/postcards.css?v=20261114">
 </head>
-<body>
-  <div class="ambient" aria-hidden="true"></div>
-  <header class="site-header" id="top">
-    <a class="monogram" href="#top">DM</a>
-    <nav class="nav">
-      <a href="#top" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="connect-btn" href="#contact">Let's Connect <span>→</span></a>
-    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<body id="dm-new-themes">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="page postcard" id="top">
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Dmitri Morozov home">Postcards from Dmitri</a>
+    <nav aria-label="Main navigation"><a href="#journal">The notes</a><a href="/sailing/tayana-37/">The boats</a><a href="#about">The person</a><a href="#contact">Say hello</a></nav>
   </header>
-  <main>
-    <section class="hero-horizon">
-      <div class="hero-inner">
-        <div>
-          <h1>Dmitri Morozov</h1>
-          <p class="bio">Building a home that sails. Live-aboard practice, seamanship, and the quiet work of a life on the water.</p>
-          <a class="cta" href="#journal">Read the Journal →</a>
-        </div>
-        <div class="hero-portrait-circle">
-          <img src="static/media/profile1.jpg?v=20260905" alt="Portrait of Dmitri Morozov">
-        </div>
+  <main id="main">
+    <section class="collage" aria-labelledby="intro-title">
+      <div class="copy"><p class="hello">Dear somewhere else,</p><h1 id="intro-title">I'm on<br>my way.</h1><p>A few boats, a lot of questions, and a growing collection of stories. Come along as I build a life a little closer to the sea.</p><a class="action" href="#journal">Read my field notes <span aria-hidden="true">↗</span></a></div>
+      <div class="pile">
+        <figure class="post-photo"><img src="/assets/bg-marina-1.jpg" alt="New York waterfront and skyline" fetchpriority="high"><figcaption>Somewhere between a plan and a beginning.</figcaption></figure>
+        <div class="stamp" aria-hidden="true">SEA MAIL<br>DM / 2026</div>
+        <div class="small-photo"><img src="/static/media/profile1.jpg" alt="Portrait of Dmitri Morozov"></div>
       </div>
     </section>
-
-    <section class="featured">
-      <div class="featured-grid">
-        <article class="featured-card">
-          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
-          <div class="body">
-            <div class="label">Featured Boat</div>
-            <h2>Teki Malo</h2>
-            <p>1988 Tayana 37 Cutter · Río Dulce, Guatemala<br>Currently in pursuit — a classic cruiser for live-aboard life on the Sweet River.</p>
-            <a href="sailing/tayana-37/boats/teki-malo/">Explore Teki Malo →</a>
-          </div>
-        </article>
-        <article class="featured-card">
-          <img src="assets/kitchen/IMG_8458.jpeg" alt="Galley still life">
-          <div class="body">
-            <div class="label">Galley Still Life</div>
-            <h2>Simple provisions</h2>
-            <p>Quiet mornings, one-pan meals, and the rhythm of life afloat.</p>
-            <a href="kitchen/">View Galley Notes →</a>
-          </div>
-        </article>
+    <section class="notes" id="journal" aria-labelledby="notes-title">
+      <div class="notes-head"><h2 id="notes-title">Things worth keeping.</h2><span class="micro">From the notebook</span></div>
+      <div class="notes-grid">
+        <a class="note" href="/journal/boat-search/"><div class="micro">The search</div><h3>A home that sails <span aria-hidden="true">↗</span></h3><p>Months of research, inspections, and decisions. How the next chapter is taking shape.</p></a>
+        <a class="note" href="/sailing/tayana-37/"><div class="micro">The boat album</div><h3>All those Tayanas <span aria-hidden="true">↗</span></h3><p>The complete Tayana 37 collection: photographs, details, and possibilities.</p></a>
+        <a class="note" href="/kitchen/"><div class="micro">The recipe box</div><h3>Something good <span aria-hidden="true">↗</span></h3><p>Simple meals for wherever home is. Ingredients, everyday notes, and galley rituals.</p></a>
       </div>
     </section>
-
-    <section class="section" id="about">
-      <div class="section-inner">
-        <p class="eyebrow">About</p>
-        <h2>Notes from a life lived aboard.</h2>
-        <p class="lead">This site documents the practice of living on a boat: the vessel, the systems, the galley, and the passages.</p>
-        <p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice—what is being built, refined, and learned in real time on the water.</p>
-        <div class="links">
-          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
-          <a href="themes/">Themes ↗</a>
-        </div>
+    <section class="scrapbook" aria-labelledby="bookmarks-title">
+      <div class="notes-head"><h2 id="bookmarks-title">Pages with a corner turned.</h2><span class="micro">A few bookmarks</span></div>
+      <div class="bookmarks">
+        <a class="bookmark" href="/sailing/tayana-37/boats/teki-malo/"><img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo, a Tayana 37 cutter" loading="lazy"><div><span class="micro">Featured boat</span><h3>Teki Malo <span aria-hidden="true">↗</span></h3><p>1988 Tayana 37 Cutter · Río Dulce, Guatemala.<br>A closer look at a classic cruiser.</p></div></a>
+        <a class="bookmark" href="/sailing/"><img src="/assets/bg-marina-1.jpg" alt="New York waterfront" loading="lazy"><div><span class="micro">Sailing & preparation</span><h3>A horizon worth preparing for <span aria-hidden="true">↗</span></h3><p>The vessel, the systems, and the roadmap toward passages.</p></div></a>
       </div>
     </section>
-    <section class="section" id="journal">
-      <div class="section-inner">
-        <p class="eyebrow">Journal</p>
-        <h2>Recent entries</h2>
-        <div class="entries">
-          <a href="journal/boat-search/">
-            <span>Sailing · November 2026</span>
-            <h3>The Search for a Home That Sails</h3>
-            <p>Months of research, inspections, and decisions in the search for a boat to live aboard and sail mostly solo.</p>
-          </a>
-          <a href="kitchen/">
-            <span>Galley · Kitchen Log</span>
-            <h3>Home meals worth making again</h3>
-            <p>A living record of simple plates, ingredients, and everyday notes from the galley.</p>
-          </a>
-          <a href="sailing/">
-            <span>Sailing · Journey</span>
-            <h3>A horizon worth preparing for</h3>
-            <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-    <section class="contact" id="contact">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's build what's next.</h2>
-      <a class="email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
-      <div class="social">
-        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://x.com/njreef" target="_blank" rel="noreferrer">X</a>
-      </div>
-    </section>
+    <section class="personal" id="about" aria-labelledby="about-title"><div><p class="hello">A little about the sender.</p><h2 id="about-title">Dmitri Morozov.</h2></div><div><p>This site documents the projects I am actively developing: sailing, boat research, and life in the galley.</p><p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice — what is being built, refined, and learned along the way.</p><div class="text-links"><a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a><a href="/static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a><a href="/themes/">Design archive ↗</a></div></div></section>
+    <section class="postscript" id="contact" aria-labelledby="contact-title"><div><p class="micro">P.S. / Keep in touch</p><h2 id="contact-title">There's always room for a good conversation.</h2><a class="email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a></div><nav class="text-links" aria-label="Social links"><a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a><a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram ↗</a><a href="https://x.com/njreef" target="_blank" rel="noreferrer">X ↗</a></nav></section>
   </main>
-  <footer>
-    <p class="footer-tag">Curious mind. Disciplined approach. Meaningful pursuits.</p>
-    <p>© <span id="year"></span> Dmitri Morozov</p>
-  </footer>
+  <footer><span>More stories to come. — Dmitri</span><div><a href="/themes/">Themes</a> <span aria-hidden="true"> / </span> <a href="#top">Back to top ↑</a></div><span>© 2026 Dmitri Morozov</span></footer>
+</div>
 </body>
 </html>
