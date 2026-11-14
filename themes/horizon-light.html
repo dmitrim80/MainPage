@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f2c4c">
+  <meta name="description" content="Dmitri Morozov — live-aboard practice, seamanship, and life on the water.">
+  <title>Horizon Light — Dmitri Morozov</title>
+  <link rel="icon" href="favicon.ico">
+  <style>
+@font-face{font-family:Inter;src:url('static/media/RasmusAndersson-Inter-Regular.8427860ac8bc5bb4b008.ttf')}
+@font-face{font-family:Inter;src:url('static/media/RasmusAndersson-Inter-Bold.4852edfcf88cee219c54.otf');font-weight:700}
+
+:root{
+  --bg:#f7f1e8;
+  --text:#1a2332;
+  --muted:#5a6a7a;
+  --line:rgba(26,35,50,.12);
+  --gold:#c9a227;
+  --teal:#1a9b9b;
+  --navy:#0f2c4c;
+  --cream:#fffaf4;
+  --ease:cubic-bezier(.22,.75,.25,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{
+  background:#f7f1e8;
+  color:var(--text);
+  font:15px/1.55 Inter,system-ui,sans-serif;
+  overflow-x:hidden;
+  min-width:320px;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;background:0;border:0;color:inherit;cursor:pointer}
+
+.ambient{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 10%,rgba(255,180,80,.08),transparent 55%),
+    radial-gradient(ellipse 45% 40% at 15% 85%,rgba(26,155,155,.04),transparent 50%);
+}
+
+.site-header{
+  position:fixed;top:0;left:0;right:0;height:60px;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(15,44,76,.75);backdrop-filter:blur(16px);
+  color:#f7f1e8;
+}
+.monogram{
+  font-weight:700;font-size:18px;letter-spacing:.02em;z-index:1;
+  border-bottom:1.5px solid var(--gold);padding-bottom:2px;
+}
+.nav{display:flex;gap:28px;position:absolute;left:50%;transform:translateX(-50%)}
+.nav a{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(247,241,232,.75);position:relative;transition:color .2s;
+}
+.nav a:hover,.nav a.active{color:#fff}
+.nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:-5px;
+  height:1.5px;background:var(--gold);
+}
+.connect-btn{
+  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(201,162,39,.5);border-radius:3px;
+  padding:8px 14px;transition:border-color .2s,background .2s;z-index:1;
+  color:#f7f1e8;
+}
+.connect-btn:hover{border-color:var(--gold);background:rgba(201,162,39,.12)}
+.connect-btn span{color:var(--gold);margin-left:6px}
+.menu-button{display:none;z-index:1}
+.menu-button span{display:block;width:18px;height:1.5px;background:currentColor;margin:4px 0}
+
+main{position:relative;z-index:1;width:100%}
+
+/* Horizon Live-Aboard Hero */
+.hero-horizon{
+  position:relative;
+  min-height:88vh;
+  display:flex;
+  align-items:flex-end;
+  padding:120px 5% 80px;
+  background:
+    linear-gradient(180deg, rgba(15,44,76,.25) 0%, rgba(15,44,76,.55) 100%),
+    url('assets/bg-marina-1.jpg') center/cover no-repeat;
+  color:#fff;
+  overflow:hidden;
+}
+.hero-horizon .hero-inner{
+  max-width:1080px;
+  width:100%;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:40px;
+}
+.hero-horizon h1{
+  font-size:clamp(48px,8vw,86px);
+  font-weight:400;
+  letter-spacing:-.03em;
+  line-height:.95;
+  margin:0 0 16px;
+  color:#fff;
+}
+.hero-horizon .bio{
+  font-size:16px;
+  line-height:1.6;
+  max-width:480px;
+  margin-bottom:28px;
+  color:rgba(255,255,255,.88);
+}
+.hero-horizon .cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.4);
+  padding-bottom:4px;
+}
+.hero-portrait-circle{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,.35);
+  box-shadow:0 16px 40px rgba(0,0,0,.25);
+  flex-shrink:0;
+}
+.hero-portrait-circle img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.featured{
+  width:90%;
+  max-width:1080px;
+  margin:0 auto;
+  padding:64px 0;
+}
+.featured-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:24px;
+}
+.featured-card{
+  background:rgba(255,250,244,.96);
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  padding:0;
+}
+.featured-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.featured-card .body{
+  padding:20px 22px 24px;
+}
+.featured-card .label{
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.featured-card h2{
+  font-size:28px;
+  font-weight:400;
+  letter-spacing:-.02em;
+  margin:0 0 6px;
+  color:var(--navy);
+}
+.featured-card p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.55;
+  margin:0 0 16px;
+}
+.featured-card a{
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--navy);
+  border-bottom:1px solid var(--gold);
+  padding-bottom:2px;
+}
+
+.section{position:relative;z-index:1;padding:56px 5%;border-top:1px solid var(--line);background:rgba(247,241,232,.82)}
+.section-inner{max-width:1080px;margin:0 auto;width:100%}
+.eyebrow{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section h2{font-size:clamp(24px,3vw,32px);font-weight:400;letter-spacing:-.03em;line-height:1.2;margin-bottom:12px;max-width:640px;color:var(--navy)}
+.lead{font-size:15px;line-height:1.6;color:var(--text);margin-bottom:8px;max-width:640px}
+.section p:not(.lead):not(.eyebrow){color:var(--muted);margin-bottom:8px;font-size:14px;max-width:640px}
+.links{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px}
+.links a{font-size:13px;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
+.links a:hover{border-color:var(--navy)}
+
+.entries{margin-top:22px;border-top:1px solid var(--line)}
+.entries a{display:block;padding:16px 0;border-bottom:1px solid var(--line);transition:background .2s}
+.entries a:hover{background:rgba(255,250,244,.6)}
+.entries span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.entries h3{font-size:15px;font-weight:500;letter-spacing:-.02em;margin-bottom:3px;color:var(--navy)}
+.entries p{font-size:13px;color:var(--muted);max-width:560px}
+
+.contact{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:64px 24px;border-top:1px solid var(--line);
+  background:rgba(247,241,232,.85);
+}
+.contact h2{font-size:clamp(24px,3.5vw,36px);font-weight:400;letter-spacing:-.03em;margin:8px 0 18px;color:var(--navy)}
+.email{font-size:15px;border-bottom:1px solid var(--gold);padding-bottom:3px;color:var(--navy)}
+.social{display:flex;gap:18px;margin-top:24px}
+.social a{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.social a:hover{color:var(--navy)}
+
+footer{
+  position:relative;z-index:1;
+  display:flex;justify-content:space-between;align-items:center;
+  width:90%;max-width:1080px;margin:0 auto;
+  padding:18px 0;
+  border-top:1px solid var(--line);
+  font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#7a8494;
+}
+.footer-tag{letter-spacing:.1em}
+
+@media(max-width:900px){
+  .site-header{padding:0 24px}
+  .hero-horizon{padding:100px 5% 60px;min-height:80vh}
+  .hero-horizon .hero-inner{grid-template-columns:1fr;gap:28px}
+  .hero-portrait-circle{width:140px;height:140px;justify-self:start}
+  .featured-grid{grid-template-columns:1fr}
+  .nav{display:none}
+  .connect-btn{display:none}
+  .menu-button{display:block}
+  .site-header.menu-open .nav{
+    display:flex;position:absolute;top:60px;left:12px;right:12px;
+    flex-direction:column;gap:10px;padding:14px;
+    background:var(--navy);border:1px solid rgba(201,162,39,.3);border-radius:10px;
+    transform:none;
+  }
+}
+@media(max-width:560px){
+  .hero-horizon h1{font-size:42px}
+  .social{flex-wrap:wrap;justify-content:center}
+  footer{flex-direction:column;gap:8px;text-align:center}
+}
+
+
+</style>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <a class="monogram" href="#top">DM</a>
+    <nav class="nav">
+      <a href="#top" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#journal">Journal</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="connect-btn" href="#contact">Let's Connect <span>→</span></a>
+    <button class="menu-button" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+  <main>
+    <section class="hero-horizon">
+      <div class="hero-inner">
+        <div>
+          <h1>Dmitri Morozov</h1>
+          <p class="bio">Building a home that sails. Live-aboard practice, seamanship, and the quiet work of a life on the water.</p>
+          <a class="cta" href="#journal">Read the Journal →</a>
+        </div>
+        <div class="hero-portrait-circle">
+          <img src="static/media/profile1.jpg?v=20260905" alt="Portrait of Dmitri Morozov">
+        </div>
+      </div>
+    </section>
+
+    <section class="featured">
+      <div class="featured-grid">
+        <article class="featured-card">
+          <img src="https://raw.githubusercontent.com/dmitrim80/MainPage/gh-pages/sailing/tayana-37/boats/teki%20malo/1d4399aace5b47bfbb06dea746f939212b3cdde48da344ad99ff46406934e791.webp" alt="Teki Malo">
+          <div class="body">
+            <div class="label">Featured Boat</div>
+            <h2>Teki Malo</h2>
+            <p>1988 Tayana 37 Cutter · Río Dulce, Guatemala<br>Currently in pursuit — a classic cruiser for live-aboard life on the Sweet River.</p>
+            <a href="sailing/tayana-37/boats/teki-malo/">Explore Teki Malo →</a>
+          </div>
+        </article>
+        <article class="featured-card">
+          <img src="assets/kitchen/IMG_8458.jpeg" alt="Galley still life">
+          <div class="body">
+            <div class="label">Galley Still Life</div>
+            <h2>Simple provisions</h2>
+            <p>Quiet mornings, one-pan meals, and the rhythm of life afloat.</p>
+            <a href="kitchen/">View Galley Notes →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-inner">
+        <p class="eyebrow">About</p>
+        <h2>Notes from a life lived aboard.</h2>
+        <p class="lead">This site documents the practice of living on a boat: the vessel, the systems, the galley, and the passages.</p>
+        <p>I bring a background in sales leadership, technology, and entrepreneurship. The focus here is on current practice—what is being built, refined, and learned in real time on the water.</p>
+        <div class="links">
+          <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a href="static/media/resume71.3dde63d9490c85908938.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
+          <a href="themes/">Themes ↗</a>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="journal">
+      <div class="section-inner">
+        <p class="eyebrow">Journal</p>
+        <h2>Recent entries</h2>
+        <div class="entries">
+          <a href="journal/boat-search/">
+            <span>Sailing · November 2026</span>
+            <h3>The Search for a Home That Sails</h3>
+            <p>Months of research, inspections, and decisions in the search for a boat to live aboard and sail mostly solo.</p>
+          </a>
+          <a href="kitchen/">
+            <span>Galley · Kitchen Log</span>
+            <h3>Home meals worth making again</h3>
+            <p>A living record of simple plates, ingredients, and everyday notes from the galley.</p>
+          </a>
+          <a href="sailing/">
+            <span>Sailing · Journey</span>
+            <h3>A horizon worth preparing for</h3>
+            <p>Vision, boat research, preparation stages, and the roadmap toward offshore passages.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="contact" id="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Let's build what's next.</h2>
+      <a class="email" href="mailto:dmitri.m80@gmail.com">dmitri.m80@gmail.com ↗</a>
+      <div class="social">
+        <a href="https://www.linkedin.com/in/dmitri-morozov-260b2920/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/dmitrim80" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="http://www.instagram.com/dmitrim80" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://x.com/njreef" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p class="footer-tag">Curious mind. Disciplined approach. Meaningful pursuits.</p>
+    <p>© <span id="year"></span> Dmitri Morozov</p>
+  </footer>
+</body>
+</html>
