@@ -55,6 +55,11 @@
     .itinerary h3 { margin: 0 0 12px; font-size: 18px; color: #0f2c4c; }
     .itinerary li { margin: 8px 0; color: #5a6a7a; }
     @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+    .journey-map{margin:28px 0}
+    .journey-map iframe{display:block;width:100%;height:620px;border:1px solid #d7d5cf;border-radius:8px;background:#fffaf4}
+    .journey-map figcaption{font-size:14px;line-height:1.6;color:#5a6a7a;margin-top:10px}
+    .journey-map a,.chapter>a,.chapter p>a{color:#0f2c4c;text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:500px){.journey-map iframe{height:665px}}
   </style>
 </head>
 <body>
@@ -86,7 +91,7 @@
       <p>My vision is simple: a strong, dependable bluewater sailboat capable of crossing oceans, comfortable enough to live aboard, and manageable enough to sail solo. A boat that can take me along distant coastlines, into quiet anchorages, and eventually across the open Pacific.</p>
       <p>But finding that boat has turned into an adventure of its own.</p>
 
-      <div class="pull-quote">There have been thousands of miles of research, long drives, disappointing inspections, late-night conversations with brokers, unexpected discoveries, and some difficult decisions. And now, the search is taking me to Guatemala.</div>
+      <div class="pull-quote">There have been thousands of miles of research, long drives, disappointing inspections, late-night conversations with brokers, unexpected discoveries, and some difficult decisions. And now, the search has taken me to Guatemala.</div>
 
       <section class="chapter">
         <h2>The Boats</h2>
@@ -170,26 +175,29 @@
         </figure>
       </section>
 
-      <section class="chapter">
-        <h2>Chapter 6 — Heading South: The Survey Trip</h2>
-        <p>The decision is made. From 18 to 24 November 2026 I will be in Río Dulce for a full inspection of Teki Malo. Rigging survey, mechanical inspection, and a complete condition survey are all scheduled. This is the final filter before any commitment.</p>
-
+      <section class="chapter" id="guatemala-journey">
+        <h2>Chapter 6 — The Journey to Guatemala</h2>
+        <p><time datetime="2026-11-18">November 18, 2026.</time> The search moved from video calls and paperwork to seeing Teki Malo in person. I traveled from New Jersey to Philadelphia International Airport, flew with United to Chicago O’Hare, and connected onward to La Aurora International Airport in Guatemala City.</p>
         <div class="itinerary">
-          <h3>Travel Route</h3>
-          <ul>
-            <li>Depart Newark (preferred) or Philadelphia</li>
-            <li>Fly to Guatemala City (La Aurora International) — roughly 6–8 hours</li>
-            <li>Preferred connection: local flight Guatemala City → Puerto Barrios (new service)</li>
-            <li>Then a ~1.5-hour taxi into Río Dulce</li>
-            <li>Alternative: direct 6-hour bus (~$30) or taxi from Guatemala City</li>
-          </ul>
+          <h3>The route I took</h3>
+          <ol>
+            <li>New Jersey to Philadelphia International Airport (PHL).</li>
+            <li>Philadelphia (PHL) to Chicago O’Hare (ORD).</li>
+            <li>Chicago (ORD) to Guatemala City, La Aurora (GUA).</li>
+            <li>Private taxi from Guatemala City to Bruno’s Hotel in Río Dulce.</li>
+          </ol>
         </div>
-
-        <p>I’ll be staying at Bruno’s Hotel, a classic riverfront place with open-air dining under a pavilion that carries an anchor and ship’s wheel on the gable, a pool surrounded by palms, and docks right on the water. It sits in the heart of the cruising community that has made Río Dulce a winter base for so many boats.</p>
-
-        <div class="pull-quote">The river doesn’t just hold boats. It holds the next chapter of the search.</div>
-
-        <p>From Bruno’s, the aerial view of the Río Dulce and Lake Izabal makes the geography clear: protected water, jungle banks, and a direct path out to the Caribbean at Livingston. The circled location on the river is where Teki Malo waits.</p>
+        <figure class="journey-map">
+          <iframe src="travel-map.html" title="Map of the flight connections to Guatemala and taxi route to Bruno’s Hotel" loading="lazy"></iframe>
+          <figcaption>Explore the flight connections or zoom into the road journey from Guatemala City to Río Dulce. Flight lines are illustrative; the road route is mapped rather than recorded by GPS.</figcaption>
+          <p><a href="travel-map.html" target="_blank" rel="noopener">Open the route map full screen</a></p>
+        </figure>
+        <h3>Ten hours on the road</h3>
+        <p>From Guatemala City, I continued by taxi to Bruno’s Hotel on the Río Dulce. A trip that normally takes around 6½ hours stretched to 10 hours because of major traffic delays — an extra 3½ hours on the road after the flights.</p>
+        <p>I was already tired from flying, and the long drive made it an exhausting travel day. Bruno’s Hotel became my base for the week: a place to rest between visits to the boat and the inspections ahead.</p>
+        <div class="pull-quote">The trip to the boat became a journey of its own: two flights, then ten hours in a taxi to the river.</div>
+        <p>The mechanical inspection took place on November 19, followed by the rigging inspection on November 20. The next step is the marine survey and haul-out planned for Monday, November 23.</p>
+        <p><a href="../../sailing/tayana-37/boats/teki-malo/#inspection-log">Read Teki Malo’s inspection log</a></p>
       </section>
 
       <section class="chapter">
@@ -206,7 +214,7 @@
           </ul>
         </div>
         <p>It is still a sketch, not a schedule. Weather windows, boat readiness, and the simple reality of learning a new vessel will decide the actual timing. But the direction is clear: from the jungle river, north through the Caribbean, and eventually back to familiar waters on the other side of the Gulf.</p>
-        <p>For now, the next concrete step is the week of 18–24 November. Rigging, survey, mechanical inspection. Then a decision.</p>
+        <p>The mechanical and rigging inspections are complete. The next concrete step is Monday’s marine survey and haul-out, followed by a decision.</p>
       </section>
 
       <p style="margin-top:40px;"><a href="../../" style="color:#0f2c4c;border-bottom:1px solid #c9a227;padding-bottom:2px;">← Back to home</a></p>
