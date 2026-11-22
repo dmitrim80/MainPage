@@ -25,10 +25,20 @@
     .dassie-equipment h3 { margin: 0 0 12px; color: #e4eeec; font-size: 18px; }
     .dassie-equipment ul { margin: 0; padding-left: 20px; }
     noscript .photo-grid a { display: block; }
+    .boat-page .dassie-footer { display: block; width: 100%; max-width: none; padding: 0; border-top-color: rgba(94,207,196,.18); color: #b8c9cd; font-size: .875rem; letter-spacing: normal; text-transform: none; }
+    .dassie-footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.5rem; width: min(90%, 1120px); margin: 0 auto; padding: 1.25rem 0; }
+    .dassie-footer p { margin: 0; }
+    .dassie-footer a { color: #e4eeec; }
+    .dassie-footer__top { text-decoration: underline; text-underline-offset: .2em; }
+    .dassie-footer a:hover { color: var(--cyan-bright); }
+    .dassie-footer a:focus-visible { outline: 2px solid var(--cyan-bright); outline-offset: 4px; }
+    @media (max-width: 560px) {
+      .dassie-footer__inner { flex-direction: column; text-align: center; }
+    }
   </style>
 </head>
-<body class="sailing-page boat-page">
-  <header class="site-header" id="top">
+<body class="sailing-page boat-page" id="top">
+  <header class="site-header">
     <a class="monogram" href="../../../../" aria-label="Home">DM<span>.</span></a>
     <nav class="nav" aria-label="Primary">
       <a href="../../../../">Home</a>
@@ -241,10 +251,12 @@
       </div>
     </section>
   </main>
-  <footer>
-    <a class="monogram" href="../../../../">DM<span>.</span></a>
-    <p>© <span id="year"></span> Dmitri Morozov</p>
-    <a href="#top">Back to top ↑</a>
+  <footer class="dassie-footer" id="page-footer">
+    <div class="dassie-footer__inner">
+      <a class="monogram" href="../../../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a>
+      <p>© <span id="year"></span> Dmitri Morozov</p>
+      <a class="dassie-footer__top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
