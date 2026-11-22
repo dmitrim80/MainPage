@@ -18,7 +18,12 @@
     .boat-overview h2 { margin: 26px 0 14px; color: #e4eeec; font-size: clamp(24px, 3vw, 34px); font-weight: 400; }
     .boat-overview p, .boat-overview li { max-width: 72ch; line-height: 1.7; }
     .boat-overview li + li { margin-top: 8px; }
-    .boat-overview a { color: var(--cyan-bright); text-decoration: underline; }
+    .dassie-specs, .dassie-equipment { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+    .dassie-specs div, .dassie-equipment section { padding: 16px 20px; border: 1px solid rgba(94,207,196,.14); background: rgba(6,14,22,.65); }
+    .dassie-specs dt { color: #b8c9cd; font-size: 14px; }
+    .dassie-specs dd { margin: 4px 0 0; color: #e4eeec; }
+    .dassie-equipment h3 { margin: 0 0 12px; color: #e4eeec; font-size: 18px; }
+    .dassie-equipment ul { margin: 0; padding-left: 20px; }
     noscript .photo-grid a { display: block; }
   </style>
 </head>
@@ -50,32 +55,190 @@
         </div>
       </div>
     </section>
-    <section class="boat-overview">
-      <h2>Overview</h2>
-      <p>Dassie is a full-keel Tayana 37 that returned from a winter cruise in the Bahamas before she was listed in Deltaville. The broker reported that the teak decks had been removed, the deck core repaired where needed, and the bowsprit repaired in 2020.</p>
-      <h2>Equipment and refit</h2>
-      <ul>
-        <li><strong>Engine and transmission.</strong> Perkins 4-108 diesel, with 542 hours reported since its 2019 rebuild. The broker also reported a transmission rebuild.</li>
-        <li><strong>Rig and cockpit.</strong> Running rigging replaced in 2020, standing rigging in 2021, and a full canvas cockpit enclosure added in 2023.</li>
-        <li><strong>Steering and navigation.</strong> Monitor windvane, Alpha 3000 autopilot, and Vesper AIS transceiver.</li>
-        <li><strong>Power.</strong> Two 175 W Renogy solar panels and six 6 V house batteries installed in 2021.</li>
-        <li><strong>Ground tackle.</strong> 20 kg Vulcan anchor with 230 ft of chain and a McMurray electric windlass.</li>
-        <li><strong>Tankage.</strong> 90 gal diesel, 65 gal fresh water, and 25 gal holding.</li>
-      </ul>
-      <p>Specifications, refit history, and photos are from the <a href="https://yachtr.com/37-tayana-1980-2816413/">YaZu Yachting listing on Yachtr</a>.</p>
+    <section class="boat-overview" aria-labelledby="description">
+      <h2 id="description">Description</h2>
+      <p>Dassie is a 1980 Tayana 37 full-keel cutter documented in Deltaville, Virginia. She had recently returned from a winter cruise in the Bahamas. Her refit included rebuilding the Perkins diesel and transmission, removing the teak decking and repairing the deck core where needed, and repairing the bowsprit in 2020.</p>
+      <p>Running rigging was replaced in 2020, and standing rigging, solar panels, and the house battery bank were updated in 2021. A full cockpit enclosure was added in 2023. For cruising, Dassie carries a Monitor windvane, Alpha 3000 autopilot, Vesper AIS, two anchors with an electric windlass, and a Highfield tender with a Yamaha outboard.</p>
     </section>
-    <section class="photos" id="photos" data-photo-base="https://cdn.yachtbroker.org/images/">
-      <h2 class="section-label"><span>01</span>Photo gallery</h2>
+    <section class="photos" id="photos">
+      <h2 class="section-label"><span aria-hidden="true"></span>Photo gallery</h2>
       <div class="photo-placeholder"><div><strong>Dassie photographs</strong><p>Loading gallery…</p></div></div>
       <noscript>
         <div class="photo-grid">
-          <a class="photo-card" href="https://cdn.yachtbroker.org/images/2816413_33fa87ba.jpg.webp"><img src="https://cdn.yachtbroker.org/images/2816413_33fa87ba.jpg.webp" alt="Dassie, photo 1 of 5" loading="lazy"></a>
-          <a class="photo-card" href="https://cdn.yachtbroker.org/images/2816413_9561a76c_2.jpg.webp"><img src="https://cdn.yachtbroker.org/images/2816413_9561a76c_2.jpg.webp" alt="Dassie, photo 2 of 5" loading="lazy"></a>
-          <a class="photo-card" href="https://cdn.yachtbroker.org/images/2816413_4b1e9b12_3.jpg.webp"><img src="https://cdn.yachtbroker.org/images/2816413_4b1e9b12_3.jpg.webp" alt="Dassie, photo 3 of 5" loading="lazy"></a>
-          <a class="photo-card" href="https://cdn.yachtbroker.org/images/2816413_cb410a2d_4.jpg.webp"><img src="https://cdn.yachtbroker.org/images/2816413_cb410a2d_4.jpg.webp" alt="Dassie, photo 4 of 5" loading="lazy"></a>
-          <a class="photo-card" href="https://cdn.yachtbroker.org/images/2816413_861739bc_5.jpg.webp"><img src="https://cdn.yachtbroker.org/images/2816413_861739bc_5.jpg.webp" alt="Dassie, photo 5 of 5" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_33fa87ba.jpg.webp"><img src="photos/2816413_33fa87ba.jpg.webp" alt="Dassie, photo 1 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_9561a76c_2.jpg.webp"><img src="photos/2816413_9561a76c_2.jpg.webp" alt="Dassie, photo 2 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_4b1e9b12_3.jpg.webp"><img src="photos/2816413_4b1e9b12_3.jpg.webp" alt="Dassie, photo 3 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_cb410a2d_4.jpg.webp"><img src="photos/2816413_cb410a2d_4.jpg.webp" alt="Dassie, photo 4 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_861739bc_5.jpg.webp"><img src="photos/2816413_861739bc_5.jpg.webp" alt="Dassie, photo 5 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_c706ccce_6.jpg.webp"><img src="photos/2816413_c706ccce_6.jpg.webp" alt="Dassie, photo 6 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_6be1d71f_7.jpg.webp"><img src="photos/2816413_6be1d71f_7.jpg.webp" alt="Dassie, photo 7 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_1d91d5b5_8.jpg.webp"><img src="photos/2816413_1d91d5b5_8.jpg.webp" alt="Dassie, photo 8 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_51b6fd31_9.jpg.webp"><img src="photos/2816413_51b6fd31_9.jpg.webp" alt="Dassie, photo 9 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_2b3694d2_10.jpg.webp"><img src="photos/2816413_2b3694d2_10.jpg.webp" alt="Dassie, photo 10 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_5980e0ea_11.jpg.webp"><img src="photos/2816413_5980e0ea_11.jpg.webp" alt="Dassie, photo 11 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b07f7320_12.jpg.webp"><img src="photos/2816413_b07f7320_12.jpg.webp" alt="Dassie, photo 12 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_ad4da511_13.jpg.webp"><img src="photos/2816413_ad4da511_13.jpg.webp" alt="Dassie, photo 13 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_8ed6aff1_15.jpg.webp"><img src="photos/2816413_8ed6aff1_15.jpg.webp" alt="Dassie, photo 14 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_43f49fce_16.jpg.webp"><img src="photos/2816413_43f49fce_16.jpg.webp" alt="Dassie, photo 15 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_fbcfdd3a_17.jpg.webp"><img src="photos/2816413_fbcfdd3a_17.jpg.webp" alt="Dassie, photo 16 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_959c9658_18.jpg.webp"><img src="photos/2816413_959c9658_18.jpg.webp" alt="Dassie, photo 17 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_75eb82e3_19.jpg.webp"><img src="photos/2816413_75eb82e3_19.jpg.webp" alt="Dassie, photo 18 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_f0bb944d_20.jpg.webp"><img src="photos/2816413_f0bb944d_20.jpg.webp" alt="Dassie, photo 19 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_ade047dd_21.jpg.webp"><img src="photos/2816413_ade047dd_21.jpg.webp" alt="Dassie, photo 20 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_a5a19c79_22.jpg.webp"><img src="photos/2816413_a5a19c79_22.jpg.webp" alt="Dassie, photo 21 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_253d30d9_23.jpg.webp"><img src="photos/2816413_253d30d9_23.jpg.webp" alt="Dassie, photo 22 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_26d34aea_24.jpg.webp"><img src="photos/2816413_26d34aea_24.jpg.webp" alt="Dassie, photo 23 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_460bb6c0_25.jpg.webp"><img src="photos/2816413_460bb6c0_25.jpg.webp" alt="Dassie, photo 24 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_aac0d404_26.jpg.webp"><img src="photos/2816413_aac0d404_26.jpg.webp" alt="Dassie, photo 25 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_fbb4ff2a_27.jpg.webp"><img src="photos/2816413_fbb4ff2a_27.jpg.webp" alt="Dassie, photo 26 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b5484421_28.jpg.webp"><img src="photos/2816413_b5484421_28.jpg.webp" alt="Dassie, photo 27 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_031332a9_29.jpg.webp"><img src="photos/2816413_031332a9_29.jpg.webp" alt="Dassie, photo 28 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_d58c1b39_30.jpg.webp"><img src="photos/2816413_d58c1b39_30.jpg.webp" alt="Dassie, photo 29 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b4d9ac77_31.jpg.webp"><img src="photos/2816413_b4d9ac77_31.jpg.webp" alt="Dassie, photo 30 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b350ce11_32.jpg.webp"><img src="photos/2816413_b350ce11_32.jpg.webp" alt="Dassie, photo 31 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_28f90ff8_33.jpg.webp"><img src="photos/2816413_28f90ff8_33.jpg.webp" alt="Dassie, photo 32 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_f69044c9_34.jpg.webp"><img src="photos/2816413_f69044c9_34.jpg.webp" alt="Dassie, photo 33 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_3b7de0e5_35.jpg.webp"><img src="photos/2816413_3b7de0e5_35.jpg.webp" alt="Dassie, photo 34 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_1a493ed8_36.jpg.webp"><img src="photos/2816413_1a493ed8_36.jpg.webp" alt="Dassie, photo 35 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_255e9cf8_37.jpg.webp"><img src="photos/2816413_255e9cf8_37.jpg.webp" alt="Dassie, photo 36 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_88f8d1ac_38.jpg.webp"><img src="photos/2816413_88f8d1ac_38.jpg.webp" alt="Dassie, photo 37 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_7a0b6bc5_39.jpg.webp"><img src="photos/2816413_7a0b6bc5_39.jpg.webp" alt="Dassie, photo 38 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_23f4a4b0_40.jpg.webp"><img src="photos/2816413_23f4a4b0_40.jpg.webp" alt="Dassie, photo 39 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b9f2ea84_41.jpg.webp"><img src="photos/2816413_b9f2ea84_41.jpg.webp" alt="Dassie, photo 40 of 41" loading="lazy"></a>
+          <a class="photo-card" href="photos/2816413_b640b8b5_42.jpg.webp"><img src="photos/2816413_b640b8b5_42.jpg.webp" alt="Dassie, photo 41 of 41" loading="lazy"></a>
         </div>
       </noscript>
+    </section>
+    <section class="boat-overview" aria-labelledby="specifications">
+      <h2 id="specifications">Specifications</h2>
+      <dl class="dassie-specs">
+        <div><dt>Vessel ID</dt><dd>2816413</dd></div>
+        <div><dt>Year</dt><dd>1980</dd></div>
+        <div><dt>Type</dt><dd>Used sailing cruiser</dd></div>
+        <div><dt>Hull</dt><dd>Fiberglass, full keel</dd></div>
+        <div><dt>Length overall</dt><dd>37 ft (11.28 m)</dd></div>
+        <div><dt>Beam</dt><dd>11 ft 6 in</dd></div>
+        <div><dt>Maximum draft</dt><dd>5 ft 7 in</dd></div>
+        <div><dt>Displacement</dt><dd>23,000 lb</dd></div>
+        <div><dt>Cabins and heads</dt><dd>One cabin and one head</dd></div>
+        <div><dt>Fuel type</dt><dd>Diesel</dd></div>
+      </dl>
+      <h2>Equipment and refit details</h2>
+      <div class="dassie-equipment">
+        <section>
+          <h3>Accommodations</h3>
+          <ul>
+            <li>U-shaped galley to port of the companionway with a large stainless steel sink</li>
+            <li>Quarter berth to starboard of the companionway</li>
+            <li>Navigation station to starboard, forward of the quarter berth</li>
+            <li>Straight starboard settee forward of the navigation station</li>
+            <li>C-shaped port dinette opposite the straight settee, convertible to a double berth</li>
+            <li>Dickinson cabin heater on the bulkhead forward of the dinette</li>
+            <li>Head to port, forward of the dinette</li>
+            <li>Starboard storage and cabinetry opposite the head, forward of the straight settee</li>
+            <li>V-berth aft of the bow anchor locker</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Galley</h3>
+          <ul>
+            <li>Hillerange three-burner propane stove with oven</li>
+            <li>Adler/Barbour top-loading refrigeration</li>
+            <li>Large stainless steel sink and melamine counters</li>
+            <li>Foot-pump water at the sink</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Electrical</h3>
+          <ul>
+            <li>110 V and 12 V outlets</li>
+            <li>One shore-power inlet and one shore-power cord</li>
+            <li>One Nautilus 12 V start battery (2019)</li>
+            <li>Six Excalibur 6 V house batteries (2021)</li>
+            <li>Truecharge 40+ battery charger</li>
+            <li>Two 175 W Renogy solar panels (350 W total)</li>
+            <li>Mobisolar solar regulator and Victron SmartShunt</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Electronics</h3>
+          <ul>
+            <li>Alpha 3000 autopilot</li>
+            <li>Datamarine depth and speed instruments</li>
+            <li>Standard Horizon GX2400 VHF with GPS and AIS receiver</li>
+            <li>Vesper BX6000 AIS transceiver</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Engine and mechanical</h3>
+          <ul>
+            <li>One Perkins 4-108 direct-drive inboard diesel, installed in 1992 and mounted amidships</li>
+            <li>Engine rebuilt in 2019, with 542 hours reported since rebuild. Transmission also rebuilt</li>
+            <li>Rated power listed as 48 hp (35.79 kW) in the engine specifications and 42 hp in the mechanical notes. The rating is unconfirmed</li>
+            <li>Fixed three-blade Campbell Sailor propeller</li>
+            <li>90 A alternator</li>
+            <li>Propeller shaft replaced in 2017 and shaft packing replaced in 2023</li>
+            <li>Vacuum oil-change pump</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Sails and rigging</h3>
+          <ul>
+            <li>One mainsail (2004, reported in good condition)</li>
+            <li>Two Yankees (2012, reported in good condition)</li>
+            <li>Staysail (2009, reported in good condition)</li>
+            <li>Code 0 (2008, reported in very good condition)</li>
+            <li>Standing rigging replaced in 2021 and running rigging replaced in 2020</li>
+            <li>Spinnaker pole</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Deck and cockpit</h3>
+          <ul>
+            <li>20 kg Vulcan anchor with 230 ft of chain</li>
+            <li>35 lb Kingston anchor with 50 ft of chain and 150 ft of rode</li>
+            <li>¾ in anchor bridle and McMurray electric windlass</li>
+            <li>Mast winches include two Barlow 23s, one Barlow 20, and one Barlow 15</li>
+            <li>Cockpit winches include two Barient 23 primaries and two Barient 19 secondaries</li>
+            <li>Classic bimini frame with attached dodger and full canvas cockpit enclosure (2023)</li>
+            <li>Canvas wind scoop, sail covers, butterfly-hatch cover, and cockpit sunshade curtains (2023)</li>
+            <li>Swim and boarding ladder, Monitor windvane, davits, and Garhauer outboard motor lift</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Plumbing</h3>
+          <ul>
+            <li>One manual head</li>
+            <li>Foot-pump water in the galley and head</li>
+            <li>12 V PowerSurvivor 35 watermaker carried aboard and awaiting installation</li>
+            <li>Two bilge pumps</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Tankage</h3>
+          <ul>
+            <li>90 US gal (340.69 L) black-iron fuel tank</li>
+            <li>65 US gal (246.05 L) plastic fresh-water tank</li>
+            <li>25 US gal (94.64 L) fiberglass holding tank</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Tender and outboard</h3>
+          <ul>
+            <li>10 ft 6 in Highfield 320AL dinghy (2022)</li>
+            <li>Yamaha 9.9 hp two-stroke outboard (2003)</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Spares</h3>
+          <ul>
+            <li>Alternator and injectors</li>
+            <li>Oil and fuel filters</li>
+            <li>Heat-exchanger fittings</li>
+            <li>Raw-water pump impeller and gaskets</li>
+          </ul>
+        </section>
+      </div>
     </section>
   </main>
   <footer>
