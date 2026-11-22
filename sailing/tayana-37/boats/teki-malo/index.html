@@ -18,12 +18,52 @@
     .teki-grid dl{margin:0}.teki-grid dl>div{display:grid;grid-template-columns:1fr 1fr;gap:15px;border-bottom:1px solid #e6e1d9;padding:10px 0}
     .teki-grid dt{color:#566575}.teki-grid dd{margin:0;font-weight:500}
     @media(max-width:650px){.teki-grid{grid-template-columns:1fr;gap:24px}.teki-profile{padding:30px 6% 45px}}
+
+    .teki-update{padding-top:32px;padding-bottom:32px;border-bottom:1px solid #e6e1d9}
+    .teki-inspection-grid>section{min-width:0;border-top:1px solid #d7d5cf;padding-top:20px}
+    .teki-upcoming{margin-top:30px;border-top:1px solid #d7d5cf;padding-top:20px}
+    .teki-upcoming h3{font-size:20px;line-height:1.3;color:#0f2c4c;margin:0 0 16px}
+    .teki-inspection-meta{font-size:1rem;color:#566575}
   </style>
 </head>
 <body class="sailing-page boat-page">
   <header class="site-header" id="top"><a class="monogram" href="../../../../" aria-label="Dmitri Morozov, home">DM<span>.</span></a><nav class="nav" aria-label="Primary"><a href="../../../../">Home</a><a href="../../../">Sailing</a><a href="../../">Tayana 37</a><a href="#photos">Photos</a></nav><a class="nav-cta" href="mailto:dmitri.m80@gmail.com">Connect <span>↗</span></a><button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button></header>
   <main>
     <section class="boat-hero" aria-labelledby="boat-title"><div class="boat-hero__inner"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../../">Sailing</a><span>/</span><a href="../../">Tayana 37</a><span>/</span><span>Teki Malo</span></nav><p class="boat-kicker">1988 Tayana 37</p><h1 id="boat-title">Teki Malo</h1><p class="boat-location">Río Dulce, Guatemala</p><div class="boat-details" aria-label="Boat details"><div><small>Year</small><strong>1988</strong></div><div><small>Model</small><strong>Tayana 37</strong></div><div><small>Location</small><strong>Río Dulce, GT</strong></div></div></div></section>
+
+    <section class="teki-profile teki-update" id="name-meaning" aria-labelledby="teki-name">
+      <h2 id="teki-name">The meaning of Teki Malo</h2>
+      <p>The meaning passed on to me for <em>Teki Malo</em> comes from the Kuna (Guna) language: <span lang="es">“Hasta luego”</span> — “See you later.”</p>
+      <p>A farewell with the promise of another meeting — a fitting name for a boat and the journeys ahead.</p>
+    </section>
+
+    <section class="teki-profile teki-update" id="inspection-log" aria-labelledby="teki-inspections">
+      <h2 id="teki-inspections">Inspection log</h2>
+      <div class="teki-grid teki-inspection-grid">
+        <section id="mechanical-inspection" aria-labelledby="teki-mechanical">
+          <h3 id="teki-mechanical">Mechanical inspection</h3>
+          <p class="teki-inspection-meta"><time datetime="2026-11-19">November 19, 2026</time><br>Inspected by <strong>Diesel John</strong> · Río Dulce, Guatemala</p>
+          <p>Diesel John inspected Teki Malo’s Yanmar 4JHE diesel engine and reported it to be in great condition, with no mechanical issues identified during the inspection.</p>
+          <p>His assessment was encouraging: with proper maintenance, he expected the engine to provide many more years of service.</p>
+        </section>
+        <section id="rigging-inspection" aria-labelledby="teki-rigging">
+          <h3 id="teki-rigging">Rigging inspection</h3>
+          <p class="teki-inspection-meta"><time datetime="2026-11-20">November 20, 2026</time><br>Inspected by <strong>Ryan</strong> · Río Dulce, Guatemala</p>
+          <p>Ryan found the rigging mostly in great condition and expressed confidence in the boat. He recommended cleaning up and replacing one starboard-forward chainplate in the near future.</p>
+          <p>The plan following the inspection was to arrange that work with Ryan within the next month or two, subject to his availability. The chainplate replacement has not yet been recorded as completed.</p>
+        </section>
+      </div>
+
+      <section class="teki-upcoming" id="upcoming-survey" aria-labelledby="teki-upcoming-title">
+        <h3 id="teki-upcoming-title">Upcoming survey &amp; haul-out</h3>
+        <p class="teki-inspection-meta"><time datetime="2026-11-23">Monday, November 23, 2026</time><br>Marine survey</p>
+        <p><strong>Proposed start:</strong> 9:30–10:00 AM, Guatemala time (UTC−6). This start window is tentative.</p>
+        <p>A haul-out at <strong>RAM Marina, Río Dulce</strong>, is planned as part of the inspection day. The haul-out time is awaiting confirmation.</p>
+        <p>Survey and haul-out findings will be added after the inspections are completed.</p>
+      </section>
+      <p class="teki-source">These notes summarize my discussions with the inspectors following their visits. Ryan’s written rigging report was still to be obtained.</p>
+    </section>
+
     <section class="photos" id="photos" data-photo-base="../teki malo/"><h2 class="section-label"><span>01</span>Photo gallery</h2><div class="photo-placeholder"><div><strong>Photos coming soon</strong><p>Teki Malo’s exterior, deck, interior, systems, and detail photographs will be organized here.</p></div></div></section>
 
     <section class="teki-profile" aria-labelledby="teki-overview">
@@ -116,5 +156,6 @@
   <footer><a class="monogram" href="../../../../">DM<span>.</span></a><p>© <span id="year"></span> Dmitri Morozov</p><a href="#top">Back to top ↑</a></footer>
 </body>
 </html>
+
 
 
